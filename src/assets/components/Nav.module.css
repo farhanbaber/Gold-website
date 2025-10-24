@@ -1,0 +1,170 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Top Bar === */
+.nav-one {
+  width: 100%;
+  background-color: #c6a05a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  color: #fff;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+/* === Main Navbar === */
+.navtwo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  background: #fff;
+  position: relative;
+  flex-wrap: nowrap;
+}
+
+.nav-logo {
+  width: 120px;
+  height: auto;
+}
+
+/* === Nav Links === */
+.nav-ul {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-ul li a {
+  position: relative;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+  padding-bottom: 4px;
+}
+
+.nav-ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #b59b64; 
+  transition: width 0.3s ease;
+}
+
+/* 👇 On hover */
+.nav-ul li a:hover {
+  color: #b59b64; 
+}
+
+.nav-ul li a:hover::after {
+  width: 100%; 
+}
+
+.nav-ul li:first-child a {
+  color: #b59b64;
+}
+
+.nav-ul li:first-child a::after {
+  width: 100%;
+}
+
+
+/* Search Box */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 6px 10px;
+  background: white;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 120px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+}
+
+/* === Responsive Styles === */
+@media (max-width: 768px) {
+  .navtwo {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 20px;
+  }
+
+  .nav-logo,
+  .search-wrapper {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  .nav-logo {
+    width: 100px;
+  }
+
+  .navtwo {
+    position: relative;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+  }
+
+  .nav-ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-ul-open {
+    display: flex;
+  }
+
+  .search-wrapper {
+    margin-left: 2rem; /* 👈 gap between logo & search */
+    margin-top: 10px;
+    display: none;
+  }
+}
+
+/* Divider */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  width: 95%;
+  margin: 5px auto;
+}
