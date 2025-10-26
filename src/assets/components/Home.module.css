@@ -371,6 +371,7 @@ span{
     flex-direction: column-reverse; /* child-three (text) comes first */
     align-items: center;
     height: auto;
+    background-color: whitesmoke;
     gap: 1rem;
   }
 
@@ -396,6 +397,7 @@ span{
     flex-direction: column; /* stack images vertically */
     align-items: center;
     gap: 1rem;
+    background-color: whitesmoke;
   }
 
   .child-two-img,
