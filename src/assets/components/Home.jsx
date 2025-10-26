@@ -4,7 +4,7 @@ import Collections from './Collections';
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles["body"]}>
       {/* hero section */}
      <div className={styles["heroDev"]}>
   <div className={styles["hero-content"]}>
