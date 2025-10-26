@@ -16,6 +16,8 @@
   color: #fff;
   font-size: 14px;
   flex-wrap: wrap;
+          font-family: "Cinzel", serif;
+
 }
 
 /* === Main Navbar === */
@@ -43,6 +45,8 @@
   padding: 0;
   flex: 1;
   justify-content: center;
+          font-family: "Cinzel", serif;
+
 }
 
 .nav-ul li a {

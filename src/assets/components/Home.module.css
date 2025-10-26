@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Carter+One&family=Caveat:wght@400..700&family=Cinzel:wght@400..900&family=Dancing+Script:wght@700&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 .heroDev {
   height: 80vh;
   width: 100%; /* full viewport width */
@@ -24,7 +26,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  /* background: rgba(0, 0, 0, 0.45); */
+  /* background: rgba(0, 0, 0, 0.233); */
   z-index: 1;
 
 }
@@ -44,7 +46,9 @@
   font-size: 1.3rem;
   color: #eee;
   margin-bottom: 10px;
-  color: #774f00;
+  color: #cf8c04;
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
+
 }
 
 .hero-title {
@@ -53,23 +57,363 @@
   color: #fff;
   margin-bottom: 20px;
   width: 200px;
+  font-family: "Open Sans", sans-serif;
+}
+span{
+        font-family: "Cinzel", serif;
+          font-family: "Dancing Script", cursive;
+
+
 }
 
 
 
 /* button */
 .hero-button {
-  padding: 12px 28px;
+  position: relative;
+  padding: 14px 32px;
   background-color: #c6a05a;
-  border: none;
   color: #ffffff;
   font-weight: bold;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  overflow: hidden;
+  transition: background-color 0.6s ease, color 0.3s ease;
+    transition: 0.2s ease-in-out all;
+  font-family: "Dancing Script", cursive;
+
 }
 
+/* Shining reflection effect */
+.hero-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.9s ease;
+  z-index: 1;
+}
+
+/* Hover effect */
 .hero-button:hover {
-  background-color: #312102;
-  color: #c6a05a;
+  background-color: #8b6822;
+  color: #ffffff;
+}
+
+.hero-button:hover::before {
+  left: 130%; /* shine smoothly slide karegi */
+}
+
+/* Text ko shine se upar dikhane ke liye */
+.hero-button span {
+  position: relative;
+  z-index: 2;
+}
+.hero-button:active {
+  transform: scale(0.95);
+  transition: 0.2s ease-in-out all;
+}
+/* 🌐 Responsive for mobile devices */
+@media (max-width: 768px) {
+  .heroDev {
+    height: 70vh;
+    background-size: cover;
+    background-position: center top;
+    border-radius: 20px; /* corners remove kar diye mobile pe clean look ke liye */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+    /* border: 2px solid red; */
+  }
+
+  .hero-content {
+    left: 0;
+    padding: 10px 15px;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: 2.5rem; /* mobile ke liye readable */
+    line-height: 1.2;
+    margin-bottom: 12px;
+    width: auto;
+  }
+
+  .hero-para {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-button {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+}
+
+/* 📱 Extra small devices (like <480px) */
+@media (max-width: 480px) {
+  .heroDev {
+    height: 65vh;
+    background-position: center;
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-para {
+    font-size: 0.95rem;
+  }
+
+  .hero-button {
+    padding: 9px 22px;
+    font-size: 0.85rem;
+  }
+}
+/* second section styles */
+.second-section {
+  height: 127vh;
+  width: 100%;
+  background-color: #f5f5f5;
+  /* border: 2px solid red; */
+}
+
+.child-one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  padding: 10px 20px;
+  background-color: whitesmoke; /* white background */
+  position: relative;
+  overflow: hidden; /* important: hides circle overflow */
+  isolation: isolate; /* 🧠 ensures ::before doesn’t blend with page background */
+  /* border: 2px solid red; */
+}
+
+.animated-bg {
+  position: relative;
+  padding: 10px 20px;
+  height: 20vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* ensures circle stays inside */
+}
+
+/* 🟡 golden spread circle behind text */
+.animated-bg::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(209, 191, 89, 0.932) 0%,
+    rgba(255, 215, 0, 0.2) 50%,
+    transparent 80%
+  );
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.child-one-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  font-family: "Cinzel", serif;
+  position: relative;
+  z-index: 1;
+}
+/* 📱 For tablets and smaller laptops */
+@media (max-width: 1024px) {
+  .animated-bg::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .child-one-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* 📱 For mobile devices */
+@media (max-width: 768px) {
+  .animated-bg::before {
+    width: 220px;
+    height: 220px;
+  }
+
+  .child-one-title {
+    font-size: 2rem;
+  }
+
+  .animated-bg {
+    height: 25vh;
+  }
+
+  .child-one {
+    height: 20vh;
+    padding: 20px 10px;
+    /* border: 2px solid blue; */
+  }
+}
+
+/* 📱 For very small screens (like 480px and below) */
+@media (max-width: 480px) {
+  .animated-bg::before {
+    width: 160px;
+    height: 160px;
+  }
+
+  .child-one-title {
+    font-size: 1.6rem;
+  }
+}
+.main-parent {
+  width: 100%;
+  height: 93vh;
+  /* border: 2px solid rgb(4, 255, 242); */
+  display: flex; 
+  justify-content: center;
+  gap: 2rem; 
+  padding: 10px 20px;
+}
+
+/* ---------------- Desktop Default ---------------- */
+.child-two {
+  /* border: 2px solid green; */
+  width: 40%;
+  height: 89vh;
+}
+
+.child-two-img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  padding: 10px 20px;
+}
+
+.child-three {
+  /* border: 2px solid green; */
+  width: 40%;
+  height: 89vh;
+}
+
+.child-three-img {
+  position: relative;
+  left: 19rem;
+  width: 200px;
+  object-fit: cover;
+  background-size: cover;
+  bottom: 9rem;
+}
+
+.child-four-img {
+  object-fit: cover;
+  background-size: cover;
+  padding: 10px 20px; 
+}
+
+.child-img {
+  width: 100%;
+  object-fit: cover;
+  /* border: 2px solid aqua; */
+  display: flex;
+  justify-content: center;
+}
+
+.child-three-heading {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  font-family: "Cinzel", serif;
+  width: 400px;
+  text-align: center;
+}
+
+.child-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  font-family: "Cinzel", serif;
+}
+
+/* ---------------- Mobile Responsive ---------------- */
+@media (max-width: 768px) {
+  .main-parent {
+    flex-direction: column-reverse; /* child-three (text) comes first */
+    align-items: center;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .child-two, .child-three {
+    width: 90%;
+    height: auto;
+    border-width: 1px;
+  }
+
+  /* text section (child-three) */
+  .child-three-heading {
+    font-size: 22px;
+    width: 100%;
+  }
+
+  .child-text {
+    padding: 1rem;
+  }
+
+  /* images section (child-two) */
+  .child-two {
+    display: flex;
+    flex-direction: column; /* stack images vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .child-two-img,
+  .child-four-img {
+    width: 90%;
+    height: auto;
+    padding: 0;
+  }
+
+  .child-three-img {
+    position: static;
+    width: 150px;
+    bottom: 0;
+    left: 0;
+    margin: 1rem auto;
+  }
+
+  .child-img {
+    border: none;
+  }
 }
