@@ -20,10 +20,8 @@ const Home = () => {
 {/* start new section */}
 <div className={styles["second-section"]}>
     <div className={styles["child-one"]}>
-        <div className={styles["animated-bg"]}>
 
-      <h1 className={styles["child-one-title"]}>Redefining Modern Luxury</h1>
-      </div>
+      <h1 className={styles["child-one-title"]}> <span className={styles["highlight"]}>R</span> edefining M<span><i class="fa-regular fa-gem"></i></span>dern <span className={styles["highlight"]}>L</span>uxury</h1>
       {/* img section */}
      
 
@@ -31,7 +29,7 @@ const Home = () => {
    <div className= {styles["main-parent"]}>
     <div className={styles["child-two"]}  >
       <img src="/couple img.jpg" alt="" className={styles["child-two-img"]} />
-      <img src="/ring img.png" alt="" className={styles["child-three-img"]} />
+      <img src="/ring-re img.jpg" alt="" className={styles["child-three-img"]} />
     </div>
     <div className={styles["child-three"]}  >
       <div className={styles["child-img"]}>
@@ -50,6 +48,44 @@ const Home = () => {
         
       </div>
 </div>
+{/* end section */}
+{/* start new one  */}
+
+<div className={styles["Third-section"]}>
+  <div className={styles["img-child-one"]}>
+    <img src="/left-re img.png" alt="" className={styles["img-one"]} />
+    <button className={styles["img-button"]}>Shop Now</button>
+
+    
+  </div>
+  <div className={styles["img-child-two"]}>
+    <img src="/main img.png" alt="" className={styles["img-two"]} />
+  </div>
+  <div className={styles["img-child-three"]}>
+    <div className={styles["circle-text-container"]}>
+  <div className={styles["center-dot"]}></div>
+  <svg viewBox="0 0 200 200" className={styles["rotating-text"]}>
+    <defs>
+      <path
+        id="circlePath"
+        d="M 100, 100
+           m -75, 0
+           a 75,75 0 1,1 150,0
+           a 75,75 0 1,1 -150,0"
+      />
+    </defs>
+    <text fontSize="10" letterSpacing="2">
+      <textPath href="#circlePath">
+        Fayaz Jewellers Peshawar • Fayaz Jewellers Peshawar •
+      </textPath>
+    </text>
+  </svg>
+</div>
+
+    <img src="/right-re img.png" alt="" className={styles["img-three"]} />
+  </div>
+</div>
+
 
 
 {/* ye div main hain */}
