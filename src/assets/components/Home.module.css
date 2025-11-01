@@ -189,12 +189,14 @@ span{
     font-size: 0.85rem;
   }
 }
+
 /* second section styles */
 .second-section {
-  height: 127vh;
+  height: auto;
   width: 100%;
   background-color: #f5f5f5;
   /* border: 2px solid red; */
+  min-height: 127vh;
 }
 
 .child-one {
@@ -354,7 +356,7 @@ top: 1.5rem;
     height: auto;
     background-color: whitesmoke;
     gap: 1rem;
-    /* border: 2px solid lightgray; */
+    /* border: 2px solid rgb(119, 20, 20); */
   }
 
   .child-two, .child-three {
@@ -582,7 +584,6 @@ top: 1.5rem;
 }
 
 /* 📱 MOBILE RESPONSIVE FIXED */
-
 @media (max-width: 768px) {
   .Third-section {
     flex-direction: row;
@@ -593,9 +594,8 @@ top: 1.5rem;
     gap: 5px;
     padding: 10px;
     /* border: 2px solid red; */
-    margin-top: 432px;
- 
-    
+    margin-top: 0 !important; 
+
   }
 
   .Third-section .img-child-one,
@@ -608,22 +608,18 @@ top: 1.5rem;
     align-items: center;
   }
 
-  /* Left small image */
   .Third-section .img-child-one {
     width: 25%;
   }
 
-  /* Center large image */
   .Third-section .img-child-two {
     width: 50%;
   }
 
-  /* Right small image */
   .Third-section .img-child-three {
     width: 25%;
   }
 
-  /* Adjust image sizes */
   .Third-section .img-one,
   .Third-section .img-two,
   .Third-section .img-three {
@@ -633,7 +629,6 @@ top: 1.5rem;
     object-fit: cover;
   }
 
-  /* Hide button & circle */
   .Third-section .img-button,
   .Third-section .circle-text-container {
     display: none !important;
@@ -643,6 +638,7 @@ top: 1.5rem;
 /* 📲 EXTRA SMALL SCREENS */
 @media (max-width: 480px) {
   .Third-section {
+    margin-top: 38vh; /* smaller screens ke liye thoda kam */
     gap: 3px;
   }
 
