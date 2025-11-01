@@ -6,12 +6,8 @@ body{
 }
 .heroDev {
   height: 80vh;
-  width: 100%; /* full viewport width */
-  /* margin: 0;
-  padding: 0; */
+  width: 100%; 
   border-radius: 20px;
-
-  /* background image */
   background-image: url("/hero.img.png");
   background-size: cover;
   background-position: center;
@@ -20,26 +16,20 @@ body{
   position: relative;
   display: flex;
   align-items: center;
-  /* justify-content: center; center text horizontally */
   color: white;
-  /* overflow: hidden; */
 }
 
-/* optional overlay for better text visibility */
 .heroDev::before {
   content: "";
   position: absolute;
   inset: 0;
-  /* background: rgba(0, 0, 0, 0.233); */
   z-index: 1;
 
 }
 
-/* content sits above overlay */
 .hero-content {
   position: relative;
   z-index: 2;
-  /* text-align: center; */
   max-width: 700px;
   padding: 20px;
   left: 1rem;
@@ -89,7 +79,7 @@ span{
 
 }
 
-/* Shining reflection effect */
+/* Shining animation */
 .hero-button::before {
   content: "";
   position: absolute;
@@ -115,7 +105,7 @@ span{
 }
 
 .hero-button:hover::before {
-  left: 130%; /* shine smoothly slide karegi */
+  left: 130%; 
 }
 
 /* Text ko shine se upar dikhane ke liye */
@@ -127,13 +117,13 @@ span{
   transform: scale(0.95);
   transition: 0.2s ease-in-out all;
 }
-/* 🌐 Responsive for mobile devices */
+/* Responsive for mobile devices */
 @media (max-width: 768px) {
   .heroDev {
     height: 70vh;
     background-size: cover;
     background-position: center top;
-    border-radius: 20px; /* corners remove kar diye mobile pe clean look ke liye */
+    border-radius: 20px; 
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -149,7 +139,7 @@ span{
   }
 
   .hero-title {
-    font-size: 2.5rem; /* mobile ke liye readable */
+    font-size: 2.5rem; 
     line-height: 1.2;
     margin-bottom: 12px;
     width: auto;
@@ -167,7 +157,6 @@ span{
   }
 }
 
-/* 📱 Extra small devices (like <480px) */
 @media (max-width: 480px) {
   .heroDev {
     height: 65vh;
@@ -205,17 +194,16 @@ span{
   align-items: center;
   height: 20%;
   padding: 10px 20px;
-  background-color: whitesmoke; /* white background */
+  background-color: whitesmoke; 
   position: relative;
-  overflow: hidden; /* important: hides circle overflow */
-  isolation: isolate; /* 🧠 ensures ::before doesn’t blend with page background */
+  overflow: hidden; 
+  isolation: isolate; 
   /* border: 2px solid red; */
 }
 
 
 .child-one-title {
   font-size: 3rem;
-  /* font-weight: bold; */
   color: #333;
   font-family: "Cinzel", serif;
   position: relative;
@@ -230,7 +218,6 @@ span{
 top: 1.5rem;
 
 }
-/* 📱 For tablets and smaller laptops */
 @media (max-width: 1024px) {
   .animated-bg::before {
     width: 300px;
@@ -242,7 +229,7 @@ top: 1.5rem;
   }
 }
 
-/* 📱 For mobile devices */
+/*   mobile devices */
 @media (max-width: 768px) {
   .animated-bg::before {
     width: 220px;
@@ -264,7 +251,6 @@ top: 1.5rem;
   }
 }
 
-/* 📱 For very small screens (like 480px and below) */
 @media (max-width: 480px) {
   .animated-bg::before {
     width: 160px;
@@ -351,7 +337,7 @@ top: 1.5rem;
 /* ---------------- Mobile Responsive ---------------- */
 @media (max-width: 768px) {
   .main-parent {
-    flex-direction: column-reverse; /* child-three (text) comes first */
+    flex-direction: column-reverse; 
     align-items: center;
     height: auto;
     background-color: whitesmoke;
@@ -362,7 +348,6 @@ top: 1.5rem;
   .child-two, .child-three {
     width: 90%;
     height: auto;
-    /* border-width: 1px; */
     /* border: 2px solid red; */
   }
 
@@ -404,7 +389,7 @@ top: 1.5rem;
     border: none;
   }
 }
-/* 📱 Tablets and smaller laptops */
+/*   mobile devices */
 @media (max-width: 1024px) {
   .child-one-title {
     font-size: 2.5rem;
@@ -416,7 +401,7 @@ top: 1.5rem;
   }
 }
 
-/* 📱 Mobile Devices */
+/*  Mobile Devices */
 @media (max-width: 768px) {
   .child-one-title {
     font-size: 2rem;
@@ -432,7 +417,6 @@ top: 1.5rem;
   }
 }
 
-/* 📱 Extra Small Devices (under 480px) */
 @media (max-width: 480px) {
   .child-one-title {
     font-size: 1.6rem;
@@ -451,7 +435,7 @@ top: 1.5rem;
 
 /* strt new section */
 
-/* 🎯 THIRD SECTION — DESKTOP DEFAULT */
+/* THIRD SECTION  */
 .Third-section {
   height: auto;
   width: 100%;
@@ -460,6 +444,7 @@ top: 1.5rem;
   gap: 10px;
   justify-content: center;
   /* border: 2px solid lightgray; */
+  overflow: hidden;
 }
 
 .Third-section .img-child-one,
@@ -511,8 +496,7 @@ top: 1.5rem;
   position: relative;
   top: 7.5rem;
 }
-
-/* 🔘 BUTTON STYLE */
+/* THIRD SECTION BUTTON with Shine Effect */
 .Third-section .img-button {
   position: relative;
   padding: 10px 24px;
@@ -523,16 +507,41 @@ top: 1.5rem;
   border-radius: 50%;
   cursor: pointer;
   overflow: hidden;
-  transition: background-color 0.6s ease, color 0.3s ease;
   font-family: "Dancing Script", cursive;
   top: 10rem;
   left: 7.5rem;
+  transition: 0.3s ease-in-out all;
 }
 
+/*  Shining effect */
+.Third-section .img-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.9s ease;
+  z-index: 1;
+}
+
+/*  Hover animation */
 .Third-section .img-button:hover {
   background-color: #8b6822;
   color: #ffffff;
   border: none;
+}
+
+/* Shine slide animation */
+.Third-section .img-button:hover::before {
+  left: 130%;
 }
 
 .Third-section .img-button:active {
@@ -540,7 +549,13 @@ top: 1.5rem;
   transition: 0.2s ease-in-out all;
 }
 
-/* 🌀 CIRCLE TEXT CONTAINER */
+.Third-section .img-button span {
+  position: relative;
+  z-index: 2;
+}
+
+
+/*  CIRCLE TEXT CONTAINER */
 .Third-section .circle-text-container {
   position: relative;
   width: 100px;
@@ -583,7 +598,8 @@ top: 1.5rem;
   text-transform: uppercase;
 }
 
-/* 📱 MOBILE RESPONSIVE FIXED */
+
+/*  MOBILE RESPONSIVE FIXED */
 @media (max-width: 768px) {
   .Third-section {
     flex-direction: row;
@@ -635,7 +651,7 @@ top: 1.5rem;
   }
 }
 
-/* 📲 EXTRA SMALL SCREENS */
+/*  EXTRA SMALL SCREENS */
 @media (max-width: 480px) {
   .Third-section {
     margin-top: 38vh; /* smaller screens ke liye thoda kam */
@@ -658,5 +674,54 @@ top: 1.5rem;
   .Third-section .img-two,
   .Third-section .img-three {
     border-radius: 4px;
+  }
+}
+.Third-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  overflow: hidden; 
+}
+
+/* Decorative background image (HTML based) */
+.necklace-bg {
+  position: absolute;
+  top: -30px; /* adjust as you like */
+  left: 1px; /* adjust horizontal placement */
+  width: 300px; /* control size */
+  opacity: 0.10; /* subtle faint look */
+  pointer-events: none; /* won’t block clicks */
+  z-index: 0; /* stays behind everything */
+}
+
+/* All real content above */
+.Third-section > *:not(.necklace-bg) {
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .necklace-bg {
+    display: none;
+  }
+}
+.img-ear {
+  position: relative;
+  height: 30%;
+  width: 100px;
+  object-fit: cover;
+  top: 4rem;
+  left: 8rem;
+  opacity: 0.2;
+  transform: rotate(-25deg); 
+  transition: transform 0.3s ease-in-out;
+}
+
+/*  Mobile view — hide image */
+@media (max-width: 768px) {
+  .img-ear {
+    display: none !important;
   }
 }

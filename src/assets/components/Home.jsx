@@ -52,11 +52,11 @@ const Home = () => {
 {/* start new one  */}
 
 <div className={styles["Third-section"]}>
+<img src="/background-img.png" alt="" className={styles["necklace-bg"]} />
   <div className={styles["img-child-one"]}>
     <img src="/left-re img.png" alt="" className={styles["img-one"]} />
-    <button className={styles["img-button"]}>Shop Now</button>
+<button className={styles["img-button"]}><span>Shop Now</span></button>
 
-    
   </div>
   <div className={styles["img-child-two"]}>
     <img src="/main img.png" alt="" className={styles["img-two"]} />
@@ -83,6 +83,7 @@ const Home = () => {
 </div>
 
     <img src="/right-re img.png" alt="" className={styles["img-three"]} />
+    <img src="/earrings.png" alt="" className={styles["img-ear"]} />
   </div>
 </div>
 
