@@ -94,6 +94,29 @@ const Home = () => {
       <h1 className={styles["collection-title"]}> <span className={styles["highlight"]}>S</span>HOP BY <span className={styles["highlight"]}>C</span>ATEGORY</h1>
 
      </div>
+    <div className={styles["collection-child"]}>
+  <div className={styles["img-box-one"]}>
+          <img src="/neckles-main.png" alt="" className={styles["img-one-box"]} />
+
+  </div>
+
+  <div className={styles["right-boxes"]}>
+    <div className={styles["img-box-two"]}>
+      <img src="/set-one.png" alt="" className={styles["img-two-box"]} />
+    </div>
+    <div className={styles["img-box-three"]}>
+            <img src="/ring-one.png" alt="" className={styles["img-three-box"]} />
+
+    </div>
+    <div className={styles["img-box-four"]}>
+      <img src="/set two.png" alt=""  className={styles["img-four-box"]} />
+    </div>
+    <div className={styles["img-box-five"]}>
+      <img src="/earrings-one.png" alt="" className={styles["img-five-box"]} />
+    </div>
+  </div>
+</div>
+
 </div>
 
 
