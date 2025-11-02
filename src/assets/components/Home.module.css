@@ -1,9 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Carter+One&family=Caveat:wght@400..700&family=Cinzel:wght@400..900&family=Dancing+Script:wght@700&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-body{
-  background-color: whitesmoke;
-}
+
 .heroDev {
   height: 80vh;
   width: 100%; 
@@ -183,7 +181,7 @@ span{
 .second-section {
   height: auto;
   width: 100%;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
   /* border: 2px solid red; */
   min-height: 127vh;
 }
@@ -194,7 +192,7 @@ span{
   align-items: center;
   height: 20%;
   padding: 10px 20px;
-  background-color: whitesmoke; 
+  /* background-color: whitesmoke;  */
   position: relative;
   overflow: hidden; 
   isolation: isolate; 
@@ -204,7 +202,7 @@ span{
 
 .child-one-title {
   font-size: 3rem;
-  color: #333;
+  color: black;
   font-family: "Cinzel", serif;
   position: relative;
   z-index: 1;
@@ -212,7 +210,7 @@ span{
 
 }
 .highlight{
-    font-family: "Cinzel", serif;
+    /* font-family: "Cinzel", serif; */
     font-size: 150px;
     position: relative;
 top: 1.5rem;
@@ -340,7 +338,7 @@ top: 1.5rem;
     flex-direction: column-reverse; 
     align-items: center;
     height: auto;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     gap: 1rem;
     /* border: 2px solid rgb(119, 20, 20); */
   }
@@ -367,7 +365,7 @@ top: 1.5rem;
     flex-direction: column; /* stack images vertically */
     align-items: center;
     gap: 1rem;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
   }
 
   .child-two-img,
@@ -692,7 +690,7 @@ top: 1.5rem;
   top: -30px; /* adjust as you like */
   left: 1px; /* adjust horizontal placement */
   width: 300px; /* control size */
-  opacity: 0.10; /* subtle faint look */
+  opacity: 0.25; /* subtle faint look */
   pointer-events: none; /* won’t block clicks */
   z-index: 0; /* stays behind everything */
 }
@@ -714,7 +712,7 @@ top: 1.5rem;
   object-fit: cover;
   top: 4rem;
   left: 8rem;
-  opacity: 0.2;
+  opacity: 0.6;
   transform: rotate(-25deg); 
   transition: transform 0.3s ease-in-out;
 }
@@ -723,5 +721,69 @@ top: 1.5rem;
 @media (max-width: 768px) {
   .img-ear {
     display: none !important;
+  }
+}
+/* new section */
+.forth-section {
+  height: 80vh;
+  width: 100%;
+  border: 2px solid lightgray;
+}
+.collection-main{
+  width: 100%;
+  border: 2px solid red;
+  height: 30vh;
+  padding: 10px 20px;
+  text-align: center;
+          font-family: "Cinzel", serif;
+}
+.collection-title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000000;
+    position: relative;
+    bottom: 2rem;
+}
+/* Responsive code */
+@media (max-width: 1024px) {
+  .collection-main {
+    height: 25vh;
+    padding: 8px 15px;
+  }
+  .collection-title {
+    font-size: 2rem;
+    bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .collection-main {
+    height: 20vh;
+    padding: 6px 12px;
+  }
+  .collection-title {
+    font-size: 1.8rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-main {
+    height: auto;
+    padding: 5px 10px;
+  }
+  .collection-title {
+    font-size: 1.5rem;
+    bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .collection-main {
+    padding: 4px 8px;
+  }
+  .collection-title {
+    font-size: 1.3rem;
+    bottom: 0;
   }
 }

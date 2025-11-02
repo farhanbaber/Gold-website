@@ -12,7 +12,7 @@ const Home = () => {
     <h1 className={styles["hero-title"]}>
       Elegance <span>jewellery</span>
     </h1>
-    <button className={styles["hero-button"]}>Shop Collections</button>
+    <button className={styles["hero-button"]}>Shop Collections  <i className="fa-solid fa-arrow-up-right-from-square" ></i></button>
   </div>
 </div>
 {/* end hero section */}
@@ -55,7 +55,7 @@ const Home = () => {
 <img src="/background-img.png" alt="" className={styles["necklace-bg"]} />
   <div className={styles["img-child-one"]}>
     <img src="/left-re img.png" alt="" className={styles["img-one"]} />
-<button className={styles["img-button"]}><span>Shop Now</span></button>
+<button className={styles["img-button"]}><span>Shop Now <i class="fa-solid fa-diamond-turn-right"></i></span></button>
 
   </div>
   <div className={styles["img-child-two"]}>
@@ -85,6 +85,15 @@ const Home = () => {
     <img src="/right-re img.png" alt="" className={styles["img-three"]} />
     <img src="/earrings.png" alt="" className={styles["img-ear"]} />
   </div>
+</div>
+{/* end section */}
+{/* start new section */}
+
+<div className= {styles["forth-section"]}>
+     <div className={styles["collection-main"]}>
+      <h1 className={styles["collection-title"]}> <span className={styles["highlight"]}>S</span>HOP BY <span className={styles["highlight"]}>C</span>ATEGORY</h1>
+
+     </div>
 </div>
 
 
