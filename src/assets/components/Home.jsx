@@ -88,35 +88,63 @@ const Home = () => {
 </div>
 {/* end section */}
 {/* start new section */}
-
-<div className= {styles["forth-section"]}>
-     <div className={styles["collection-main"]}>
-      <h1 className={styles["collection-title"]}> <span className={styles["highlight"]}>S</span>HOP BY <span className={styles["highlight"]}>C</span>ATEGORY</h1>
-
-     </div>
-    <div className={styles["collection-child"]}>
-  <div className={styles["img-box-one"]}>
-          <img src="/neckles-main.png" alt="" className={styles["img-one-box"]} />
-
+<div className={styles["forth-section"]}>
+  <div className={styles["collection-main"]}>
+    <h1 className={styles["collection-title"]}>
+      <span className={styles["highlight"]}>S</span>HOP BY{" "}
+      <span className={styles["highlight"]}>C</span>ATEGORY
+    </h1>
   </div>
 
-  <div className={styles["right-boxes"]}>
-    <div className={styles["img-box-two"]}>
-      <img src="/set-one.png" alt="" className={styles["img-two-box"]} />
+  <div className={styles["collection-child"]}>
+    {/* LEFT BIG IMAGE */}
+    <div className={styles["img-box-one"]}>
+      <img src="/neckles-main.png" alt="" className={styles["img-one-box"]} />
     </div>
-    <div className={styles["img-box-three"]}>
-            <img src="/ring-one.png" alt="" className={styles["img-three-box"]} />
 
-    </div>
-    <div className={styles["img-box-four"]}>
-      <img src="/set two.png" alt=""  className={styles["img-four-box"]} />
-    </div>
-    <div className={styles["img-box-five"]}>
-      <img src="/earrings-one.png" alt="" className={styles["img-five-box"]} />
+    {/* RIGHT SIDE GRID (2x2) */}
+    <div className={styles["right-boxes"]}>
+      {/* CARD 1 */}
+      <div className={styles["product-card"]}>
+        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        <img src="/re-new.png" alt="" className={styles["product-img"]} />
+        <div className={styles["product-info"]}>
+          <h1 className={styles["header"]}>Golden Aura</h1>
+          <p className={styles["header-p"]}>$12.3</p>
+        </div>
+      </div>
+
+      {/* CARD 2 */}
+      <div className={styles["product-card"]}>
+        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        <img src="/ring-one.png" alt="" className={styles["product-img"]} />
+        <div className={styles["product-info"]}>
+          <h1 className={styles["header"]}>Aureline Twist</h1>
+          <p className={styles["header-p"]}>$15.5</p>
+        </div>
+      </div>
+
+      {/* CARD 3 */}
+      <div className={styles["product-card"]}>
+        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        <img src="/re-new-1.png" alt="" className={styles["product-img"]} />
+        <div className={styles["product-info"]}>
+          <h1 className={styles["header"]}>Queen’s Grace</h1>
+          <p className={styles["header-p"]}>$18.0</p>
+        </div>
+      </div>
+
+      {/* CARD 4 */}
+      <div className={styles["product-card"]}>
+        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        <img src="/ear-one.png" alt="" className={styles["product-img"]} />
+        <div className={styles["product-info"]}>
+          <h1 className={styles["header"]}>Aurora Flare</h1>
+          <p className={styles["header-p"]}>$12.4</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
 </div>
 
 
@@ -126,4 +154,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
