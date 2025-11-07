@@ -864,7 +864,6 @@ top: 1.5rem;
     height: 28vh;
   }
 }
-
 /* Mobiles */
 @media (max-width: 768px) {
   .img-box-one {
@@ -879,13 +878,19 @@ top: 1.5rem;
 
   .product-card {
     height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .product-img {
     height: 70%;
+    object-fit: cover;
   }
 
   .product-info {
+    margin-top: 12px; /* 👈 یہ لائن گیپ بنائے گی */
     flex-direction: row;
     justify-content: space-between;
     padding: 6px 8px;
@@ -905,6 +910,17 @@ top: 1.5rem;
 
   .product-card {
     height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-img {
+    height: 70%;
+  }
+
+  .product-info {
+    margin-top: 10px; /* 👈 چھوٹے موبائلز پر تھوڑا کم گیپ */
   }
 
   .header {
