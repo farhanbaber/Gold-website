@@ -10,7 +10,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   position: relative;
   display: flex;
   align-items: center;
@@ -828,6 +827,8 @@ top: 1.5rem;
   align-items: center;
   padding: 6px 10px;
   font-family: "Cinzel", serif;
+  position: relative;
+  top: 15px;
 }
 
 .header {
@@ -888,6 +889,8 @@ top: 1.5rem;
     flex-direction: row;
     justify-content: space-between;
     padding: 6px 8px;
+    position: relative;
+    top: 1rem;
   }
 }
 
