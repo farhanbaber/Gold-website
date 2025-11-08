@@ -121,7 +121,7 @@ span{
     height: 70vh;
     background-size: cover;
     background-position: center top;
-    border-radius: 20px; 
+    /* border-radius: 20px;  */
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -160,7 +160,7 @@ span{
     height: 65vh;
     background-position: center;
     padding: 1.5rem 1rem;
-    border-radius: 20px;
+    /* border-radius: 20px;/ */
   }
 
   .hero-title {
@@ -864,7 +864,7 @@ top: 1.5rem;
     height: 28vh;
   }
 }
-/* Mobiles */
+/* 📱 Mobiles */
 @media (max-width: 768px) {
   .img-box-one {
     width: 90%;
@@ -878,26 +878,20 @@ top: 1.5rem;
 
   .product-card {
     height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
   }
 
   .product-img {
     height: 70%;
-    object-fit: cover;
   }
 
   .product-info {
-    margin-top: 12px; /* 👈 یہ لائن گیپ بنائے گی */
     flex-direction: row;
     justify-content: space-between;
     padding: 6px 8px;
   }
 }
 
-/* Small Mobiles */
+/* 📱 Small Mobiles */
 @media (max-width: 480px) {
   .collection-title {
     font-size: 1.6rem;
@@ -910,17 +904,6 @@ top: 1.5rem;
 
   .product-card {
     height: 35vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-img {
-    height: 70%;
-  }
-
-  .product-info {
-    margin-top: 10px; /* 👈 چھوٹے موبائلز پر تھوڑا کم گیپ */
   }
 
   .header {
