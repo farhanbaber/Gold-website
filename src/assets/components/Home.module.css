@@ -782,18 +782,52 @@ top: 1.5rem;
   height: 32vh;
   border-radius: 5px;
   overflow: hidden;
-  /* background: whitesmoke; */
-  border: 1px solid #ddd ;
+  border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  background: #fff;
 }
 
+/* Golden shining effect */
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(207, 204, 185, 0) 0%,
+    rgba(255, 215, 0, 0.6) 50%,
+    rgba(255, 215, 0, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.9s ease;
+  z-index: 10; /* above images */
+  pointer-events: none; /* allow clicks on images/buttons */
+}
+
+/* Hover triggers shine */
+.product-card:hover::before {
+  left: 130%;
+}
+
+/* Lift card on hover */
 .product-card:hover {
   transform: translateY(-6px);
+  cursor: pointer;
 }
+
+/* Make all content visible above shine if needed */
+.product-card > * {
+  position: relative;
+  z-index: 5;
+}
+
 
 /* ❤️ Heart Icon on Top-Right */
 .heart-icon {
@@ -917,3 +951,4 @@ top: 1.5rem;
     font-size: 0.9rem;
   }
 }
+/* end section */
