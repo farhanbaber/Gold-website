@@ -153,7 +153,13 @@ const Home = () => {
 {/* strat new section */}
 
 <div className= {styles[ "fifth-section"]}>
-  <h1></h1>
+  <div className={styles["fifth-section-child"]}>
+  <div className={styles.overlay}></div>
+  <video src="/video.mp4" autoPlay loop muted playsInline className={styles["fifth-section-video"]}></video>
+  <h1 className={styles.heading}>Crafted in Luxury|Defined by Gold</h1>
+</div>
+
+  
   
 
 </div>
