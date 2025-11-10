@@ -1012,7 +1012,7 @@ top: 1.5rem;
   .heading {
     font-size: 1.6rem;
     width: 250px;
-    transform: translate(-90%, -50%); /* centers perfectly on small screens */
+    transform: translate(-80%, -50%); /* centers perfectly on small screens */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   }
 }
@@ -1022,7 +1022,7 @@ top: 1.5rem;
   .heading {
     font-size: 1.3rem;
     width: 200px;
-    transform: translate(-90%, -50%);
+    transform: translate(-85%, -50%);
   }
 }
 

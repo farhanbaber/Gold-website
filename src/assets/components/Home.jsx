@@ -155,7 +155,7 @@ const Home = () => {
 <div className= {styles[ "fifth-section"]}>
   <div className={styles["fifth-section-child"]}>
   <div className={styles.overlay}></div>
-  <video src="/video.mp4" autoPlay loop muted playsInline className={styles["fifth-section-video"]}></video>
+  <video src="/video.mp4" autoPlay loop muted playsInline   preload="auto" className={styles["fifth-section-video"]}></video>
   <h1 className={styles.heading}>Crafted in Luxury|Defined by Gold</h1>
 </div>
 
