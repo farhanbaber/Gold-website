@@ -1,0 +1,167 @@
+/* Shape Divider */
+.customShapeDivider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  z-index: 1;
+}
+
+.customShapeDivider svg {
+  position: relative;
+  display: block;
+  width: calc(156% + 1.3px);
+  height: 126px;
+}
+
+.customShapeDivider .shapefill {
+  fill: #ffffff;
+}
+/* .customShapeDivider{
+    background-color: red;
+} */
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .customShapeDivider svg {
+    width: calc(124% + 1.3px);
+    height: 129px;
+  }
+}
+
+/* Footer wrapper */
+.footerWrapper {
+  position: relative;
+  background-color: #c6a05a; /* golden background */
+  color: white;
+  padding: 6rem 2rem 2rem;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Container */
+.footerContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Keep content above shape */
+}
+
+/* Contact block */
+.contactBlock {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent; /* transparent to show golden footer */
+  border-radius: 1rem;
+  border-top-right-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+  overflow: hidden;
+  min-height: 250px;
+}
+
+/* Left section */
+.leftSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* Right section */
+.rightSection {
+  width: 100%;
+  padding: 2rem;
+}
+
+/* Tablet & desktop */
+@media(min-width:768px){
+  .contactBlock{
+    flex-direction: row;
+  }
+  .leftSection{
+    width: 35%;
+    padding: 2rem;
+  }
+  .rightSection{
+    width: 65%;
+    padding: 3rem;
+  }
+}
+
+/* Profile image */
+.photoCircle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  border: 4px solid rgba(0,0,0,0.3);
+}
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Header info */
+.headerInfo{
+  margin-bottom:1.5rem;
+  border-bottom:1px solid #78350f;
+  padding-bottom:0.75rem;
+}
+
+.headerInfo h3{
+  font-size:1.5rem;
+  font-weight:800;
+  text-transform:uppercase;
+  margin:0;
+}
+
+.headerInfo p{
+  font-style:italic;
+  color:#fde68a;
+  margin:0.3rem 0 0 0;
+}
+
+/* Contact items grid */
+.contactGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem 2rem;
+}
+
+@media(min-width:640px){
+  .contactGrid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+.contactItem{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+}
+
+/* Icon placeholder */
+.icon{
+  width:22px;
+  text-align:center;
+}
+
+/* Bottom bar */
+.bottomBar{
+  width:100%;
+  background-color: transparent; /* transparent */
+  box-shadow: none; /* remove black shadow */
+  text-align:center;
+  color:#ffffff;
+  font-size:0.75rem;
+  padding:0.8rem 0;
+  margin-top:1rem;
+}
+

@@ -1,6 +1,6 @@
 import Navbar from "./assets/components/Nav.jsx";
 import { Routes, Route } from "react-router-dom";
-
+import Footer from "./assets/components/Footer.jsx";
 import Home from "./assets/components/Home.jsx";
 import Collections from "./assets/components/Collections.jsx";
 import Handmade from "./assets/components/Handmade.jsx";
@@ -20,6 +20,7 @@ function App() {
         <Route path="/mens-collection" element={<Mencollection />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
