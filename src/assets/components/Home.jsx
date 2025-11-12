@@ -217,6 +217,7 @@ const Home = () => {
 
 {/* end section */}
 
+{/* start foter */}
 
 
 {/* ye div main hain */}
