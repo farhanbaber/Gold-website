@@ -89,6 +89,57 @@ const Home = () => {
 </div>
 {/* end section */}
 {/* start new section */}
+{ <div className={styles["sixth-section"]}>
+  <div className= {styles["six-head"]}>
+<h1 className={styles["six-head-h1"]}>
+      <span className={styles["highlight-two"]}>B</span>EST SELLER{" "}
+      <span className={styles["highlight-two"]}>P</span>RODUCT
+    </h1>
+  </div>  
+  <div className={styles.categorySection}>
+  <div className={styles.categoryGrid}>
+    {[
+      { name: "EARRINGS", img: "/p-1.png" },
+      { name: "BRACELET", img: "/p-2.png" },
+      { name: "NECKLACE", img: "/p-3.png" },
+      { name: "RINGS", img: "/p-4.png" },
+    ].map((item, index) => (
+      <div key={index} className={styles.categoryCard}>
+        <div className={styles.imageWrapper}>
+          <img src={item.img} alt={item.name} />
+          <div className={styles.hoverOverlay}>
+              <a href="#" className={styles.seeMore}>See More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
+          </div>
+        </div>
+        <h3 className={styles["h-3"]}>{item.name}</h3>
+        <p className={styles.ptag}>12 Products</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+
+
+</div> }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* start new section */}
 <div className={styles["forth-section"]}>
   <div className={styles["collection-main"]}>
     <h1 className={styles["collection-title"]}>
@@ -156,13 +207,15 @@ const Home = () => {
   <div className={styles["fifth-section-child"]}>
   <div className={styles.overlay}></div>
   <video src="/video.mp4" autoPlay loop muted playsInline   preload="auto" className={styles["fifth-section-video"]}></video>
-  <h1 className={styles.heading}>Crafted in Luxury|Defined by Gold</h1>
+  <h1 className={styles.headingsOne}>Crafted in Luxury|Defined by Gold</h1>
 </div>
 
   
   
 
 </div>
+
+{/* end section */}
 
 
 
