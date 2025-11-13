@@ -31,7 +31,7 @@ const Footer = () => {
           <div className={styles.leftSection}>
             <div className={styles.photoCircle}>
               <img
-                src="/your-photo.jpg"
+                src="/owner.pic.jpg"
                 alt="Profile"
                 className={styles.profileImg}
               />
@@ -41,44 +41,51 @@ const Footer = () => {
           {/* Right Section - Contact Info */}
           <div className={styles.rightSection}>
             <div className={styles.headerInfo}>
-              <h3>ANDREW JOHNSON</h3>
-              <p>Business Analyst</p>
+              <h3>FAYAZ BABER</h3>
+              <p>GOLD KEEPER</p>
             </div>
 
             <div className={styles.contactGrid}>
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>905 Oak St, Wisconsin Dells, WI 53965, USA</p>
+                <i class="fa-solid fa-location-dot"></i>
+                <p> Location : Sarafa Bazzar Market karam Ilahi , Peshwar</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>www.yourwebsite.com</p>
+                <i class="fa-solid fa-globe"></i>
+                <p>fayazbaber.vercel.app</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>123 456 789</p>
+                <i class="fa-solid fa-phone-volume"></i>
+                <p>+92-3155871988</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>@yourfacebook</p>
+                <i class="fa-solid fa-coins"></i>
+                <p>Jewellery Wedding Collection</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>email@companyname.com</p>
+                <i class="fa-solid fa-envelope"></i>
+                <p>Fayazbaber@gmail.com</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>@yourinstagram</p>
+                <i class="fa-solid fa-people-roof"></i>
+                <p>Onias Ahmad , Manager</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <p>@yourtwitter</p>
+                <i class="fa-solid fa-people-roof"></i>
+                <p>Kashif Baber , Employee</p>
               </div>
             </div>
           </div>
@@ -86,7 +93,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
-          © 2025 BusinessPro. All rights reserved.
+          © 2025 FARHAN BABER All rights reserved.
         </div>
       </div>
     </footer>
