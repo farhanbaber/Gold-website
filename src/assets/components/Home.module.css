@@ -776,9 +776,13 @@ top: 1.5rem;
   transition: transform 0.8s ease;
 }
 
+
 /* zoom effect */
 .img-box-one:hover .img-one-box {
   transform: scale(1.05);
+}
+.img-box-one:hover{
+  cursor: pointer;
 }
 
 /* ⭐ FULL GOLD GLASS OVERLAY FROM TOP TO BOTTOM */
@@ -802,6 +806,7 @@ top: 1.5rem;
 
 .img-box-one:hover::after {
   top: 0;
+
 }
 
 /* ⭐ TEXT OVERLAY (FADE IN SMOOTH) */
@@ -826,13 +831,14 @@ top: 1.5rem;
 
 /* text style */
 .text-overlay p {
-  color: #fff5d8;
+  color: #000000c7;
   font-size: 1rem;
   line-height: 1.5;
   font-family: "Cinzel", serif;
   position: relative;
-  bottom: 5rem;
+  bottom: 4rem;
   text-align: center;
+  cursor: pointer;
 }
 
 

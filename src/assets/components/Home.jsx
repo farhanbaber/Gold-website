@@ -113,7 +113,7 @@ const Home = () => {
           </div>
         </div>
         <h3 className={styles["h-3"]}>{item.name}</h3>
-        <p className={styles.ptag}>Premium Edition – $12.3</p>
+        <p className={styles.ptag}>Premium Edition</p>
       </div>
     ))}
   </div>
@@ -156,10 +156,7 @@ const Home = () => {
   {/* TEXT OVERLAY */}
   <div className={styles["text-overlay"]}>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-      Doloremque, maiores. Modi vero placeat veniam perspiciatis.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      (Yahan tum apna lamba 20 line paragraph bhi likh sakte ho)
+   Gold has always been more than just a metal — it is a symbol of elegance, power, and timeless beauty. Every piece crafted from gold carries a story of luxury and refinement, shining with a warmth that never fades
     </p>
   </div>
 </div>
