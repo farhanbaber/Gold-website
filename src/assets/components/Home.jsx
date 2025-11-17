@@ -113,7 +113,7 @@ const Home = () => {
           </div>
         </div>
         <h3 className={styles["h-3"]}>{item.name}</h3>
-        <p className={styles.ptag}>12 Products</p>
+        <p className={styles.ptag}>Premium Edition – $12.3</p>
       </div>
     ))}
   </div>
@@ -150,9 +150,19 @@ const Home = () => {
 
   <div className={styles["collection-child"]}>
     {/* LEFT BIG IMAGE */}
-    <div className={styles["img-box-one"]}>
-      <img src="/neckles-main.png" alt="" className={styles["img-one-box"]} />
-    </div>
+   <div className={styles["img-box-one"]}>
+  <img src="/neckles-main.png" alt="" className={styles["img-one-box"]} />
+
+  {/* TEXT OVERLAY */}
+  <div className={styles["text-overlay"]}>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Doloremque, maiores. Modi vero placeat veniam perspiciatis.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      (Yahan tum apna lamba 20 line paragraph bhi likh sakte ho)
+    </p>
+  </div>
+</div>
 
     {/* RIGHT SIDE GRID (2x2) */}
     <div className={styles["right-boxes"]}>
@@ -160,6 +170,14 @@ const Home = () => {
       <div className={styles["product-card"]}>
         <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
         <img src="/re-new.png" alt="" className={styles["product-img"]} />
+        
+
+ <img
+    src="/hover.set.png"
+    alt="Golden Aura Hover"
+    className={`${styles["product-img"]} ${styles["hover-img"]}`}
+  />
+
         <div className={styles["product-info"]}>
           <h1 className={styles["header"]}>Golden Aura</h1>
           <p className={styles["header-p"]}>$12.3</p>
@@ -170,6 +188,13 @@ const Home = () => {
       <div className={styles["product-card"]}>
         <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
         <img src="/ring-one.png" alt="" className={styles["product-img"]} />
+
+<img
+    src="/remove.two.png"
+    alt="Golden Aura Hover"
+    className={`${styles["product-img"]} ${styles["hover-img"]}`}
+  />
+
         <div className={styles["product-info"]}>
           <h1 className={styles["header"]}>Aureline Twist</h1>
           <p className={styles["header-p"]}>$15.5</p>
@@ -180,6 +205,13 @@ const Home = () => {
       <div className={styles["product-card"]}>
         <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
         <img src="/re-new-1.png" alt="" className={styles["product-img"]} />
+
+<img
+    src="/setTwo.hover.png"
+    alt="Golden Aura Hover"
+    className={`${styles["product-img"]} ${styles["hover-img"]}`}
+  />
+
         <div className={styles["product-info"]}>
           <h1 className={styles["header"]}>Queen’s Grace</h1>
           <p className={styles["header-p"]}>$18.0</p>
@@ -190,6 +222,14 @@ const Home = () => {
       <div className={styles["product-card"]}>
         <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
         <img src="/ear-one.png" alt="" className={styles["product-img"]} />
+
+<img
+    src="/hover.earring.png"
+    alt="Golden Aura Hover"
+    className={`${styles["product-img"]} ${styles["hover-img"]}`}
+  />
+
+
         <div className={styles["product-info"]}>
           <h1 className={styles["header"]}>Aurora Flare</h1>
           <p className={styles["header-p"]}>$12.4</p>

@@ -761,16 +761,80 @@ top: 1.5rem;
 
 /* LEFT IMAGE BOX */
 .img-box-one {
+  position: relative;
   width: 30%;
   height: 70vh;
-  /* border: 2px solid red; */
+  overflow: hidden;
+  border-radius: 8px;
 }
 
+/* main image */
 .img-one-box {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.8s ease;
 }
+
+/* zoom effect */
+.img-box-one:hover .img-one-box {
+  transform: scale(1.05);
+}
+
+/* ⭐ FULL GOLD GLASS OVERLAY FROM TOP TO BOTTOM */
+.img-box-one::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 230, 150, 0.35),
+    rgba(255, 215, 0, 0.25),
+    rgba(255, 200, 0, 0.18)
+  );
+  transition: top 0.9s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.img-box-one:hover::after {
+  top: 0;
+}
+
+/* ⭐ TEXT OVERLAY (FADE IN SMOOTH) */
+.text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  z-index: 3;
+}
+
+/* on hover — show text */
+.img-box-one:hover .text-overlay {
+  opacity: 1;
+}
+
+/* text style */
+.text-overlay p {
+  color: #fff5d8;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Cinzel", serif;
+  position: relative;
+  bottom: 5rem;
+  text-align: center;
+}
+
 
 /* RIGHT GRID (2x2) */
 .right-boxes {
@@ -780,6 +844,7 @@ top: 1.5rem;
   gap: 2rem;
 }
 
+/* ===== CARD DESIGN ===== */
 /* ===== CARD DESIGN ===== */
 .product-card {
   position: relative;
@@ -796,7 +861,7 @@ top: 1.5rem;
   background: #fff;
 }
 
-/* Golden shining effect */
+/* ✨ Golden Shine Effect */
 .product-card::before {
   content: "";
   position: absolute;
@@ -812,29 +877,61 @@ top: 1.5rem;
   );
   transform: skewX(-20deg);
   transition: left 0.9s ease;
-  z-index: 10; /* above images */
-  pointer-events: none; /* allow clicks on images/buttons */
+  z-index: 10;
+  pointer-events: none;
 }
 
-/* Hover triggers shine */
 .product-card:hover::before {
   left: 130%;
 }
 
-/* Lift card on hover */
+/* Lift card slightly on hover */
 .product-card:hover {
   transform: translateY(-6px);
   cursor: pointer;
 }
 
-/* Make all content visible above shine if needed */
-.product-card > * {
-  position: relative;
-  z-index: 5;
+/* 🖼️ Image Setup */
+.product-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 80%;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Default image */
+.main-img {
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1);
+}
 
-/* ❤️ Heart Icon on Top-Right */
+/* Hover image */
+.hover-img {
+  opacity: 0;
+  z-index: 3;
+  transform: scale(1.05);
+}
+
+/* 🔄 Smooth fade & scale transition */
+.product-card:hover .main-img {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.product-card:hover .hover-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ❤️ Heart Icon */
 .heart-icon {
   position: absolute;
   top: 8px;
@@ -843,31 +940,25 @@ top: 1.5rem;
   color: #333;
   cursor: pointer;
   transition: color 0.3s;
-  z-index: 10;
-
+  z-index: 15;
 }
+
 .heart-icon:hover {
   color: #c6a05a;
 }
 
-/* 🖼️ Image */
-.product-img {
-  width: 100%;
-  height: 75%;
-  object-fit: contain;
-  object-position: center;
-  background: #fff;
-}
-
-/* 🏷️ Info (H1 left, P right) */
+/* 🏷️ Info Section */
 .product-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 6px 10px;
   font-family: "Cinzel", serif;
-  position: relative;
-  top: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 12;
 }
 
 .header {
