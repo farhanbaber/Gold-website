@@ -991,7 +991,7 @@ top: 1.5rem;
   .product-info {
     position: relative !important; /* absolute removed */
     bottom: 0 !important;
-    margin-top: 10px !important;   /* thoda neeche space */
+    margin-top: 50px !important;   /* thoda neeche space */
     padding: 8px 10px !important;
   }
 }
