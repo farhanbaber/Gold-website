@@ -991,9 +991,11 @@ top: 1.5rem;
   }
 
   .product-info {
-    position: relative;
-    bottom: 0;
-    margin-top: auto;   /* heading hamesha niche rahegi */
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    padding: 10px 12px;
   }
 }
 
