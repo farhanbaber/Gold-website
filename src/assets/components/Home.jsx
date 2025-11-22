@@ -113,7 +113,7 @@ const Home = () => {
           </div>
         </div>
         <h3 className={styles["h-3"]}>{item.name}</h3>
-        <p className={styles.ptag}>Premium Edition</p>
+        <p className={styles.ptag}>Royal Line</p>
       </div>
     ))}
   </div>
@@ -170,7 +170,7 @@ const Home = () => {
         
 
  <img
-    src="/hover.set.png"
+    src="/renewset.png"
     alt="Golden Aura Hover"
     className={`${styles["product-img"]} ${styles["hover-img"]}`}
   />
@@ -187,7 +187,7 @@ const Home = () => {
         <img src="/ring-one.png" alt="" className={styles["product-img"]} />
 
 <img
-    src="/remove.two.png"
+    src="/ringrenew.png"
     alt="Golden Aura Hover"
     className={`${styles["product-img"]} ${styles["hover-img"]}`}
   />
@@ -204,7 +204,7 @@ const Home = () => {
         <img src="/re-new-1.png" alt="" className={styles["product-img"]} />
 
 <img
-    src="/setTwo.hover.png"
+    src="/new.sets.png"
     alt="Golden Aura Hover"
     className={`${styles["product-img"]} ${styles["hover-img"]}`}
   />
@@ -221,7 +221,7 @@ const Home = () => {
         <img src="/ear-one.png" alt="" className={styles["product-img"]} />
 
 <img
-    src="/hover.earring.png"
+    src="/earringsrenew.png"
     alt="Golden Aura Hover"
     className={`${styles["product-img"]} ${styles["hover-img"]}`}
   />
