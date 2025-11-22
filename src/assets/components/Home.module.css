@@ -982,22 +982,20 @@ top: 1.5rem;
 @media (max-width: 768px) {
   .product-img,
   .hover-img {
-    height: 60vh !important;   /* image ko full center area de */
+    height: 60vh !important;
     width: 100% !important;
     object-fit: contain !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;   /* center shift issue remove */
   }
 
+  /* TEXT IMAGE KE NEECHAY RAHE — FIXED */
   .product-info {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    width: 100%;
-    padding: 10px 12px;
+    position: relative !important; /* absolute removed */
+    bottom: 0 !important;
+    margin-top: 10px !important;   /* thoda neeche space */
+    padding: 8px 10px !important;
   }
 }
+
 
 @media (max-width: 1024px) {
   .collection-child {
