@@ -980,22 +980,12 @@ top: 1.5rem;
 
 /* Tablets */
 @media (max-width: 768px) {
-
-  /* Image full but controlled */
-  .product-img,
-  .hover-img {
-    position: relative !important;
-    height: 45vh !important;
-    width: 100% !important;
-    object-fit: contain !important;
-    display: block !important;
-  }
-
-  /* Title + price ALWAYS stays BELOW image */
   .product-info {
-    position: relative !important;
-    margin-top: 5px !important;
-    bottom: auto !important;
+    position: absolute;
+    bottom: 10px;     /* heading thodi upar aa jayegi */
+    left: 0;
+    width: 100%;
+    padding: 10px 12px;
   }
 }
 
