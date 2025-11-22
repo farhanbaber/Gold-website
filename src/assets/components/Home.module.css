@@ -980,19 +980,22 @@ top: 1.5rem;
 
 /* Tablets */
 @media (max-width: 768px) {
+
+  /* Image full but controlled */
   .product-img,
   .hover-img {
-    height: 60vh !important;
+    position: relative !important;
+    height: 45vh !important;
     width: 100% !important;
     object-fit: contain !important;
+    display: block !important;
   }
 
-  /* TEXT IMAGE KE NEECHAY RAHE — FIXED */
+  /* Title + price ALWAYS stays BELOW image */
   .product-info {
-    position: relative !important; /* absolute removed */
-    bottom: 0 !important;
-    margin-top: 50px !important;   /* thoda neeche space */
-    padding: 8px 10px !important;
+    position: relative !important;
+    margin-top: 5px !important;
+    bottom: auto !important;
   }
 }
 
