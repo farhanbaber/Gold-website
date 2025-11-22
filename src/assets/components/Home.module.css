@@ -991,12 +991,12 @@ top: 1.5rem;
   }
 
   .product-info {
-    position: absolute;
-    bottom: 12%;
+    position: relative;
+    bottom: 30px;
     left: 0;
     width: 100%;
     padding: 10px 12px;
-    z-index: 20
+    /* z-index: 20 */
   }
 }
 
