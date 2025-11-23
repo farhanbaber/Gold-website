@@ -979,15 +979,6 @@ top: 1.5rem;
 /* ===== RESPONSIVE MEDIA QUERIES ===== */
 
 /* Tablets */
-@media (max-width: 768px) {
-  .product-info {
-    position: absolute;
-    bottom: 10px;     /* heading thodi upar aa jayegi */
-    left: 0;
-    width: 100%;
-    padding: 10px 12px;
-  }
-}
 
 
 @media (max-width: 1024px) {
@@ -1012,40 +1003,32 @@ top: 1.5rem;
   }
 }
 /* 📱 Mobiles */
-/* 📱 Mobiles */
+
 @media (max-width: 768px) {
 
   .product-card {
-    height: auto !important;
+    position: relative !important;
+    height: 40vh !important;
   }
 
   .product-img,
   .hover-img {
-    height: 55vh !important;
-    width: 100%;
-    object-fit: contain;
+    width: 100% !important;
+    height: 70% !important;
+    object-fit: contain !important;
   }
 
-  /* TEXT BELOW IMAGE (STACKED) */
+  /* TEXT ALWAYS AT THE VERY BOTTOM */
   .product-info {
-    position: relative !important;
-    bottom: 0 !important;
-    
-    display: flex !important;
-    flex-direction: column !important;  /* ← THIS IS THE FIX */
-    align-items: flex-start !important;
-
-    margin-top: 10px !important;
-    padding: 5px 10px !important;
-  }
-
-  .header,
-  .header-p {
-    margin: 0;
-    padding: 0;
+    position: absolute !important;
+    bottom: 0 !important;     /* ← THIS puts h1 + p at bottom */
+    left: 0;
+    width: 100%;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
   }
 }
-
 
 /* 📱 Small Mobiles */
 @media (max-width: 480px) {
