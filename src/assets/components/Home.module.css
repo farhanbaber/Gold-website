@@ -1044,7 +1044,9 @@ top: 1.5rem;
 
 /* ============ SMALL MOBILE (480px) ============ */
 @media (max-width: 480px) {
-
+.right-boxes{
+  padding: 0 14px !important;
+}
   .product-card {
     height: 40vh !important;
   }
