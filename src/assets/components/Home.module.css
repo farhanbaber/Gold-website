@@ -1016,28 +1016,36 @@ top: 1.5rem;
 @media (max-width: 768px) {
 
   .product-card {
-    position: relative;
-    height: 40vh;
+    height: auto !important;
   }
 
   .product-img,
   .hover-img {
-    height: 70%;
+    height: 55vh !important;
     width: 100%;
     object-fit: contain;
   }
 
-  /* TEXT ALWAYS AT BOTTOM */
+  /* TEXT BELOW IMAGE (STACKED) */
   .product-info {
-    position: absolute !important;
-    bottom: 5px !important;
-    left: 0;
-    width: 100%;
-    padding: 6px 10px;
-    display: flex;
-    justify-content: space-between;
+    position: relative !important;
+    bottom: 0 !important;
+    
+    display: flex !important;
+    flex-direction: column !important;  /* ← THIS IS THE FIX */
+    align-items: flex-start !important;
+
+    margin-top: 10px !important;
+    padding: 5px 10px !important;
+  }
+
+  .header,
+  .header-p {
+    margin: 0;
+    padding: 0;
   }
 }
+
 
 /* 📱 Small Mobiles */
 @media (max-width: 480px) {
