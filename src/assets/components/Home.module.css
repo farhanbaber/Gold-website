@@ -1012,31 +1012,30 @@ top: 1.5rem;
   }
 }
 /* 📱 Mobiles */
+/* 📱 Mobiles */
 @media (max-width: 768px) {
-  .img-box-one {
-    width: 90%;
-    height: 45vh;
-  }
-
-  .right-boxes {
-    width: 90%;
-    grid-template-columns: 1fr; /* One card per line */
-  }
 
   .product-card {
+    position: relative;
     height: 40vh;
   }
 
-  .product-img {
+  .product-img,
+  .hover-img {
     height: 70%;
+    width: 100%;
+    object-fit: contain;
   }
 
+  /* TEXT ALWAYS AT BOTTOM */
   .product-info {
-    flex-direction: row;
+    position: absolute !important;
+    bottom: 5px !important;
+    left: 0;
+    width: 100%;
+    padding: 6px 10px;
+    display: flex;
     justify-content: space-between;
-    padding: 6px 8px;
-    position: relative;
-    top: 1rem;
   }
 }
 
