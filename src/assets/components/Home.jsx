@@ -1,9 +1,13 @@
 import React from 'react'
 import styles from './Home.module.css';
 import Collections from './Collections';
+import { useNavigate } from 'react-router-dom';
+
+const Home = ({ handleLike }) => {
+  const [liked, setLiked] = React.useState(false);
+  const navigate = useNavigate();
 
 
-const Home = () => {
   return (
     <div className={styles["body"]}>
       {/* hero section */}
@@ -152,11 +156,16 @@ const Home = () => {
     {/* LEFT BIG IMAGE */}
    <div className={styles["img-box-one"]}>
   <img src="/neckles-main.png" alt="" className={styles["img-one-box"]} />
+   <img
+    src="/hover-img-main.webp"
+    alt=""
+    className={styles["img-one-box-hover"]}
+  />
 
   {/* TEXT OVERLAY */}
   <div className={styles["text-overlay"]}>
     <p>
-   Gold has always been more than just a metal — it is a symbol of elegance, power, and timeless beauty. Every piece crafted from gold carries a story of luxury and refinement, shining with a warmth that never fades
+   Gold has always been more than just a metal — it is a symbol of elegance, power, and timeless beauty. Every piece crafted from gold.
     </p>
   </div>
 </div>
@@ -165,7 +174,14 @@ const Home = () => {
     <div className={styles["right-boxes"]}>
       {/* CARD 1 */}
       <div className={styles["product-card"]}>
-        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        {/* <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i> */}
+       <i
+                className={`${styles["heart-icon"]} fa-heart ${liked ? "fa-solid" : "fa-regular"}`}
+                onClick={() => {
+                  setLiked(!liked);  
+                  navigate("/Cart");
+                }}
+              ></i>
         <img src="/re-new.png" alt="" className={styles["product-img"]} />
         
 
@@ -183,7 +199,13 @@ const Home = () => {
 
       {/* CARD 2 */}
       <div className={styles["product-card"]}>
-        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+          <i
+                className={`${styles["heart-icon"]} fa-heart ${liked ? "fa-solid" : "fa-regular"}`}
+                onClick={() => {
+                  setLiked(!liked);  
+                  navigate("/Cart");
+                }}
+              ></i>
         <img src="/ring-one.png" alt="" className={styles["product-img"]} />
 
 <img
@@ -200,7 +222,14 @@ const Home = () => {
 
       {/* CARD 3 */}
       <div className={styles["product-card"]}>
-        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        {/* <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i> */}
+         <i
+                className={`${styles["heart-icon"]} fa-heart ${liked ? "fa-solid" : "fa-regular"}`}
+                onClick={() => {
+                  setLiked(!liked);  
+                  navigate("/Cart");
+                }}
+              ></i>
         <img src="/re-new-1.png" alt="" className={styles["product-img"]} />
 
 <img
@@ -217,7 +246,14 @@ const Home = () => {
 
       {/* CARD 4 */}
       <div className={styles["product-card"]}>
-        <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i>
+        {/* <i className={`fa-regular fa-heart ${styles["heart-icon"]}`}></i> */}
+         <i
+                className={`${styles["heart-icon"]} fa-heart ${liked ? "fa-solid" : "fa-regular"}`}
+                onClick={() => {
+                  setLiked(!liked);  
+                  navigate("/Cart");
+                }}
+              ></i>
         <img src="/ear-one.png" alt="" className={styles["product-img"]} />
 
 <img

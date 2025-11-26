@@ -768,24 +768,40 @@ top: 1.5rem;
   border-radius: 8px;
 }
 
-/* main image */
-.img-one-box {
+/* DEFAULT IMAGE */
+.img-one-box,
+.img-one-box-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-
-/* zoom effect */
-.img-box-one:hover .img-one-box {
+/* Hover Image initially hidden */
+.img-one-box-hover {
+  opacity: 0;
   transform: scale(1.05);
 }
-.img-box-one:hover{
+
+/* Zoom effect */
+.img-box-one:hover .img-one-box {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.img-box-one:hover .img-one-box-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.img-box-one:hover {
   cursor: pointer;
 }
 
-/* ⭐ FULL GOLD GLASS OVERLAY FROM TOP TO BOTTOM */
+/* GOLD OVERLAY */
 .img-box-one::after {
   content: "";
   position: absolute;
@@ -799,17 +815,16 @@ top: 1.5rem;
     rgba(255, 215, 0, 0.25),
     rgba(255, 200, 0, 0.18)
   );
-  transition: top 0.9s ease;
+  transition: top 1s ease;
   z-index: 2;
   pointer-events: none;
 }
 
 .img-box-one:hover::after {
   top: 0;
-
 }
 
-/* ⭐ TEXT OVERLAY (FADE IN SMOOTH) */
+/* TEXT OVERLAY */
 .text-overlay {
   position: absolute;
   bottom: 0;
@@ -820,25 +835,24 @@ top: 1.5rem;
   display: flex;
   align-items: flex-end;
   opacity: 0;
-  transition: opacity 0.9s ease;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
   z-index: 3;
 }
 
-/* on hover — show text */
 .img-box-one:hover .text-overlay {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* text style */
+/* TEXT STYLE */
 .text-overlay p {
   color: #000000c7;
   font-size: 1rem;
   line-height: 1.5;
   font-family: "Cinzel", serif;
-  position: relative;
-  bottom: 4rem;
   text-align: center;
-  cursor: pointer;
+  bottom: 2rem;
 }
 
 

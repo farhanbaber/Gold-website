@@ -40,6 +40,7 @@ function Navbar() {
           <li><Link to="/new-designs">NEW DESIGNS</Link></li>
           <li><Link to="/mens-collection">MEN'S COLLECTION</Link></li>
           <li><Link to="/contact">CONTACT</Link></li>
+          <li><Link to="/cart"><i class="fa-solid fa-bag-shopping"></i></Link></li>
         </ul>
 
         {/* Search Bar */}
