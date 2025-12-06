@@ -516,6 +516,9 @@
 
 /*  Mobile (480px) */
 @media (max-width: 480px) {
+  .showcase{
+    height: 305vh;  
+  }
     .showcasecontainer {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 15px;
