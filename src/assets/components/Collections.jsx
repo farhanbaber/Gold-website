@@ -6,7 +6,7 @@ import React from 'react'
 
 const Collections = () => {
   return (
-    <div>
+    <div className={styles.collectionBody}>
   <section className={styles.hero}>
       <div className={styles.container}>
         {/* Left Text Content */}
