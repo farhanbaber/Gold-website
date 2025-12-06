@@ -240,104 +240,89 @@
     margin-top: 20px;
   }
 }
-/* start new section */
-.showcase{
-    width: 100%;
-    height: 200vh;
-    /* border: 2px solid blue; */
-    padding: 10px 20px;
-                font-family: "Cinzel", serif;
-
+/* GLOBAL SHOWCASE CONTAINER & SECTION STYLING */
+.showcase {
+  width: 100%;
+  padding: 20px 10px;
+  /* Footer safe space */
+  padding-bottom: 160px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: "Cinzel", serif;
+  height: auto; 
+  min-height: auto;
 }
-.showcaseheading{
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-    padding: 40px 0;
-    width: 100%;
-    height: 18vh;
-    /* border: 2px solid red; */
-    padding: 10px 20px;
-                font-family: "Cinzel", serif;
 
-}
+/* --- SECTION HEADING/TITLE STYLING --- */
+
+/* The outer container for the heading. It will house the line and titles. */
 .wrapper { 
   width: 100%;
+  max-width: 1200px; /* Optional: Sets max width for better centering on large screens */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 0 10px; /* prevent overflow on small phones */
+  padding: 0 10px; 
   margin: 30px 0;
+  text-align: center; /* Ensures titles are centered if they wrap */
 }
 
-/* Lines left + right */
+/* Lines left + right of the title */
 .line {
   flex: 1;
   height: 1px;
   background-color: #c9c9c9;
-  min-width: 20px; /* ensures tiny phones don't break layout */
+  min-width: 20px;
 }
 
-/* Title */
+/* Title text */
 .titles {
   font-size: clamp(30px, 6vw, 42px); 
-   font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: #1d1d1d;
   white-space: nowrap;
+  /* Margin fix for centering */
+  margin: 0; 
+  padding: 0;
 }
 
-/* EXTRA responsive: Very small screens (3 inch phones, 240–320px width) */
-@media (max-width: 320px) {
-  .wrapper {
-    gap: 8px;
-  }
-
-  .line {
-    min-width: 10px;
-  }
-
-  .titles {
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-}
-
-/* Slightly bigger mobiles (360px - 420px) */
-@media (max-width: 420px) {
-  .titles {
-    font-size: 16px;
-  }
-}
-
-/* //// */
+/* Golden Icon color */
 .goldenIcon{
   color: #c6a05a;
 }
 
-/* GRID LAYOUT — 110% Responsive */
+/* --- GRID CONTAINER --- */
 
 .showcasecontainer {
   width: 100%;
+  max-width: 1200px; /* Match max-width of wrapper */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
   padding: 40px 20px;
+  box-sizing: border-box;
+  align-items: start;
   font-family: "Cinzel", serif;
 }
 
-/* CARD — NO HOVER MOVEMENT (STATIC) */
+/* --- CARD STYLING --- */
+
 .goldCard {
   background: white;
-  /* border-radius: 18px; */
-  overflow: hidden;
+  overflow: hidden; /* Changed from visible to hidden to manage content boundary */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-  position: relative;
   cursor: pointer;
-  transition: none;      /* IMPORTANT: NO animation on card */
+  display: flex;
+  flex-direction: column;
+  height: auto; 
+  position: relative;
+  transition: none; 
 }
 
 /* Heading */
@@ -353,57 +338,49 @@
 /* Brand Name */
 .toppara p {
   text-align: center;
-    color: #c6a05a;
-
+  color: #c6a05a;
   font-size: 15px;
   margin-bottom: 15px;
   font-weight: 500;
 }
 
-/* IMAGE AREA */
+/* IMAGE CONTAINER & ASPECT RATIO */
 .mainimg {
   width: 100%;
-  height: 320px;
   position: relative;
   overflow: hidden;
-  /* border-radius: 14px; */
+  padding-bottom: 66.66%; /* 3:2 aspect ratio */
+  flex-shrink: 0;
 }
 
-/* BOTH IMAGES STACKED */
+/* Both images stacked */
 .mainimg img {
   width: 100%;
   height: 100%;
-  object-fit: contain !important;
   position: absolute;
   top: 0;
   left: 0;
+  /* Use 'contain' if you don't want the image cropped, or 'cover' if you want it to fill the box */
+  object-fit: contain !important; 
   transition: all 0.7s ease-in-out;
 }
 
 /* Default image visible */
-.imgDefault {
-  opacity: 1;
-  transform: scale(1) translateY(0px);
-}
-
+.imgDefault { opacity: 1; transform: scale(1) translateY(0px); }
 /* Hover image hidden */
-.imgHover {
-  opacity: 0;
-  transform: scale(1.2) translateY(25px); /* premium hover pose */
+.imgHover { opacity: 0; transform: scale(1.2) translateY(25px); }
+
+/* HOVER — ANIMATED IMAGE SWITCH */
+.mainimg:hover .imgDefault { 
+  opacity: 0; 
+  transform: scale(1.15) translateY(-20px); 
+}
+.mainimg:hover .imgHover { 
+  opacity: 1; 
+  transform: scale(1) translateY(0px); 
 }
 
-/* HOVER — ANIMATED & LUXURY IMAGE SWITCH */
-.mainimg:hover .imgDefault {
-  opacity: 0;
-  transform: scale(1.15) translateY(-20px);
-}
-
-.mainimg:hover .imgHover {
-  opacity: 1;
-  transform: scale(1) translateY(0px);
-}
-
-/* Optional black fade */
+/* Optional black fade overlay */
 .overlay {
   position: absolute;
   inset: 0;
@@ -411,46 +388,46 @@
   opacity: 0;
   transition: opacity 0.6s ease;
 }
+.mainimg:hover .overlay { opacity: 1; }
 
-.mainimg:hover .overlay {
-  opacity: 1;
-}
 
-/* PRICE AREA */
+/* --- PRICE AND BUTTON AREA --- */
 .price {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
+  flex-shrink: 0;
+  margin-top: auto; /* Pushes price/button to the bottom of the card */
 }
 
+/* Price text */
 .price span {
   font-size: 24px;
   font-weight: 800;
   color: #000000;
-  
 }
 
-/* Add Button */
+/* Add Button Styling (with shine effect) */
 .addBtn {
   background: #d9c8b2;
   color: #1a1a1a;
   font-size: 16px;
   font-weight: 500;
-  padding: 14px 32px;
+  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  overflow: hidden;
-    transition: background-color 0.6s ease, color 0.3s ease;
-    transition: 0.2s ease-in-out all;
-  font-family: "Dancing Script", cursive;
+  justify-content: center;
   position: relative;
+  overflow: hidden;
+  font-family: "Dancing Script", cursive;
+  transition: background-color 0.6s ease, color 0.3s ease, transform 0.2s ease-in-out;
 }
+
+/* Shine effect before */
 .addBtn::before {
   content: "";
   position: absolute;
@@ -470,74 +447,53 @@
 }
 
 /* Hover effect */
-.addBtn:hover {
-  background-color: #8b6822;
-  color: #ffffff;
+.addBtn:hover { 
+  background-color: #8b6822; 
+  color: #fff; 
 }
-
-.addBtn:hover::before {
+.addBtn:hover::before { 
   left: 130%; 
 }
 
-/* Text ko shine se upar dikhane ke liye */
-.addBtn span {
-  position: relative;
-  z-index: 2;
+/* Text over shine (for the span you added in JSX) */
+.addBtn span { 
+  position: relative; 
+  z-index: 2; 
 }
-.addBtn:active {
-  transform: scale(0.95);
-  transition: 0.2s ease-in-out all;
+
+/* Click/Active effect */
+.addBtn:active { transform: scale(0.95); }
+
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Wrapper/Title responsiveness */
+@media (max-width: 420px) {
+  .wrapper { gap: 8px; }
+  .line { min-width: 10px; }
+  .titles { font-size: 18px; letter-spacing: 1px; white-space: normal; }
 }
-/*  Tablet (768px) */
+@media (max-width: 320px) {
+  .titles { font-size: 16px; }
+}
+
+/* Grid Responsiveness */
 @media (max-width: 768px) {
-.showcase{
-    height: 490vh;
-}
-    .showcasecontainer {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 20px 10px;
-    }
-
-    .mainimg {
-        height: 260px;
-    }
-
-    .price span {
-        font-size: 20px;
-    }
-
-    .addBtn {
-        padding: 12px 24px;
-        font-size: 14px;
-    }
-}
-
-/*  Mobile (480px) */
-@media (max-width: 480px) {
-  .showcase{
-    height: 490vh;  
+  .showcasecontainer { 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px; 
   }
-    .showcasecontainer {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 15px;
-        padding: 15px 10px;
-    }
+}
 
-    .mainimg {
-        height: 220px;
-    }
-
-    .mainHeading {
-        font-size: 28px;
-    }
-
-    .price span {
-        font-size: 18px;
-    }
-
-    .addBtn {
-        padding: 10px 20px;
-        font-size: 13px;
-    }
+@media (max-width: 480px) {
+  .showcasecontainer { 
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+    gap: 15px; 
+    padding: 20px 10px;
+  }
+  .price span { font-size: 20px; }
+  .mainHeading { font-size: 24px; margin-top: 10px; }
+  .toppara p { font-size: 13px; margin-bottom: 8px; }
+  .addBtn { font-size: 12px; padding: 8px 15px; }
+  .showcase { padding-bottom: 220px; }
 }

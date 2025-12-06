@@ -18,25 +18,24 @@ function App() {
     setCartItems( (prev) => [...prev, product]);
   }
   return (
-    <div className= "appLayout">
-      <Navbar />
-      
-      <main className="contentArea">
+    <div className="appLayout">
+  <Navbar />
 
-      <Routes>
-        
-        <Route path="/" element={<Home  handleLike={handleAddToCart}/>} />
-        <Route path="/collections" element={<Collections />} />
-        <Route path="/handmade" element={<Handmade />} />
-        <Route path="/new-designs" element={<Newdesign />} />
-        <Route path="/mens-collection" element={<Mencollection />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-      </Routes>
-      </main>
+  <main className="contentArea">
+    <Routes>
+      <Route path="/" element={<Home handleLike={handleAddToCart} />} />
+      <Route path="/collections" element={<Collections />} />
+      <Route path="/handmade" element={<Handmade />} />
+      <Route path="/new-designs" element={<Newdesign />} />
+      <Route path="/mens-collection" element={<Mencollection />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+    </Routes>
+  </main>
 
-      <Footer/>
-      </div>
+  <Footer />
+</div>
+
   );
 }
 
