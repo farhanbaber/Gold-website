@@ -491,6 +491,9 @@
 }
 /*  Tablet (768px) */
 @media (max-width: 768px) {
+.showcase{
+    height: 490vh;
+}
     .showcasecontainer {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;

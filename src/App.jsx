@@ -9,6 +9,7 @@ import Mencollection from "./assets/components/Mencollection.jsx";
 import Contact from "./assets/components/Contact.jsx";
 import Cart from "./assets/components/Cart.jsx";
 import React ,{ useState} from "react";
+import "./App.css";
 
 function App() {
   const [cartItems,setCartItems]= useState([]);
@@ -17,8 +18,11 @@ function App() {
     setCartItems( (prev) => [...prev, product]);
   }
   return (
-    <>
+    <div className= "appLayout">
       <Navbar />
+      
+      <main className="contentArea">
+
       <Routes>
         
         <Route path="/" element={<Home  handleLike={handleAddToCart}/>} />
@@ -29,8 +33,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
+      </main>
+
       <Footer/>
-    </>
+      </div>
   );
 }
 
