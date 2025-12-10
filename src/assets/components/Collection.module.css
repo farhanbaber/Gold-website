@@ -399,6 +399,7 @@
   padding: 10px 14px;
   flex-shrink: 0;
   margin-top: auto; /* Pushes price/button to the bottom of the card */
+  
 }
 
 /* Price text */
@@ -414,7 +415,7 @@
   color: #1a1a1a;
   font-size: 16px;
   font-weight: 500;
-  padding: 10px 20px;
+  padding: 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -453,6 +454,9 @@
 }
 .addBtn:hover::before { 
   left: 130%; 
+}
+.addBtn:hover span {
+  color: #fff;
 }
 
 /* Text over shine (for the span you added in JSX) */

@@ -126,8 +126,8 @@ const Collections = () => {
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/p-1.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/p-2.png" alt="Hover" className={styles.imgHover} />
+                <img src="thirdimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/thirdimghover.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
@@ -135,6 +135,7 @@ const Collections = () => {
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
+        {/* card 4 */}
 
         <div className={styles.goldCard}>
             <h1 className={styles.mainHeading}>Jewellery Set</h1>
@@ -142,8 +143,8 @@ const Collections = () => {
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/p-1.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/p-2.png" alt="Hover" className={styles.imgHover} />
+                <img src="/forthimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/forthimghover.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
@@ -151,15 +152,15 @@ const Collections = () => {
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
-        
+        {/* card 5 */}
         <div className={styles.goldCard}>
             <h1 className={styles.mainHeading}>Jewellery Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/p-1.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/p-2.png" alt="Hover" className={styles.imgHover} />
+                <img src="/fifthimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/fifthimghover.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
@@ -167,6 +168,7 @@ const Collections = () => {
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
+        {/* card 6 */}
 
         <div className={styles.goldCard}>
             <h1 className={styles.mainHeading}>Jewellery Set</h1>
@@ -174,8 +176,8 @@ const Collections = () => {
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/p-1.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/p-2.png" alt="Hover" className={styles.imgHover} />
+                <img src="/sixthimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/siximghover.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
@@ -183,6 +185,7 @@ const Collections = () => {
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
+        {/* card 7 */}
 
         <div className={styles.goldCard}>
             <h1 className={styles.mainHeading}>Jewellery Set</h1>
@@ -190,8 +193,8 @@ const Collections = () => {
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/p-1.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/p-2.png" alt="Hover" className={styles.imgHover} />
+                <img src="/sevenimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/sevenimghover.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
@@ -199,6 +202,7 @@ const Collections = () => {
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
+        {/* card 8 */}
 
         <div className={styles.goldCard}>
             <h1 className={styles.mainHeading}>Jewellery Set</h1>
@@ -206,8 +210,8 @@ const Collections = () => {
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/p-1.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/p-2.png" alt="Hover" className={styles.imgHover} />
+                <img src="/eightimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/eightimghover.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
