@@ -82,7 +82,7 @@ const Collections = () => {
         {/* CARD 1 */}
         <div className={styles.goldCard}>
             {/* cardInner removed, content is direct descendant of goldCard */}
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Royal Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -94,14 +94,14 @@ const Collections = () => {
             </div>
 
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$20.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         
         {/* CARD 2 */}
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Elite Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -113,7 +113,7 @@ const Collections = () => {
             </div>
 
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$24.2</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
@@ -121,7 +121,7 @@ const Collections = () => {
         {/* ... (Remaining Cards follow the same clean structure) ... */}
         
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Premium Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -131,14 +131,14 @@ const Collections = () => {
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$60.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         {/* card 4 */}
 
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Prime Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -148,13 +148,13 @@ const Collections = () => {
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$12.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         {/* card 5 */}
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Gold Deluxe Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -164,14 +164,14 @@ const Collections = () => {
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$79.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         {/* card 6 */}
 
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Ultimate Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -181,14 +181,14 @@ const Collections = () => {
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$40.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         {/* card 7 */}
 
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Royal Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -198,14 +198,14 @@ const Collections = () => {
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$76.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         {/* card 8 */}
 
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Jewellery Set</h1>
+            <h1 className={styles.mainHeading}>Classic Gold Set</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
@@ -215,7 +215,7 @@ const Collections = () => {
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span>$20.4</span>
+                <span className={styles.priceValue}>$34.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
