@@ -253,7 +253,7 @@
   font-family: "Cinzel", serif;
   height: auto; 
   /* border: 2px solid red; */
-  height: 160vh;
+  min-height: auto;
 }
 
 /* --- SECTION HEADING/TITLE STYLING --- */
