@@ -223,6 +223,53 @@ const Collections = () => {
     </div>
     {/* PRODUCT GRID CONTAINER END */}
 </section>
+{/* end section */}
+
+{/* strar new section */}
+
+<section className={styles.exclusiveShowcase}>
+      <div className={styles.container}>
+        
+        {/* Left Image */}
+        <div className={styles.imageWrapper}>
+          <img 
+            src="collectionimg.png" 
+            alt="Model wearing jewelry" 
+            className={styles.mainImage} 
+          />
+          <div className={styles.overlay}>
+            <span className={styles.hoverText}>Explore Collection</span>
+          </div>
+        </div>
+
+        {/* Right Content */}
+        <div className={styles.content}>
+          <h5 className={styles.pill}>New Arrival</h5>
+          <h1 className={styles.title}>
+            The Art Of Radiant <br />
+            <span className={styles.highlight}>Reffinement</span>
+          </h1>
+          <p className={styles.description}>
+            Discover timeless elegance with our handcrafted pieces that blend modern sophistication 
+            and classic artistry. Each creation tells a story of luxury and grace.
+          </p>
+          
+          <button className={styles.ctaButton}>
+            Shop Now
+            <span className={styles.arrow}>→</span>
+          </button>
+
+          {/* Small Rings Image */}
+          <div className={styles.smallImageWrapper}>
+            <img 
+              src="collectionimgtwo.png" 
+              alt="Gold rings" 
+              className={styles.smallImage} 
+            />
+          </div>
+        </div>
+      </div>
+    </section>  
     
 
     
