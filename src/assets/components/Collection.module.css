@@ -922,3 +922,31 @@
     align-self: center;
   }
 }
+
+/* For small devices like iPhone X */
+@media (max-width: 480px) {
+
+  /* Text size reduce */
+  .title {
+    font-size: 2rem; /* پہلے سے چھوٹا */
+  }
+
+  .description {
+    font-size: 0.95rem; /* readable but smaller */
+  }
+
+  /* Button center fix */
+  .ctaButton {
+    margin: 0 auto;        /* horizontally center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 1.8rem; /* تھوڑا چھوٹا button */
+    font-size: 0.95rem;     /* چھوٹا text */
+  }
+
+  /* Image adjust */
+  .smallImage {
+    width: 200px;
+  }
+}
