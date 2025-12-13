@@ -231,11 +231,11 @@ const Collections = () => {
       <div className={styles.container}>
         
         {/* Left Image */}
-        <div className={styles.imageWrapper}>
+        <div className={styles.imageWrappers}>
           <img 
             src="collectionimg.png" 
             alt="Model wearing jewelry" 
-            className={styles.mainImage} 
+            className={styles.mainImages} 
           />
           <div className={styles.overlay}>
             <span className={styles.hoverText}>Explore Collection</span>
