@@ -270,7 +270,166 @@ const Collections = () => {
         </div>
       </div>
     </section>  
-    
+    {/* end of section */}
+    {/* strat new section  */}
+
+    <section className={styles.newSection}>
+       <div className={styles.wrapper}>
+        <span className={styles.line}></span>
+        <h2 className={styles.titles}>
+            Royal Bangles <i className={`fa-solid fa-ring ${styles.goldenIcon}`}></i> Collections
+        </h2>
+        <span className={styles.line}></span>
+    </div>
+    {/* HEADING SECTION END */}
+
+    {/* PRODUCT GRID CONTAINER START */}
+    <div className={styles.showcasecontainer}>
+        
+        {/* CARD 1 */}
+        <div className={styles.goldCard}>
+            {/* cardInner removed, content is direct descendant of goldCard */}
+            <h1 className={styles.mainHeading}>Royal Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+
+            <div className={styles.mainimg}>
+                <img src="/orighover.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/orignal.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$20.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        
+        {/* CARD 2 */}
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Elite Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+
+            <div className={styles.mainimg}>
+                <img src="/secimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/secimghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$24.2</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+
+        {/* ... (Remaining Cards follow the same clean structure) ... */}
+        
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Premium Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="thirdimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/thirdimghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$60.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 4 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Prime Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/forthimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/forthimghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$12.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 5 */}
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Gold Deluxe Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/fifthimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/fifthimghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$79.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 6 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Ultimate Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/sixthimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/siximghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$40.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 7 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Royal Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/sevenimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/sevenimghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$76.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 8 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Classic Gold Set</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/eightimg.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/eightimghover.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$34.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+
+    </div>
+
+    </section>
 
     
 

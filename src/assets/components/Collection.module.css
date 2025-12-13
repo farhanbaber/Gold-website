@@ -252,8 +252,9 @@
   box-sizing: border-box;
   font-family: "Cinzel", serif;
   height: auto; 
-  /* border: 2px solid red; */
-  min-height: auto;
+  border: 2px solid red;
+  /* min-height: auto; */
+  height: 160vh;
 }
 
 /* --- SECTION HEADING/TITLE STYLING --- */
@@ -953,3 +954,20 @@
     width: 200px;
   }
 } 
+
+/* end of section */
+.newSection{
+  width: 100%;
+  padding: 20px 10px;
+  /* Footer safe space */
+  padding-bottom: 160px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: "Cinzel", serif;
+  height: auto; 
+  /* border: 2px solid red; */
+  height: 160vh;
+  border: 2px solid blue;
+}
