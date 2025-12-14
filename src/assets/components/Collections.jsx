@@ -289,38 +289,38 @@ const Collections = () => {
         {/* CARD 1 */}
         <div className={styles.goldCard}>
             {/* cardInner removed, content is direct descendant of goldCard */}
-            <h1 className={styles.mainHeading}>Royal Gold Set</h1>
+            <h1 className={styles.mainHeading}>Classic Cut</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
 
             <div className={styles.mainimg}>
-                <img src="/orighover.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/orignal.png" alt="Hover" className={styles.imgHover} />
+                <img src="/bang1.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang.h.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
 
             <div className={styles.price}>
-                <span className={styles.priceValue}>$20.4</span>
+                <span className={styles.priceValue}>$24.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         
         {/* CARD 2 */}
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Elite Gold Set</h1>
+            <h1 className={styles.mainHeading}>Royal Line</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
 
             <div className={styles.mainimg}>
-                <img src="/secimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/secimghover.png" alt="Hover" className={styles.imgHover} />
+                <img src="/bang2.jpg" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/band.h.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
 
             <div className={styles.price}>
-                <span className={styles.priceValue}>$24.2</span>
+                <span className={styles.priceValue}>$13.2</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
@@ -328,13 +328,63 @@ const Collections = () => {
         {/* ... (Remaining Cards follow the same clean structure) ... */}
         
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Premium Gold Set</h1>
+            <h1 className={styles.mainHeading}>Prime Gold</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="thirdimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/thirdimghover.png" alt="Hover" className={styles.imgHover} />
+                <img src="bang3.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang3.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$32.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 4 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Elite Band</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/bang4.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang4.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$92.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 5 */}
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Pure Grace</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/bang5.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang5.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$56.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 6 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Golden Edge</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/bang6.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang6.h.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
@@ -342,87 +392,37 @@ const Collections = () => {
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
-        {/* card 4 */}
-
-        <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Prime Gold Set</h1>
-            <div className={styles.toppara}>
-                <p>Fayaz Jewellers</p>
-            </div>
-            <div className={styles.mainimg}>
-                <img src="/forthimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/forthimghover.png" alt="Hover" className={styles.imgHover} />
-                <div className={styles.overlay}></div>
-            </div>
-            <div className={styles.price}>
-                <span className={styles.priceValue}>$12.4</span>
-                <button className={styles.addBtn}><span>Add to Cart</span></button>
-            </div>
-        </div>
-        {/* card 5 */}
-        <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Gold Deluxe Set</h1>
-            <div className={styles.toppara}>
-                <p>Fayaz Jewellers</p>
-            </div>
-            <div className={styles.mainimg}>
-                <img src="/fifthimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/fifthimghover.png" alt="Hover" className={styles.imgHover} />
-                <div className={styles.overlay}></div>
-            </div>
-            <div className={styles.price}>
-                <span className={styles.priceValue}>$79.4</span>
-                <button className={styles.addBtn}><span>Add to Cart</span></button>
-            </div>
-        </div>
-        {/* card 6 */}
-
-        <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Ultimate Gold Set</h1>
-            <div className={styles.toppara}>
-                <p>Fayaz Jewellers</p>
-            </div>
-            <div className={styles.mainimg}>
-                <img src="/sixthimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/siximghover.png" alt="Hover" className={styles.imgHover} />
-                <div className={styles.overlay}></div>
-            </div>
-            <div className={styles.price}>
-                <span className={styles.priceValue}>$40.4</span>
-                <button className={styles.addBtn}><span>Add to Cart</span></button>
-            </div>
-        </div>
         {/* card 7 */}
 
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Royal Gold Set</h1>
+            <h1 className={styles.mainHeading}>Heritage Band</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/sevenimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/sevenimghover.png" alt="Hover" className={styles.imgHover} />
+                <img src="/bang7.jpg" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang7.h.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span className={styles.priceValue}>$76.4</span>
+                <span className={styles.priceValue}>$54.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>
         {/* card 8 */}
 
         <div className={styles.goldCard}>
-            <h1 className={styles.mainHeading}>Classic Gold Set</h1>
+            <h1 className={styles.mainHeading}>Fine Craft</h1>
             <div className={styles.toppara}>
                 <p>Fayaz Jewellers</p>
             </div>
             <div className={styles.mainimg}>
-                <img src="/eightimg.png" alt="Jewellery" className={styles.imgDefault} />
-                <img src="/eightimghover.png" alt="Hover" className={styles.imgHover} />
+                <img src="/bang8.jpg" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/bang8.h.png" alt="Hover" className={styles.imgHover} />
                 <div className={styles.overlay}></div>
             </div>
             <div className={styles.price}>
-                <span className={styles.priceValue}>$34.4</span>
+                <span className={styles.priceValue}>$24.4</span>
                 <button className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
         </div>

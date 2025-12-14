@@ -252,7 +252,7 @@
   box-sizing: border-box;
   font-family: "Cinzel", serif;
   height: auto; 
-  border: 2px solid red;
+  /* border: 2px solid red; */
   /* min-height: auto; */
   min-height:   auto;
 }
@@ -969,5 +969,5 @@
   height: auto; 
   /* border: 2px solid red; */
   height: auto;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
