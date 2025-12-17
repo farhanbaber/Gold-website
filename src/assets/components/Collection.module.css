@@ -407,7 +407,7 @@
 /* Price text */
 .price span {
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 300;
   color: #000000;
 }
 
@@ -970,4 +970,191 @@
   /* border: 2px solid red; */
   height: auto;
   /* border: 2px solid blue; */
+}
+/* end section */
+/* strar new section */
+.trendingSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #fff9f5 50%, #fff9f5 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+}
+
+.textWrapper {
+  flex: 1;
+  max-width: 500px;
+  z-index: 2;
+}
+
+.smallText {
+  font-size: 1.2rem;
+  color: #b8a490;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.mainTitle {
+  font-size: 5rem;
+  color: #000000;
+  margin: 0;
+  line-height: 1;
+  font-weight: 300;
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
+
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  color: #b8a490;
+  margin-top: 10px;
+  font-weight: 500;
+  font-family: "Cinzel", serif;
+
+}
+
+.imagesGrid {
+  position: relative;
+  width: 60%;
+  height: 80vh;
+  max-width: 800px;
+}
+
+.imagesGrid > div {
+  position: absolute;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.imagesGrid > div:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.imagesGrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Individual item positions - exactly matching the original layout */
+.imgItem1 {
+  top: 5%;
+  right: 10%;
+  width: 35%;
+  height: 45%;
+  transform: rotate(12deg);
+}
+
+.imgItem2 {
+  top: 0%;
+  right: 40%;
+  width: 28%;
+  height: 35%;
+  transform: rotate(-8deg);
+}
+
+.imgItem3 {
+  top: 15%;
+  right: 65%;
+  width: 32%;
+  height: 40%;
+  transform: rotate(20deg);
+}
+
+.imgItem4 {
+  bottom: 20%;
+  left: 5%;
+  width: 30%;
+  height: 45%;
+  transform: rotate(-15deg);
+}
+
+.imgItem5 {
+  bottom: 35%;
+  left: 30%;
+  width: 25%;
+  height: 35%;
+  transform: rotate(10deg);
+}
+
+.imgItem6 {
+  bottom: 10%;
+  left: 50%;
+  width: 35%;
+  height: 30%;
+  transform: rotate(-12deg);
+}
+
+.imgItem7 {
+  bottom: 5%;
+  right: 5%;
+  width: 28%;
+  height: 25%;
+  transform: rotate(8deg);
+}
+
+/* Responsive - Mobile first approach */
+@media (max-width: 1024px) {
+  .trendingSection {
+    flex-direction: column;
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .textWrapper {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .mainTitle {
+    font-size: 4rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
+
+  .imagesGrid {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  .imagesGrid > div {
+    position: static;
+    transform: none !important;
+    width: 80%;
+    height: 300px;
+    margin: 20px auto;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+
+  .imagesGrid > div {
+    width: 90%;
+    height: 250px;
+  }
 }

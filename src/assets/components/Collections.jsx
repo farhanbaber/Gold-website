@@ -430,8 +430,38 @@ const Collections = () => {
     </div>
 
     </section>
+{/* end of section */}
+{/* strat new section */}
+    <section className={styles.trendingSection}>
+      <div className={styles.textWrapper}>
+        <h2 className={styles.mainTitle}>TRENDING</h2>
+        <p className={styles.subtitle}>MINIMALISTIC RINGS DESIGN</p>
+      </div>
 
-    
+      <div className={styles.imagesGrid}>
+        <div className={styles.imgItem1}>
+          <img src="/ring five.png" alt="Minimalist pendant necklace" />
+        </div>
+        <div className={styles.imgItem2}>
+          <img src="/ring four.png" alt="Circular gold pendant" />
+        </div>
+        <div className={styles.imgItem3}>
+          <img src="/ring three.png" alt="Rose gold ring with clear gem" />
+        </div>
+        <div className={styles.imgItem4}>
+          <img src="/ring two.png" alt="Green rectangular pendant necklace" />
+        </div>
+        <div className={styles.imgItem5}>
+          <img src="/ring one1.png" alt="Rose gold ring with purple gem" />
+        </div>
+        <div className={styles.imgItem6}>
+          <img src="/ring 6.png" alt="Gold ring with Greek key pattern" />
+        </div>
+        <div className={styles.imgItem7}>
+          <img src="/ring 5.png" alt="Thin gold Greek key band" />
+        </div>
+      </div>
+    </section>
 
     
 </div>
