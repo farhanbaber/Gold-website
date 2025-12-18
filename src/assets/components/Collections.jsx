@@ -67,13 +67,21 @@ const Collections = () => {
     
     {/* HEADING SECTION START - Added at the very beginning as requested */}
     {/* Note: I removed the extra nested <h2> tags which were causing a syntax error. */}
-    <div className={styles.wrapper}>
-        <span className={styles.line}></span>
-        <h2 className={styles.titles}>
-            Signature <i className={`fa-brands fa-jedi-order ${styles.goldenIcon}`}></i> Designs
-        </h2>
-        <span className={styles.line}></span>
-    </div>
+   <div className={styles.wrapper}>
+  <span className={styles.line}></span>
+
+  <h2 className={styles.titles}>
+  Signature
+    <img
+      src="/h.set.png"   // apni image ka path
+      alt="Ring Icon"
+      className={styles.icon}
+    />
+    Designs
+  </h2>
+
+  <span className={styles.line}></span>
+</div>
     {/* HEADING SECTION END */}
 
     {/* PRODUCT GRID CONTAINER START */}
@@ -274,13 +282,21 @@ const Collections = () => {
     {/* strat new section  */}
 
     <section className={styles.newSection}>
-       <div className={styles.wrapper}>
-        <span className={styles.line}></span>
-        <h2 className={styles.titles}>
-            Royal Bangles <i className={`fa-solid fa-ring ${styles.goldenIcon}`}></i> Collections
-        </h2>
-        <span className={styles.line}></span>
-    </div>
+<div className={styles.wrapper}>
+  <span className={styles.line}></span>
+
+  <h2 className={styles.titles}>
+    Royal Bangles
+    <img
+      src="/bangle.re.png"   // apni image ka path
+      alt="Ring Icon"
+      className={styles.icon}
+    />
+    Collections
+  </h2>
+
+  <span className={styles.line}></span>
+</div>
     {/* HEADING SECTION END */}
 
     {/* PRODUCT GRID CONTAINER START */}
@@ -461,6 +477,173 @@ const Collections = () => {
           <img src="/ring 5.png" alt="Thin gold Greek key band" />
         </div>
       </div>
+    </section>
+    {/* end of section */}
+    {/* strat new section here  */}
+    <section className={styles.ringsSection}>
+<div className={styles.wrapper}>
+  <span className={styles.line}></span>
+
+  <h2 className={styles.titles}>
+    Forever Bond 
+    <img
+      src="/rings.re.png"   // apni image ka path
+      alt="Ring Icon"
+      className={styles.icon}
+    />
+    Rings
+  </h2>
+
+  <span className={styles.line}></span>
+</div>
+
+    {/* HEADING SECTION END */}
+
+    {/* PRODUCT GRID CONTAINER START */}
+    <div className={styles.showcasecontainer}>
+        
+        {/* CARD 1 */}
+        <div className={styles.goldCard}>
+            {/* cardInner removed, content is direct descendant of goldCard */}
+            <h1 className={styles.mainHeading}>Aurum</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+
+            <div className={styles.mainimg}>
+                <img src="/rings.1.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.1.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$1.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        
+        {/* CARD 2 */}
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Regal</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+
+            <div className={styles.mainimg}>
+                <img src="/rings.2.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.2.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$9.2</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+
+        {/* ... (Remaining Cards follow the same clean structure) ... */}
+        
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Luxe</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/rings.3.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.3.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$7.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 4 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Nova</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/rings.4.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.4.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$42.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 5 */}
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Eterna</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/rings.5.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.5.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$3.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 6 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Crown</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/rings.6.jpg" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.6.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$9.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 7 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Vero</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/rings.7.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.7.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$01.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+        {/* card 8 */}
+
+        <div className={styles.goldCard}>
+            <h1 className={styles.mainHeading}>Solace</h1>
+            <div className={styles.toppara}>
+                <p>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.mainimg}>
+                <img src="/rings.8.png" alt="Jewellery" className={styles.imgDefault} />
+                <img src="/rings.8.h.png" alt="Hover" className={styles.imgHover} />
+                <div className={styles.overlay}></div>
+            </div>
+            <div className={styles.price}>
+                <span className={styles.priceValue}>$2.4</span>
+                <button className={styles.addBtn}><span>Add to Cart</span></button>
+            </div>
+        </div>
+
+    </div>
     </section>
 
     
