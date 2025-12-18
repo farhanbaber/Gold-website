@@ -1175,14 +1175,6 @@
   min-height:   auto;
 
 }
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  overflow: hidden;           /* ❌ Y-axis overflow fix */
-}
 
 /* lines left & right */
 .line {
