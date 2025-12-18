@@ -11,7 +11,7 @@ const Collections = () => {
       <div className={styles.container}>
         {/* Left Text Content */}
         <div className={styles.textContent}>
-          <h1 className={styles.title}>
+          <h1 className={styles.titlese}>
             Classic and<br />
             Elegant Silver<br />
             Jewelry.

@@ -34,7 +34,7 @@
   max-width: 550px;
 }
 
-.title {
+.titlese {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 64px;
   font-weight: 400;
@@ -200,7 +200,7 @@
     justify-content: center;
   }
 
-  .title {
+  .titlese {
     font-size: 56px;
     
   }
@@ -222,7 +222,7 @@
 }
 
 @media (max-width: 640px) {
-  .title {
+  .titlese {
     font-size: 44px;
   }
   
