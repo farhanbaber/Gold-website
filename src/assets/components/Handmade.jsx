@@ -20,7 +20,10 @@ const Handmade = () => {
   </button>
 </div>
           <div className={styles.social}>
-            <span className={styles.socialIcon}><i class="fa-brands fa-instagram"></i></span>
+            <span className={styles.socialIcon}>
+  <i className="fa-brands fa-instagram"></i>
+</span>
+
             <div className={styles.socialText}>
               <p>Follow us on Instagram for the latest updates and exclusive offers</p>
               <p>@jewellerybrand</p>

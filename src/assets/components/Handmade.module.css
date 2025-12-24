@@ -205,6 +205,24 @@
   animation: floatBottom 16s ease-in-out infinite;
 }
 
+.socialIcon i {
+  font-size: 30px; /* size adjust kar lo */
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285AEB 90%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.socialIcon i:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+
 /* Floating Animations */
 @keyframes floatTop {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -220,63 +238,78 @@
 }
 
 /* ================== RESPONSIVE ================== */
+/* ================= SAFE RESPONSIVE FIX ================= */
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    padding: 80px 20px;
+    overflow: hidden;
+  }
+
+  .textSide,
+  .imageSide {
+    top: 0; /* negative top remove */
+  }
+
   .imageWrapper {
     width: 380px;
     height: 560px;
   }
+
   .mainImage {
     width: 320px;
     height: 460px;
-    left: 10px;
   }
+
   .topImage {
     width: 210px;
     height: 210px;
   }
+
   .bottomImage {
     width: 230px;
     height: 230px;
-    right: 30px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
-    gap: 80px;
-  }
-
-  .textSide {
-    max-width: 700px;
-  }
-
-  .buttons {
-    justify-content: center;
-  }
-
-  .social {
-    justify-content: center;
-  }
-
-  .imageWrapper {
-    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 80px 20px;
+    padding: 70px 16px;
+    overflow: hidden;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 60px;
+  }
+
+  .textSide {
+    max-width: 100%;
+    top: 0;
   }
 
   .heading {
-    font-size: 40px;
+    font-size: 38px;
+    max-width: 90%;
+    margin: 0 auto 20px;
+    line-height: 1.25;
   }
 
   .description {
-    font-size: 17px;
+    max-width: 90%;
+    margin: 0 auto 30px;
+  }
+
+  .buttons,
+  .social {
+    justify-content: center;
+  }
+
+  .imageSide {
+    top: 0;
   }
 
   .imageWrapper {
@@ -287,8 +320,6 @@
   .mainImage {
     width: 280px;
     height: 400px;
-    top: 40px;
-    left: 20px;
   }
 
   .topImage,
@@ -296,27 +327,21 @@
     width: 180px;
     height: 180px;
   }
-
-  .bottomImage {
-    right: 20px;
-    bottom: 30px;
-  }
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: 60px 14px;
+    overflow: hidden;
+  }
+
   .heading {
-    font-size: 36px;
+    font-size: 34px;
+    max-width: 85%;
   }
 
-  .buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btnPrimary,
-  .btnSecondary {
-    width: 100%;
-    max-width: 300px;
+  .description {
+    max-width: 85%;
   }
 
   .imageWrapper {
@@ -327,12 +352,18 @@
   .mainImage {
     width: 240px;
     height: 350px;
-    left: 20px;
   }
 
   .topImage,
   .bottomImage {
     width: 160px;
     height: 160px;
+  }
+}
+
+@media (max-width: 360px) {
+  .heading {
+    font-size: 32px;
+    max-width: 80%;
   }
 }
