@@ -236,81 +236,112 @@
   33% { transform: translate(-20px, 15px) rotate(-3deg); }
   66% { transform: translate(25px, -20px) rotate(3deg); }
 }
+/* ===== MOBILE FIX ===== */
 @media (max-width: 768px) {
-  /* Container: vertical stack & center */
   .container {
-    @apply flex flex-col items-center justify-center text-center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 20px;
+    overflow: hidden; /* Y-axis scroll remove */
   }
 
   /* Text section */
   .textSide {
-    @apply order-1 w-full max-w-[90%] mt-0 mb-6;
-    top: 0 !important; /* remove negative top */
+    width: 100%;
+    max-width: 90%;
+    top: 0 !important;
+    margin: 0 auto;
   }
 
   .heading {
-    @apply text-3xl md:text-4xl font-bold text-center mb-4;
+    font-size: 28px; /* chhota heading */
+    line-height: 1.3;
+    max-width: 90%;
+    margin: 0 auto 16px;
+    word-break: break-word; /* 2 lines ensure */
   }
 
   .description {
-    @apply text-base md:text-lg text-center mb-6;
+    font-size: 16px;
+    max-width: 90%;
+    margin: 0 auto 24px;
   }
 
-  /* Hide images */
+  /* Hide images completely */
   .imageSide,
   .imageWrapper,
   .mainImage,
   .topImage,
   .bottomImage {
-    @apply hidden !important;
+    display: none !important;
   }
 
   /* Buttons */
   .buttons {
-    @apply order-2 flex flex-col items-center justify-center gap-4 mb-6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     width: 100%;
-    text-align: center;
+    margin-bottom: 20px;
   }
 
   .btnPrimary,
   .btnSecondary {
-    @apply w-3/4 max-w-xs mx-auto text-center;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px 20px;
   }
 
-  /* Social section */
+  /* Social icons */
   .social {
-    @apply order-3 flex items-center justify-center gap-4 text-center;
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
   .socialIcon i {
-    @apply text-3xl;
+    font-size: 28px;
   }
 
   .socialText p {
-    @apply text-center text-sm;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
   }
 }
 
+/* Extra small devices (iPhone SE, older) */
 @media (max-width: 480px) {
   .heading {
-    @apply text-2xl;
+    font-size: 24px;
   }
 
   .description {
-    @apply text-sm;
+    font-size: 14px;
   }
 
   .btnPrimary,
   .btnSecondary {
-    @apply w-11/12 text-sm py-2;
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 8px 16px;
   }
 
   .socialIcon i {
-    @apply text-2xl;
+    font-size: 24px;
   }
 
   .socialText p {
-    @apply text-xs;
+    font-size: 12px;
   }
 }
