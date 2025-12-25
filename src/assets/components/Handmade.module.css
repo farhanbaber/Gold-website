@@ -245,29 +245,34 @@
     justify-content: flex-start;
     text-align: center;
     gap: 20px;
-    overflow: hidden; /* Y-axis scroll remove */
+    overflow-y: hidden; /* vertical scroll remove */
+    padding: 0 10px;
   }
 
   /* Text section */
   .textSide {
     width: 100%;
     max-width: 90%;
-    top: 0 !important;
     margin: 0 auto;
+    top: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .heading {
     font-size: 28px; /* chhota heading */
     line-height: 1.3;
-    max-width: 90%;
-    margin: 0 auto 16px;
+    margin-bottom: 16px;
     word-break: break-word; /* 2 lines ensure */
   }
 
   .description {
     font-size: 16px;
-    max-width: 90%;
     margin: 0 auto 24px;
+    text-align: center;
+    display: block;
   }
 
   /* Hide images completely */
@@ -297,6 +302,7 @@
     text-align: center;
     font-size: 1rem;
     padding: 10px 20px;
+    margin: 0 auto;
   }
 
   /* Social icons */
