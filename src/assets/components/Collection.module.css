@@ -282,28 +282,53 @@
 
 /* Title text */
 /* Responsive & safe title styling */
+/* Single line heading – har mobile pe guaranteed 1 line */
 .titles {
   font-family: "Cinzel", serif;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;          /* thoda kam kiya taaki zyada space na le */
   color: #1d1d1d;
   text-align: center;
   margin: 0 auto 20px;
-  padding: 0 12px;
+  padding: 0 10px;                /* sides pe safe space */
   
-  font-size: clamp(22px, 5.5vw, 42px);
-  line-height: 1.2;
-  max-width: 100%;
-  overflow-wrap: break-word;     /* modern word-break alternative */
-  hyphens: auto;
-  text-wrap: balance;            /* 2024-2025 browsers mein bohot achha balance deta hai wrapping ka */
+  /* Core single-line magic */
+  white-space: nowrap;                   /* NO wrapping kabhi bhi */
+  overflow: hidden;                      /* extra text hide */
+  text-overflow: ellipsis;               /* ... dikhega agar bahut lamba ho */
+  display: block;                        /* block behavior confirm */
+  max-width: 100%;                       /* screen se zyada wide nahi */
+  
+  /* Aggressive clamp taaki chhote phones pe bhi fit rahe */
+  font-size: clamp(18px, 4.8vw, 36px);   /* min 18px → safe readability */
+  line-height: 1.15;                     /* tight for single line */
 }
 
-/* Agar browser support na ho to fallback safe rahe */
-@supports not (text-wrap: balance) {
+/* Mobile fine-tuning – font ko aur control karo */
+@media (max-width: 480px) {
   .titles {
-    white-space: normal;
+    font-size: clamp(16px, 4.5vw, 28px);
+    letter-spacing: 1px;
+    padding: 0 8px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .titles {
+    font-size: clamp(15px, 4.2vw, 24px);  /* bohot chhote phones ke liye */
+    letter-spacing: 0.8px;
+    padding: 0 6px;
+    margin-bottom: 14px;
+  }
+}
+
+/* Sabse chhote screens (rare cases jaise old phones) */
+@media (max-width: 320px) {
+  .titles {
+    font-size: clamp(14px, 4vw, 20px);
+    padding: 0 5px;
   }
 }
 /* Golden Icon color */
