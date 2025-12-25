@@ -281,19 +281,47 @@
 }
 
 /* Title text */
+/* Responsive & safe title styling */
 .titles {
-  font-size: clamp(30px, 6vw, 42px); 
   font-family: "Cinzel", serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: #1d1d1d;
-  white-space: nowrap;
-  /* Margin fix for centering */
-  margin: 0; 
-  padding: 0;
+  text-align: center;           /* better for mobile */
+  margin: 0 auto 20px;          /* centered + breathing space below */
+  padding: 0 12px;              /* safe padding on small screens */
+  
+  /* Best responsive size control */
+  font-size: clamp(24px, 7vw, 42px);     /* smaller minimum size */
+  line-height: 1.15;                     /* prevents text from being too tight */
+  max-width: 100%;                       /* never wider than screen */
+  overflow: hidden;                      /* safety in case of very long words */
+  text-overflow: ellipsis;               /* adds ... if truly too long (rare) */
+  white-space: normal;                   /* IMPORTANT - allow wrapping */
+  word-break: break-word;                /* breaks very long words if needed */
+  hyphens: auto;                         /* nice hyphenation when possible */
 }
 
+/* Extra safety for very small screens */
+@media (max-width: 480px) {
+  .titles {
+    font-size: clamp(22px, 8.5vw, 32px);
+    letter-spacing: 1px;
+    padding: 0 10px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 360px) {
+  .titles {
+    font-size: clamp(20px, 9vw, 28px);
+    letter-spacing: 0.8px;
+    padding: 0 8px;
+    margin-bottom: 14px;
+  }
+}
 /* Golden Icon color */
 .goldenIcon{
   color: #c6a05a;
