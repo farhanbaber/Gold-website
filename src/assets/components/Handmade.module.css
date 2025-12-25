@@ -237,16 +237,17 @@
   66% { transform: translate(25px, -20px) rotate(3deg); }
 }
 /* ================= HERO MOBILE FIX ================= */
+/* ================= HERO MOBILE FIX ================= */
 
 @media (max-width: 768px) {
   .hero {
-    padding: 60px 16px;
-    min-height: 100vh;
+    padding: 40px 16px;
+    min-height: auto; /* Remove fixed height to prevent scrollbar */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* upar se start ho */
-    overflow: hidden;
+    justify-content: flex-start;
+    overflow-x: hidden;
   }
 
   .container {
@@ -254,8 +255,9 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 30px;
+    gap: 24px;
     width: 100%;
+    max-width: 100%;
   }
 
   /* Heading */
@@ -264,26 +266,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 0;
   }
 
   .heading {
-    font-size: 32px;
+    font-size: clamp(26px, 7vw, 32px);
     font-weight: bold;
     line-height: 1.2;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
-  /* Paragraph */
   .description {
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     color: #666;
     line-height: 1.6;
     max-width: 90%;
-    margin: 0 auto 24px;
+    margin: 0 auto 16px;
   }
 
-  /* Animated Images */
+  /* Animated Images - ORDER 2 (pehle image) */
   .imageSide {
     order: 2;
     display: flex;
@@ -293,27 +293,30 @@
   }
 
   .imageWrapper {
-    width: 280px;   /* proportional */
-    height: 350px;  /* proportional */
-    max-width: 90vw;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 4/5;
     position: relative;
     margin: 0 auto;
   }
 
   .mainImage {
-    width: 240px;
-    height: 320px;
-    top: 0;
-    left: 0;
+    width: 85%;
+    max-width: 240px;
+    height: auto;
+    aspect-ratio: 3/4;
   }
 
   .topImage,
   .bottomImage {
-    width: 160px;
-    height: 160px;
+    width: 50%;
+    max-width: 160px;
+    height: auto;
+    aspect-ratio: 1/1;
   }
 
-  /* Buttons */
+  /* Buttons - ORDER 3 (phir buttons) */
   .buttons {
     order: 3;
     display: flex;
@@ -321,29 +324,30 @@
     gap: 12px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 16px;
   }
 
   .btnPrimary,
   .btnSecondary {
     width: 80%;
     max-width: 280px;
-    padding: 12px 28px;
+    padding: 12px 24px;
     font-size: 1rem;
-    align-self: center;
   }
 
-  /* Social section */
+  /* Social section - ORDER 4 (last mein social) */
   .social {
     order: 4;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    width: 100%;
   }
 
   .socialIcon {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .socialText p {
@@ -352,40 +356,45 @@
   }
 }
 
-/* Extra small screens (360px) */
+/* Extra small screens (360px and below) */
 @media (max-width: 360px) {
+  .hero {
+    padding: 30px 12px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+
   .heading {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .description {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .imageWrapper {
-    width: 240px;
-    height: 300px;
+    max-width: 220px;
   }
 
   .mainImage {
-    width: 200px;
-    height: 260px;
+    max-width: 200px;
   }
 
   .topImage,
   .bottomImage {
-    width: 140px;
-    height: 140px;
+    max-width: 120px;
   }
 
   .btnPrimary,
   .btnSecondary {
     width: 90%;
-    padding: 10px 22px;
-    font-size: 0.95rem;
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 
   .socialIcon {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
