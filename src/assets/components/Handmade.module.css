@@ -238,83 +238,86 @@
 }
 /* ================= MOBILE / ALL SMALL SCREENS (≤ 768px) ================= */
 @media (max-width: 768px) {
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* extra safety against horizontal scroll */
+  }
+
   .hero {
-    padding: 80px 24px 100px;           /* good side padding + bottom space */
+    padding: 80px 20px 100px !important; /* sides pe padding taake edges se door rahe */
+    margin: 0 auto;
     min-height: auto;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;                /* centers children horizontally */
+    align-items: center;                /* main centering line */
     justify-content: flex-start;
     text-align: center;
+    width: 100%;
     box-sizing: border-box;
   }
 
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;                /* very important */
+    align-items: center;                /* children ko center */
     justify-content: center;
     text-align: center;
-    gap: 36px;                          /* pleasant vertical spacing */
+    gap: 32px;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 8px;                     /* tiny extra safety padding */
+    padding: 0 10px;                    /* tiny extra breathing space */
   }
 
-  /* 1. Text block – centered */
+  /* Text – forced center */
   .textSide {
     order: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    max-width: 90%;                     /* prevents text hitting edges */
+    max-width: 85%;                     /* text ko screen ke bilkul center mein rakhne ke liye */
     margin: 0 auto;
-    position: static;                   /* reset any desktop positioning */
   }
 
   .heading {
     font-size: 28px;
     font-weight: 700;
-    color: #000;
     margin: 0 0 16px 0;
     text-align: center;
-    line-height: 1.2;
     width: 100%;
+    max-width: 100%;
   }
 
   .description {
     font-size: 15px;
     color: #555;
-    margin: 0 auto 28px;
+    margin: 0 auto 24px;
     text-align: center;
-    line-height: 1.55;
-    max-width: 88%;
+    max-width: 90%;
+    line-height: 1.5;
   }
 
-  /* 2. Images hidden */
+  /* Images hidden */
   .imageSide,
   .imageWrapper,
   .mainImage,
   .topImage,
-  .bottomImage,
-  .floatingImage {
+  .bottomImage {
     display: none !important;
   }
 
-  /* 3. Buttons – centered stack */
+  /* Buttons – center stack */
   .buttons {
     order: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 16px;
     width: 100%;
-    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -322,22 +325,22 @@
   .btnSecondary {
     width: 80%;
     max-width: 280px;
-    padding: 12px 28px;
+    padding: 12px 24px;
     font-size: 1.05rem;
     text-align: center;
-    margin: 0 auto;                     /* double ensures centering */
+    margin: 0 auto;                     /* double center safety */
   }
 
-  /* 4. Social – horizontal centered row */
+  /* Social – horizontal centered row */
   .social {
     order: 3;
     display: flex;
-    flex-direction: row;                /* side-by-side icons */
-    justify-content: center;            /* centers the group */
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 28px;                          /* nice spacing between icons */
+    gap: 28px;
     width: 100%;
-    max-width: 340px;                   /* keeps group compact & centered */
+    max-width: 320px;
     margin: 20px auto 0;
   }
 
@@ -345,21 +348,14 @@
     font-size: 32px;
   }
 
-  .socialText p {
-    font-size: 13px;
-    margin: 4px 0 0;
-    text-align: center;
-    color: #666;
-  }
-
-  /* Optional: hide text if you want icons-only look */
+  /* Optional: agar sirf icons chahiye to ye uncomment kar do */
   /* .socialText { display: none; } */
 }
 
-/* ================= EXTRA SMALL (≤ 360px) ================= */
+/* Extra small screens */
 @media (max-width: 360px) {
   .hero {
-    padding: 60px 18px 90px;
+    padding: 60px 16px 90px;
   }
 
   .heading {
@@ -374,13 +370,13 @@
   .btnPrimary,
   .btnSecondary {
     width: 88%;
-    padding: 11px 24px;
+    padding: 11px 22px;
     font-size: 0.98rem;
   }
 
   .social {
     gap: 22px;
-    max-width: 300px;
+    max-width: 280px;
   }
 
   .socialIcon {
