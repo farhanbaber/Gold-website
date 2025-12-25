@@ -236,150 +236,154 @@
   33% { transform: translate(-20px, 15px) rotate(-3deg); }
   66% { transform: translate(25px, -20px) rotate(3deg); }
 }
-/* ================= MOBILE / ALL SMALL SCREENS (≤ 768px) ================= */
-@media (max-width: 768px) {
-  body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden; /* extra safety against horizontal scroll */
-  }
 
+/* ================= MOBILE / SMALL SCREENS ================= */
+@media (max-width: 768px) {
   .hero {
-    padding: 80px 20px 100px !important; /* sides pe padding taake edges se door rahe */
-    margin: 0 auto;
+    padding: 60px 16px;
     min-height: auto;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;                /* main centering line */
+    align-items: center;
     justify-content: flex-start;
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .container {
-    display: flex;
     flex-direction: column;
-    align-items: center;                /* children ko center */
+    align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 32px;
+    gap: 20px;
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 10px;                    /* tiny extra breathing space */
+    padding: 0 16px;
   }
 
-  /* Text – forced center */
+  /* 1️⃣ Text Side */
   .textSide {
     order: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 85%;                     /* text ko screen ke bilkul center mein rakhne ke liye */
+    max-width: 90%;
+    top: 0 !important;
     margin: 0 auto;
   }
 
   .heading {
-    font-size: 28px;
+    font-size: 26px !important;
     font-weight: 700;
-    margin: 0 0 16px 0;
+    color: #000;
     text-align: center;
-    width: 100%;
-    max-width: 100%;
+    margin-bottom: 12px !important;
+    line-height: 1.2;
   }
 
   .description {
-    font-size: 15px;
-    color: #555;
-    margin: 0 auto 24px;
+    font-size: 15px !important;
+    color: #666;
     text-align: center;
-    max-width: 90%;
+    margin-bottom: 16px !important;
     line-height: 1.5;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* Images hidden */
+  /* 2️⃣ Hide images completely */
   .imageSide,
   .imageWrapper,
   .mainImage,
   .topImage,
-  .bottomImage {
+  .bottomImage,
+  .floatingImage {
     display: none !important;
   }
 
-  /* Buttons – center stack */
+  /* 3️⃣ Buttons */
   .buttons {
     order: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    justify-content: center;
+    gap: 12px;
     width: 100%;
-    margin: 0 auto;
+    margin-bottom: 16px;
   }
 
   .btnPrimary,
   .btnSecondary {
     width: 80%;
-    max-width: 280px;
-    padding: 12px 24px;
-    font-size: 1.05rem;
+    max-width: 260px;
+    padding: 10px 20px;
+    font-size: 1rem;
     text-align: center;
-    margin: 0 auto;                     /* double center safety */
+    margin: 0 auto;
   }
 
-  /* Social – horizontal centered row */
+  /* 4️⃣ Social icons */
   .social {
     order: 3;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 28px;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
-    max-width: 320px;
-    margin: 20px auto 0;
+    margin-top: 12px;
   }
 
   .socialIcon {
-    font-size: 32px;
+    font-size: 28px !important;
   }
 
-  /* Optional: agar sirf icons chahiye to ye uncomment kar do */
-  /* .socialText { display: none; } */
+  .socialText p {
+    font-size: 14px !important;
+    text-align: center;
+    margin: 0;
+  }
 }
 
-/* Extra small screens */
+/* ================= EXTRA SMALL DEVICES (320px - 360px) ================= */
 @media (max-width: 360px) {
-  .hero {
-    padding: 60px 16px 90px;
-  }
-
   .heading {
-    font-size: 24px;
+    font-size: 22px !important;
   }
 
   .description {
-    font-size: 14px;
-    max-width: 92%;
+    font-size: 13px !important;
   }
 
   .btnPrimary,
   .btnSecondary {
-    width: 88%;
-    padding: 11px 22px;
-    font-size: 0.98rem;
-  }
-
-  .social {
-    gap: 22px;
-    max-width: 280px;
+    font-size: 0.9rem;
+    padding: 8px 18px;
   }
 
   .socialIcon {
-    font-size: 28px;
+    font-size: 24px !important;
+  }
+}
+
+/* ================= iPhone X FIX ================= */
+@media (min-width: 375px) and (max-height: 812px) {
+  .hero {
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .container {
+    gap: 24px !important;
+  }
+
+  .textSide,
+  .buttons,
+  .social {
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
