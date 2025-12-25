@@ -239,12 +239,12 @@
 /* ================= MOBILE / ALL SMALL SCREENS (≤ 768px) ================= */
 @media (max-width: 768px) {
   .hero {
-    padding: 70px 20px 90px;          /* better breathing space left/right + bottom */
+    padding: 80px 24px 100px;           /* good side padding + bottom space */
     min-height: auto;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;              /* ← key for horizontal centering */
+    align-items: center;                /* centers children horizontally */
     justify-content: flex-start;
     text-align: center;
     box-sizing: border-box;
@@ -253,16 +253,17 @@
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;              /* ← important */
+    align-items: center;                /* very important */
     justify-content: center;
     text-align: center;
-    gap: 32px;                        /* more pleasant spacing */
+    gap: 36px;                          /* pleasant vertical spacing */
     width: 100%;
     max-width: 100%;
-    padding: 0 12px;                  /* small side padding inside container */
+    margin: 0 auto;
+    padding: 0 8px;                     /* tiny extra safety padding */
   }
 
-  /* 1. Text (Heading + Paragraph) – forced center */
+  /* 1. Text block – centered */
   .textSide {
     order: 1;
     display: flex;
@@ -270,33 +271,31 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 90%;                   /* ← prevents text touching screen edges */
-    margin: 0 auto;                   /* ← centers the block */
-    top: 0 !important;
-    position: static;
+    max-width: 90%;                     /* prevents text hitting edges */
+    margin: 0 auto;
+    position: static;                   /* reset any desktop positioning */
   }
 
   .heading {
-    font-size: 28px !important;       /* slightly bigger but still safe */
+    font-size: 28px;
     font-weight: 700;
     color: #000;
-    margin: 0 0 14px 0 !important;
+    margin: 0 0 16px 0;
     text-align: center;
-    line-height: 1.18;
+    line-height: 1.2;
     width: 100%;
-    max-width: 100%;
   }
 
   .description {
-    font-size: 15px !important;
+    font-size: 15px;
     color: #555;
-    margin: 0 auto 24px !important;
+    margin: 0 auto 28px;
     text-align: center;
     line-height: 1.55;
-    max-width: 88%;                   /* ← key for nice readable width */
+    max-width: 88%;
   }
 
-  /* 2. Images completely hidden */
+  /* 2. Images hidden */
   .imageSide,
   .imageWrapper,
   .mainImage,
@@ -306,69 +305,69 @@
     display: none !important;
   }
 
-  /* 3. Buttons – centered column */
+  /* 3. Buttons – centered stack */
   .buttons {
     order: 2;
     display: flex;
     flex-direction: column;
-    align-items: center;              /* ← centers buttons horizontally */
+    align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     width: 100%;
     max-width: 100%;
-    margin: 0 auto 20px;
+    margin: 0 auto;
   }
 
   .btnPrimary,
   .btnSecondary {
-    width: 82%;
+    width: 80%;
     max-width: 280px;
     padding: 12px 28px;
     font-size: 1.05rem;
     text-align: center;
-    margin: 0 auto;                   /* extra safety */
+    margin: 0 auto;                     /* double ensures centering */
   }
 
-  /* 4. Social icons – HORIZONTAL row + centered */
+  /* 4. Social – horizontal centered row */
   .social {
     order: 3;
     display: flex;
-    flex-direction: row;              /* ← changed to row = icons side by side */
-    justify-content: center;          /* ← centers the whole group */
-    align-items: center;              /* vertical alignment */
-    gap: 24px;                        /* space between icons */
+    flex-direction: row;                /* side-by-side icons */
+    justify-content: center;            /* centers the group */
+    align-items: center;
+    gap: 28px;                          /* nice spacing between icons */
     width: 100%;
-    max-width: 320px;
-    margin: 16px auto 0;              /* centers + some top space */
+    max-width: 340px;                   /* keeps group compact & centered */
+    margin: 20px auto 0;
   }
 
   .socialIcon {
-    font-size: 32px !important;       /* better touch target */
+    font-size: 32px;
   }
 
   .socialText p {
-    font-size: 13px !important;
+    font-size: 13px;
     margin: 4px 0 0;
     text-align: center;
     color: #666;
   }
 
-  /* If you want to hide text and show only icons (cleaner on mobile) */
+  /* Optional: hide text if you want icons-only look */
   /* .socialText { display: none; } */
 }
 
-/* ================= EXTRA SMALL DEVICES (≤ 360px) ================= */
+/* ================= EXTRA SMALL (≤ 360px) ================= */
 @media (max-width: 360px) {
   .hero {
-    padding: 60px 16px 80px;
+    padding: 60px 18px 90px;
   }
 
   .heading {
-    font-size: 24px !important;
+    font-size: 24px;
   }
 
   .description {
-    font-size: 14px !important;
+    font-size: 14px;
     max-width: 92%;
   }
 
@@ -376,14 +375,15 @@
   .btnSecondary {
     width: 88%;
     padding: 11px 24px;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
   }
 
   .social {
-    gap: 20px;
+    gap: 22px;
+    max-width: 300px;
   }
 
   .socialIcon {
-    font-size: 28px !important;
+    font-size: 28px;
   }
 }
