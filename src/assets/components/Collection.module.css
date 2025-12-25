@@ -686,8 +686,10 @@
   color: #555;
   max-width: 500px;
 }
+
 .ctaButton {
-  align-self: flex-start;
+  align-self: center;            /* MAIN FIX: center mein push karega flex parent mein */
+  justify-self: center;          /* Extra safety agar grid parent hai */
   background: #d9c8b2;
   color: #1a1a1a;
   border: none;
@@ -704,6 +706,7 @@
   position: relative;
   transition: 0.3s ease-in-out all;
   box-shadow: 0 10px 30px rgba(217, 200, 178, 0.4);
+  margin: 0 auto;                /* Extra: agar non-flex parent hai to center */
 }
 
 /* Shining animation */
@@ -745,6 +748,34 @@
 
 .ctaButton:active {
   transform: scale(0.95);
+}
+
+/* Responsive for all mobiles – center confirm + size adjust */
+@media (max-width: 768px) {  /* Tablets aur normal phones */
+  .ctaButton {
+    align-self: center;        /* Double confirm */
+    padding: 12px 28px;        /* Thoda compact */
+    font-size: 1rem;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {  /* iPhone X, SE, small Androids */
+  .ctaButton {
+    align-self: center;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 360px) {  /* Very small phones */
+  .ctaButton {
+    align-self: center;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    gap: 6px;
+  }
 }
 
 .smallImageWrapper {
