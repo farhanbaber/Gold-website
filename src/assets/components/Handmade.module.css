@@ -238,132 +238,72 @@
 }
 
 /* ================== RESPONSIVE ================== */
-/* ================= SAFE RESPONSIVE FIX ================= */
-
-@media (max-width: 1024px) {
-  .hero {
-    min-height: auto;
-    padding: 80px 20px;
-    overflow: hidden;
-  }
-
-  .textSide,
-  .imageSide {
-    top: 0; /* negative top remove */
-  }
-
-  .imageWrapper {
-    width: 380px;
-    height: 560px;
-  }
-
-  .mainImage {
-    width: 320px;
-    height: 460px;
-  }
-
-  .topImage {
-    width: 210px;
-    height: 210px;
-  }
-
-  .bottomImage {
-    width: 230px;
-    height: 230px;
-  }
-}
-
 @media (max-width: 768px) {
-  .hero {
-    padding: 70px 16px;
-    overflow: hidden;
-  }
-
   .container {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 60px;
+    gap: 40px;
   }
 
+  /* 1️⃣ Text first */
   .textSide {
-    max-width: 100%;
+    order: 1;
     top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .heading {
-    font-size: 38px;
-    max-width: 90%;
-    margin: 0 auto 20px;
-    line-height: 1.25;
+    margin-bottom: 16px;
   }
 
   .description {
-    max-width: 90%;
-    margin: 0 auto 30px;
+    margin-bottom: 24px;
   }
 
-  .buttons,
-  .social {
-    justify-content: center;
-  }
-
+  /* 3️⃣ Animated images in middle */
   .imageSide {
+    order: 2;
     top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .imageWrapper {
-    width: 320px;
-    height: 500px;
+    margin: 0 auto;
   }
 
-  .mainImage {
-    width: 280px;
-    height: 400px;
+  /* 4️⃣ Buttons after images */
+  .buttons {
+    order: 3;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
   }
 
-  .topImage,
-  .bottomImage {
-    width: 180px;
-    height: 180px;
+  /* 5️⃣ Social icons last */
+  .social {
+    order: 4;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    padding: 60px 14px;
-    overflow: hidden;
+  .container {
+    gap: 32px;
   }
 
   .heading {
     font-size: 34px;
-    max-width: 85%;
+    max-width: 90%;
   }
 
   .description {
-    max-width: 85%;
-  }
-
-  .imageWrapper {
-    width: 280px;
-    height: 440px;
-  }
-
-  .mainImage {
-    width: 240px;
-    height: 350px;
-  }
-
-  .topImage,
-  .bottomImage {
-    width: 160px;
-    height: 160px;
-  }
-}
-
-@media (max-width: 360px) {
-  .heading {
-    font-size: 32px;
-    max-width: 80%;
+    max-width: 90%;
   }
 }
