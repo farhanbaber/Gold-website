@@ -238,10 +238,10 @@
 }
 @media (max-width: 768px) {
   .hero {
-    padding: 60px 16px 80px;
-    min-height: auto;               /* ← Key fix: no forced full viewport height */
-    height: auto !important;        /* prevent any inherited fixed height */
-    overflow: hidden;               /* ← Contains any potential overflow */
+    padding: 70px 24px 90px;        /* ← Increased side padding (24px) to prevent touching corners */
+    min-height: auto;
+    height: auto !important;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -256,10 +256,10 @@
     gap: 36px;
     width: 100%;
     max-width: 100%;
-    overflow: visible;              /* let content breathe, but hero contains it */
+    overflow: visible;
   }
 
-  /* Text first – no negative positioning */
+  /* Text first – smaller fonts */
   .textSide {
     order: 1;
     position: static;
@@ -269,35 +269,37 @@
   }
 
   .heading {
-    font-size: clamp(2.5rem, 7.8vw, 3.4rem);
-    line-height: 1.12;
-    margin-bottom: 16px;
+    font-size: clamp(1.8rem, 6.5vw, 2.4rem);  /* ← Smaller: 29–38px, should fit in ~2 lines */
+    line-height: 1.1;               /* ← Tighter line-height to reduce wrapping */
+    margin-bottom: 14px;
+    padding: 0 8px;                 /* ← Extra inner padding if needed */
   }
 
   .description {
-    font-size: clamp(1.05rem, 4.3vw, 1.15rem);
-    line-height: 1.6;
-    max-width: 92%;
-    margin: 0 auto 28px;
+    font-size: clamp(0.9rem, 3.8vw, 1rem);   /* ← Smaller: 14–16px */
+    line-height: 1.5;
+    max-width: 94%;                 /* ← Wider max-width to help wrapping */
+    margin: 0 auto 24px;
+    padding: 0 8px;
   }
 
-  /* Images – centered + animation preserved, no overflow */
+  /* Images – centered + only top image shown/animated */
   .imageSide {
     order: 2;
     position: relative;
     width: 100%;
     max-width: 380px;
     margin: 20px 0;
-    overflow: hidden;               /* ← contains floating images */
+    overflow: hidden;
   }
 
   .imageWrapper {
     position: relative;
     width: 100%;
-    height: 520px;                  /* fixed height wrapper prevents collapse */
-    max-height: 80vh;               /* safety against very tall screens */
+    height: 520px;
+    max-height: 80vh;
     margin: 0 auto;
-    overflow: visible;              /* allow slight float outside but contained by .imageSide */
+    overflow: visible;
   }
 
   .mainImage {
@@ -312,9 +314,9 @@
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(0,0,0,0.15);
     z-index: 2;
+    animation: none !important;     /* ← No animation, stays stuck/fixed */
   }
 
-  /* Keep floating images smaller + centered layout */
   .topImage {
     position: absolute;
     width: 42%;
@@ -324,21 +326,12 @@
     top: 8%;
     right: 5%;
     z-index: 3;
-    animation: floatTop 14s ease-in-out infinite;
+    animation: floatTop 14s ease-in-out infinite;  /* ← Keep animation */
     border-radius: 50%;
   }
 
   .bottomImage {
-    position: absolute;
-    width: 46%;
-    max-width: 180px;
-    height: auto;
-    aspect-ratio: 1/1;
-    bottom: 10%;
-    right: 8%;
-    z-index: 1;
-    animation: floatBottom 16s ease-in-out infinite;
-    border-radius: 50%;
+    display: none !important;       /* ← Hide bottom image */
   }
 
   /* Buttons after images */
@@ -378,8 +371,12 @@
   }
 }
 
-/* Very small screens – reduce sizes to prevent overflow even more */
+/* Very small screens – further reduce sizes */
 @media (max-width: 400px) {
+  .hero {
+    padding: 60px 20px 80px;        /* ← Slightly less padding for tiny screens */
+  }
+
   .imageWrapper {
     height: 460px;
   }
@@ -393,13 +390,11 @@
     right: 2%;
   }
 
-  .bottomImage {
-    max-width: 150px;
-    right: 4%;
-    bottom: 6%;
+  .heading {
+    font-size: clamp(1.6rem, 6vw, 2.1rem);  /* ← Even smaller */
   }
 
-  .heading {
-    font-size: clamp(2.2rem, 7vw, 2.8rem);
+  .description {
+    font-size: 0.9rem;
   }
 }
