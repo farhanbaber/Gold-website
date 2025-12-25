@@ -473,75 +473,70 @@
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 /*/* Mobile only – 1 card per row */
+/* ===== MOBILE PERFECT CARD FIX ===== */
+
 @media (max-width: 768px) {
+  /* FORCE 2 CARDS */
   .showcasecontainer {
-    grid-template-columns: 1fr; /* only 1 card per row */
-    gap: 20px; /* spacing between cards */
-    padding: 20px 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
-  .price span { 
-    font-size: 20px; 
+  /* IMAGE HEIGHT CONTROL (LESS TALL) */
+  .mainimg {
+    padding-bottom: 85%; /* balanced rectangle, not too tall */
   }
 
-  /* 🔧 FIXED HEADING */
-  .mainHeading { 
-    font-size: 22px;          /* thora chota */
-    line-height: 1.3;        /* 👈 text cut fix */
-    margin: 10px 10px 6px;
-    text-align: center;
-    word-break: break-word;
-    overflow-wrap: break-word;
+  /* BUTTON SIZE FIX */
+  .addBtn {
+    font-size: 13px;
+    padding: 6px 12px;
   }
 
-  .toppara p { 
-    font-size: 13px; 
-    margin-bottom: 8px; 
-  }
-
-  .addBtn { 
-    font-size: 12px; 
-    padding: 8px 15px; 
-  }
-
-  .showcase { 
-    padding-bottom: 180px;   /* overflow kam */
+  .price span {
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .showcasecontainer {
-    grid-template-columns: 1fr; /* still 1 card per row */
-    gap: 15px;
-    padding: 15px 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
-  .price span { 
-    font-size: 18px; 
+  .mainimg {
+    padding-bottom: 80%; /* more compact */
   }
 
-  /* 🔧 EXTRA SMALL FIX */
-  .mainHeading { 
-    font-size: 20px;
-    line-height: 1.35;
-    margin: 8px 8px 6px;
+  .addBtn {
+    font-size: 12px;
+    padding: 5px 10px;
   }
 
-  .toppara p { 
-    font-size: 12px; 
-    margin-bottom: 6px; 
-  }
-
-  .addBtn { 
-    font-size: 11px; 
-    padding: 6px 12px; 
-  }
-
-  .showcase { 
-    padding-bottom: 160px;   /* overflow fix */
+  .price span {
+    font-size: 18px;
   }
 }
 
+@media (max-width: 360px) {
+  .showcasecontainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .mainimg {
+    padding-bottom: 75%; /* Nokia / very small screens */
+  }
+
+  .addBtn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .price span {
+    font-size: 16px;
+  }
+}
 
 /* end section */
 /* strar new section */
@@ -850,29 +845,52 @@
 /* =======================
    📱 MOBILE FIX (KEY)
    ======================= */
+/* ================= RESPONSIVE CENTER FIX ================= */
+
 @media (max-width: 768px) {
-  .exclusiveContainer {
-    grid-template-columns: 1fr;
+  .container {
+    justify-items: center;
+    align-items: center;
+    text-align: center;
   }
 
-  .exclusiveContent {
-    order: 1;
-    text-align: left;
-  }
-
-  .exclusiveImageWrap {
-    order: 2;
+  .content {
+    padding-left: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
   }
 }
 
-/* EXTRA SMALL */
 @media (max-width: 480px) {
-  .exclusiveShowcase {
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Vertical center */
+    align-items: center;      /* Horizontal center */
+    text-align: center;
+    width: 100%;
   }
 
-  .exclusiveBtn {
-    align-self: flex-start;
+  .content {
+    padding-left: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .smallImageWrappers {
+    align-self: center;
+  }
+}
+
+/* ================= SMALL DEVICES TEXT SIZE ================= */
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
   }
 }
 
