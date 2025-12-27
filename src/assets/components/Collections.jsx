@@ -246,7 +246,10 @@ const Collections = () => {
             className={styles.mainImages} 
           />
           <div className={styles.overlay}>
-            <span className={styles.hoverText}>Explore Collection</span>
+            <span className={styles.hoverText}>
+  Discover timeless jewelry crafted to elevate your everyday elegance.
+</span>
+
           </div>
         </div>
 
@@ -268,13 +271,42 @@ const Collections = () => {
           </button>
 
           {/* Small Rings Image */}
-          <div className={styles.smallImageWrapper}>
-            <img 
-              src="collectionimgtwo.png" 
-              alt="Gold rings" 
-              className={styles.smallImage} 
-            />
-          </div>
+        <div className={styles.smallImageWrapper}>
+  {/* IMAGE */}
+  <img
+    src="collectionimgtwo.png"
+    alt="Gold rings"
+    className={styles.smallImage}
+  />
+
+  {/* VIDEO */}
+  <div className={styles.smallImageWrapper}>
+      {/* IMAGE */}
+      <img
+        src="/collectionimgtwo.png"
+        alt="Gold rings"
+        className={styles.smallImage}
+      />
+
+      {/* VIDEO */}
+      <video
+        src="/hover.video.mp4"
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="auto"
+        className={styles.hoverVideo}
+      />
+
+      {/* CENTERED HEADING */}
+        <div className={styles.fullOverlay}>
+        <span className={styles.overlayHeading}>Elegant Gold</span>
+      </div>
+    </div>
+
+</div>
+
         </div>
       </div>
     </section>  

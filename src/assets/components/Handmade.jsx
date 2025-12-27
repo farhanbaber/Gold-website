@@ -3,6 +3,7 @@
 
 const Handmade = () => {
   return (
+    <>
  <section className={styles.hero}>
       <div className={styles.container}>
         {/* Left Text Side */}
@@ -55,6 +56,15 @@ const Handmade = () => {
         </div>
       </div>
     </section>
+    {/* end of the section */}
+    
+    
+  
+
+
+
+    </>
+    
   )
 }
 

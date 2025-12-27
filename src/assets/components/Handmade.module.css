@@ -29,8 +29,8 @@
 
 .heading {
   font-size: 52px;
-  font-weight: bold;
-  color: #000000b0;
+  font-weight: initial;
+  color: #000000f1;
   
   margin-bottom: 24px;
   line-height: 1.2;
@@ -38,7 +38,7 @@
 
 .description {
   font-size: 18px;
-  color: #666;
+  color: #928484;
   line-height: 1.7;
   margin-bottom: 40px;
 }
@@ -341,7 +341,6 @@
 /* صرف ٹیسٹ کے لیے — images چھپائیں + ٹیکسٹ سینٹر */
 @media (max-width: 991px) {
   .hero {
-    background: #f0f0f0;          /* ← یہ لکڑی لگے گی تو سمجھ آ جائے گی کہ میڈیا کوئری چل رہی ہے */
     text-align: center;
     padding: 40px 15px;
   }
@@ -416,3 +415,4 @@
     font-size: 26px;
   }
 }
+/* end section */
