@@ -606,6 +606,7 @@
 .imageWrapper:hover {
   transform: translateY(-10px);
 }
+
 .mainImages {
   width: 100%;
   height: 100%;
@@ -792,6 +793,19 @@
 }
 
 /* IMAGE & VIDEO */
+/* WRAPPER */
+.smallImageWrapper {
+  position: relative;
+  width: 280px;
+  height: 280px; /* fixed height to prevent layout jumps */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* IMAGE & VIDEO */
 .smallImage,
 .hoverVideo {
   position: absolute;
@@ -822,7 +836,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 199, 96, 0.295); /* light pink overlay */
+  background: rgba(255, 182, 193, 0.3); /* light pink overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -858,14 +872,15 @@
 }
 
 /* MOBILE / TOUCH DEVICES */
+/* Video hidden by default, overlay hidden, tap can trigger play */
 @media (hover: none) {
   .smallImage {
-    opacity: 0;
+    opacity: 1;
   }
   .hoverVideo,
   .fullOverlay {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(-10%);
   }
 }
 
@@ -889,6 +904,7 @@
     font-size: 1rem;
   }
 }
+
 
 /* ================================
    EXCLUSIVE SHOWCASE – FINAL FIX
