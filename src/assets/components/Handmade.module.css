@@ -358,3 +358,61 @@
     position: static !important;
   }
 }
+/* Desktop & large screens — force social icons in 1–2 lines max */
+@media (min-width: 992px) {
+  .social {
+    flex-wrap: nowrap !important;     /* no wrapping → try to stay in 1 line */
+    gap: 18px 28px;                   /* horizontal gap bigger, vertical smaller if wrapped */
+    justify-content: flex-start;      /* or center / space-between — your choice */
+    align-items: center;
+    flex-direction: row;              /* make sure it's horizontal */
+  }
+
+  .socialIcon {
+    font-size: 30px;                  /* slightly smaller than 36px to fit better */
+  }
+
+  .socialIcon i {
+    font-size: 30px;
+  }
+
+  /* If still wrapping to 3–4 lines, force tighter layout */
+  .social .socialIcon + .socialIcon {
+    margin-left: -8px;                /* slight overlap if really needed (optional) */
+  }
+
+  /* If you have text under icons and want 2 clean rows max */
+  .social {
+    max-width: 420px;                 /* adjust this value depending on your container width */
+  }
+}
+
+/* Tablet & mobile — allow natural wrapping, but keep it neat */
+@media (max-width: 991px) {
+  .social {
+    flex-wrap: wrap !important;
+    gap: 20px 30px;                   /* good spacing for 2–3 per row */
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .socialIcon {
+    font-size: 28px;
+  }
+
+  .socialIcon i {
+    font-size: 28px;
+  }
+}
+
+/* Very small screens — stack more vertically if needed */
+@media (max-width: 480px) {
+  .social {
+    gap: 16px 24px;
+    justify-content: center;
+  }
+
+  .socialIcon {
+    font-size: 26px;
+  }
+}
