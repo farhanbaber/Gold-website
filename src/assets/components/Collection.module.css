@@ -576,6 +576,7 @@
 }
 /* end section */
 /* strar new section */
+
 .exclusiveShowcase {
   width: 100%;
   min-height: 100vh;
@@ -687,10 +688,20 @@
   color: #555;
   max-width: 500px;
 }
+/* =========================
+   CTA WRAPPER (CENTER MAGIC)
+   ========================= */
+.ctaWrapper {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 100%;
+}
 
+/* =========================
+   CTA BUTTON
+   ========================= */
 .ctaButton {
-  align-self: center;            /* MAIN FIX: center mein push karega flex parent mein */
-  justify-self: center;          /* Extra safety agar grid parent hai */
   background: #d9c8b2;
   color: #1a1a1a;
   border: none;
@@ -699,20 +710,21 @@
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  /* justify-content: center; */
+  /* width: 100%; */
   gap: 12px;
-  overflow: hidden;
   font-family: "Dancing Script", cursive;
   position: relative;
-  transition: 0.3s ease-in-out all;
+  transition: all 0.3s ease-in-out;
   box-shadow: 0 10px 30px rgba(217, 200, 178, 0.4);
-  margin: 0 auto; 
-  position: relative; 
-  left: -12rem;              /* Extra: agar non-flex parent hai to center */
+  overflow: hidden;
 }
 
-/* Shining animation */
+/* =========================
+   SHINE EFFECT
+   ========================= */
 .ctaButton::before {
   content: "";
   position: absolute;
@@ -723,7 +735,7 @@
   background: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.45) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-20deg);
@@ -731,7 +743,9 @@
   z-index: 1;
 }
 
-/* Hover effect */
+/* =========================
+   HOVER EFFECT
+   ========================= */
 .ctaButton:hover {
   background-color: #8b6822;
   color: #ffffff;
@@ -743,43 +757,48 @@
   left: 130%;
 }
 
-/* Text above shine */
+/* =========================
+   ACTIVE
+   ========================= */
+.ctaButton:active {
+  transform: scale(0.95);
+}
+
+/* =========================
+   TEXT ABOVE SHINE
+   ========================= */
 .ctaButton span {
   position: relative;
   z-index: 2;
 }
 
-.ctaButton:active {
-  transform: scale(0.95);
-}
-
-/* Responsive for all mobiles – center confirm + size adjust */
-@media (max-width: 768px) {  /* Tablets aur normal phones */
+/* =========================
+   RESPONSIVE (ONLY SIZE)
+   ========================= */
+@media (max-width: 768px) {
   .ctaButton {
-    align-self: center;        /* Double confirm */
-    padding: 12px 28px;        /* Thoda compact */
+    padding: 12px 28px;
     font-size: 1rem;
     gap: 10px;
   }
 }
 
-@media (max-width: 480px) {  /* iPhone X, SE, small Androids */
+@media (max-width: 480px) {
   .ctaButton {
-    align-self: center;
     padding: 10px 24px;
     font-size: 0.95rem;
     gap: 8px;
   }
 }
 
-@media (max-width: 360px) {  /* Very small phones */
+@media (max-width: 360px) {
   .ctaButton {
-    align-self: center;
     padding: 8px 20px;
     font-size: 0.9rem;
     gap: 6px;
   }
 }
+
 /* WRAPPER */
 .smallImageWrapper {
   position: relative;
@@ -836,7 +855,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 182, 193, 0.3); /* light pink overlay */
+  background: rgba(34, 30, 30, 0.507); /* light pink overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1035,7 +1054,7 @@
 }
 
 /* overlay */
-.overlay {
+ .featured:hover .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -1044,7 +1063,7 @@
     rgba(230, 230, 230, 0.25),
     rgba(0, 0, 0, 0.25)
   );
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.6s ease;
   display: flex;
   align-items: center;
@@ -1075,20 +1094,35 @@
   transform: translateY(0);
   opacity: 1;
 }
-@media (hover: none) {
-  .overlay {
+@media (hover: hover) and (pointer: fine) {
+  .featured:hover .overlay {
     opacity: 1;
   }
 
-  .hoverText {
+  .featured:hover .hoverText {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .mainImages {
+  .featured:hover .mainImages {
     transform: scale(1.05);
   }
 }
+@media (hover: none) and (pointer: coarse) {
+  .featured .overlay {
+    opacity: 1;
+  }
+
+  .featured .hoverText {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .featured .mainImages {
+    transform: none;
+  }
+}
+
 .hoverText {
   display: inline-block; /* important for span */
   color: #111;

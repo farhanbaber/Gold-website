@@ -239,7 +239,7 @@ const Collections = () => {
       <div className={styles.container}>
         
         {/* Left Image */}
-        <div className={styles.imageWrappers}>
+        <div className={`${ styles.imageWrappers} ${styles.featured}`}>
           <img 
             src="collectionimg.png" 
             alt="Model wearing jewelry" 
@@ -265,10 +265,12 @@ const Collections = () => {
             and classic artistry. Each creation tells a story of luxury and grace.
           </p>
           
-          <button className={styles.ctaButton}>
-            Shop Now
-            <span className={styles.arrow}>→</span>
-          </button>
+         <div className={styles.ctaWrapper}>
+  <button className={styles.ctaButton}>
+    <span>Shop Now</span>
+  </button>
+</div>
+
 
           {/* Small Rings Image */}
         <div className={styles.smallImageWrapper}>
