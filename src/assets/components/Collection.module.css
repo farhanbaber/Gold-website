@@ -697,7 +697,11 @@
   /* align-items: center; */
   width: 100%;
 }
-
+@media (max-width: 1024px) {   /* tablets + mobiles */
+  .ctaWrapper {
+    justify-content: center;   /* Button center on all small screens */
+  }
+}
 /* =========================
    CTA BUTTON
    ========================= */
@@ -1108,20 +1112,7 @@
     transform: scale(1.05);
   }
 }
-@media (hover: none) and (pointer: coarse) {
-  .featured .overlay {
-    opacity: 1;
-  }
 
-  .featured .hoverText {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .featured .mainImages {
-    transform: none;
-  }
-}
 
 .hoverText {
   display: inline-block; /* important for span */

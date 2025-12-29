@@ -247,7 +247,7 @@ const Collections = () => {
           />
           <div className={styles.overlay}>
             <span className={styles.hoverText}>
-  Discover timeless jewelry crafted to elevate your everyday elegance.
+  Discover timeless jewelery crafted to elevate your everyday elegance.
 </span>
 
           </div>
