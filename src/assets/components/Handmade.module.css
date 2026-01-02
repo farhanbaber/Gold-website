@@ -424,70 +424,89 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;           /* space between line & heading */
-  padding: 30px 0;     /* top & bottom spacing */
-  flex-wrap: wrap;      /* wrap on smaller screens */
-    font-family: "Cinzel", serif;
-
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  /* overflow rokne ke liye */
+  box-sizing: border-box; 
+  font-family: "Cinzel", serif;
 }
 
 /* ===== SIDE DECORATIVE LINE ===== */
 .line {
-  display: block;       /* ensures width/height work */
-  width: 600px;         /* default desktop width */
-  max-width: 100%;      /* never exceed container */
+  flex: 1;          /* Ye line ko bachi hui sari jagah de dega */
   height: 1px;
   background-color: #cfcfcf;
+  min-width: 30px;  /* Mobile par line bilkul khatam nahi hogi */
+  max-width: 150px; /* Desktop par line ko bohat lamba hone se rokega */
 }
 
 /* ===== HEADING ===== */
 .title {
   display: flex;
   align-items: center;
-  gap: 12px;            /* space between text & icon */
+  justify-content: center;
+  gap: 8px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 24px;      /* mobile font size */
+  letter-spacing: 2px;
+  
+  /* Mobile First Font Size */
+  font-size: 16px; 
   white-space: nowrap;
+  text-align: center;
 }
 
 /* ===== ICON ===== */
 .icon {
-  width: 22px;          /* mobile icon size */
+  width: 18px;
   height: auto;
+  flex-shrink: 0; /* Icon chota nahi hoga */
 }
 
-/* ===== TABLET ===== */
+/* ===== TABLET (Standard) ===== */
 @media (min-width: 768px) {
   .title {
-    font-size: 34px;
+    font-size: 28px;
+    letter-spacing: 3px;
+    gap: 12px;
   }
-
   .icon {
-    width: 28px;
+    width: 24px;
   }
-
   .line {
-    width: 120px;       /* tablet line length */
+    max-width: 200px;
   }
 }
 
-/* ===== LAPTOP & DESKTOP ===== */
+/* ===== DESKTOP ===== */
 @media (min-width: 1024px) {
   .title {
-    font-size: 44px;
+    font-size: 36px;
   }
-
   .icon {
-    width: 34px;
+    width: 30px;
   }
-
   .line {
-    width: 160px;       /* desktop line length */
+    max-width: 300px; /* Desktop par thori lambi line */
   }
 }
 
+/* ===== VERY SMALL MOBILE (Fix for Overflow) ===== */
+@media (max-width: 360px) {
+  .title {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .wrapper {
+    gap: 8px;
+  }
+  .line {
+    min-width: 20px;
+  }
+}
 .jewelrySectionWrapper {
   max-width: 1200px;
   margin: 50px auto;
