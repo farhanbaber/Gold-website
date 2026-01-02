@@ -487,6 +487,7 @@
     width: 160px;       /* desktop line length */
   }
 }
+
 .jewelrySectionWrapper {
   max-width: 1200px;
   margin: 50px auto;
@@ -574,5 +575,52 @@
   .jewelrySectionWrapper {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+  }
+}
+/* Mobile Screens (900px se nichay ke liye) */
+@media (max-width: 900px) {
+  .jewelrySectionWrapper {
+    /* Mobile par 2 columns behtar lagte hain ya 1 column */
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto;
+    gap: 10px; /* Gap kam kar diya mobile ke liye */
+    padding: 10px;
+  }
+
+  .heroTile, .verticalSpanTile {
+    grid-row: span 1; /* Mobile par sab boxes barabar height ke ho jayenge */
+    height: 250px; 
+  }
+
+  .smallTile {
+    height: 250px;
+  }
+
+  /* Mobile par text ko mazeed chota aur perfect center karne ke liye */
+  .accentHeading {
+    font-size: 11px !important; /* Mobile par mazeed chota text */
+    letter-spacing: 2px !important;
+  }
+
+  .subText {
+    font-size: 8px !important; /* Subtext bhi chota */
+    letter-spacing: 1px !important;
+    margin-top: 5px;
+    padding-top: 5px;
+  }
+
+  .hoverOverlay {
+    padding: 5px; /* Padding kam taake text center mein hi rahe */
+  }
+}
+
+/* Bohat choti screens (Mobile Portrait) */
+@media (max-width: 480px) {
+  .jewelrySectionWrapper {
+    grid-template-columns: 1fr; /* Full width boxes */
+  }
+  
+  .accentHeading {
+    font-size: 14px !important; /* Single column mein thora bara dikh sakta hai */
   }
 }
