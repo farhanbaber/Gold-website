@@ -569,58 +569,77 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
-/* Responsive */
-@media (max-width: 900px) {
-  .jewelrySectionWrapper {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
+/* Laptop aur Mobile dono ke liye same layout */
+.jewelrySectionWrapper {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+  display: grid;
+  /* Ye layout mobile par bhi 3 columns hi rakhega */
+  grid-template-columns: 1.8fr 1fr 1.2fr;
+  grid-template-rows: repeat(2, 280px); /* Mobile ke liye height thodi kam ki hai */
+  gap: 10px;
 }
-/* Mobile Screens (900px se nichay ke liye) */
-@media (max-width: 900px) {
+
+.displayTile {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroTile { grid-row: span 2; }
+.verticalSpanTile { grid-row: span 2; }
+.smallTile { grid-row: span 1; }
+
+/* Text ko hamesha center mein rakhne ke liye */
+.hoverOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%); /* Shuru mein thoda niche */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  text-align: center;
+  z-index: 2;
+}
+
+.displayTile:hover .hoverOverlay {
+  opacity: 1;
+  transform: translate(-50%, -50%); /* Hover par perfect center */
+}
+
+/* --- MOBILE SPECIFIC TEXT ADJUSTMENT --- */
+@media (max-width: 768px) {
   .jewelrySectionWrapper {
-    /* Mobile par 2 columns behtar lagte hain ya 1 column */
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: auto;
-    gap: 10px; /* Gap kam kar diya mobile ke liye */
-    padding: 10px;
+    /* Layout laptop wala hi rahega, bas rows thodi choti kar di */
+    grid-template-rows: repeat(2, 160px); 
+    gap: 5px;
   }
 
-  .heroTile, .verticalSpanTile {
-    grid-row: span 1; /* Mobile par sab boxes barabar height ke ho jayenge */
-    height: 250px; 
-  }
-
-  .smallTile {
-    height: 250px;
-  }
-
-  /* Mobile par text ko mazeed chota aur perfect center karne ke liye */
   .accentHeading {
-    font-size: 11px !important; /* Mobile par mazeed chota text */
-    letter-spacing: 2px !important;
+    /* Mobile par text bohat chota taake fit aaye */
+    font-size: 9px !important; 
+    letter-spacing: 1px !important;
+    line-height: 1;
   }
 
   .subText {
-    font-size: 8px !important; /* Subtext bhi chota */
-    letter-spacing: 1px !important;
-    margin-top: 5px;
-    padding-top: 5px;
-  }
-
-  .hoverOverlay {
-    padding: 5px; /* Padding kam taake text center mein hi rahe */
+    font-size: 7px !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 4px;
+    padding-top: 4px;
   }
 }
 
-/* Bohat choti screens (Mobile Portrait) */
-@media (max-width: 480px) {
+/* Bohat chote phones ke liye (iPhone SE etc) */
+@media (max-width: 400px) {
   .jewelrySectionWrapper {
-    grid-template-columns: 1fr; /* Full width boxes */
-  }
-  
-  .accentHeading {
-    font-size: 14px !important; /* Single column mein thora bara dikh sakta hai */
+    grid-template-rows: repeat(2, 130px);
   }
 }
