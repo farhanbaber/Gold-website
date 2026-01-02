@@ -417,8 +417,10 @@
 }
 /* end section */
 .subHero {
-  height: 150vh;
-  /* border: 2px solid red; */
+min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur niche jaye */
+  height: auto;      /* Ye sabse zaroori hai, taake sari images nazar aayein */
+  width: 100%;
+  overflow: visible;     
 }
 .wrapper {
   display: flex;
