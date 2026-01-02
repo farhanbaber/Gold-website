@@ -416,3 +416,163 @@
   }
 }
 /* end section */
+.subHero {
+  height: 150vh;
+  /* border: 2px solid red; */
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;           /* space between line & heading */
+  padding: 30px 0;     /* top & bottom spacing */
+  flex-wrap: wrap;      /* wrap on smaller screens */
+    font-family: "Cinzel", serif;
+
+}
+
+/* ===== SIDE DECORATIVE LINE ===== */
+.line {
+  display: block;       /* ensures width/height work */
+  width: 600px;         /* default desktop width */
+  max-width: 100%;      /* never exceed container */
+  height: 1px;
+  background-color: #cfcfcf;
+}
+
+/* ===== HEADING ===== */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 12px;            /* space between text & icon */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 24px;      /* mobile font size */
+  white-space: nowrap;
+}
+
+/* ===== ICON ===== */
+.icon {
+  width: 22px;          /* mobile icon size */
+  height: auto;
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+  .title {
+    font-size: 34px;
+  }
+
+  .icon {
+    width: 28px;
+  }
+
+  .line {
+    width: 120px;       /* tablet line length */
+  }
+}
+
+/* ===== LAPTOP & DESKTOP ===== */
+@media (min-width: 1024px) {
+  .title {
+    font-size: 44px;
+  }
+
+  .icon {
+    width: 34px;
+  }
+
+  .line {
+    width: 160px;       /* desktop line length */
+  }
+}
+.jewelrySectionWrapper {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  display: grid;
+  /* Left: Bari, Middle: Choti (Top/Bottom), Right: Bari */
+  grid-template-columns: 1.8fr 1fr 1.2fr;
+  grid-template-rows: repeat(2, 320px);
+  gap: 15px;
+}
+
+.displayTile {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Layout logic */
+.heroTile { grid-row: span 2; }
+.verticalSpanTile { grid-row: span 2; }
+.smallTile { grid-row: span 1; }
+
+/* Image Animation */
+.mediaContainer {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease, opacity 0.5s ease;
+}
+
+.mediaContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.displayTile:hover .mediaContainer {
+  transform: scale(1.1);
+  opacity: 0.7; /* Image halki si dark hogi taake text saaf dikhe */
+}
+
+/* Text Hover Effect (Hidden by default) */
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  /* Text start mein niche chhupa hoga aur transparent hoga */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+/* Hover hone par text show hoga */
+.displayTile:hover .hoverOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.accentHeading {
+  color: #ffffff;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.subText {
+  color: #bfa37e;
+  font-size: 13px;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .jewelrySectionWrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+}

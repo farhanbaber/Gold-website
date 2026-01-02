@@ -35,11 +35,14 @@ const Handmade = () => {
         {/* Right Images Side */}
         <div className={styles.imageSide}>
           <div className={styles.imageWrapper}>
-            <img 
-              src="/main.h.png" 
-              alt="Handmade Jewellery" 
-              className={styles.mainImage} 
-            />
+         <video
+  src="/renew.video.ai.mp4"        // ensure file name correct ho
+  className={styles.mainImage}
+  autoPlay                     // autoplay
+  loop                         // infinite loop
+  muted                        // browser autoplay ke liye required
+  playsInline                  // mobile devices ke liye
+/>
 
             <img
               src="/handmade.img1.png"
@@ -57,6 +60,74 @@ const Handmade = () => {
       </div>
     </section>
     {/* end of the section */}
+    <section className={styles.subHero}>
+<div className={styles.wrapper}>
+  <span className={styles.line}></span>
+
+  <h2 className={styles.title}>
+    Golden
+    <img
+      src="/crown pic.png"
+      alt="Jewelry Icon"
+      className={styles.icon}
+    />
+    Assurance
+  </h2>
+
+  <span className={styles.line}></span>
+</div>
+
+    <section className={styles.jewelrySectionWrapper}>
+      
+      {/* 1. Large Left Tile */}
+      <div className={`${styles.displayTile} ${styles.heroTile}`}>
+        <div className={styles.mediaContainer}>
+          <img src="/crown.set2.png" alt="Collection" />
+        </div>
+        <div className={styles.hoverOverlay}>
+          <h3 className={styles.accentHeading}>ROYAL HERITAGE</h3>
+          <span className={styles.subText}>View Collection</span>
+        </div>
+      </div>
+
+      {/* 2. Small Top Center Tile */}
+      <div className={`${styles.displayTile} ${styles.smallTile}`}>
+        <div className={styles.mediaContainer}>
+          <img src="/crown.set1.png" alt="Rings" />
+        </div>
+        <div className={styles.hoverOverlay}>
+          <h3 className={styles.accentHeading}>GOLDEN SHINE</h3>
+          <span className={styles.subText}>View Collection</span>
+        </div>
+      </div>
+
+      {/* 3. Large Right Tile */}
+      <div className={`${styles.displayTile} ${styles.verticalSpanTile}`}>
+        <div className={styles.mediaContainer}>
+          <img src="/crwon.ring.png" alt="Watches" />
+        </div>
+        <div className={styles.hoverOverlay}>
+          <h3 className={styles.accentHeading}>BRIDAL GLOW</h3>
+          <span className={styles.subText}>View Collection</span>
+        </div>
+      </div>
+
+      {/* 4. Small Bottom Center Tile */}
+      <div className={`${styles.displayTile} ${styles.smallTile}`}>
+        <div className={styles.mediaContainer}>
+          <img src="/crown3.img.png" alt="Pearls" />
+        </div>
+        <div className={styles.hoverOverlay}>
+          <h3 className={styles.accentHeading}>DAILY LUXE</h3>
+          <span className={styles.subText}>View Collection</span>
+        </div>
+      </div>
+
+    </section>
+ 
+      
+
+    </section>
     
     
   
