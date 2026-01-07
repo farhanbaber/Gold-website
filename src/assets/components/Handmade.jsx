@@ -122,8 +122,124 @@ const Handmade = () => {
           <span className={styles.subText}>View Collection</span>
         </div>
       </div>
+      {/* end of the section */}
+      {/* start new section of main parent two */}
+    <div className={styles.subhero}>
+  <div className={styles.subcard1}>
+    <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+    <img src="/har.set1.png" alt="item" />
+    <h1>Radiance Royale</h1>
+    <p>Fayaz jewellers</p>
+  </div>
+
+  <div className={styles.subcard1}>
+        <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set2.png" alt="item" />
+    <h1>Divine Lustr</h1>
+        <p>Fayaz jewellers</p>
+
+  </div>
+
+  <div className={styles.subcard1}>
+        <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set3.png" alt="item" />
+    <h1>Eterna Gold</h1>
+        <p>Fayaz jewellers</p>
+
+  </div>
+
+  <div className={styles.subcard1}>
+        <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set4.png" alt="item" />
+    <h1>Aurora Gold Collection</h1>
+        <p>Fayaz jewellers</p>
+
+  </div>
+
+  {/* next row */}
+  <div className={styles.subcard1}>
+            <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set5.png" alt="item" />
+    <h1>Regal Elegance</h1>
+        <p>Fayaz jewellers</p>
+
+  </div>
+
+  <div className={styles.subcard1}>
+            <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set6.png" alt="item" />
+    <h1>Golden Mirage</h1>
+        <p>Fayaz jewellers</p>
+
+  </div>
+
+  <div className={styles.subcard1}>
+    <img src="/j7.png" alt="item" />
+    <h1></h1>
+        <p>Fayaz jewellers</p>
+
+  </div>
+
+  <div className={styles.subcard1}>
+    <img src="/j8.png" alt="item" />
+    <h1>Ring</h1>
+    <p>Gold</p>
+  </div>
+
+
+  <div className={styles.subcard1}>
+    <img src="/j8.png" alt="item" />
+    <h1>Ring</h1>
+    <p>Gold</p>
+  </div>
+
+
+  <div className={styles.subcard1}>
+    <img src="/j8.png" alt="item" />
+    <h1>Ring</h1>
+    <p>Gold</p>
+  </div>
+
+
+
+  <div className={styles.subcard1}>
+    <img src="/j8.png" alt="item" />
+    <h1>Ring</h1>
+    <p>Gold</p>
+  </div>
+
+
+
+  <div className={styles.subcard1}>
+    <img src="/j8.png" alt="item" />
+    <h1>Ring</h1>
+    <p>Gold</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
 
     </section>
+ 
  
       
 

@@ -519,6 +519,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   grid-template-columns: 1.8fr 1fr 1.2fr;
   grid-template-rows: repeat(2, 320px);
   gap: 15px;
+  border: 2px solid #e0e0e0;
+  height: auto;
 }
 
 /* 2. Tiles (Boxes) Base Style */
@@ -616,5 +618,142 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   
   .subText {
     font-size: 12px;
+  }
+}
+
+/* ===== SUB HERO ===== */
+.subhero {
+  width: 228%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;                 /* 2px horizontal + vertical gap */
+  /* padding: 10px 20px; */
+  box-sizing: border-box;
+  align-content: flex-start;   /* 👈 🔥 THIS FIXES THE BIG GAP */
+  /* border: 2px solid red; */
+
+}
+/* ===== CARD ===== */
+.subcard1 {
+  width: calc(25% - 2px);
+  height: 50vh;
+  /* border: 1px solid #e0e0e0; */
+  padding: 20px 16px;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  position: relative;           /* ← very important for absolute positioning */
+  overflow: hidden;
+}
+
+/* Heart icon → top-right corner */
+.subcard1 .heartIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.0rem;            /* adjustable size */
+  color: #ddd;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  z-index: 2;                   /* stays above other content */
+}
+
+/* Hover: becomes red + small beat animation */
+/* .subcard1:hover .heartIcon {
+  color: #e74c3c;             
+  transform: scale(1.25);
+  animation: heartbeat 1.3s infinite ease-in-out;
+} */
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1.25); }
+  50%      { transform: scale(1.45); }
+}
+
+/* Optional: slight background/fill on active/favorited state (if you add logic later) */
+/* .subcard1 .heartIcon.favorited {
+  color: #e74c3c;
+  transform: scale(1.2);
+} */
+
+/* ===== IMAGE ===== */
+.subcard1 img {
+  width: 100%;
+  max-width: 160px;
+  margin-bottom: 16px;
+  object-fit: contain;
+  transition: transform 0.45s ease;
+}
+
+/* ===== TITLE & PARA (bigger as before) ===== */
+.subcard1 h1 {
+  font-size: 1.5rem;
+  margin: 8px 0 6px;
+  font-weight: 600;
+  color: #222;
+}
+
+.subcard1 p {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 400;
+}
+
+/* Hover effects on card & image remain the same */
+.subcard1:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: #d4af37;
+}
+
+.subcard1:hover img {
+  transform: scale(1.12);
+}
+
+/* ── RESPONSIVE ── (heart stays top-right everywhere) */
+@media (max-width: 992px) {
+  .subcard1 {
+    width: calc(33.333% - 2px);
+    height: 48vh;
+  }
+  .subcard1 .heartIcon {
+    top: 14px;
+    right: 14px;
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .subcard1 {
+    width: 100%;
+    height: auto;
+    min-height: 340px;
+    margin-bottom: 24px;
+    padding: 24px 16px;        /* little more padding on mobile */
+  }
+  
+  .subcard1 .heartIcon {
+    top: 16px;                 /* same top-right position */
+    right: 16px;
+    font-size: 2.1rem;         /* slightly bigger on mobile for touch */
+  }
+  
+  .subcard1 img {
+    max-width: 140px;
+  }
+  
+  .subcard1 h1 {
+    font-size: 1.6rem;
+  }
+  
+  .subcard1 p {
+    font-size: 1.15rem;
   }
 }
