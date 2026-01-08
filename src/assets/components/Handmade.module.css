@@ -716,44 +716,123 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 .subcard1:hover img {
   transform: scale(1.12);
 }
+/* ── RESPONSIVE MEDIA QUERIES ONLY ── */
 
-/* ── RESPONSIVE ── (heart stays top-right everywhere) */
+/* Large tablets & small laptops (below 992px) */
 @media (max-width: 992px) {
-  .subcard1 {
-    width: calc(33.333% - 2px);
-    height: 48vh;
+  .subhero {
+    width: 100%;
+    gap: 8px;                    /* slightly bigger gap looks better */
   }
+
+  .subcard1 {
+    width: calc(50% - 4px);      /* 2 cards per row */
+    height: auto;                /* ← prevents overflow */
+    min-height: 380px;           /* gives breathing room */
+    padding: 20px 14px;
+  }
+
   .subcard1 .heartIcon {
-    top: 14px;
-    right: 14px;
+    top: 16px;
+    right: 16px;
+    font-size: 1.8rem;
+  }
+
+  .subcard1 img {
+    max-width: 140px;
+  }
+
+  .subcard1 h1 {
+    font-size: 1.4rem;
+  }
+
+  .subcard1 p {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets / bigger phones (below ~768px) */
+@media (max-width: 768px) {
+  .subhero {
+    gap: 10px;
+  }
+
+  .subcard1 {
+    width: calc(50% - 5px);
+    min-height: 360px;
+    padding: 18px 12px;
+  }
+
+  .subcard1 .heartIcon {
     font-size: 1.9rem;
   }
 }
 
+/* Small phones & portrait mobile (most common phones) */
 @media (max-width: 576px) {
-  .subcard1 {
+  .subhero {
     width: 100%;
+    gap: 12px;                   /* more generous gap on small screens */
+    padding: 0 10px;             /* safe side padding */
+  }
+
+  .subcard1 {
+    width: 100%;                 /* 1 card per row */
     height: auto;
-    min-height: 340px;
-    margin-bottom: 24px;
-    padding: 24px 16px;        /* little more padding on mobile */
+    min-height: 320px;           /* ← important: prevents squashing */
+    margin-bottom: 16px;         /* space between stacked cards */
+    padding: 24px 16px;          /* comfortable touch area */
   }
-  
+
   .subcard1 .heartIcon {
-    top: 16px;                 /* same top-right position */
-    right: 16px;
-    font-size: 2.1rem;         /* slightly bigger on mobile for touch */
+    top: 18px;
+    right: 18px;
+    font-size: 2.2rem;           /* easier to tap */
   }
-  
+
   .subcard1 img {
-    max-width: 140px;
+    max-width: 130px;
+    margin-bottom: 20px;
   }
-  
+
   .subcard1 h1 {
-    font-size: 1.6rem;
+    font-size: 1.55rem;
+    margin: 10px 0 8px;
   }
-  
+
   .subcard1 p {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+}
+
+/* Very small screens (old phones, small viewports) */
+@media (max-width: 360px) {
+  .subhero {
+    gap: 10px;
+    padding: 0 8px;
+  }
+
+  .subcard1 {
+    min-height: 300px;
+    padding: 20px 14px;
+  }
+
+  .subcard1 .heartIcon {
+    font-size: 2rem;
+    top: 14px;
+    right: 14px;
+  }
+
+  .subcard1 img {
+    max-width: 110px;
+  }
+
+  .subcard1 h1 {
+    font-size: 1.4rem;
+  }
+
+  .subcard1 p {
+    font-size: 0.98rem;
   }
 }

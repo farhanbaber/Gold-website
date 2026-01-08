@@ -179,36 +179,36 @@ const Handmade = () => {
   </div>
 
   <div className={styles.subcard1}>
-    <img src="/j7.png" alt="item" />
+                <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set7.png" alt="item" />
     <h1></h1>
         <p>Fayaz jewellers</p>
 
   </div>
 
   <div className={styles.subcard1}>
-    <img src="/j8.png" alt="item" />
+                <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set8.png" alt="item" />
     <h1>Ring</h1>
     <p>Gold</p>
   </div>
 
 
   <div className={styles.subcard1}>
-    <img src="/j8.png" alt="item" />
+                <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set9.png" alt="item" />
     <h1>Ring</h1>
     <p>Gold</p>
   </div>
 
 
   <div className={styles.subcard1}>
-    <img src="/j8.png" alt="item" />
-    <h1>Ring</h1>
-    <p>Gold</p>
-  </div>
+                <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
-
-
-  <div className={styles.subcard1}>
-    <img src="/j8.png" alt="item" />
+    <img src="/har.set10.png" alt="item" />
     <h1>Ring</h1>
     <p>Gold</p>
   </div>
@@ -216,7 +216,19 @@ const Handmade = () => {
 
 
   <div className={styles.subcard1}>
-    <img src="/j8.png" alt="item" />
+                <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set11.png" alt="item" />
+    <h1>Ring</h1>
+    <p>Gold</p>
+  </div>
+
+
+
+  <div className={styles.subcard1}>
+                <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
+
+    <img src="/har.set12.png" alt="item" />
     <h1>Ring</h1>
     <p>Gold</p>
   </div>
