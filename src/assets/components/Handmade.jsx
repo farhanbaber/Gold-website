@@ -86,7 +86,7 @@ const Handmade = () => {
         </div>
         <div className={styles.hoverOverlay}>
           <h3 className={styles.accentHeading}>ROYAL HERITAGE</h3>
-          <span className={styles.subText}>View Collection</span>
+          <span className={styles.subText}>Fayaz Jewellers</span>
         </div>
       </div>
 
@@ -96,8 +96,9 @@ const Handmade = () => {
           <img src="/crown.set1.png" alt="Rings" />
         </div>
         <div className={styles.hoverOverlay}>
-          <h3 className={styles.accentHeading}>GOLDEN SHINE</h3>
-          <span className={styles.subText}>View Collection</span>
+          <h3 className={styles.accentHeading}>GOLDEN SHINE</h3>\
+                    <span className={styles.subText}>Fayaz Jewellers</span>
+
         </div>
       </div>
 
@@ -108,7 +109,8 @@ const Handmade = () => {
         </div>
         <div className={styles.hoverOverlay}>
           <h3 className={styles.accentHeading}>BRIDAL GLOW</h3>
-          <span className={styles.subText}>View Collection</span>
+                    <span className={styles.subText}>Fayaz Jewellers</span>
+
         </div>
       </div>
 
@@ -119,7 +121,8 @@ const Handmade = () => {
         </div>
         <div className={styles.hoverOverlay}>
           <h3 className={styles.accentHeading}>DAILY LUXE</h3>
-          <span className={styles.subText}>View Collection</span>
+                    <span className={styles.subText}>Fayaz Jewellers</span>
+
         </div>
       </div>
       {/* end of the section */}
@@ -233,27 +236,62 @@ const Handmade = () => {
     <p>Fayaz jewellers</p>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
     </section>
- 
- 
+
+    </section>
+    {/* new section */}
+    <section className={styles.subherodiv}>
+      <div className={styles.subherotext}>
+        <h2 className={styles.subheading}>Aesthatic <span className={styles.subheadingSpan}>Collections </span><br /> with Ne<i class="fa-brands fa-wikipedia-w"></i>est Style</h2>
+        <p className={styles.subdescription}>
       
+    || Luxury gold sets for every precious moment ||
+        </p>
+      </div>
+      <section className={styles.fashion_container}>
+     
+      
+      <div className={styles.fashion_layout_grid}>
+        
+        {/* Left Column */}
+        <div className={styles.fashion_column}>
+          <div className={styles.fashion_img_box}>
+            <img src="/lx.1.png" alt="" />
+          </div>
+        </div>
+
+        {/* Center Column */}
+        <div className={`${styles.fashion_column} ${styles.fashion_col_center}`}>
+          <div className={styles.fashion_img_box}>
+            <img src="/lx.2.png" alt="" />
+          </div>
+          <p className={styles.fashion_description}>
+            Discover a wide range of fashion options, including Clothing, Shoes, Accessories, and more
+          </p>
+          <button className={styles.fashion_cta_btn}>
+            Shop Now <span>↗</span>
+          </button>
+        </div>
+
+        {/* Right Column */}
+        <div className={styles.fashion_column}>
+        <button className={styles.fashion_explore_badge}>
+  <span>
+    Explore
+               <i className="fa-solid fa-arrow-up-right-from-square"></i>
+  </span>
+</button>
+
+          <div className={styles.fashion_img_box}>
+            <img src="/lx.3.png" alt="" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
 
     </section>
     
