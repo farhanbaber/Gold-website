@@ -889,7 +889,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 .subherodiv {
   width: 100%;
   height: auto;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   padding: 10px 20px;
 
 }
@@ -900,7 +900,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   text-align: center;
           font-family: "Cinzel", serif;
 
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .subheading {
   font-size: 56px;
@@ -1371,7 +1371,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 
 @media (max-width: 850px) {
   .fashion_layout_grid { flex-direction: column; gap: 40px; }
-  .fashion_explore_badge { right: 0; top: 0; width: 80px; height: 80px; }
+  .fashion_explore_badge { display: none; }
 }
 
 /* Mobile Responsiveness */
@@ -1383,9 +1383,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
     order: 2; /* Center content mobile pe beech mein rahe */
   }
   .fashion_explore_badge {
-    width: 80px;
-    height: 80px;
-    right: 0;
+  display: none;
   }
 }
 /* Mobile Responsiveness */

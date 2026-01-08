@@ -271,7 +271,8 @@ const Handmade = () => {
             Discover a wide range of fashion options, including Clothing, Shoes, Accessories, and more
           </p>
           <button className={styles.fashion_cta_btn}>
-            Shop Now <span>↗</span>
+            Shop Now <span>               <i className="fa-solid fa-arrow-up-right-from-square"></i>
+</span>
           </button>
         </div>
 
