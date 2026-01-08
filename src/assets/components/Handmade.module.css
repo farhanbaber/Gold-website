@@ -735,7 +735,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   .subcard1 .heartIcon {
     top: 16px;
     right: 16px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .subcard1 img {
@@ -764,7 +764,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   }
 
   .subcard1 .heartIcon {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -787,7 +787,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   .subcard1 .heartIcon {
     top: 18px;
     right: 18px;
-    font-size: 2.2rem;           /* easier to tap */
+    font-size: 1.7rem;           /* easier to tap */
   }
 
   .subcard1 img {
@@ -819,7 +819,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   }
 
   .subcard1 .heartIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     top: 14px;
     right: 14px;
   }
