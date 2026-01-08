@@ -454,7 +454,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  
+      font-family: "Cinzel", serif;
+
   /* Mobile First Font Size */
   font-size: 16px; 
   white-space: nowrap;
@@ -474,6 +475,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
     font-size: 28px;
     letter-spacing: 3px;
     gap: 12px;
+        font-family: "Cinzel", serif;
+
   }
   .icon {
     width: 24px;
@@ -487,6 +490,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 @media (min-width: 1024px) {
   .title {
     font-size: 36px;
+        font-family: "Cinzel", serif;
+
   }
   .icon {
     width: 30px;
@@ -501,6 +506,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   .title {
     font-size: 14px;
     letter-spacing: 1px;
+        font-family: "Cinzel", serif;
+
   }
   .wrapper {
     gap: 8px;
@@ -585,6 +592,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   letter-spacing: 3px;
   margin: 0;
   font-weight: 600;
+      font-family: "Cinzel", serif;
+
 }
 
 .subText {
@@ -605,19 +614,28 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
     grid-template-rows: auto;
     gap: 20px;
     padding: 10px;
+        font-family: "Cinzel", serif;
+
   }
 
   .heroTile, .verticalSpanTile, .smallTile {
     grid-row: span 1 !important; /* Sab boxes ki height barabar */
     height: 350px; /* Mobile par image ki lambai */
+        font-family: "Cinzel", serif;
+
+ 
   }
 
   .accentHeading {
     font-size: 18px; /* Mobile par thoda bara text */
+        font-family: "Cinzel", serif;
+
   }
   
   .subText {
     font-size: 12px;
+        font-family: "Cinzel", serif;
+
   }
 }
 
@@ -631,6 +649,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   box-sizing: border-box;
   align-content: flex-start;   /* 👈 🔥 THIS FIXES THE BIG GAP */
   /* border: 2px solid red; */
+    font-family: "Cinzel", serif;
 
 }
 /* ===== CARD ===== */
@@ -722,6 +741,9 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 @media (max-width: 992px) {
   .subhero {
     width: 100%;
+        font-family: "Cinzel", serif;
+
+    
     gap: 8px;                    /* slightly bigger gap looks better */
   }
 
@@ -744,10 +766,14 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 
   .subcard1 h1 {
     font-size: 1.4rem;
+        font-family: "Cinzel", serif;
+
   }
 
   .subcard1 p {
     font-size: 1rem;
+        font-family: "Cinzel", serif;
+
   }
 }
 
@@ -755,12 +781,16 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 @media (max-width: 768px) {
   .subhero {
     gap: 10px;
+        font-family: "Cinzel", serif;
+
   }
 
   .subcard1 {
     width: calc(50% - 5px);
     min-height: 360px;
     padding: 18px 12px;
+        font-family: "Cinzel", serif;
+
   }
 
   .subcard1 .heartIcon {
@@ -773,7 +803,9 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   .subhero {
     width: 100%;
     gap: 12px;                   /* more generous gap on small screens */
-    padding: 0 10px;             /* safe side padding */
+    padding: 0 10px;
+        font-family: "Cinzel", serif;
+             /* safe side padding */
   }
 
   .subcard1 {
@@ -798,11 +830,15 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   .subcard1 h1 {
     font-size: 1.55rem;
     margin: 10px 0 8px;
+        font-family: "Cinzel", serif;
+
   }
 
   .subcard1 p {
     font-size: 1.05rem;
     line-height: 1.45;
+        font-family: "Cinzel", serif;
+
   }
 }
 
@@ -830,9 +866,13 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 
   .subcard1 h1 {
     font-size: 1.4rem;
+        font-family: "Cinzel", serif;
+
   }
 
   .subcard1 p {
     font-size: 0.98rem;
+        font-family: "Cinzel", serif;
+
   }
 }

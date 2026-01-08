@@ -154,7 +154,7 @@ const Handmade = () => {
         <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set4.png" alt="item" />
-    <h1>Aurora Gold Collection</h1>
+    <h1>Elysian Gold</h1>
         <p>Fayaz jewellers</p>
 
   </div>
@@ -182,7 +182,7 @@ const Handmade = () => {
                 <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set7.png" alt="item" />
-    <h1></h1>
+    <h1>Crown of Zar</h1>
         <p>Fayaz jewellers</p>
 
   </div>
@@ -191,8 +191,8 @@ const Handmade = () => {
                 <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set8.png" alt="item" />
-    <h1>Ring</h1>
-    <p>Gold</p>
+    <h1>Aurum Grace</h1>
+    <p>Fayaz jewellers</p>
   </div>
 
 
@@ -200,8 +200,8 @@ const Handmade = () => {
                 <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set9.png" alt="item" />
-    <h1>Ring</h1>
-    <p>Gold</p>
+    <h1>Golden Opulence</h1>
+    <p>Fayaz jewellers</p>
   </div>
 
 
@@ -209,8 +209,8 @@ const Handmade = () => {
                 <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set10.png" alt="item" />
-    <h1>Ring</h1>
-    <p>Gold</p>
+    <h1>Regalia Gold</h1>
+    <p>Fayaz jewellers</p>
   </div>
 
 
@@ -219,8 +219,8 @@ const Handmade = () => {
                 <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set11.png" alt="item" />
-    <h1>Ring</h1>
-    <p>Gold</p>
+    <h1>Divine Zar</h1>
+    <p>Fayaz jewellers</p>
   </div>
 
 
@@ -229,8 +229,8 @@ const Handmade = () => {
                 <i className={`fas fa-heart ${styles.heartIcon}`}></i>   {/* Font Awesome heart */}
 
     <img src="/har.set12.png" alt="item" />
-    <h1>Ring</h1>
-    <p>Gold</p>
+    <h1>Zar-e-Falak</h1>
+    <p>Fayaz jewellers</p>
   </div>
 
 
