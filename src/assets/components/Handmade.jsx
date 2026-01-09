@@ -247,51 +247,106 @@ const Handmade = () => {
         <h2 className={styles.subheading}>Aesthatic <span className={styles.subheadingSpan}>Collections </span><br /> with Ne<i class="fa-brands fa-wikipedia-w"></i>est Style</h2>
         <p className={styles.subdescription}>
       
-    || Luxury gold sets for every precious moment ||
+    Luxury gold sets for every precious moment
         </p>
       </div>
-      <section className={styles.fashion_container}>
      
-      
+    <section className={styles.fashion_container}>
       <div className={styles.fashion_layout_grid}>
-        
+
         {/* Left Column */}
         <div className={styles.fashion_column}>
           <div className={styles.fashion_img_box}>
-            <img src="/lx.1.png" alt="" />
+            <img src="/lx.1.png" alt="" className={styles.img_default} />
+            <img src="/lx.h1.png" alt="" className={styles.img_hover} />
+              <div className={styles.img_overlay}>
+    <p>
+      Premium fashion crafted<br />
+      for modern lifestyle<br />
+      discover your style
+    </p>
+  </div>
           </div>
         </div>
 
         {/* Center Column */}
         <div className={`${styles.fashion_column} ${styles.fashion_col_center}`}>
           <div className={styles.fashion_img_box}>
-            <img src="/lx.2.png" alt="" />
+            <img src="/lx.2.png" alt="" className={styles.img_default} />
+            <img src="/lx.h3.png" alt="" className={styles.img_hover} />
+                 <div className={styles.img_overlay}>
+    <p>
+      Premium fashion crafted<br />
+      for modern lifestyle<br />
+      discover your style
+    </p>
+  </div>
           </div>
+
           <p className={styles.fashion_description}>
             Discover a wide range of fashion options, including Clothing, Shoes, Accessories, and more
           </p>
+
+          {/* BUTTON — UNCHANGED */}
           <button className={styles.fashion_cta_btn}>
-            Shop Now <span>               <i className="fa-solid fa-arrow-up-right-from-square"></i>
-</span>
+            Shop Now <span>
+              <i className="fa-solid fa-arrow-up-right-from-square"></i>
+            </span>
           </button>
         </div>
 
         {/* Right Column */}
         <div className={styles.fashion_column}>
-        <button className={styles.fashion_explore_badge}>
-  <span>
-    Explore
-               <i className="fa-solid fa-arrow-up-right-from-square"></i>
-  </span>
-</button>
+
+          {/* BUTTON — UNCHANGED */}
+          <button className={styles.fashion_explore_badge}>
+            <span>
+              Explore
+              <i className="fa-solid fa-arrow-up-right-from-square"></i>
+            </span>
+          </button>
 
           <div className={styles.fashion_img_box}>
-            <img src="/lx.3.png" alt="" />
+            <img src="/lx.3.png" alt="" className={styles.img_default} />
+            <img src="/lx.h2.png" alt="" className={styles.img_hover} />
+                 <div className={styles.img_overlay}>
+    <p>
+      Premium fashion crafted<br />
+      for modern lifestyle<br />
+      discover your style
+    </p>
+  </div>
           </div>
         </div>
 
       </div>
     </section>
+    {/* new section */}
+   <section className={styles.fixed_section}>
+  <div className={styles.fixed_overlay}>
+    
+    <p className={styles.fixed_para}>
+      Timeless elegance crafted with passion and precision
+    </p>
+
+    <h2 className={styles.fixed_heading}>
+      Fayaz Je<i class="fa-brands fa-wikipedia-w"></i>ellers
+    </h2>
+
+   <div className={styles.fixed_buttons}>
+  <button className={styles.fashion_cta_btn}>
+    <span>Explore Collection</span>
+  </button>
+
+  <button className={styles.fashion_cta_btn}>
+    <span>Contact Us</span>
+  </button>
+</div>
+
+
+  </div>
+</section>
+
 
 
     </section>

@@ -1060,25 +1060,7 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 
 }
 
-.fashion_cta_btn {
-  padding: 12px 30px;
-  border: 1px solid #333;
-  border-radius: 50px;
-  background: transparent;
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-        font-family: "Cinzel", serif;
 
-  transition: all 0.3s ease;
-}
-
-.fashion_cta_btn:hover {
-  background: #333;
-  color: #fff;
-}
 
 .fashion_container {
   padding: 100px 20px;
@@ -1400,5 +1382,223 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   
   .fashion_col_center {
     margin-top: 0;
+  }
+}
+
+
+
+/* Image box */
+.fashion_img_box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Images */
+.fashion_img_box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Default image */
+.img_default {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover image */
+.img_hover {
+  opacity: 0;
+  transform: scale(1.08);
+}
+
+/* Hover effect */
+.fashion_img_box:hover .img_default {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.fashion_img_box:hover .img_hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* OVERLAY */
+.img_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 236, 179, 0.459),
+    rgba(255, 236, 179, 0.247),
+    rgba(255, 236, 179, 0)
+  );
+  display: flex;
+  align-items: center;      /* VERTICALLY CENTER */
+  justify-content: center;  /* HORIZONTALLY CENTER */
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* TEXT */
+.img_overlay p {
+  margin: 0;
+  color: #222;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Cinzel", serif;
+  max-width: 90%;
+}
+
+/* SHOW OVERLAY */
+.fashion_img_box:hover .img_overlay {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .img_overlay p {
+    font-size: 14px;
+  }
+}
+
+/* MAIN FIXED SECTION */
+.fixed_section {
+  width: 100%;
+  height: 100vh;
+  background-image: url("/stuck.img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 🔥 FIXED IMAGE */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* DARK + SOFT OVERLAY */
+.fixed_section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* CONTENT */
+.fixed_overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  max-width: 700px;
+}
+
+/* PARAGRAPH (PEHLE HI AATA HAI) */
+.fixed_para {
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  opacity: 0.9;
+      font-family: "Cinzel", serif;
+
+}
+
+/* HEADING */
+.fixed_heading {
+  font-size: 62px;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* BUTTON WRAPPER */
+.fixed_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn_primary,
+.btn_secondary {
+  padding: 12px 28px;
+  font-size: 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* PRIMARY */
+.btn_primary {
+  background: #f5d76e;
+  color: #000;
+  border: none;
+}
+
+.btn_primary:hover {
+  background: #fff;
+}
+
+/* SECONDARY */
+.btn_secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.btn_secondary:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ========================= */
+/* 🔥 MEDIA QUERIES (NO COMPROMISE) */
+/* ========================= */
+
+@media (max-width: 1024px) {
+  .fixed_heading {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fixed_section {
+    background-attachment: scroll; /* ⚠ mobile fix (performance) */
+  }
+
+  .fixed_heading {
+    font-size: 34px;
+  }
+
+  .fixed_para {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fixed_heading {
+    font-size: 28px;
+  }
+
+  .fixed_buttons {
+    flex-direction: column;
+  }
+
+  .btn_primary,
+  .btn_secondary {
+    width: 100%;
   }
 }
