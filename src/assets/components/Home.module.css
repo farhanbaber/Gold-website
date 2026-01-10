@@ -43,7 +43,7 @@
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #fff;
   margin-bottom: 20px;
@@ -51,8 +51,9 @@
   font-family: "Open Sans", sans-serif;
 }
 span{
-        font-family: "Cinzel", serif;
-          font-family: "Dancing Script", cursive;
+        font-weight: lighter;
+            font-family: "Cinzel", serif;
+
 
 
 }

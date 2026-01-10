@@ -130,6 +130,19 @@ function Counter({ value, label, suffix, start }) {
         {suffix}
       </h3>
       <p>{label}</p>
+      
     </div>
+
+    // end of the section 
+
+    
+
+
   );
 }
+
+// end of the file
+
+// end of the file
+
+// stats section

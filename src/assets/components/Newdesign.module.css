@@ -221,6 +221,8 @@
 .stats_container {
   max-width: 1100px;
   margin: auto;
+      border: 2px solid blue ;
+
   display: flex;
   justify-content: space-between;
   gap: 30px;
@@ -254,4 +256,10 @@
   .stat_box h3 {
     font-size: 36px;
   }
+}
+/* end of the section */
+.stats_section{
+  border: 2px solid red ;
+  width: 100%;
+  height: auto;
 }
