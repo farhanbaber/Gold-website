@@ -209,3 +209,49 @@
     padding: 12px 28px;
   }
 }
+/* neew section */
+.stats_section {
+  width: 100%;
+  padding: 60px 20px;
+    font-family: "Cinzel", serif;
+
+  background: #fff;
+}
+
+.stats_container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  text-align: center;
+}
+
+/* EACH STAT */
+.stat_box h3 {
+  font-size: 42px;
+  font-family: "Cinzel", serif;
+  color: #c6a05a;
+  margin-bottom: 6px;
+}
+
+.stat_box p {
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+/* ===================== */
+/* RESPONSIVE (NO COMPROMISE) */
+/* ===================== */
+
+@media (max-width: 768px) {
+  .stats_container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .stat_box h3 {
+    font-size: 36px;
+  }
+}
