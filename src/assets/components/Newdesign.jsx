@@ -8,6 +8,7 @@ export default function JewelleryPage() {
     <>
       <JewelleryHero />
       <StatsSection />
+       <JewelrySection />
     </>
   );
 }
@@ -135,14 +136,52 @@ function Counter({ value, label, suffix, start }) {
 
     // end of the section 
 
-    
-
-
+ 
   );
+
 }
 
-// end of the file
+const JewelrySection = () => {
+  const collectionTypes = [
+    { id: 'bracelet', title: 'bracelet', src: '/jwe.1.png' },
+    { id: 'earrings', title: 'earrings', src: '/jwe.2.png' },
+    { id: 'bangles', title: 'bangles', src: '/jwe.3.png' }
+  ];
 
-// end of the file
+  return (
+    <section className={styles.hero_wrapper}>
+      {/* Media Player Area */}
+      <div className={styles.visual_frame}>
+        {/* Empty Video Space for Public Folder */}
+        <video width="100%" height="100%" poster="/placeholder.jpg" autoPlay muted loop>
+          <source src="/hover.video.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-// stats section
+      {/* Content Side */}
+      <div className={styles.info_column}>
+        <h1 className={styles.main_heading}>Choose The Type !</h1>
+        <p className={styles.sub_text}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, 
+          luctus nec ullamcorper mattis, pulvinar leo.
+        </p>
+
+        {/* Categories Grid */}
+        <div className={styles.type_selector}>
+          {collectionTypes.map((item) => (
+            <div key={item.id} className={styles.category_item}>
+              <div 
+                className={styles.thumb_oval} 
+                style={{ backgroundImage: `url(${item.src})` }}
+              >
+                {/* Image placeholder */}
+              </div>
+              <span className={styles.item_label}>{item.title}</span>
+              <div className={styles.action_trigger}>+</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

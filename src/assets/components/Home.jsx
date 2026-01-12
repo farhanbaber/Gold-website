@@ -20,6 +20,34 @@ const Home = ({ handleLike }) => {
     <button className={styles["hero-button"]}>Shop Collections  <i className="fa-solid fa-arrow-up-right-from-square" ></i></button>
   </div>
 </div>
+<div className={styles["hero-slider-box"]}>
+  <div className={styles["slider-wrapper"]}>
+    <div className={styles["image-track"]}>
+      <img src="/bangle.re.png" alt="1" />
+      <img src="/ear-one.png" alt="2" />
+      <img src="/eightimghover.png" alt="3" />
+      <img src="/ringrenew.png" alt="4" />
+      <img src="/h.set.png" alt="5" />
+      <img src="/gold.lx.png" alt="6" />
+    </div>
+  </div>
+
+  {/* Pagination Dots */}
+  <div className={styles["dots-container"]}>
+    <span className={styles["dot"]}></span>
+    <span className={styles["dot"]}></span>
+    <span className={styles["dot"]}></span>
+    <span className={styles["dot"]}></span>
+    <span className={styles["dot"]}></span>
+    <span className={styles["dot"]}></span>
+  </div>
+
+  <div className={styles["slider-info"]}>
+    <h3>luxrious set</h3>
+    <p>$52.00 ~ $79.00</p>
+  </div>
+</div>
+
 {/* end hero section */}
 
 {/* start new section */}

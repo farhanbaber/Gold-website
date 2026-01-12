@@ -221,7 +221,7 @@
 .stats_container {
   max-width: 1100px;
   margin: auto;
-      border: 2px solid blue ;
+      /* border: 2px solid blue ; */
 
   display: flex;
   justify-content: space-between;
@@ -259,7 +259,141 @@
 }
 /* end of the section */
 .stats_section{
-  border: 2px solid red ;
+  /* border: 2px solid red ; */
   width: 100%;
   height: auto;
+}
+.second_section{
+  border: 2px solid green ;
+  width: 100%;
+  height: 30vh;
+}
+
+.hero_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 80px 5%;
+  gap: 50px;
+  background-color: #fbf8f5;
+  min-height: 80vh;
+}
+
+.visual_frame {
+  flex: 1.2;
+  position: relative;
+  background-color: #c9ae97;
+  border-radius: 40px;
+  overflow: hidden;
+  display: flex;
+  min-height: 360px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.info_column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main_heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #3d2b1f;
+  margin: 0;
+    font-family: "Cinzel", serif;
+      font-family: "Edu AU VIC WA NT Arrows", cursive;
+
+
+}
+
+.sub_text {
+  color: #6b5a4d;
+  font-size: 1.1rem;
+    font-family: "Cinzel", serif;
+
+  line-height: 1.7;
+  max-width: 450px;
+}
+
+.type_selector {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.category_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category_item:hover {
+  transform: translateY(-5px);
+}
+
+.thumb_oval {
+  width: 90px;
+  height: 130px;
+  background-color: #f1e5d9;
+  border-radius: 100px; /* Perfect Pill shape */
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #e2d1c3;
+}
+
+.item_label {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #3d2b1f;
+  font-weight: 600;
+}
+
+.action_trigger {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #3d2b1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* --- Responsive (Mobile Friendly) --- */
+
+@media (max-width: 992px) {
+  .hero_wrapper {
+    flex-direction: column; /* Video pehle aayegi */
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .visual_frame {
+    width: 100%;
+    order: 1; /* Force video to top */
+  }
+
+  .info_column {
+    order: 2;
+    align-items: center;
+  }
+
+  .type_selector {
+    flex-direction: column; /* 1 line mein 1 image mobile par */
+    width: 100%;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .sub_text {
+    margin: 0 auto;
+  }
 }

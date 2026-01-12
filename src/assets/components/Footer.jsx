@@ -31,7 +31,7 @@ const Footer = () => {
           <div className={styles.leftSection}>
             <div className={styles.photoCircle}>
               <img
-                src="/owner.pic.jpg"
+                src="/manager.jpeg"
                 alt="Profile"
                 className={styles.profileImg}
               />
@@ -81,6 +81,13 @@ const Footer = () => {
                 <i class="fa-solid fa-people-roof"></i>
                 <p>Onias Ahmad , Manager</p>
               </div>
+
+                    <div className={styles.contactItem}>
+                {/* Icon here */}
+                <i class="fa-solid fa-people-roof"></i>
+                <p>Shakir khan , Employee</p>
+              </div>
+
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
