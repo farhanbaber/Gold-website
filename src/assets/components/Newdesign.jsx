@@ -154,7 +154,7 @@ const JewelrySection = () => {
       <div className={styles.visual_frame}>
         {/* Empty Video Space for Public Folder */}
         <video width="100%" height="100%" poster="/placeholder.jpg" autoPlay muted loop>
-          <source src="/hover.video.mp4" type="video/mp4" />
+          <source src="/" type="video/mp4" />
         </video>
       </div>
 
@@ -162,8 +162,7 @@ const JewelrySection = () => {
       <div className={styles.info_column}>
         <h1 className={styles.main_heading}>Choose The Type !</h1>
         <p className={styles.sub_text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, 
-          luctus nec ullamcorper mattis, pulvinar leo.
+      Premium gold and diamond jewelry crafted with purity, elegance, and timeless design
         </p>
 
         {/* Categories Grid */}
@@ -177,7 +176,10 @@ const JewelrySection = () => {
                 {/* Image placeholder */}
               </div>
               <span className={styles.item_label}>{item.title}</span>
-              <div className={styles.action_trigger}>+</div>
+              <div className={styles.action_trigger}>
+  <span>+</span>
+</div>
+
             </div>
           ))}
         </div>

@@ -355,16 +355,69 @@
   color: #3d2b1f;
   font-weight: 600;
 }
-
 .action_trigger {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 1px solid #3d2b1f;
+  border: 1px solid black;
+  background: white;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(217, 200, 178, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Shine effect (same as CTA) */
+.action_trigger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.9s ease;
+  z-index: 1;
+}
+
+/* Hover */
+.action_trigger:hover {
+  background-color: #8b6822;
+  color: white;
+  border: 1px solid white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(139, 104, 34, 0.4);
+}
+
+.action_trigger:hover::before {
+  left: 130%;
+}
+
+/* Active */
+.action_trigger:active {
+  transform: scale(0.9);
+}
+
+/* + icon above shine */
+.action_trigger span {
+  position: relative;
+  z-index: 2;
 }
 
 /* --- Responsive (Mobile Friendly) --- */
