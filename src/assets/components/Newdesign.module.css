@@ -294,6 +294,15 @@
   justify-content: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
+/* Ye main magic hai */
+.video_element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Video ko crop karke container fill karwa dega */
+  position: absolute; /* Takey wo div ke kone kone tak pohnche */
+  top: 0;
+  left: 0;
+}
 
 .info_column {
   flex: 1;
@@ -453,4 +462,13 @@
   }
 }
 
+/* Mobile Responsive */
+@media (max-width: 992px) {
+  .visual_frame {
+    width: 100%;
+    order: 1; 
+    min-height: 300px; /* Mobile par height fix rahegi aur video fill karegi */
+    border-radius: 20px; /* Choti screen par kam radius acha lagta hai */
+  }
+}
 

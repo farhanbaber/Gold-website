@@ -153,7 +153,7 @@ const JewelrySection = () => {
       {/* Media Player Area */}
       <div className={styles.visual_frame}>
         {/* Empty Video Space for Public Folder */}
-        <video width="100%" height="100%" poster="/placeholder.jpg" autoPlay muted loop>
+        <video width="100%" height="100%" poster="/placeholder.jpg" autoPlay muted loop playsInline>
           <source src="/renew.ai.mp4" type="video/mp4" />
         </video>
       </div>
