@@ -274,9 +274,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  border-radius: 50px;
+  background-color: #c6a05a;
   padding: 80px 5%;
   gap: 50px;
-  background-color: #fbf8f5;
+  /* background-color: #fbf8f5; */
   min-height: 80vh;
 }
 
@@ -287,7 +289,7 @@
   border-radius: 40px;
   overflow: hidden;
   display: flex;
-  min-height: 360px;
+  min-height: 300px;
   align-items: center;
   justify-content: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -302,7 +304,7 @@
 
 .main_heading {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  color: #3d2b1f;
+  color: #f0f0f0;
   margin: 0;
     font-family: "Cinzel", serif;
       font-family: "Edu AU VIC WA NT Arrows", cursive;
@@ -311,7 +313,7 @@
 }
 
 .sub_text {
-  color: #6b5a4d;
+  color: #f0f0f0;
   font-size: 1.1rem;
     font-family: "Cinzel", serif;
 
@@ -352,14 +354,14 @@
   font-size: 0.95rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #3d2b1f;
+  color: #faf3ee;
   font-weight: 600;
 }
 .action_trigger {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   background: white;
   color: #000000;
   font-size: 20px;
@@ -450,3 +452,5 @@
     margin: 0 auto;
   }
 }
+
+

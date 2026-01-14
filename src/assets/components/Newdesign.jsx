@@ -154,7 +154,7 @@ const JewelrySection = () => {
       <div className={styles.visual_frame}>
         {/* Empty Video Space for Public Folder */}
         <video width="100%" height="100%" poster="/placeholder.jpg" autoPlay muted loop>
-          <source src="/" type="video/mp4" />
+          <source src="/renew.ai.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -187,3 +187,4 @@ const JewelrySection = () => {
     </section>
   );
 };
+
