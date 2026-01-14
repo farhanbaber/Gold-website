@@ -467,7 +467,7 @@
   .visual_frame {
     width: 100%;
     order: 1; 
-    min-height: 200px; /* Mobile par height fix rahegi aur video fill karegi */
+    min-height: 100px; /* Mobile par height fix rahegi aur video fill karegi */
     border-radius: 20px; /* Choti screen par kam radius acha lagta hai */
   }
 }
