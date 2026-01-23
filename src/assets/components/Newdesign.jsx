@@ -1,76 +1,58 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Newdesign.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-/* ================= HERO SECTION ================= */
-
+/* ================= MAIN PAGE ================= */
 export default function JewelleryPage() {
   return (
-    <>
+    <div className={styles.pageWrapper}>
       <JewelleryHero />
       <StatsSection />
-       <JewelrySection />
-    </>
+      <JewelryTypeSection />
+      <GoldCarouselSection />
+    </div>
   );
 }
 
-/* ================= JEWELLERY HERO ================= */
-
+/* ================= HERO SECTION ================= */
 function JewelleryHero() {
-  const images = [
-    "/bangles.ones.jfif",
-    "/bangles.two.jpg",
-    "/bangles.three.jpg",
-    "/bangles.four.png",
-  ];
-
+  const images = ["/bangles.ones.jfif", "/bangles.two.jpg", "/bangles.three.jpg", "/bangles.four.png"];
   const [activeImg, setActiveImg] = useState(images[0]);
 
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
-
         <div className={styles.thumbs}>
           {images.map((img, index) => (
             <img
               key={index}
               src={img}
-              className={`${styles.thumb} ${
-                activeImg === img ? styles.active : ""
-              }`}
+              className={`${styles.thumb} ${activeImg === img ? styles.active : ""}`}
               onClick={() => setActiveImg(img)}
+              alt="thumb"
             />
           ))}
         </div>
-
         <div className={styles.mainImage}>
           <img src={activeImg} alt="Main Jewellery" />
         </div>
-
         <div className={styles.content}>
           <span className={styles.tag}>New Arrival</span>
-          <h1>
-            MINDFUL WAY FOR <br />
-            <span>ELEGANCY Bangles</span>
-          </h1>
+          <h1>MINDFUL WAY FOR <br /> <span>ELEGANCY Bangles</span></h1>
           <h3>Gold Bangles with White Diamonds Acasia</h3>
-          <p>
-            This industry of fashion jewellery and sophistication.
-            We believe that elegance can be found in pure craftsmanship.
-          </p>
+          <p>This industry of fashion jewellery and sophistication. We believe that elegance can be found in pure craftsmanship.</p>
           <button className={styles.cta}>Discover More →</button>
         </div>
-
       </div>
     </section>
   );
 }
 
 /* ================= STATS SECTION ================= */
-
 function StatsSection() {
   const sectionRef = useRef(null);
   const [start, setStart] = useState(false);
-
   const statsData = [
     { value: 90, label: "All Over World", suffix: "+" },
     { value: 70, label: "Products Available", suffix: "+" },
@@ -78,16 +60,12 @@ function StatsSection() {
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStart(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
-
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setStart(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.4 });
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
@@ -103,45 +81,31 @@ function StatsSection() {
   );
 }
 
-/* ================= COUNTER ================= */
-
 function Counter({ value, label, suffix, start }) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     if (!start) return;
-
     let startTime = null;
     const duration = 2000;
-
     const animate = (time) => {
       if (!startTime) startTime = time;
       const progress = Math.min((time - startTime) / duration, 1);
       setCount(Math.floor(progress * value));
       if (progress < 1) requestAnimationFrame(animate);
     };
-
     requestAnimationFrame(animate);
   }, [start, value]);
 
   return (
     <div className={styles.stat_box}>
-      <h3>
-        {count}
-        {suffix}
-      </h3>
+      <h3>{count}{suffix}</h3>
       <p>{label}</p>
-      
     </div>
-
-    // end of the section 
-
- 
   );
-
 }
 
-const JewelrySection = () => {
+/* ================= JEWELRY TYPE SECTION ================= */
+const JewelryTypeSection = () => {
   const collectionTypes = [
     { id: 'bracelet', title: 'bracelet', src: '/jwe.1.png' },
     { id: 'earrings', title: 'earrings', src: '/jwe.2.png' },
@@ -150,36 +114,20 @@ const JewelrySection = () => {
 
   return (
     <section className={styles.hero_wrapper}>
-      {/* Media Player Area */}
       <div className={styles.visual_frame}>
-        {/* Empty Video Space for Public Folder */}
-        <video width="100%" height="100%" poster="/placeholder.jpg" autoPlay muted loop playsInline>
+        <video width="100%" height="100%" autoPlay muted loop playsInline>
           <source src="/renew.ai.mp4" type="video/mp4" />
         </video>
       </div>
-
-      {/* Content Side */}
       <div className={styles.info_column}>
         <h1 className={styles.main_heading}>Choose The Type !</h1>
-        <p className={styles.sub_text}>
-      Premium gold and diamond jewelry crafted with purity, elegance, and timeless design
-        </p>
-
-        {/* Categories Grid */}
+        <p className={styles.sub_text}>Premium gold and diamond jewelry crafted with purity.</p>
         <div className={styles.type_selector}>
           {collectionTypes.map((item) => (
             <div key={item.id} className={styles.category_item}>
-              <div 
-                className={styles.thumb_oval} 
-                style={{ backgroundImage: `url(${item.src})` }}
-              >
-                {/* Image placeholder */}
-              </div>
+              <div className={styles.thumb_oval} style={{ backgroundImage: `url(${item.src})` }}></div>
               <span className={styles.item_label}>{item.title}</span>
-              <div className={styles.action_trigger}>
-  <span>+</span>
-</div>
-
+              <div className={styles.action_trigger}><span>+</span></div>
             </div>
           ))}
         </div>
@@ -188,3 +136,110 @@ const JewelrySection = () => {
   );
 };
 
+
+// 30 static products (replace your images)
+const imageList = [
+  "/bang1.png",
+  "/band2.png",
+  "/band3.png",
+  "/band4.png",
+  "/band5.png",
+  // ... total 30
+];
+
+const staticProducts = imageList.map((img, i) => ({
+  id: i + 1,
+  title: `Luxury Gold Set ${i + 1}`,
+  price: (Math.random() * 500 + 200).toFixed(2),
+  image: img
+}));
+
+const GoldCarouselSection = () => {
+  const [index, setIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(4);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+
+  const cardWidth = 285;
+  const gap = 20;
+  const maxIndex = Math.max(staticProducts.length - cardsPerView, 0);
+
+  // Responsive cards
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerView(window.innerWidth <= 768 ? 1 : 4);
+      setIndex(0);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Boomerang auto slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex(prev => {
+        // Agar end tak pahunch gaye, direction reverse
+        if (prev >= maxIndex) {
+          setDirection(-1);
+          return prev - 1;
+        }
+        // Agar start par hain, direction forward
+        if (prev <= 0) {
+          setDirection(1);
+          return prev + 1;
+        }
+        return prev + direction;
+      });
+    }, 2000); // 2 sec per slide
+    return () => clearInterval(interval);
+  }, [direction, maxIndex]);
+
+  const slideNext = () => setIndex(prev => Math.min(prev + 1, maxIndex));
+  const slidePrev = () => setIndex(prev => Math.max(prev - 1, 0));
+
+  const translateX = index * (cardWidth + gap);
+
+  return (
+    <section className={styles.goldMainContainer}>
+<div className={styles.headingWrapper}>
+  <span className={styles.line}></span>
+  <h2 className={styles.heading}>Golden <i class="fa-solid fa-crown" style={{ color: '#c6a05a' }}></i> Glamour</h2>
+  <span className={styles.line}></span>
+</div>
+
+      <div className={styles.sliderViewport}>
+        <div
+          className={styles.horizontalTrack}
+          style={{
+            transform: `translateX(-${translateX}px)`,
+            width: `${staticProducts.length * (cardWidth + gap)}px`
+          }}
+        >
+          {staticProducts.map(item => (
+            <div key={item.id} className={styles.goldCard}>
+              <div className={styles.goldImgBox}>
+                <img src={item.image} alt={item.title} />
+              </div>
+              <h4>{item.title}</h4>
+              <p className={styles.goldPrice}>${item.price}</p>
+            </div>
+          ))}
+        </div>
+
+        <button
+          className={`${styles.controlButton} ${styles.left}`}
+          onClick={slidePrev}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+
+        <button
+          className={`${styles.controlButton} ${styles.right}`}
+          onClick={slideNext}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
+      </div>
+    </section>
+  );
+};

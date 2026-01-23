@@ -709,9 +709,9 @@
   background: #d9c8b2;
   color: #1a1a1a;
   border: none;
-  padding: 14px 32px;
+  /* padding: 14px 32px; */
   border-radius: 50px;
-  font-size: 1.1rem;
+  /* font-size: 1.1rem; */
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -724,6 +724,9 @@
   transition: all 0.3s ease-in-out;
   box-shadow: 0 10px 30px rgba(217, 200, 178, 0.4);
   overflow: hidden;
+   padding: 6px 16px;     
+  font-size: 0.85rem;  
+  line-height: 1;   
 }
 
 /* =========================
@@ -1465,3 +1468,5 @@
     font-size: 1.2rem;
   }
 }
+
+
