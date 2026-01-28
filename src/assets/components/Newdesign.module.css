@@ -643,39 +643,17 @@
   width: 285px;
   flex-shrink: 0;
 }
-
-/* ================= MOBILE (1 CARD PERFECT) ================= */
-
 @media (max-width: 768px) {
   .sliderViewport {
+    width: 100vw;
     overflow: hidden;
-    width: 100%;
-    padding: 0;
-  }
-
-  .horizontalTrack {
-    display: flex;
   }
 
   .goldCard {
-    width: 100vw;          /* FULL SCREEN */
-    max-width: 100vw;
-    margin: 0;             /* 🔥 NO MARGIN */
-    padding: 0 16px;       /* SAFE INNER SPACE */
+    width: 100vw;
+    margin: 0;
+    padding: 0 16px;
     box-sizing: border-box;
-  }
-
-  .controlButton {
-    width: 36px;
-    height: 36px;
-    background: rgba(212, 175, 55, 0.6);
-  }
-}
-
-/* ================= SMALL PHONES ================= */
-
-@media (max-width: 480px) {
-  .goldCard {
-    padding: 0 12px;
+    flex-shrink: 0;
   }
 }

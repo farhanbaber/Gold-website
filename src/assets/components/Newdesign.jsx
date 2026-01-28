@@ -179,44 +179,51 @@ const staticProducts = imageList.map((img, i) => ({
   price: (Math.random() * 500 + 200).toFixed(2),
   image: img
 }));
-
 const GoldCarouselSection = () => {
   const [index, setIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(4);
-  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const [cardWidth, setCardWidth] = useState(285);
+  const [gap, setGap] = useState(20);
+  const [direction, setDirection] = useState(1);
 
-  const cardWidth = 285;
-  const gap = 20;
   const maxIndex = Math.max(staticProducts.length - cardsPerView, 0);
 
-  // Responsive cards
+  // ✅ RESPONSIVE LOGIC (REAL FIX)
   useEffect(() => {
     const handleResize = () => {
-      setCardsPerView(window.innerWidth <= 768 ? 1 : 4);
+      if (window.innerWidth <= 768) {
+        setCardsPerView(1);
+        setCardWidth(window.innerWidth); // FULL SCREEN
+        setGap(0);                       // NO GAP
+      } else {
+        setCardsPerView(4);
+        setCardWidth(285);
+        setGap(20);
+      }
       setIndex(0);
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Boomerang auto slide
+  // ✅ AUTO SLIDE
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prev => {
-        // Agar end tak pahunch gaye, direction reverse
         if (prev >= maxIndex) {
           setDirection(-1);
           return prev - 1;
         }
-        // Agar start par hain, direction forward
         if (prev <= 0) {
           setDirection(1);
           return prev + 1;
         }
         return prev + direction;
       });
-    }, 2000); // 2 sec per slide
+    }, 2500);
+
     return () => clearInterval(interval);
   }, [direction, maxIndex]);
 
@@ -227,18 +234,20 @@ const GoldCarouselSection = () => {
 
   return (
     <section className={styles.goldMainContainer}>
-<div className={styles.headingWrapper}>
-  <span className={styles.line}></span>
-  <h2 className={styles.heading}>Golden <i class="fa-solid fa-crown" style={{ color: '#c6a05a' }}></i> Glamour</h2>
-  <span className={styles.line}></span>
-</div>
+      <div className={styles.headingWrapper}>
+        <span className={styles.line}></span>
+        <h2 className={styles.heading}>
+          Golden <i className="fa-solid fa-crown" style={{ color: "#c6a05a" }}></i> Glamour
+        </h2>
+        <span className={styles.line}></span>
+      </div>
 
       <div className={styles.sliderViewport}>
         <div
           className={styles.horizontalTrack}
           style={{
             transform: `translateX(-${translateX}px)`,
-            width: `${staticProducts.length * (cardWidth + gap)}px`
+            width: staticProducts.length * (cardWidth + gap)
           }}
         >
           {staticProducts.map(item => (
@@ -252,17 +261,11 @@ const GoldCarouselSection = () => {
           ))}
         </div>
 
-        <button
-          className={`${styles.controlButton} ${styles.left}`}
-          onClick={slidePrev}
-        >
+        <button className={`${styles.controlButton} ${styles.left}`} onClick={slidePrev}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
 
-        <button
-          className={`${styles.controlButton} ${styles.right}`}
-          onClick={slideNext}
-        >
+        <button className={`${styles.controlButton} ${styles.right}`} onClick={slideNext}>
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
