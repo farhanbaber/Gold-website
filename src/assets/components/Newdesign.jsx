@@ -139,17 +139,43 @@ const JewelryTypeSection = () => {
 
 // 30 static products (replace your images)
 const imageList = [
-  "/bang1.png",
-  "/band2.png",
-  "/band3.png",
-  "/band4.png",
-  "/band5.png",
+  "/lx.1.png",
+  "/lx.2.png",
+  "/lxx.3.jpg",
+  "/lx.4.jpg",
+  "/lx.5.jpg",
+  "/lx.6.png",
+  "/lx.8.png",
+  "/lx.9.webp",
+  "/lx.10.png",
+  "/lx.11.png",
+  "/lx.12.png",
+  "/lx.13.png",
+  "/lx.14.png",
+  "/lx.15.png",
+  "/lx.16.png",
+  "/lx.17.png",
+  "/lx.18.png",
+  "/lx.19.png",
+  "/lx.20.png",
+  "/re.21.png",
+  "/lx.22.png",
+  "/lx.23.png",
+  "/lx.24.png",
+  "/lx.25.png",
+  "/lx.26.png",
+  "/lx.27.png",
+  "/lx.28.png",
+  "/lx.29.png",
+  "/lx.30.png", 
+  "/lx.31.png",
+
   // ... total 30
 ];
 
 const staticProducts = imageList.map((img, i) => ({
   id: i + 1,
-  title: `Luxury Gold Set ${i + 1}`,
+  title: `Luxurious Collection`,
   price: (Math.random() * 500 + 200).toFixed(2),
   image: img
 }));

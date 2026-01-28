@@ -257,7 +257,7 @@ const Handmade = () => {
         {/* Left Column */}
         <div className={styles.fashion_column}>
           <div className={styles.fashion_img_box}>
-            <img src="/lx.1.png" alt="" className={styles.img_default} />
+            <img src="/lcv.2.png" alt="" className={styles.img_default} />
             <img src="/lx.h1.png" alt="" className={styles.img_hover} />
               <div className={styles.img_overlay}>
     <p>
@@ -272,7 +272,7 @@ const Handmade = () => {
         {/* Center Column */}
         <div className={`${styles.fashion_column} ${styles.fashion_col_center}`}>
           <div className={styles.fashion_img_box}>
-            <img src="/lx.2.png" alt="" className={styles.img_default} />
+            <img src="/lcv.1.png" alt="" className={styles.img_default} />
             <img src="/lx.h3.png" alt="" className={styles.img_hover} />
                  <div className={styles.img_overlay}>
     <p>
