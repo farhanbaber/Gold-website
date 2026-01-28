@@ -11,6 +11,7 @@ export default function JewelleryPage() {
       <StatsSection />
       <JewelryTypeSection />
       <GoldCarouselSection />
+      <AboutSection />
     </div>
   );
 }
@@ -268,6 +269,60 @@ const GoldCarouselSection = () => {
         <button className={`${styles.controlButton} ${styles.right}`} onClick={slideNext}>
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
+      </div>
+    </section>
+  );
+};
+
+
+
+const AboutSection = () => {
+  return (
+    <section className={styles.aboutSection}>
+      {/* Top Row: Image Left, Content Right */}
+      <div className={`${styles.aboutSection__row} ${styles['aboutSection__row--alignCenter']}`}>
+        <div className={styles.aboutSection__media}>
+          <img 
+            src="/abs.set1.png" 
+            alt="Brand Vision" 
+            className={styles.aboutSection__image} 
+          />
+        </div>
+        
+        <div className={styles.aboutSection__content}>
+          <span className={styles.aboutSection__label}>Beyond Jewellery</span>
+          <h2 className={styles.aboutSection__title}>
+            — Comfort and Quality <br /> Come First.
+          </h2>
+          <p className={styles.aboutSection__text}>
+            We create timeless gold jewelry that blends comfort, elegance, and purity,
+  designed to be worn beautifully on every occasion.
+          </p>
+          <p className={styles.aboutSection__text}>
+           Our vision has always been to design pure gold jewelry that blends comfort, elegance, and versatility.
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom Row: Quote Left, Image Right */}
+      <div className={styles.aboutSection__row}>
+        <div className={styles.aboutSection__content}>
+          <div className={styles.aboutSection__quoteBox}>
+            <p className={styles.aboutSection__quoteText}>
+               Our search for elegant yet comfortable gold jewelry inspired us to create a brand
+  defined by purity and timeless craftsmanship.
+            </p>
+            <footer className={styles.aboutSection__author}>— fayaz baber</footer>
+          </div>
+        </div>
+        
+        <div className={styles.aboutSection__media}>
+          <img 
+            src="abs.1.png" 
+            alt="Design Details" 
+            className={styles.aboutSection__image} 
+          />
+        </div>
       </div>
     </section>
   );
