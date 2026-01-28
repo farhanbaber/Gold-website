@@ -637,45 +637,45 @@
   60% { transform: translateY(-50%); }
 }
 /* --- Optimized Mobile Responsive CSS --- */
+/* ================= BASE (DESKTOP) ================= */
+
+.goldCard {
+  width: 285px;
+  flex-shrink: 0;
+}
+
+/* ================= MOBILE (1 CARD PERFECT) ================= */
 
 @media (max-width: 768px) {
-  /* 1. Parent container ko snap property den takay card jhatkay se sahi jagah ruke */
   .sliderViewport {
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+  }
+
+  .horizontalTrack {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Scroll ko snap karega */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding: 20px 0; /* Top/Bottom padding */
-    gap: 0; /* Gap hum margin se control karenge */
   }
 
-  /* 2. Card ki width aur alignment */
   .goldCard {
-    /* Screen se thoda chota taaki side se agla card halka sa nazar aaye (optional) 
-       Ya phir full width ke liye 100% use karein */
-    width: 85vw; 
-    margin: 0 7.5vw; /* Isse card hamesha center mein rahega (100 - 85 = 15 / 2 = 7.5) */
-    flex-shrink: 0;
-    scroll-snap-align: center; /* Card ko screen ke center mein lock kar dega */
+    width: 100vw;          /* FULL SCREEN */
+    max-width: 100vw;
+    margin: 0;             /* 🔥 NO MARGIN */
+    padding: 0 16px;       /* SAFE INNER SPACE */
+    box-sizing: border-box;
   }
 
-  /* 3. Buttons ko thoda adjust karein taaki wo cards ke upar zyada disturb na karein */
   .controlButton {
-    width: 40px;
-    height: 40px;
-    background: rgba(212, 175, 55, 0.7); /* Background thoda dark kiya visibility ke liye */
+    width: 36px;
+    height: 36px;
+    background: rgba(212, 175, 55, 0.6);
   }
 }
 
-/* Very Small Screens (Mobile Portrait) */
+/* ================= SMALL PHONES ================= */
+
 @media (max-width: 480px) {
   .goldCard {
-    width: 88vw;
-    margin: 0 6vw; /* Thoda gap kam kar diya */
-  }
-  
-  .controlButton {
-    display: none; /* Bohat choti screen par buttons ki jagah log swipe pasand karte hain */
+    padding: 0 12px;
   }
 }
