@@ -12,6 +12,7 @@ export default function JewelleryPage() {
       <JewelryTypeSection />
       <GoldCarouselSection />
       <AboutSection />
+        <ArchCards />
     </div>
   );
 }
@@ -283,7 +284,7 @@ const AboutSection = () => {
       <div className={`${styles.aboutSection__row} ${styles['aboutSection__row--alignCenter']}`}>
         <div className={styles.aboutSection__media}>
           <img 
-            src="/abs.set1.png" 
+            src="/rings.8.h.png" 
             alt="Brand Vision" 
             className={styles.aboutSection__image} 
           />
@@ -325,5 +326,60 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+
+// strar new section
+const ArchCards = () => {
+  const archData = [
+    {
+      id: "arch-1",
+      heading: "The Product",
+      text: "Premium quality materials sourced globally.",
+      defaultImg: "k.1.png", // Public folder wali image
+      hoverImg: "k1.h.png"  // Hover par jo dikhani hai
+    },
+    {
+      id: "arch-2",
+      heading: "New Arrivals",
+      text: "Discover our latest collection for modern living.",
+      defaultImg: "k.2.png",
+      hoverImg: "k2.h.png"
+    },
+    {
+      id: "arch-3",
+      heading: "Our Vision",
+      text: "Aesthetic and functional design for you.",
+      defaultImg: "k3.png",
+      hoverImg: "k3.h.png"
+    }
+  ];
+
+  return (
+    <div className={styles.archSectionWrapper}>
+      {archData.map((item) => (
+        <div key={item.id} className={styles.archCardItem}>
+          <div className={styles.archImageFrame}>
+            {/* Pehli Image (Default) */}
+            <img 
+              src={`/${item.defaultImg}`} 
+              alt={item.heading} 
+              className={styles.archImgDefault}
+            />
+            {/* Dusri Image (Hover) */}
+            <img 
+              src={`/${item.hoverImg}`} 
+              alt={`${item.heading} hover`} 
+              className={styles.archImgHover}
+            />
+          </div>
+          <div className={styles.archTextContainer}>
+            <h3 className={styles.archMainTitle}>{item.heading}</h3>
+            <p className={styles.archSubDescription}>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
