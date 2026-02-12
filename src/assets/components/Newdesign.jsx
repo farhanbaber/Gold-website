@@ -335,29 +335,39 @@ const ArchCards = () => {
   const archData = [
     {
       id: "arch-1",
-      heading: "The Product",
+      heading: "Craftsmanship",
       text: "Premium quality materials sourced globally.",
       defaultImg: "k.1.png", // Public folder wali image
       hoverImg: "k1.h.png"  // Hover par jo dikhani hai
     },
     {
       id: "arch-2",
-      heading: "New Arrivals",
+      heading: "Gilded Grace",
       text: "Discover our latest collection for modern living.",
       defaultImg: "k.2.png",
       hoverImg: "k2.h.png"
     },
     {
       id: "arch-3",
-      heading: "Our Vision",
+      heading: "Timeless Design",
       text: "Aesthetic and functional design for you.",
       defaultImg: "k3.png",
       hoverImg: "k3.h.png"
     }
   ];
+  
 
   return (
+    <>
+    <div className={styles.headingWrapper}>
+        <span className={styles.line}></span>
+        <h2 className={styles.heading}>
+          IMPERIAL <i className="fa-brands fa-pied-piper-hat" style={{ color: "#c6a05a" }}></i> GOLD
+        </h2>
+        <span className={styles.line}></span>
+      </div>
     <div className={styles.archSectionWrapper}>
+      
       {archData.map((item) => (
         <div key={item.id} className={styles.archCardItem}>
           <div className={styles.archImageFrame}>
@@ -381,5 +391,7 @@ const ArchCards = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
+

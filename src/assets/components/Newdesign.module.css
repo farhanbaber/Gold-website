@@ -839,6 +839,8 @@
 
 .archTextContainer {
   text-align: center;
+                font-family: "Cinzel", serif;
+
 }
 
 .archMainTitle {
@@ -846,6 +848,8 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 10px;
+                font-family: "Cinzel", serif;
+
 }
 
 /* --- Responsive Layout --- */
