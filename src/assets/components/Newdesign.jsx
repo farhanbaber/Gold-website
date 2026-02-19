@@ -13,6 +13,7 @@ export default function JewelleryPage() {
       <GoldCarouselSection />
       <AboutSection />
         <ArchCards />
+        <DesignerSection />
     </div>
   );
 }
@@ -395,3 +396,39 @@ const ArchCards = () => {
   );
 };
 
+
+// end of file
+// Note: Make sure to add the corresponding CSS in Newdesign.module.css for the new classes used in ArchCards component.
+const DesignerSection = () => {
+  return (
+    <section className={styles.designer_section_root}>
+      {/* Left side: Images Composition */}
+      <div className={styles.designer_visual_composition}>
+        <img 
+          src="angle.renew.jpg" // Apni bari image yaha lagayein
+          alt="Main Portrait" 
+          className={styles.designer_primary_portrait} 
+        />
+        <img 
+          src="angle.mini.jpg" // Apni choti image yaha lagayein
+          alt="Overlay Detail" 
+          className={styles.designer_secondary_snapshot} 
+        />
+      </div>
+
+      {/* Right side: Narrative Content */}
+      <div className={styles.designer_narrative_wrapper}>
+        <h2 className={styles.designer_narrative_heading}>
+          The Visionary Behind  The Craft
+        </h2>
+        <p className={styles.designer_narrative_description}>
+         Blending timeless elegance with contemporary sophistication, our lead designer transforms abstract concepts into opulent realities. With a meticulous eye for detail and a passion for bespoke excellence, every creation is more than just a product—it is a legacy of luxury. Discover the artistry and dedication that defines our golden standard of craftsmanship.
+      
+        </p>
+       <button className={styles.designer_action_trigger}>
+          <span>Explore The Designs</span>
+        </button>
+      </div>
+    </section>
+  );
+};
