@@ -14,6 +14,8 @@ export default function JewelleryPage() {
       <AboutSection />
         <ArchCards />
         <DesignerSection />
+        <JewelryGallery />
+
     </div>
   );
 }
@@ -422,12 +424,56 @@ const DesignerSection = () => {
           The Visionary Behind  The Craft
         </h2>
         <p className={styles.designer_narrative_description}>
-         Blending timeless elegance with contemporary sophistication, our lead designer transforms abstract concepts into opulent realities. With a meticulous eye for detail and a passion for bespoke excellence, every creation is more than just a product—it is a legacy of luxury. Discover the artistry and dedication that defines our golden standard of craftsmanship.
+         Blending timeless elegance with contemporary sophistication, our lead designer transforms abstract concepts into opulent realities. With a meticulous eye for detail and a passion for bespoke excellence, every creation is more than just a product—it is a legacy of luxury
       
         </p>
        <button className={styles.designer_action_trigger}>
           <span>Explore The Designs</span>
         </button>
+      </div>
+    </section>
+  );
+};
+// end of file
+// Note: Make sure to add the corresponding CSS in Newdesign.module.css for the new classes used in DesignerSection component.
+const JewelryGallery = () => {
+  return (
+    <section className={styles.jwl_grid_2026_container}>
+      <header className={styles.jwl_header_wrapper}>
+        <span className={styles.jwl_subheading_gold}>Pure Gold Artistry</span>
+        <h2 className={styles.jwl_main_heading_serif}>Exquisite Masterpieces</h2>
+      </header>
+
+      <div className={styles.jwl_gallery_bento_box}>
+        {/* Item 1: Large Portrait (Left) */}
+        <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_featured_long}`}>
+          <img src="necklace-big.jpg" alt="Necklace" className={styles.jwl_asset_fluid_img} />
+        </div>
+
+        {/* Item 2: Landscape Image (Middle Top) */}
+        <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_landscape_top}`}>
+          <img src="earrings-wide.jpg" alt="Earrings" className={styles.jwl_asset_fluid_img} />
+        </div>
+
+        {/* Item 3: Engagement Ring (Top Right) */}
+        <div className={styles.jwl_item_card_root}>
+          <img src="ring-1.jpg" alt="Engagement Ring" className={styles.jwl_asset_fluid_img} />
+        </div>
+
+        {/* Item 4: Naya Card (Engagement Ring ke niche) */}
+        <div className={styles.jwl_item_card_root}>
+          <img src="bracelet-new.jpg" alt="Luxury Bracelet" className={styles.jwl_asset_fluid_img} />
+        </div>
+
+        {/* Item 5: Small Bottom Middle 1 */}
+        <div className={styles.jwl_item_card_root}>
+          <img src="pendant.jpg" alt="Pendant" className={styles.jwl_asset_fluid_img} />
+        </div>
+
+        {/* Item 6: Small Bottom Middle 2 */}
+        <div className={styles.jwl_item_card_root}>
+          <img src="ring-2.jpg" alt="Gold Ring" className={styles.jwl_asset_fluid_img} />
+        </div>
       </div>
     </section>
   );

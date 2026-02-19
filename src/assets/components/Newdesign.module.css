@@ -1080,3 +1080,112 @@
     align-items: center;
   }
 }
+/* end of the section */
+
+/* starts new one */
+/* Unique Grid Root */
+.jwl_grid_2026_container {
+  padding: 80px 6%;
+  background-color: #ffffff;
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Section Header */
+.jwl_header_wrapper {
+  margin-bottom: 50px;
+}
+
+.jwl_subheading_gold {
+  color: #c6a05a;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.jwl_main_heading_serif {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+/* --- The Luxury Masonry Grid Layout --- */
+.jwl_gallery_bento_box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* Rows ko 3 tak barha diya hai taake vertical space mile */
+  grid-template-rows: repeat(2, 280px); 
+  gap: 20px;
+}
+
+/* Common Card Styling */
+.jwl_item_card_root {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Specific Grid Spans */
+.jwl_item_featured_long {
+  grid-column: span 1;
+  grid-row: span 2; /* Bari image left side par */
+}
+
+.jwl_item_landscape_top {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* Image Styling */
+.jwl_asset_fluid_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Hover Overlay */
+.jwl_item_card_root::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(198, 160, 90, 0.15);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.jwl_item_card_root:hover .jwl_asset_fluid_img {
+  transform: scale(1.08);
+}
+
+.jwl_item_card_root:hover::after {
+  opacity: 1;
+}
+
+/* --- Responsive Engine --- */
+@media (max-width: 1024px) {
+  .jwl_gallery_bento_box {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto; /* Height auto ho jaye mobile par */
+  }
+  .jwl_item_featured_long { grid-row: span 1; }
+  .jwl_item_landscape_top { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .jwl_gallery_bento_box {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .jwl_item_landscape_top { grid-column: span 1; }
+}
