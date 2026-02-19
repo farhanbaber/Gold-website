@@ -869,9 +869,6 @@
   }
 }
 /* end of the section */
-
-/* start new */
-/* Container Block */
 /* Main Section Container */
 .designer_section_root {
   display: flex;
@@ -884,7 +881,7 @@
   margin: 0 auto;
   min-height: 85vh;
   position: relative;
-  overflow: hidden; /* Taake balls container se bahar na dikhein */
+  overflow: hidden; 
 }
 
 /* --- Golden Balls Animation --- */
@@ -901,24 +898,24 @@
   animation: floatingOrbs 6s infinite ease-in-out;
 }
 
-/* Ball 1: Top Left */
+/* Ball 1: Top Left - Fixed for mobile visibility */
 .designer_section_root::before {
-  top: 15%;
+  top: 8%;
   left: 5%;
 }
 
 /* Ball 2: Bottom Right */
 .designer_section_root::after {
-  bottom: 15%;
-  right: 8%;
+  bottom: 10%;
+  right: 5%;
   width: 20px;
   height: 20px;
-  animation-delay: -3s; /* Alag timing ke liye */
+  animation-delay: -3s;
 }
 
 @keyframes floatingOrbs {
   0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-40px) translateX(20px); }
+  50% { transform: translateY(-30px) translateX(15px); }
 }
 
 /* --- Visual Side (Images) --- */
@@ -937,7 +934,7 @@
   max-width: 420px;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 250px 250px 0 0; /* Perfect Arch */
+  border-radius: 250px 250px 0 0; 
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
@@ -958,17 +955,19 @@
   z-index: 2;
 }
 
-/* --- The Magic Hover Interaction --- */
-.designer_visual_composition:hover .designer_primary_portrait {
-  z-index: 3; /* Badi image upar aa jaye */
-  transform: scale(1.05);
-  box-shadow: 30px 30px 60px rgba(0, 0, 0, 0.15);
-}
+/* --- Hover Interaction (Laptop Only) --- */
+@media (min-width: 992px) {
+  .designer_visual_composition:hover .designer_primary_portrait {
+    z-index: 3;
+    transform: scale(1.05);
+    box-shadow: 30px 30px 60px rgba(0, 0, 0, 0.15);
+  }
 
-.designer_visual_composition:hover .designer_secondary_snapshot {
-  z-index: 1; /* Choti image niche chali jaye */
-  transform: scale(0.9) translateX(-15px);
-  filter: grayscale(0.4);
+  .designer_visual_composition:hover .designer_secondary_snapshot {
+    z-index: 1;
+    transform: scale(0.9) translateX(-15px);
+    filter: grayscale(0.4);
+  }
 }
 
 /* --- Narrative Side (Text) --- */
@@ -979,8 +978,7 @@
 }
 
 .designer_narrative_heading {
-    font-family: "Edu AU VIC WA NT Arrows", cursive;
-
+  font-family: "Edu AU VIC WA NT Arrows", cursive;
   font-size: clamp(2rem, 4vw, 3.5rem);
   color: #c6a05a;
   line-height: 1.2;
@@ -989,9 +987,7 @@
 }
 
 .designer_narrative_description {
-  font-family: 'Inter', sans-serif;
-    font-family: "Cinzel", serif;
-
+  font-family: "Cinzel", serif;
   font-size: 1.05rem;
   line-height: 1.8;
   color: #000000;
@@ -999,18 +995,17 @@
   max-width: 500px;
 }
 
-/* Animated Golden CTA Button */
+/* --- Animated Button --- */
 .designer_action_trigger {
   margin-top: 20px;
   width: fit-content;
   padding: 14px 35px;
   border: none;
   border-radius: 50px;
-  background: #c6a05a; /* Luxury Gold */
+  background: #c6a05a;
   color: #f8f8f8;
   font-size: 1.1rem;
   font-weight: 600;
-  /* Agar Dancing Script installed hai to wo chalega, warna cursive backup */
   font-family: "Dancing Script", cursive; 
   cursor: pointer;
   position: relative;
@@ -1023,7 +1018,6 @@
   z-index: 1;
 }
 
-/* Shine Effect Layer */
 .designer_action_trigger::before {
   content: "";
   position: absolute;
@@ -1032,60 +1026,57 @@
   width: 70%;
   height: 100%;
   background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0) 100%
+    120deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.6) 50%, 
+    rgba(255,255,255,0) 100%
   );
   transform: skewX(-25deg);
   transition: left 0.8s ease-in-out;
-  z-index: 1;
 }
 
-/* Hover States */
-.designer_action_trigger:hover {
-  background-color: #a67c37;
-  color: #ffffff;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(166, 124, 55, 0.5);
-}
+.designer_action_trigger:hover::before { left: 150%; }
+.designer_action_trigger:hover { transform: translateY(-5px); }
+.designer_action_trigger span { position: relative; z-index: 2; }
 
-.designer_action_trigger:hover::before {
-  left: 150%; /* Shine pure button ke upar se guzar jaye */
-}
-
-/* Active/Click Effect */
-.designer_action_trigger:active {
-  transform: scale(0.95);
-}
-
-/* Ensure Text stays above the shine */
-.designer_action_trigger span {
-  position: relative;
-  z-index: 2;
-  letter-spacing: 1px;
-}
-
-/* --- Mobile Responsiveness --- */
+/* --- REFINED Mobile Responsiveness --- */
 @media (max-width: 991px) {
   .designer_section_root {
     flex-direction: column;
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
+
+  .designer_section_root::before { top: 2%; left: 5%; }
+  .designer_section_root::after { bottom: 2%; right: 5%; }
+
+  .designer_visual_composition {
+    flex-direction: column; 
+    align-items: center;
+    gap: 15px; 
+    width: 100%;
+  }
+
+  .designer_primary_portrait {
+    max-width: 320px;
+    position: relative;
+  }
+
+  .designer_secondary_snapshot {
+    position: relative; 
+    bottom: 0;
+    right: 0;
+    width: 90%; 
+    max-width: 280px;
+    border-width: 6px;
+    margin-top: -30px; /* Overlap effect on mobile */
+    z-index: 2;
+  }
+
   .designer_narrative_wrapper {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
   }
-  .designer_secondary_snapshot {
-    right: 0;
-    bottom: 5%;
-  }
-}
-
-@media (max-width: 480px) {
-  .designer_primary_portrait { max-width: 280px; }
-  .designer_secondary_snapshot { width: 60%; border-width: 5px; }
 }
