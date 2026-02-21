@@ -448,32 +448,56 @@ const JewelryGallery = () => {
         {/* Item 1: Large Portrait (Left) */}
         <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_featured_long}`}>
           <img src="peo.1.png" alt="Necklace" className={styles.jwl_asset_fluid_img} />
+          <div className={styles.jwl_overlay_content}>
+    <span className={styles.jwl_product_category}>Jewelry</span>
+    <h3 className={styles.jwl_product_name}>Necklace</h3>
+  </div>
         </div>
 
         {/* Item 2: Landscape Image (Middle Top) */}
         <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_landscape_top}`}>
           <img src="neo.ear.png" alt="Earrings" className={styles.jwl_asset_fluid_img} />
+          <div className={styles.jwl_overlay_content}>
+    <span className={styles.jwl_product_category}>Jewelry</span>
+    <h3 className={styles.jwl_product_name}>Earrings</h3>
+  </div>
         </div>
 
         {/* Item 3: Engagement Ring (Top Right) */}
         <div className={styles.jwl_item_card_root}>
           <img src="eng.peo.jpg" alt="Engagement Ring" className={styles.jwl_asset_fluid_img} />
+          <div className={styles.jwl_overlay_content}>
+    <span className={styles.jwl_product_category}>Jewelry</span>
+    <h3 className={styles.jwl_product_name}>Engagement Ring</h3>
+  </div>
         </div>
 
         {/* Item 4: Naya Card (Engagement Ring ke niche) */}
         <div className={styles.jwl_item_card_root}>
           <img src="bra.peo.png" alt="Luxury Bracelet" className={styles.jwl_asset_fluid_img} />
+          <div className={styles.jwl_overlay_content}>
+    <span className={styles.jwl_product_category}>Jewelry</span>
+    <h3 className={styles.jwl_product_name}> Bracelet</h3>
+  </div>
         </div>
 
         {/* Item 5: Small Bottom Middle 1 */}
         <div className={styles.jwl_item_card_root}>
                     <img src="meeze.peo.png" alt="Gold Ring" className={styles.jwl_asset_fluid_img} />
+                    <div className={styles.jwl_overlay_content}>
+    <span className={styles.jwl_product_category}>Jewelry</span>
+    <h3 className={styles.jwl_product_name}> Ring</h3>
+  </div>
 
         </div>
 
         {/* Item 6: Small Bottom Middle 2 */}
         <div className={styles.jwl_item_card_root}>
                     <img src="pend.peo.png" alt="Pendant" className={styles.jwl_asset_fluid_img} />
+                    <div className={styles.jwl_overlay_content}>
+    <span className={styles.jwl_product_category}>Jewelry</span>
+    <h3 className={styles.jwl_product_name}>Pendant</h3>
+  </div>
 
         </div>
       </div>

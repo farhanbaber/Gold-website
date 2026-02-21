@@ -727,7 +727,7 @@
   line-height: 1.8;
   color: #555;
   margin-bottom: 24px;
-    font-family: "Lora", serif;
+    font-family: "Cinzel", serif;
 
 }
 
@@ -1149,4 +1149,55 @@
     gap: 15px;
   }
   .jwl_item_landscape_top { grid-column: span 1; }
+}
+/* --- Overlay Container --- */
+.jwl_overlay_content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  opacity: 0; /* Shuru mein hidden */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.4); /* Dark shade for text readability */
+}
+
+/* --- Text Styles --- */
+.jwl_product_category {
+  color: #c6a05a;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: translateY(20px); /* Niche se start hoga */
+  transition: all 0.5s ease;
+  font-family: "Cinzel", serif;
+}
+
+.jwl_product_name {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-family: "Dancing Script", cursive;
+  margin-top: 5px;
+  transform: translateY(20px);
+  transition: all 0.6s ease 0.1s; /* Thoda delay for premium feel */
+}
+
+/* --- Hover State --- */
+.jwl_item_card_root:hover .jwl_overlay_content {
+  opacity: 1;
+}
+
+.jwl_item_card_root:hover .jwl_product_category,
+.jwl_item_card_root:hover .jwl_product_name {
+  transform: translateY(0); /* Apni jagah par aa jayega */
+}
+
+/* Purana Overlay Update (Taake dono clash na karein) */
+.jwl_item_card_root::after {
+  display: none; /* Isko ab hata sakte hain kyunki humne naya overlay banaya hai */
 }
