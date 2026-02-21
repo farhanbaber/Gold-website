@@ -427,9 +427,9 @@ const DesignerSection = () => {
          Blending timeless elegance with contemporary sophistication, our lead designer transforms abstract concepts into opulent realities. With a meticulous eye for detail and a passion for bespoke excellence, every creation is more than just a product—it is a legacy of luxury
       
         </p>
-       <button className={styles.designer_action_trigger}>
-          <span>Explore The Designs</span>
-        </button>
+      <button className={styles.cta}>
+  <span>Explore The Designs</span>
+</button>
       </div>
     </section>
   );
@@ -447,32 +447,34 @@ const JewelryGallery = () => {
       <div className={styles.jwl_gallery_bento_box}>
         {/* Item 1: Large Portrait (Left) */}
         <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_featured_long}`}>
-          <img src="necklace-big.jpg" alt="Necklace" className={styles.jwl_asset_fluid_img} />
+          <img src="peo.1.png" alt="Necklace" className={styles.jwl_asset_fluid_img} />
         </div>
 
         {/* Item 2: Landscape Image (Middle Top) */}
         <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_landscape_top}`}>
-          <img src="earrings-wide.jpg" alt="Earrings" className={styles.jwl_asset_fluid_img} />
+          <img src="neo.ear.png" alt="Earrings" className={styles.jwl_asset_fluid_img} />
         </div>
 
         {/* Item 3: Engagement Ring (Top Right) */}
         <div className={styles.jwl_item_card_root}>
-          <img src="ring-1.jpg" alt="Engagement Ring" className={styles.jwl_asset_fluid_img} />
+          <img src="eng.peo.jpg" alt="Engagement Ring" className={styles.jwl_asset_fluid_img} />
         </div>
 
         {/* Item 4: Naya Card (Engagement Ring ke niche) */}
         <div className={styles.jwl_item_card_root}>
-          <img src="bracelet-new.jpg" alt="Luxury Bracelet" className={styles.jwl_asset_fluid_img} />
+          <img src="bra.peo.png" alt="Luxury Bracelet" className={styles.jwl_asset_fluid_img} />
         </div>
 
         {/* Item 5: Small Bottom Middle 1 */}
         <div className={styles.jwl_item_card_root}>
-          <img src="pendant.jpg" alt="Pendant" className={styles.jwl_asset_fluid_img} />
+                    <img src="meeze.peo.png" alt="Gold Ring" className={styles.jwl_asset_fluid_img} />
+
         </div>
 
         {/* Item 6: Small Bottom Middle 2 */}
         <div className={styles.jwl_item_card_root}>
-          <img src="ring-2.jpg" alt="Gold Ring" className={styles.jwl_asset_fluid_img} />
+                    <img src="pend.peo.png" alt="Pendant" className={styles.jwl_asset_fluid_img} />
+
         </div>
       </div>
     </section>
