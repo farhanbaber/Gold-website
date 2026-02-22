@@ -1,188 +1,136 @@
 .wrapper {
   width: 100%;
-  padding: 40px 20px;
+  padding: 20px;
   display: flex;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #fff;
+  overflow: hidden;
 }
+
+.hidden { display: none; }
 
 .heroContainer {
   width: 100%;
-  max-width: 1300px; /* Section ko bara kar diya */
+  max-width: 1200px;
 }
 
 .mainCard {
   width: 100%;
-  min-height: 450px; /* Height barha di */
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(250,243,224,1) 100%);
-  border-radius: 250px; /* Pill Shape */
-  border: 3px solid #d4af37; /* Solid Gold Border */
+  min-height: 400px;
+  background: radial-gradient(circle, #fff 0%, #faf3e0 100%);
+  border-radius: 200px; /* Pill shape */
+  border: 2px solid #d4af37;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 60px;
-  position: relative;
-  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2); /* Golden Glow Shadow */
-  overflow: hidden;
+  padding: 0 40px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
 }
 
-/* Left Side Styles */
+/* LEFT SIDE */
 .imageCircle {
-  width: 280px; /* Size barha diya */
-  height: 280px;
-  background: white;
+  width: 220px;
+  height: 220px;
+  background: #fff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px gold solid;
-  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.3);
-  position: relative;
+  border: 1px solid #d4af37;
+  overflow: hidden;
 }
 
 .animatedRing {
-  width: 85%;
+  width: 80%;
   height: auto;
   object-fit: contain;
-  /* Hardware Acceleration enable karein */
-  will-change: transform, opacity;
-  transform: translateZ(0); 
-  backface-visibility: hidden;
+  transition: opacity 0.4s ease-in-out; /* Super light animation */
+  will-change: opacity;
 }
 
-/* Mobile par layout ko light banayein */
-@media (max-width: 850px) {
-  .mainCard {
-    flex-direction: column;
-    border-radius: 40px; /* Thora kam radius mobile ke liye behtar hai */
-    padding: 40px 15px;
-    min-height: auto;
-    gap: 20px;
-  }
-
-  /* Mobile par images ko thora chota rakhein taake GPU par load na paray */
-  .imageCircle {
-    width: 200px;
-    height: 200px;
-  }
-
-  .largeStaticGem {
-    width: 220px;
-  }
-}
-
-/* Text Styles */
+/* TEXT CENTER */
 .textContent {
-  text-align: center;
-  z-index: 2;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
 }
 
 .subText {
   color: #8a6d3b;
-  font-size: 1.4rem;
-  font-family: 'Serif', sans-serif;
+  font-size: 1rem;
   letter-spacing: 2px;
-  display: block;
-              font-family: "Cinzel", serif;
-
+  text-transform: uppercase;
 }
 
 .mainTitle {
   color: #1a1a1a;
-  font-size: 4.5rem; /* Bara aur bold font */
-  font-weight: 900;
-  letter-spacing: 8px;
-  margin: 10px 0;
-    font-family: "Dancing Script", cursive;
-
+  font-size: 3.5rem; /* Pehle se chota */
+  margin: 5px 0;
+  font-family: "Dancing Script", cursive;
+  white-space: nowrap; /* Text line break nahi karega */
 }
 
-.goldenLine {
-  width: 80px;
-  height: 4px;
+.lineWrapper {
+  width: 120px; /* Line ki width title ke hisab se set ki */
+  height: 2px;
+  background: rgba(212, 175, 55, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.movingLine {
+  width: 40%;
+  height: 100%;
   background: #d4af37;
-  margin: 0 auto;
+  position: absolute;
+  animation: moveLine 2s infinite linear;
 }
 
-/* Right Side Styles */
+@keyframes moveLine {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+/* RIGHT SIDE */
 .largeStaticGem {
-  width: 350px; /* Stuck image ko kafi bara kar diya */
+  width: 280px; /* Thora chota kiya static gem ko bhi */
   height: auto;
-  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
 }
 
-/* Responsive (Mobile Friendly) */
-@media (max-width: 1100px) {
-  .mainTitle { font-size: 3rem; }
-  .largeStaticGem { width: 250px; }
-  .imageCircle { width: 220px; height: 220px; }
-}
-
-@media (max-width: 850px) {
+/* RESPONSIVE FIXES (MAIN PROBLEM AREA) */
+@media (max-width: 900px) {
   .mainCard {
     flex-direction: column;
-    border-radius: 50px;
-    padding: 60px 20px;
+    border-radius: 30px; /* Mobile par pill shape buri lagti hai */
+    padding: 30px 10px;
     min-height: auto;
+    gap: 15px;
   }
-  
-  .imageCircle { margin-bottom: 30px; }
-  .largeStaticGem { 
-    width: 280px; 
-    margin-top: 30px; 
+
+  .mainTitle {
+    font-size: 2.2rem; /* Mobile par headings choti honi chahiye */
   }
-  
-  .mainTitle { font-size: 2.5rem; }
-}
 
-/* anmated line effect  */
-.textContent {
-  text-align: center;
-  z-index: 2;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Sab center mein rahe */
-}
-
-/* Line ka main container */
-.lineWrapper {
-  width: 250px; /* Isay apni heading ki width ke mutabiq adjust karein */
-  height: 3px;
-  background: rgba(212, 175, 55, 0.1); /* Peeche halki si line background */
-  position: relative;
-  overflow: hidden; /* Ye line ko bahar jane se rokega */
-  margin-top: 10px;
-  border-radius: 10px;
-}
-
-/* Moving Golden Line */
-.movingLine {
-  width: 80px; /* Line ki apni length */
-  height: 100%;
-  background: linear-gradient(90deg, transparent, #d4af37, transparent);
-  position: absolute;
-  left: -100px; /* Start position bahar se */
-  animation: forwardMove 2.5s infinite linear; /* Infinite Loop */
-}
-
-/* Forward Movement Animation */
-@keyframes forwardMove {
-  0% {
-    left: -100px;
+  .imageCircle {
+    width: 180px;
+    height: 180px;
   }
-  100% {
-    left: 100%; /* Puri width cross karke doosri side se bahar nikal jaye */
+
+  .largeStaticGem {
+    width: 200px;
+  }
+
+  .lineWrapper {
+    width: 100px;
   }
 }
 
-/* Baki Styles wahi rahengi jo aapke paas hain */
-.mainTitle {
-  color: #1a1a1a;
-  font-size: 4.5rem;
-  font-weight: 900;
-  letter-spacing: 8px;
-  margin: 10px 0;
-  font-family: "Dancing Script", cursive;
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 1.8rem; /* Ultra mobile size */
+  }
 }

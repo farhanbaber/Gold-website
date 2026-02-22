@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Mencollection.module.css';
 
 const ringImages = [
@@ -21,48 +20,41 @@ const GemSection = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* Hidden div for preloading images - Taake mobile lag na kare */}
-      <div style={{ display: 'none' }}>
-        {ringImages.map((src) => <img key={src} src={src} alt="preload" />)}
+      {/* Preload images - essential for zero lag */}
+      <div className={styles.hidden}>
+        {ringImages.map((src) => <img key={src} src={src} alt="" />)}
       </div>
 
       <section className={styles.heroContainer}>
         <div className={styles.mainCard}>
+          
           <div className={styles.leftContent}>
             <div className={styles.imageCircle}>
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={index} // key ko index rakhein taake uniquely identify ho
-                  src={ringImages[index]}
-                  initial={{ opacity: 0, x: -20 }} // Mobile ke liye simple rakhein
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  className={styles.animatedRing}
-                />
-              </AnimatePresence>
+              {/* Simple and fast image switching */}
+              <img
+                src={ringImages[index]}
+                alt="Ring"
+                className={styles.animatedRing}
+              />
             </div>
           </div>
 
-      <div className={styles.textContent}>
-  <span className={styles.subText}>Premium & Beautiful Rings</span>
-  <h1 className={styles.mainTitle}>ESSENCE</h1>
-  
-  {/* Line Container */}
-  <div className={styles.lineWrapper}>
-    <div className={styles.movingLine}></div>
-  </div>
-</div>
+          <div className={styles.textContent}>
+            <span className={styles.subText}>Premium Rings</span>
+            <h1 className={styles.mainTitle}>ESSENCE</h1>
+            <div className={styles.lineWrapper}>
+              <div className={styles.movingLine}></div>
+            </div>
+          </div>
 
           <div className={styles.rightContent}>
-            <motion.img 
+            <img 
               src="gold.bra.png" 
               alt="Luxury Gemstone" 
               className={styles.largeStaticGem}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
             />
           </div>
+
         </div>
       </section>
     </div>
