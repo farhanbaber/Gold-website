@@ -44,6 +44,31 @@
   width: 85%;
   height: auto;
   object-fit: contain;
+  /* Hardware Acceleration enable karein */
+  will-change: transform, opacity;
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+}
+
+/* Mobile par layout ko light banayein */
+@media (max-width: 850px) {
+  .mainCard {
+    flex-direction: column;
+    border-radius: 40px; /* Thora kam radius mobile ke liye behtar hai */
+    padding: 40px 15px;
+    min-height: auto;
+    gap: 20px;
+  }
+
+  /* Mobile par images ko thora chota rakhein taake GPU par load na paray */
+  .imageCircle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .largeStaticGem {
+    width: 220px;
+  }
 }
 
 /* Text Styles */
@@ -59,6 +84,8 @@
   font-family: 'Serif', sans-serif;
   letter-spacing: 2px;
   display: block;
+              font-family: "Cinzel", serif;
+
 }
 
 .mainTitle {
@@ -67,6 +94,8 @@
   font-weight: 900;
   letter-spacing: 8px;
   margin: 10px 0;
+    font-family: "Dancing Script", cursive;
+
 }
 
 .goldenLine {
@@ -105,4 +134,55 @@
   }
   
   .mainTitle { font-size: 2.5rem; }
+}
+
+/* anmated line effect  */
+.textContent {
+  text-align: center;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Sab center mein rahe */
+}
+
+/* Line ka main container */
+.lineWrapper {
+  width: 250px; /* Isay apni heading ki width ke mutabiq adjust karein */
+  height: 3px;
+  background: rgba(212, 175, 55, 0.1); /* Peeche halki si line background */
+  position: relative;
+  overflow: hidden; /* Ye line ko bahar jane se rokega */
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+/* Moving Golden Line */
+.movingLine {
+  width: 80px; /* Line ki apni length */
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  position: absolute;
+  left: -100px; /* Start position bahar se */
+  animation: forwardMove 2.5s infinite linear; /* Infinite Loop */
+}
+
+/* Forward Movement Animation */
+@keyframes forwardMove {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%; /* Puri width cross karke doosri side se bahar nikal jaye */
+  }
+}
+
+/* Baki Styles wahi rahengi jo aapke paas hain */
+.mainTitle {
+  color: #1a1a1a;
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: 8px;
+  margin: 10px 0;
+  font-family: "Dancing Script", cursive;
 }

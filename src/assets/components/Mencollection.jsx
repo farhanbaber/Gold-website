@@ -2,28 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Mencollection.module.css';
 
-// Yahan apni 20 images ka array
 const ringImages = [
-  '/pla.1.png',
-  '/pla.2.png',
-  '/pla.3.png',
-  '/pla.4.png',
-  '/pla.5.png',
-  '/pla.6.png',
-  '/pla.7.png',
-  '/pla.8.png',
-  '/pla.9.png',
-  '/pla.10.png',
-  '/pla.11.png',
-  '/pla.12.png',
-  '/pla.13.png',
-  '/pla.14.png',
-  '/pla.15.png',
-  '/pla.16.png',
-  '/pla.17.png',
-  '/pla.18.png',
-  '/pla.19.png',
-  '/pla.20.png'
+  '/pla.1.png', '/pla.2.png', '/pla.3.png', '/pla.4.png', '/pla.5.png',
+  '/pla.6.png', '/pla.7.png', '/pla.8.png', '/pla.9.png', '/pla.10.png',
+  '/pla.11.png', '/pla.12.png', '/pla.13.png', '/pla.14.png', '/pla.15.png',
+  '/pla.16.png', '/pla.17.png', '/pla.18.png', '/pla.19.png', '/pla.20.png'
 ];
 
 const GemSection = () => {
@@ -38,44 +21,48 @@ const GemSection = () => {
 
   return (
     <div className={styles.wrapper}>
+      {/* Hidden div for preloading images - Taake mobile lag na kare */}
+      <div style={{ display: 'none' }}>
+        {ringImages.map((src) => <img key={src} src={src} alt="preload" />)}
+      </div>
+
       <section className={styles.heroContainer}>
         <div className={styles.mainCard}>
-          
-          {/* Left Side: Animated Ring Container */}
           <div className={styles.leftContent}>
             <div className={styles.imageCircle}>
               <AnimatePresence mode="wait">
                 <motion.img
-                  key={ringImages[index]}
+                  key={index} // key ko index rakhein taake uniquely identify ho
                   src={ringImages[index]}
-                  initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  exit={{ opacity: 0, scale: 1.1, rotate: 10 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  initial={{ opacity: 0, x: -20 }} // Mobile ke liye simple rakhein
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
                   className={styles.animatedRing}
                 />
               </AnimatePresence>
             </div>
           </div>
 
-          {/* Center: Luxury Text */}
-          <div className={styles.textContent}>
-            <span className={styles.subText}>Premium & Beautiful Gemstones</span>
-            <h1 className={styles.mainTitle}>COLLECTION</h1>
-            <div className={styles.goldenLine}></div>
-          </div>
+      <div className={styles.textContent}>
+  <span className={styles.subText}>Premium & Beautiful Rings</span>
+  <h1 className={styles.mainTitle}>ESSENCE</h1>
+  
+  {/* Line Container */}
+  <div className={styles.lineWrapper}>
+    <div className={styles.movingLine}></div>
+  </div>
+</div>
 
-          {/* Right Side: Large Static Gemstone */}
           <div className={styles.rightContent}>
             <motion.img 
-              src="ayt.png" 
+              src="gold.bra.png" 
               alt="Luxury Gemstone" 
               className={styles.largeStaticGem}
-              animate={{ y: [0, -15, 0] }} // Subtle floating animation
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3, repeat: Infinity }}
             />
           </div>
-
         </div>
       </section>
     </div>
