@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Mencollection.module.css';
 
 const ringImages = [
@@ -20,22 +21,26 @@ const GemSection = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* Preload images - essential for zero lag */}
-      <div className={styles.hidden}>
-        {ringImages.map((src) => <img key={src} src={src} alt="" />)}
-      </div>
-
       <section className={styles.heroContainer}>
         <div className={styles.mainCard}>
           
           <div className={styles.leftContent}>
             <div className={styles.imageCircle}>
-              {/* Simple and fast image switching */}
-              <img
-                src={ringImages[index]}
-                alt="Ring"
-                className={styles.animatedRing}
-              />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={index}
+                  src={ringImages[index]}
+                  // Luxury Animations Wapas Agayi
+                  initial={{ opacity: 0, scale: 0.5, rotate: -15 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 1.2, rotate: 15 }}
+                  transition={{ 
+                    duration: 0.7, 
+                    ease: [0.43, 0.13, 0.23, 0.96] // Custom Cubic Bezier for smooth feel
+                  }}
+                  className={styles.animatedRing}
+                />
+              </AnimatePresence>
             </div>
           </div>
 
@@ -48,10 +53,12 @@ const GemSection = () => {
           </div>
 
           <div className={styles.rightContent}>
-            <img 
+            <motion.img 
               src="gold.bra.png" 
               alt="Luxury Gemstone" 
               className={styles.largeStaticGem}
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
 

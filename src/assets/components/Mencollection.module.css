@@ -3,134 +3,125 @@
   padding: 20px;
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  background-color: #ffffff;
   overflow: hidden;
 }
 
-.hidden { display: none; }
-
 .heroContainer {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
 }
 
 .mainCard {
   width: 100%;
-  min-height: 400px;
-  background: radial-gradient(circle, #fff 0%, #faf3e0 100%);
-  border-radius: 200px; /* Pill shape */
-  border: 2px solid #d4af37;
+  min-height: 450px;
+  background: radial-gradient(circle, #ffffff 0%, #faf3e0 100%);
+  border-radius: 250px;
+  border: 3px solid #d4af37;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+  padding: 0 60px;
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+  /* Lag fix: image change par layout shift nahi hoga */
+  contain: paint; 
 }
 
-/* LEFT SIDE */
 .imageCircle {
-  width: 220px;
-  height: 220px;
-  background: #fff;
+  width: 280px;
+  height: 280px;
+  background: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #d4af37;
-  overflow: hidden;
+  border: 2px solid gold;
+  position: relative;
+  /* Hardware acceleration */
+  transform: translateZ(0);
 }
 
 .animatedRing {
-  width: 80%;
+  width: 85%;
   height: auto;
   object-fit: contain;
-  transition: opacity 0.4s ease-in-out; /* Super light animation */
-  will-change: opacity;
+  /* GPU ko force karna animation handle karne ke liye */
+  will-change: transform, opacity;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
 }
 
-/* TEXT CENTER */
 .textContent {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 10px;
 }
 
 .subText {
   color: #8a6d3b;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  font-family: "Cinzel", serif;
 }
 
 .mainTitle {
   color: #1a1a1a;
-  font-size: 3.5rem; /* Pehle se chota */
-  margin: 5px 0;
+  font-size: 4.5rem;
+  margin: 10px 0;
   font-family: "Dancing Script", cursive;
-  white-space: nowrap; /* Text line break nahi karega */
+  /* Text resizing fix */
+  font-display: swap;
 }
 
 .lineWrapper {
-  width: 120px; /* Line ki width title ke hisab se set ki */
-  height: 2px;
-  background: rgba(212, 175, 55, 0.2);
+  width: 180px;
+  height: 3px;
+  background: rgba(212, 175, 55, 0.1);
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .movingLine {
-  width: 40%;
+  width: 60px;
   height: 100%;
   background: #d4af37;
   position: absolute;
-  animation: moveLine 2s infinite linear;
+  animation: moveLine 2.5s infinite linear;
 }
 
 @keyframes moveLine {
-  0% { left: -50%; }
+  0% { left: -100px; }
   100% { left: 100%; }
 }
 
-/* RIGHT SIDE */
 .largeStaticGem {
-  width: 280px; /* Thora chota kiya static gem ko bhi */
+  width: 350px;
   height: auto;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+  will-change: transform;
 }
 
-/* RESPONSIVE FIXES (MAIN PROBLEM AREA) */
-@media (max-width: 900px) {
+/* --- RESPONISVE FIXES --- */
+@media (max-width: 1100px) {
+  .mainTitle { font-size: 3rem; }
+  .largeStaticGem { width: 250px; }
+  .imageCircle { width: 220px; height: 220px; }
+}
+
+@media (max-width: 850px) {
   .mainCard {
     flex-direction: column;
-    border-radius: 30px; /* Mobile par pill shape buri lagti hai */
-    padding: 30px 10px;
+    border-radius: 60px; /* Thora curvature rakha mobile par bhi */
+    padding: 50px 20px;
     min-height: auto;
-    gap: 15px;
+  }
+  
+  .mainTitle { 
+    font-size: 2.8rem; /* Mobile par width se bahar nahi jayega */
+    letter-spacing: 4px;
   }
 
-  .mainTitle {
-    font-size: 2.2rem; /* Mobile par headings choti honi chahiye */
-  }
-
-  .imageCircle {
-    width: 180px;
-    height: 180px;
-  }
-
-  .largeStaticGem {
-    width: 200px;
-  }
-
-  .lineWrapper {
-    width: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mainTitle {
-    font-size: 1.8rem; /* Ultra mobile size */
-  }
+  .imageCircle { margin-bottom: 20px; width: 200px; height: 200px; }
+  .largeStaticGem { width: 250px; margin-top: 20px; }
 }
