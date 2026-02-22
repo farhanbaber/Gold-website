@@ -4,10 +4,26 @@ import styles from './Mencollection.module.css';
 
 // Yahan apni 20 images ka array
 const ringImages = [
-  '/images/ring1.png',
-  '/images/ring2.png',
-  '/images/ring3.png',
-  // ... baqi 20 images yahan add karein
+  '/pla.1.png',
+  '/pla.2.png',
+  '/pla.3.png',
+  '/pla.4.png',
+  '/pla.5.png',
+  '/pla.6.png',
+  '/pla.7.png',
+  '/pla.8.png',
+  '/pla.9.png',
+  '/pla.10.png',
+  '/pla.11.png',
+  '/pla.12.png',
+  '/pla.13.png',
+  '/pla.14.png',
+  '/pla.15.png',
+  '/pla.16.png',
+  '/pla.17.png',
+  '/pla.18.png',
+  '/pla.19.png',
+  '/pla.20.png'
 ];
 
 const GemSection = () => {
@@ -52,7 +68,7 @@ const GemSection = () => {
           {/* Right Side: Large Static Gemstone */}
           <div className={styles.rightContent}>
             <motion.img 
-              src="/" 
+              src="ayt.png" 
               alt="Luxury Gemstone" 
               className={styles.largeStaticGem}
               animate={{ y: [0, -15, 0] }} // Subtle floating animation
