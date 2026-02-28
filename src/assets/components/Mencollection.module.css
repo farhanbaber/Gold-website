@@ -2,6 +2,7 @@
   width: 100%;
   padding: 20px;
   display: flex;
+  flex-direction: column; /* Ye line isay side se hata kar neeche le aayegi */
   justify-content: center;
   background-color: #ffffff;
   overflow: hidden;
@@ -124,4 +125,285 @@
 
   .imageCircle { margin-bottom: 20px; width: 200px; height: 200px; }
   .largeStaticGem { width: 250px; margin-top: 20px; }
+}
+
+
+/* start new section */
+/* ================= RING SECTION (SCROLLER) CSS ================= */
+/* Vertical Scrolling Layout */
+.Vertical_Scroll_Main_Section {
+  width: 100%;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #d4af37;
+  background: #ffffff;
+}
+
+.Vertical_Scroll_Inner_Layout {
+  display: flex;
+  gap: 25px;
+  height: 800px;
+  width: 90%;
+  max-width: 1000px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.Vertical_Track_Base {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 1;
+}
+
+/* Animations */
+.Anim_Slide_Up_Infinite { animation: slideUp 15s linear infinite; }
+.Anim_Slide_Down_Infinite { animation: slideDown 15s linear infinite; }
+
+.Vertical_Track_Base:hover { animation-play-state: paused; }
+
+@keyframes slideUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* Card Styling (Sleek) */
+.Scroll_Card_Unit_88 {
+  background: #fdfdfd;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.Scroll_Img_Wrapper_99 img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.Scroll_Price_Tag_Bold {
+  display: block;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-top: 12px;
+}
+
+.Scroll_Title_Muted {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Vertical_Scroll_Inner_Layout { height: 550px; }
+  .Scroll_Card_Unit_88 { padding: 12px; }
+}
+
+/* Card Styling (Height original rakhi hai) */
+.Scroll_Card_Unit_88 {
+  background: #fdfdfd;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  max-width: 240px;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  z-index: 1;
+  /* Base border jo pehle se dikhega */
+  border: 1px solid #f0f0f0; 
+}
+
+/* Golden Border Overlay (Initially Hidden) */
+.Scroll_Card_Unit_88::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: 22px; /* Thora sa bada taake border lage */
+  background: linear-gradient(90deg, #d4af37, #f9e29d, #d4af37);
+  background-size: 200% auto;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Hover Effects */
+.Scroll_Card_Unit_88:hover {
+  transform: translateY(-8px);
+  border-color: transparent; /* Base border hata kar golden dikhayenge */
+}
+
+.Scroll_Card_Unit_88:hover::after {
+  opacity: 1;
+  animation: borderGlowFlow 2s linear infinite;
+}
+
+/* Smooth Border Fill Animation */
+@keyframes borderGlowFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Images and Text (Size unchanged) */
+.Scroll_Img_Wrapper_99 img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.Scroll_Price_Tag_Bold {
+  display: block;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-top: 12px;
+  color: #1a1a1a;
+}
+
+.Scroll_Title_Muted {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.Vertical_Scroll_Inner_Layout {
+  display: flex;
+  gap: 20px;
+  height: 800px;
+  width: 95%;
+  max-width: 1200px;
+  overflow: hidden;
+  align-items: center; /* Center align for the stand */
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+/* --- Center Stand Styling --- */
+.Center_Stand_Wrapper {
+  flex: 1.5; /* Stand column scrolls columns se thora bada dikhega */
+  height: 70%;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.Stand_Img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.Stand_Overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0); /* Initial transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+.Stand_Text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+/* Hover Effect */
+.Center_Stand_Wrapper:hover .Stand_Img {
+  transform: scale(1.1);
+}
+
+.Center_Stand_Wrapper:hover .Stand_Overlay {
+  background: rgba(0, 0, 0, 0.6); /* Black fade */
+}
+
+.Center_Stand_Wrapper:hover .Stand_Text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Responsive Mobile Fixes --- */
+@media (max-width: 768px) {
+  .Vertical_Scroll_Inner_Layout {
+    height: 500px;
+    gap: 10px;
+  }
+  
+  .Center_Stand_Wrapper {
+    flex: 2; /* Mobile par stand ko thora aur prominence di hai */
+  }
+
+  .Stand_Text {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Bohat chote mobile par agar 3 columns tight ho rahe hon */
+  .Vertical_Scroll_Inner_Layout {
+    width: 100%;
+    gap: 5px;
+  }
+}
+/* Animation Up (Smooth Loop) */
+.Anim_Slide_Up_Infinite { 
+  animation: slideUp 60s linear infinite; /* Time barha diya taake tez na bhage */
+}
+
+/* Animation Down (Smooth Loop) */
+.Anim_Slide_Down_Infinite { 
+  animation: slideDown 60s linear infinite; 
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-33.33%); } /* Kyunke humne array triple kiya hai */
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-33.33%); }
+  100% { transform: translateY(0); }
+}
+
+/* Layout adjustments for 3 columns */
+.Vertical_Scroll_Inner_Layout {
+  display: flex;
+  gap: 15px; /* Thora gap kam kiya taake mobile par fit aaye */
+  height: 850px;
+  width: 98%;
+  max-width: 1400px;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Stand and Responsive */
+@media (max-width: 768px) {
+  .Vertical_Scroll_Inner_Layout {
+    height: 600px;
+    gap: 8px;
+  }
+  .Scroll_Card_Unit_88 {
+    max-width: 160px; /* Mobile par card chote kar diye taake teeno column dikhein */
+  }
 }
