@@ -1196,101 +1196,229 @@ top: 1.5rem;
     font-size: 0.9rem;
   }
 }
-
-/* end section */
-/* strat new section */
-.fifth-section {
+.testimonial-section {
   width: 100%;
-  height: 40vh; /* section height */
+  padding: 80px 5%;
+  background-color: #f9f9f9; /* Light background taake cards dikhein */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  /* border: 2px solid red; */
 }
 
-.fifth-section-child {
-  width: 75%;
-  height: 100%; /* fills 40vh of parent */
-  /* border: 2px solid green; */
-  overflow: hidden;
-  /* display: flex; */
-  justify-content: center;
+.testimonialMainHeading {
+  font-family: "Cinzel", serif;
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Laptop par 2 columns */
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.testimonialCard {
+  display: flex;
   align-items: center;
+  position: relative;
+  gap: 20px;
+}
+
+/* Profile Image Side */
+.profileArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  min-width: 120px;
+}
+
+.imageCircle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #d4af37; /* Gold border from your theme */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.imageCircle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clientName {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+}
+
+/* Design Line logic (matches your image) */
+.designLine {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  width: 100px;
+  height: 150px;
+  border: 2px solid #d4af37;
+  border-right: none;
+  border-radius: 20px 0 0 20px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Feedback Box Styling */
+.feedbackBox {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  flex: 1;
   position: relative;
 }
 
-.fifth-section-video {
-  width: 100%;
-  height: 100%; /* fills the child div exactly */
-  object-fit: cover; /* ensures full coverage without distortion */
-  display: block;
-}
-.headingsOne {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-119%, -50%);
-  color: #d4af37; /* gold color */
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-  letter-spacing: 1px;
-  font-family: "Dancing Script", cursive;
-  width: 410px;
-  line-height: 1.2;
-  z-index: 5;
+.feedbackText {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 15px;
 }
 
-/* Tablet Devices (Medium Screens) */
-@media (max-width: 992px) {
-  .headingsOne {
-    font-size: 2rem;
-    width: 300px;
-    transform: translate(-100%, -50%);
+.ratingStars {
+  color: #d4af37;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.websiteLink {
+  font-size: 0.75rem;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+/* --- RESPONSIVE SETTINGS --- */
+
+/* Tablets (1 column but smaller width) */
+@media (max-width: 1024px) {
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+    gap: 60px;
   }
 }
 
 /* Mobile Devices */
 @media (max-width: 600px) {
-  .headingsOne {
-    font-size: 1.6rem;
-    width: 250px;
-    transform: translate(-80%, -50%); /* centers perfectly on small screens */
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  .testimonial-section {
+    padding: 40px 15px;
+  }
+
+  .testimonialCard {
+    flex-direction: column; /* Mobile par image upar, text niche */
+    text-align: center;
+  }
+
+  .testimonialMainHeading {
+    font-size: 1.8rem;
+  }
+
+  .designLine {
+    display: none; /* Mobile par line layout kharab kar sakti hai */
+  }
+
+  .feedbackBox {
+    padding: 20px;
   }
 }
-
-/* Very Small Phones (like iPhone SE) */
-@media (max-width: 400px) {
-  .headingsOne {
-    font-size: 1.3rem;
-    width: 200px;
-    transform: translate(-85%, -50%);
-  }
+/* Number Styling */
+.websiteLink {
+  font-size: 1rem;
+  color: #0d6efd; /* Premium Blue color */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-top: 8px;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .fifth-section {
-    height: 30vh; /* smaller height on tablets/mobiles */
-    padding: 5px 10px;
-  }
-  .fifth-section-child {
-    width: 90%;
-  }
+/* Hover effect on card */
+.testimonialCard:hover .imageCircle {
+  border-color: #0d6efd;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  .fifth-section {
-    height: 25vh; /* adjust for small phones */
-    padding: 5px;
-  }
-  .fifth-section-child {
-    width: 100%;
-  }
+/* Image styling inside circle */
+.imageCircle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* --- Image Circle Container --- */
+.imageCircle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  position: relative; /* SVG ko iske upar rakhne ke liye */
+  overflow: hidden; /* Image ko circle ke andar rakhne ke liye */
+  background: #fff;
+  z-index: 5;
+  cursor: pointer;
+  /* Purana border hata diya, ab SVG border use karenge */
+}
+
+/* Image styling */
+.imageCircle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+
+/* --- SVG Container (Overlays the image) --- */
+.circleSvg {
+  position: absolute;
+  inset: 0; /* width/height 100% filling parent */
+  width: 100%;
+  height: 100%;
+  z-index: 6; /* Image se upar rakhne ke liye */
+}
+
+/* --- The Animated Circle Line (SVG Path) --- */
+.animatedCircleLine {
+  fill: none;
+  stroke: #0d6efd; /* Your Premium Blue Color */
+  stroke-width: 3; /* Line thickness */
+  stroke-linecap: round; /* Corner corners smooth */
+  
+  /* Calculation for perfect circle flow: */
+  /* Math: Circumference = 2 * PI * radius */
+  /* radius r=48 (viewbox 100), Circumference ≈ 301.6 */
+  stroke-dasharray: 302; 
+  stroke-dashoffset: 302; /* Initially, dashoffset hidden means line is zero */
+  
+  /* Smoothness settings */
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- HOVER EFFECT --- */
+/* Jab container par hover ho, toh line complete fill ho jaye */
+.imageCircle:hover .animatedCircleLine {
+  stroke-dashoffset: 0; /* All lines fully visible */
+}
+
+/* Halki si image scaling */
+.imageCircle:hover img {
+  transform: scale(1.05);
 }
 
 /* end section */

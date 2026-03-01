@@ -303,19 +303,48 @@ const Home = ({ handleLike }) => {
 {/* end section */}
 
 {/* strat new section */}
-
-<div className= {styles[ "fifth-section"]}>
-  <div className={styles["fifth-section-child"]}>
-  <div className={styles.overlay}></div>
-  <video src="/video.mp4" autoPlay loop muted playsInline   preload="auto" className={styles["fifth-section-video"]}></video>
-  <h1 className={styles.headingsOne}>Crafted in Luxury|Defined by Gold</h1>
-</div>
-
+<section className={styles["testimonial-section"]}>
+  <h2 className={styles.testimonialMainHeading}>OUR CURATED CONSULTANTS</h2>
   
-  
+  <div className={styles.testimonialGrid}>
+    {/* Har manager ka data yahan define karein */}
+    {[
+      { id: 1, name: "John Smith", num: "+1 (234) 567-8901", img: "/", role: "Master Goldsmith" },
+      { id: 2, name: "Sarah Malik", num: "+1 (234) 567-8902", img: "/assets/user2.pn", role: "Quality Assurance" },
+      { id: 3, name: "David Wilson", num: "+1 (234) 567-8903", img: "/assets/user3.png", role: "Design Consultant" },
+      { id: 4, name: "Ayesha Khan", num: "+1 (234) 567-8904", img: "/assets/user4.png", role: "Heritage Specialist" },
+    ].map((manager) => (
+      <div key={manager.id} className={styles.testimonialCard}>
+        <div className={styles.profileArea}>
+          <div className={styles.imageCircle}>
+            {/* Public folder se image call ho rahi hai */}
+            <img src={manager.img} alt={manager.name} />
+            <svg className={styles.circleSvg} viewBox="0 0 100 100">
+      <circle 
+        cx="50" cy="50" r="48" 
+        className={styles.animatedCircleLine}
+      />
+    </svg>
+          </div>
+          <h3 className={styles.clientName}>{manager.name}</h3>
+          <div className={styles.designLine}></div>
+        </div>
 
-</div>
-
+        <div className={styles.feedbackBox}>
+          <p className={styles.feedbackText}>
+            "We take full responsibility for every cut and curve. Our mission is to create jewelry sets that aren't just ornaments, but a symbol of your timeless grace."
+          </p>
+          <div className={styles.ratingStars}>
+            {"★".repeat(5)}
+          </div>
+          {/* Har manager ka apna number */}
+          <span className={styles.websiteLink}>{manager.num}</span>
+          <p style={{fontSize: '0.7rem', color: '#999', marginTop: '2px'}}>{manager.role}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 {/* end section */}
 
 {/* start foter */}
