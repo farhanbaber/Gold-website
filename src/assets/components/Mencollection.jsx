@@ -12,40 +12,40 @@ const ringImages = [
 const RingSection = () => {
   // LEFT: 15 Images (Manual Paths)
   const columnLeftData = [
-    { id: 'l1', img: '/assets/ring-l1.png', price: '$2500', title: 'Elite Diamond' },
-    { id: 'l2', img: '/assets/ring-l2.png', price: '$1800', title: 'Gold Classic' },
-    { id: 'l3', img: '/assets/ring-l3.png', price: '$3200', title: 'Royal Stone' },
-    { id: 'l4', img: '/assets/ring-l4.png', price: '$4500', title: 'Platinum Silk' },
-    { id: 'l5', img: '/assets/ring-l5.png', price: '$2100', title: 'Rose Gold' },
-    { id: 'l6', img: '/assets/ring-l6.png', price: '$2700', title: 'Ruby Spark' },
-    { id: 'l7', img: '/assets/ring-l7.png', price: '$1900', title: 'Silver Mist' },
-    { id: 'l8', img: '/assets/ring-l8.png', price: '$3100', title: 'Emerald' },
-    { id: 'l9', img: '/assets/ring-l9.png', price: '$2400', title: 'Topaz' },
-    { id: 'l10', img: '/assets/ring-l10.png', price: '$2900', title: 'Opal' },
-    { id: 'l11', img: '/assets/ring-l11.png', price: '$3500', title: 'Pearl' },
-    { id: 'l12', img: '/assets/ring-l12.png', price: '$4200', title: 'Jade' },
-    { id: 'l13', img: '/assets/ring-l13.png', price: '$1600', title: 'Bronze' },
-    { id: 'l14', img: '/assets/ring-l14.png', price: '$3800', title: 'Sapphire' },
-    { id: 'l15', img: '/assets/ring-l15.png', price: '$5000', title: 'Crown' },
+    { id: 'l1', img: '/std.1.png', price: '$2500', title: 'Elite Diamond' },
+    { id: 'l2', img: '/std.2.png', price: '$1800', title: 'Gold Classic' },
+    { id: 'l3', img: '/std.3.png', price: '$3200', title: 'Royal Stone' },
+    { id: 'l4', img: '/std.4.png', price: '$4500', title: 'Platinum Silk' },
+    { id: 'l5', img: '/std.5.png', price: '$2100', title: 'Rose Gold' },
+    { id: 'l6', img: '/std.6.png', price: '$2700', title: 'Ruby Spark' },
+    { id: 'l7', img: '/std.7.png', price: '$1900', title: 'Silver Mist' },
+    { id: 'l8', img: '/std.8.png', price: '$3100', title: 'Emerald' },
+    { id: 'l9', img: '/std.9.png', price: '$2400', title: 'Topaz' },
+    { id: 'l10', img: '/std.10.png', price: '$2900', title: 'Opal' },
+    { id: 'l11', img: '/std.11.png', price: '$3500', title: 'Pearl' },
+    { id: 'l12', img: '/std.12.png', price: '$4200', title: 'Jade' },
+    { id: 'l13', img: '/std.13.png', price: '$1600', title: 'Bronze' },
+    { id: 'l14', img: '/std.15.png', price: '$3800', title: 'Sapphire' },
+    { id: 'l15', img: '/std.16.png', price: '$5000', title: 'Crown' },
   ];
 
   // RIGHT: 15 Images (Manual Paths)
   const columnRightData = [
-    { id: 'r1', img: '/assets/ring-r1.png', price: '$1200', title: 'Silver Oak' },
-    { id: 'r2', img: '/assets/ring-r2.png', price: '$2900', title: 'Emerald Cut' },
-    { id: 'r3', img: '/assets/ring-r3.png', price: '$3800', title: 'Sapphire Blue' },
-    { id: 'r4', img: '/assets/ring-r4.png', price: '$1500', title: 'Ruby Red' },
-    { id: 'r5', img: '/assets/ring-r5.png', price: '$5000', title: 'Vintage Glow' },
-    { id: 'r6', img: '/assets/ring-r6.png', price: '$2200', title: 'Gold Band' },
-    { id: 'r7', img: '/assets/ring-r7.png', price: '$1700', title: 'Rose Petal' },
-    { id: 'r8', img: '/assets/ring-r8.png', price: '$3300', title: 'Moissanite' },
-    { id: 'r9', img: '/assets/ring-r9.png', price: '$2600', title: 'Titanium' },
-    { id: 'r10', img: '/assets/ring-r10.png', price: '$2100', title: 'Amber' },
-    { id: 'r11', img: '/assets/ring-r11.png', price: '$3900', title: 'Amethyst' },
-    { id: 'r12', img: '/assets/ring-r12.png', price: '$4100', title: 'Zircon' },
-    { id: 'r13', img: '/assets/ring-r13.png', price: '$1400', title: 'Steel' },
-    { id: 'r14', img: '/assets/ring-r14.png', price: '$3600', title: 'Crystal' },
-    { id: 'r15', img: '/assets/ring-r15.png', price: '$4800', title: 'Royal' },
+    { id: 'r1', img: '/std.17.png', price: '$1200', title: 'Silver Oak' },
+    { id: 'r2', img: '/std.18.png', price: '$2900', title: 'Emerald Cut' },
+    { id: 'r3', img: '/std.19.png', price: '$3800', title: 'Sapphire Blue' },
+    { id: 'r4', img: '/std.20.png', price: '$1500', title: 'Ruby Red' },
+    { id: 'r5', img: '/std.21.png', price: '$5000', title: 'Vintage Glow' },
+    { id: 'r6', img: '/std.22.png', price: '$2200', title: 'Gold Band' },
+    { id: 'r7', img: '/std.23.png', price: '$1700', title: 'Rose Petal' },
+    { id: 'r8', img: '/std.24.png', price: '$3300', title: 'Moissanite' },
+    { id: 'r9', img: '/std.25.png', price: '$2600', title: 'Titanium' },
+    { id: 'r10', img: '/std.26.png', price: '$2100', title: 'Amber' },
+    { id: 'r11', img: '/std.27.jpg', price: '$3900', title: 'Amethyst' },
+    { id: 'r12', img: '/std.28.png', price: '$4100', title: 'Zircon' },
+    { id: 'r13', img: '/std.29.png', price: '$1400', title: 'Steel' },
+    { id: 'r14', img: '/std.30.jpg', price: '$3600', title: 'Crystal' },
+    { id: 'r15', img: '/std.31.png', price: '$4800', title: 'Royal' },
   ];
 
   const buildScrollList = (data) => (
@@ -73,9 +73,9 @@ const RingSection = () => {
 
         {/* CENTER STAND */}
         <div className={styles.Center_Stand_Wrapper}>
-          <img src="/assets/stand.png" alt="Jewelry Stand" className={styles.Stand_Img} />
+          <img src="/strads.maim.png" alt="Jewelry Stand" className={styles.Stand_Img} />
           <div className={styles.Stand_Overlay}>
-            <span className={styles.Stand_Text}>PREMIUM STANDS</span>
+            <span className={styles.Stand_Text}>PREMIUM STADS</span>
           </div>
         </div>
 

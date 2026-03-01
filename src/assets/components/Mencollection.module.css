@@ -136,7 +136,7 @@
   padding: 80px 0;
   display: flex;
   justify-content: center;
-  border: 2px solid #d4af37;
+  /* border: 2px solid #d4af37; */
   background: #ffffff;
 }
 
@@ -144,6 +144,9 @@
   display: flex;
   gap: 25px;
   height: 800px;
+      font-family: "Cinzel", serif;
+
+
   width: 90%;
   max-width: 1000px;
   overflow: hidden;
@@ -326,6 +329,7 @@
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s ease;
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
 }
 
 /* Hover Effect */
@@ -350,7 +354,8 @@
   }
   
   .Center_Stand_Wrapper {
-    flex: 2; /* Mobile par stand ko thora aur prominence di hai */
+    display: none; /* Mobile par stand ko thora aur prominence di hai */
+
   }
 
   .Stand_Text {
