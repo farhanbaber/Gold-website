@@ -92,18 +92,28 @@ const RingSection = () => {
    2. FOREVER BOND GRID (12 Cards Wala Section)
    ============================================================ */
 const ForeverBondGrid = () => {
-  const productData = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    name: ["Aurum", "Regal", "Luxe", "Nova", "Eterna", "Crown", "Vero", "Solace", "Glimmer", "Royal", "Luna", "Aura"][i],
-    price: (Math.random() * 50).toFixed(1),
-    image: `https://via.placeholder.com/400?text=Ring+${i+1}` 
-  }));
+  // Har card ke liye alag image path, alag naam aur fix price
+  const productData = [
+    { id: 1, name: "Aurum Elite", price: "1500", image: "/pla.1.png" },
+    { id: 2, name: "Regal Classic", price: "1800", image: "/pla.2.png" },
+    { id: 3, name: "Luxe Bond", price: "1200", image: "/pla.3.png" },
+    { id: 4, name: "Nova Spark", price: "2500", image: "/pla.4.png" },
+    { id: 5, name: "Eterna Gold", price: "3000", image: "/pla.5.png" },
+    { id: 6, name: "Crown Royal", price: "4500", image: "/pla.6.png" },
+    { id: 7, name: "Vero Silver", price: "1100", image: "/pla.7.png" },
+    { id: 8, name: "Solace Gem", price: "2200", image: "/pla.8.png" },
+    { id: 9, name: "Glimmer Rose", price: "950", image: "/pla.9.png" },
+    { id: 10, name: "Royal Velvet", price: "5000", image: "/pla.10.png" },
+    { id: 11, name: "Luna Mist", price: "1600", image: "/pla.11.png" },
+    { id: 12, name: "Aura Glow", price: "1400", image: "/pla.12.png" },
+  ];
 
   return (
     <main className={styles.fb_main_wrapper_v1}>
       <div className={styles.fb_section_header_divider}>
         <h1 className={styles.fb_header_title_text}>Forever Bond Rings</h1>
       </div>
+      
       <div className={styles.fb_product_grid_system}>
         {productData.map((item) => (
           <article key={item.id} className={styles.fb_card_component_root}>
@@ -111,9 +121,16 @@ const ForeverBondGrid = () => {
               <h2 className={styles.fb_item_nomenclature}>{item.name}</h2>
               <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
             </div>
+            
             <div className={styles.fb_visual_asset_container}>
-              <img src={item.image} alt={item.name} className={styles.fb_core_image_element} />
+              {/* Har card ka apna unique image tag yahan generate ho raha hai */}
+              <img 
+                src={item.image} 
+                alt={item.name} 
+                className={styles.fb_core_image_element} 
+              />
             </div>
+
             <div className={styles.fb_action_utility_bar}>
               <span className={styles.fb_price_display_unit}>${item.price}</span>
               <button className={styles.fb_primary_cta_button}>Add To Cart</button>
