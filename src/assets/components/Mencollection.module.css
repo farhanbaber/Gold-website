@@ -420,6 +420,7 @@
   padding: 60px 5%;
   max-width: 1940px;
   margin: 0 auto;
+    font-family: "Cinzel", serif;
   background-color: #ffffff;
 }
 
@@ -428,6 +429,8 @@
   align-items: center;
   text-align: center;
   margin-bottom: 60px;
+    font-family: "Cinzel", serif;
+
 }
 
 .fb_section_header_divider::before,
@@ -444,6 +447,8 @@
   letter-spacing: 4px;
   font-weight: 400;
   color: #1a1a1a;
+    font-family: "Cinzel", serif;
+
   text-transform: uppercase;
 }
 
@@ -453,6 +458,8 @@
   /* Desktop: 4, Laptop: 3, Tablet: 2, Mobile: 1 */
   grid-template-columns: repeat(4, 1fr);
   gap: 40px 95px;
+    font-family: "Cinzel", serif;
+
 }
 
 /* Responsive Breakpoints */
@@ -473,6 +480,8 @@
   padding: 15px;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   border: 1px solid transparent;
+cursor: pointer;
+
 }
 
 .fb_card_component_root:hover {
@@ -524,11 +533,15 @@
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+    font-family: "Cinzel", serif;
+
   padding-top: 15px;
 }
 
 .fb_price_display_unit {
   font-family: 'Montserrat', sans-serif;
+    font-family: "Cinzel", serif;
+
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -542,8 +555,72 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.3s ease;
+    font-family: "Cinzel", serif;
+
 }
 
 .fb_primary_cta_button:hover {
   background-color: #d4c1a5;
+}
+/* BUTTON WITH SCALE + SHINE EFFECT */
+.cta {
+  margin-top: 10px;
+  width: fit-content;
+  padding: 8px 15px; /* Purana size restored */
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  
+  border: none;
+  background: #c6a05a;
+  color: #f8f8f8;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* Smooth transition for scale and color */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Shine effect logic */
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  z-index: 1;
+}
+
+/* Hover Effect: Scale + Color + Shine */
+.cta:hover {
+  background-color: #8b6822;
+  /* Button thoda bada ho jayega */
+  transform: scale(1.08) translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(139, 104, 34, 0.3);
+}
+
+.cta:hover::before {
+  left: 130%;
+}
+
+/* Active (Click) Effect */
+.cta:active {
+  transform: scale(0.95);
+}
+
+.cta span {
+  position: relative;
+  z-index: 2;
 }

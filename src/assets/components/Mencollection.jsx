@@ -111,7 +111,10 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$1500</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+            <button className={styles.cta}><span>Add To Cart</span></button>
+            
+            
           </div>
         </article>
 
@@ -126,7 +129,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$1800</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -141,7 +146,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$1200</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -156,7 +163,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$2500</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -171,7 +180,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$3000</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -186,7 +197,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$4500</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -201,7 +214,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$1100</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -216,7 +231,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$2200</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -231,7 +248,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$950</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -246,7 +265,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$5000</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -261,7 +282,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$1600</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
@@ -276,7 +299,9 @@ const RingSection = () => {
           </div>
           <div className={styles.fb_action_utility_bar}>
             <span className={styles.fb_price_display_unit}>$1400</span>
-            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            {/* <button className={styles.fb_primary_cta_button}>Add To Cart</button> */}
+                        <button className={styles.cta}><span>Add To Cart</span></button>
+
           </div>
         </article>
 
