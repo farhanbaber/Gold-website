@@ -91,57 +91,199 @@ const RingSection = () => {
 /* ============================================================
    2. FOREVER BOND GRID (12 Cards Wala Section)
    ============================================================ */
-const ForeverBondGrid = () => {
-  // Har card ke liye alag image path, alag naam aur fix price
-  const productData = [
-    { id: 1, name: "Aurum Elite", price: "1500", image: "/pla.1.png" },
-    { id: 2, name: "Regal Classic", price: "1800", image: "/pla.2.png" },
-    { id: 3, name: "Luxe Bond", price: "1200", image: "/pla.3.png" },
-    { id: 4, name: "Nova Spark", price: "2500", image: "/pla.4.png" },
-    { id: 5, name: "Eterna Gold", price: "3000", image: "/pla.5.png" },
-    { id: 6, name: "Crown Royal", price: "4500", image: "/pla.6.png" },
-    { id: 7, name: "Vero Silver", price: "1100", image: "/pla.7.png" },
-    { id: 8, name: "Solace Gem", price: "2200", image: "/pla.8.png" },
-    { id: 9, name: "Glimmer Rose", price: "950", image: "/pla.9.png" },
-    { id: 10, name: "Royal Velvet", price: "5000", image: "/pla.10.png" },
-    { id: 11, name: "Luna Mist", price: "1600", image: "/pla.11.png" },
-    { id: 12, name: "Aura Glow", price: "1400", image: "/pla.12.png" },
-  ];
-
+  const ForeverBondGrid = () => {
   return (
     <main className={styles.fb_main_wrapper_v1}>
       <div className={styles.fb_section_header_divider}>
         <h1 className={styles.fb_header_title_text}>Forever Bond Rings</h1>
       </div>
-      
-      <div className={styles.fb_product_grid_system}>
-        {productData.map((item) => (
-          <article key={item.id} className={styles.fb_card_component_root}>
-            <div className={styles.fb_product_identity_group}>
-              <h2 className={styles.fb_item_nomenclature}>{item.name}</h2>
-              <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
-            </div>
-            
-            <div className={styles.fb_visual_asset_container}>
-              {/* Har card ka apna unique image tag yahan generate ho raha hai */}
-              <img 
-                src={item.image} 
-                alt={item.name} 
-                className={styles.fb_core_image_element} 
-              />
-            </div>
 
-            <div className={styles.fb_action_utility_bar}>
-              <span className={styles.fb_price_display_unit}>${item.price}</span>
-              <button className={styles.fb_primary_cta_button}>Add To Cart</button>
-            </div>
-          </article>
-        ))}
+      <div className={styles.fb_product_grid_system}>
+        
+        {/* CARD 1 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Aurum Elite</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/menc.1.png" alt="Ring 1" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$1500</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 2 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Regal Classic</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.2.png" alt="Ring 2" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$1800</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 3 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Luxe Bond</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.3.png" alt="Ring 3" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$1200</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 4 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Nova Spark</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.4.png" alt="Ring 4" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$2500</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 5 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Eterna Gold</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.5.png" alt="Ring 5" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$3000</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 6 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Crown Royal</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.6.png" alt="Ring 6" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$4500</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 7 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Vero Silver</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.7.png" alt="Ring 7" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$1100</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 8 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Solace Gem</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.8.png" alt="Ring 8" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$2200</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 9 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Glimmer Rose</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.9.png" alt="Ring 9" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$950</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 10 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Royal Velvet</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.10.png" alt="Ring 10" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$5000</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 11 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Luna Mist</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.11.png" alt="Ring 11" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$1600</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
+        {/* CARD 12 */}
+        <article className={styles.fb_card_component_root}>
+          <div className={styles.fb_product_identity_group}>
+            <h2 className={styles.fb_item_nomenclature}>Aura Glow</h2>
+            <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+          </div>
+          <div className={styles.fb_visual_asset_container}>
+            <img src="/mens.re.png" alt="Ring 12" className={styles.fb_core_image_element} />
+          </div>
+          <div className={styles.fb_action_utility_bar}>
+            <span className={styles.fb_price_display_unit}>$1400</span>
+            <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+          </div>
+        </article>
+
       </div>
     </main>
   );
 };
-
 /* ============================================================
    2. MAIN GEM SECTION (Wrapper)
    ============================================================ */
