@@ -89,6 +89,43 @@ const RingSection = () => {
 };
 
 /* ============================================================
+   2. FOREVER BOND GRID (12 Cards Wala Section)
+   ============================================================ */
+const ForeverBondGrid = () => {
+  const productData = Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    name: ["Aurum", "Regal", "Luxe", "Nova", "Eterna", "Crown", "Vero", "Solace", "Glimmer", "Royal", "Luna", "Aura"][i],
+    price: (Math.random() * 50).toFixed(1),
+    image: `https://via.placeholder.com/400?text=Ring+${i+1}` 
+  }));
+
+  return (
+    <main className={styles.fb_main_wrapper_v1}>
+      <div className={styles.fb_section_header_divider}>
+        <h1 className={styles.fb_header_title_text}>Forever Bond Rings</h1>
+      </div>
+      <div className={styles.fb_product_grid_system}>
+        {productData.map((item) => (
+          <article key={item.id} className={styles.fb_card_component_root}>
+            <div className={styles.fb_product_identity_group}>
+              <h2 className={styles.fb_item_nomenclature}>{item.name}</h2>
+              <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
+            </div>
+            <div className={styles.fb_visual_asset_container}>
+              <img src={item.image} alt={item.name} className={styles.fb_core_image_element} />
+            </div>
+            <div className={styles.fb_action_utility_bar}>
+              <span className={styles.fb_price_display_unit}>${item.price}</span>
+              <button className={styles.fb_primary_cta_button}>Add To Cart</button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </main>
+  );
+};
+
+/* ============================================================
    2. MAIN GEM SECTION (Wrapper)
    ============================================================ */
 const GemSection = () => {
@@ -145,11 +182,22 @@ const GemSection = () => {
         </div>
       </section>
 
+
+
+
+
+      
+
       {/* --- SCROLLING SECTION ADDED HERE --- */}
       <RingSection />
+      <ForeverBondGrid />
 
     </div>
+    
   );
 };
 
+
 export default GemSection;
+
+
