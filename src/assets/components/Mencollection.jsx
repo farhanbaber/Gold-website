@@ -95,7 +95,7 @@ const RingSection = () => {
   return (
     <main className={styles.fb_main_wrapper_v1}>
       <div className={styles.fb_section_header_divider}>
-        <h1 className={styles.fb_header_title_text}>Forever Bond Rings</h1>
+        <h1 className={styles.fb_header_title_text}>Forever Bond Bracelet</h1>
       </div>
 
       <div className={styles.fb_product_grid_system}>
