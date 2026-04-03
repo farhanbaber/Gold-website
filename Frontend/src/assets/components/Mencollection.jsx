@@ -99,27 +99,40 @@ const watches = [
   { id: 5, name: "Ocean Diver Spec", price: "$1,400", img: "/watch5.png" },
   { id: 6, name: "Titanium Sport", price: "$750", img: "/watch6.png" },
   { id: 7, name: "Leather Heritage", price: "$620", img: "/watch7.png" },
-  { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/watch8.png" },
+   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/watch8.png" },
+   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/watch8.png" },
+
+
 ];
 
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  visible: { 
+    opacity: 1, 
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 } 
+  },
 };
 
 const cardVariants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+  hidden: { y: 40, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1, 
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+  },
 };
 
 const WatchSection = () => {
   return (
     <section className={styles.sectionWrapper}>
-      {/* Heading */}
-      <div className={styles.headingContainer}>
-        <div className={styles.sideLine}></div>
-        <h2 className={styles.mainHeading}>TIMELESS LUXURY</h2>
-        <div className={styles.sideLine}></div>
+      {/* Premium Heading */}
+      <div className={styles.headingWrapper}>
+        <span className={styles.subTitle}>Exclusive Collection</span>
+        <div className={styles.headingContent}>
+          <div className={styles.line}></div>
+          <h2 className={styles.mainHeading}>Timeless Luxury</h2>
+          <div className={styles.line}></div>
+        </div>
       </div>
 
       {/* Watch Grid */}
@@ -127,19 +140,22 @@ const WatchSection = () => {
         className={styles.watchGrid}
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         {watches.map((watch) => (
           <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants}>
             <div className={styles.imgWrapper}>
               <img src={watch.img} alt={watch.name} className={styles.watchImg} />
             </div>
-            <h3 className={styles.watchTitle}>{watch.name}</h3>
-            <div className={styles.cardFooter}>
-              <button className={styles.cta}>
-                <span>Add to Cart</span>
-              </button>
-              <span className={styles.watchPrice}>{watch.price}</span>
+            <div className={styles.cardContent}>
+              <h3 className={styles.watchTitle}>{watch.name}</h3>
+              <div className={styles.cardFooter}>
+                <span className={styles.watchPrice}>{watch.price}</span>
+                <button className={styles.cta}>
+                  <span>Add to Cart</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         ))}

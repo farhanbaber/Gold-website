@@ -627,170 +627,163 @@ cursor: pointer;
 
 /* new section */
 /* --- Section Wrapper --- */
-/* --- Section Wrapper --- */
 .sectionWrapper {
-  padding: 80px 6%;
-  background-color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  padding: 120px 8%;
+  background-color: #fcfcfc; /* Off-white for luxury feel */
+  overflow: hidden;
 }
 
-/* --- Heading with Side Lines --- */
-.headingContainer {
+/* --- Improved Heading --- */
+.headingWrapper {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.subTitle {
+  display: block;
+  font-size: 0.9rem;
+  color: #c6a05a;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.headingContent {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 60px;
-}
-
-.sideLine {
-  flex: 1;
-  max-width: 120px;
-  height: 2px;
-  background: linear-gradient(to right, #d4af37, #fff);
-}
-
-.mainHeading {
-  font-size: 2.5rem;
-  font-weight: 400;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  color: #111111;
-  white-space: nowrap;
-}
-
-/* --- Grid Layout --- */
-.watchGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 }
 
-/* --- Watch Card --- */
+.line {
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, #d4af37);
+}
+
+.line:last-child {
+  background: linear-gradient(90deg, #d4af37, transparent);
+}
+
+.mainHeading {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* --- Grid --- */
+.watchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-content: center; /* Ye extra cards ko center rakhega */
+}
+
+/* --- Premium Watch Card --- */
 .watchCard {
   background: #ffffff;
-  padding: 25px 20px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  border-radius: 4px; /* Slightly sharper for luxury look */
+  padding: 30px;
+  position: relative;
+  border: 1px solid #f0f0f0;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
-  position: relative;
+}
+
+.watchCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  opacity: 0;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .watchCard:hover {
-  transform: translateY(-12px) scale(1.02);
-  border: 1px solid #d4af37;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  border-color: #d4af37;
+}
+
+.watchCard:hover::after {
+  opacity: 1;
 }
 
 .imgWrapper {
-  height: 200px;
-  width: 100%;
+  height: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  z-index: 2;
 }
 
 .watchImg {
   max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .watchCard:hover .watchImg {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(-3deg);
 }
 
-.watchTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* --- Footer: Button & Price --- */
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-
-/* --- CTA Button --- */
-.cta {
-  width: fit-content;
-  padding: 10px 18px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border: none;
-  background: #c6a05a;
-  color: #f8f8f8;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-
-.cta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
-  transform: skewX(-20deg);
-  transition: left 0.7s ease;
-  z-index: 1;
-}
-
-.cta:hover {
-  background-color: #8b6822;
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139,104,34,0.3);
-}
-
-.cta:hover::before {
-  left: 130%;
-}
-
-.cta:active {
-  transform: scale(0.95);
-}
-
-.cta span {
+/* --- Content --- */
+.cardContent {
   position: relative;
   z-index: 2;
 }
 
+.watchTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 20px;
+}
+
 .watchPrice {
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #111;
-  white-space: nowrap;
+  font-weight: 400;
+  color: #1a1a1a;
+  font-family: serif; /* Luxury price vibes */
 }
 
-/* --- Responsive --- */
-@media (max-width: 1200px) {
-  .watchGrid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
+/* --- Clean Button --- */
+.cta {
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
-@media (max-width: 900px) {
-  .watchGrid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.cta:hover {
+  background: #1a1a1a;
+  color: #fff;
 }
 
-@media (max-width: 600px) {
-  .watchGrid { grid-template-columns: 1fr; gap: 15px; }
-  .mainHeading { font-size: 2rem; letter-spacing: 6px; }
-  .watchTitle { font-size: 1.1rem; }
-  .watchPrice { font-size: 1.1rem; }
-  .cta { font-size: 0.8rem; padding: 8px 15px; }
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .mainHeading { font-size: 2rem; letter-spacing: 4px; }
+  .headingContent { gap: 15px; }
+  .line { width: 30px; }
+  .watchGrid { grid-template-columns: 1fr; }
 }
