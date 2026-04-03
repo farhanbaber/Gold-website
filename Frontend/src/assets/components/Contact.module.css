@@ -1,0 +1,213 @@
+/* Contact.module.css */
+
+.contactHeader {
+  background-image: url('/public/stuck.img.png  '); /* Put your image in public/images/ folder */
+  background-size: cover;
+  background-position: center;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.breadcrumb a {
+  color: white;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  padding: 60px 0;
+}
+
+@media (min-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.leftSection h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.leftSection p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.infoIcon {
+  font-size: 24px;
+  color: #333;
+  margin-top: 4px;
+}
+
+.infoText h4 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.infoText p {
+  color: #666;
+  margin: 0;
+}
+
+.formCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  border: 1px solid #f0f0f0;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.submitBtn {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.submitBtn:hover {
+  background: #1d4ed8;
+}
+
+/* ============== YOUR GOLDEN CTA BUTTON ============== */
+.cta {
+  margin-top: 10px;
+  width: fit-content;
+  padding: 14px 28px;           /* Better padding for modern look */
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  border: none;
+  background: #c6a05a;
+  color: #f8f8f8;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  z-index: 1;
+}
+
+/* Hover Effect */
+.cta:hover {
+  background-color: #8b6822;
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 104, 34, 0.3);
+}
+
+.cta:hover::before {
+  left: 130%;
+}
+
+/* Active (pressed) Effect */
+.cta:active {
+  transform: scale(0.95);
+}
+
+.cta span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Optional: Make button full width on mobile */
+@media (max-width: 768px) {
+  .cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -92,15 +92,15 @@ const RingSection = () => {
    2. WATCH SECTION
    ============================================================ */
 const watches = [
-  { id: 1, name: "Chronograph Gold", price: "$1,250", img: "/watch1.png" },
-  { id: 2, name: "Silver Executive", price: "$890", img: "/watch2.png" },
-  { id: 3, name: "Midnight Stealth", price: "$1,100", img: "/watch3.png" },
-  { id: 4, name: "Rose Gold Classic", price: "$950", img: "/watch4.png" },
-  { id: 5, name: "Ocean Diver Spec", price: "$1,400", img: "/watch5.png" },
-  { id: 6, name: "Titanium Sport", price: "$750", img: "/watch6.png" },
-  { id: 7, name: "Leather Heritage", price: "$620", img: "/watch7.png" },
-   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/watch8.png" },
-   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/watch8.png" },
+  { id: 1, name: "Chronograph Gold", price: "$1,250", img: "/re-wth-1.png" },
+  { id: 2, name: "Silver Executive", price: "$890", img: "/re-wth-2.png" },
+  { id: 3, name: "Midnight Stealth", price: "$1,100", img: "/re-wth-3.png" },
+  { id: 4, name: "Rose Gold Classic", price: "$950", img: "/rew-4.webp" },
+  { id: 5, name: "Ocean Diver Spec", price: "$1,400", img: "/rew-5.jfif" },
+  { id: 6, name: "Titanium Sport", price: "$750", img: "/rew-6.png" },
+  { id: 7, name: "Leather Heritage", price: "$620", img: "/rew-7.png" },
+   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/rew-8.png" },
+   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/wth-9.webp" },
 
 
 ];
