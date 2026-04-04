@@ -624,16 +624,20 @@ cursor: pointer;
   position: relative;
   z-index: 2;
 }
+
+
+
 /* --- Section Wrapper --- */
 .sectionWrapper {
   padding: 120px 8%;
   background-color: #fcfcfc;
-  /* overflow: hidden ko hata diya taake Framer Motion triggers kaam karein */
   position: relative;
-  overflow-x: clip; 
+
+  /* FIX */
+  overflow-x: hidden;
 }
 
-/* --- Improved Heading --- */
+/* --- Heading --- */
 .headingWrapper {
   text-align: center;
   margin-bottom: 80px;
@@ -674,13 +678,15 @@ cursor: pointer;
 /* --- Grid System --- */
 .watchGrid {
   display: grid;
-  /* Responsive grid jo desktop par 3 aur mobile par 1 column karega */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  /* FIX */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
   gap: 40px;
   width: 100%;
 }
 
-/* --- Premium Watch Card --- */
+/* --- Watch Card --- */
 .watchCard {
   background: #ffffff;
   border-radius: 4px;
@@ -691,9 +697,13 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   z-index: 1;
+
+  /* FIX */
+  width: 100%;
+  max-width: 100%;
 }
 
-/* Shadow Effect on Hover */
+/* Shadow Effect */
 .watchCard::after {
   content: "";
   position: absolute;
@@ -714,8 +724,10 @@ cursor: pointer;
   opacity: 1;
 }
 
+/* --- Image --- */
 .imgWrapper {
-  height: 280px;
+  height: 260px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -733,7 +745,7 @@ cursor: pointer;
   transform: scale(1.1) rotate(-3deg);
 }
 
-/* --- Content & Typography --- */
+/* --- Content --- */
 .watchTitle {
   font-size: 1.2rem;
   font-weight: 600;
@@ -748,7 +760,7 @@ cursor: pointer;
   align-items: center;
   border-top: 1px solid #f5f5f5;
   padding-top: 20px;
-  margin-top: auto; /* Price ko hamesha bottom par rakhega */
+  margin-top: auto;
 }
 
 .watchPrice {
@@ -758,7 +770,7 @@ cursor: pointer;
   font-family: serif;
 }
 
-/* --- Luxury Button --- */
+/* --- Button --- */
 .cta {
   background: #c6a05a;
   color: #ffffff;
@@ -777,27 +789,52 @@ cursor: pointer;
   transform: scale(1.05);
 }
 
-/* --- Mobile Responsive Fixes --- */
+/* =========================
+   📱 Tablet Fix
+   ========================= */
 @media (max-width: 1024px) {
-  .sectionWrapper { padding: 80px 5%; }
-  .watchGrid { gap: 25px; }
+  .sectionWrapper {
+    padding: 80px 5%;
+  }
+
+  .watchGrid {
+    gap: 25px;
+  }
 }
 
+/* =========================
+   📱 Mobile Fix (MAIN)
+   ========================= */
 @media (max-width: 768px) {
-  .mainHeading { font-size: 1.8rem; letter-spacing: 3px; }
-  .headingWrapper { margin-bottom: 50px; }
-  .line { width: 25px; }
-  
-  .watchGrid { 
-    grid-template-columns: 1fr; /* Force single column */
-    gap: 30px;
-  }
-  
-  .watchCard {
-    padding: 20px;
-    max-width: 400px;
-    margin: 0 auto; /* Center the card */
+
+  .mainHeading {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
   }
 
-  .imgWrapper { height: 220px; }
+  .headingWrapper {
+    margin-bottom: 50px;
+  }
+
+  .line {
+    width: 25px;
+  }
+
+  /* FIX */
+  .watchGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  /* FIX */
+  .watchCard {
+    padding: 20px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* FIX */
+  .imgWrapper {
+    height: 200px;
+  }
 }
