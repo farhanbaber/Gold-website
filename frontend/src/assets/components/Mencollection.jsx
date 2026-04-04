@@ -134,8 +134,7 @@ const WatchSection = () => {
         className={styles.watchGrid}
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        animate="visible"
       >
         {watches.map((watch) => (
           <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants}>
