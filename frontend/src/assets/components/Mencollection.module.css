@@ -624,13 +624,13 @@ cursor: pointer;
   position: relative;
   z-index: 2;
 }
-
-/* new section */
 /* --- Section Wrapper --- */
 .sectionWrapper {
   padding: 120px 8%;
-  background-color: #fcfcfc; /* Off-white for luxury feel */
-  overflow: hidden;
+  background-color: #fcfcfc;
+  /* overflow: hidden ko hata diya taake Framer Motion triggers kaam karein */
+  position: relative;
+  overflow-x: clip; 
 }
 
 /* --- Improved Heading --- */
@@ -662,10 +662,6 @@ cursor: pointer;
   background: linear-gradient(90deg, transparent, #d4af37);
 }
 
-.line:last-child {
-  background: linear-gradient(90deg, #d4af37, transparent);
-}
-
 .mainHeading {
   font-size: 3rem;
   font-weight: 300;
@@ -675,38 +671,42 @@ cursor: pointer;
   margin: 0;
 }
 
-/* --- Grid --- */
+/* --- Grid System --- */
 .watchGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Responsive grid jo desktop par 3 aur mobile par 1 column karega */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
-  justify-content: center; /* Ye extra cards ko center rakhega */
+  width: 100%;
 }
 
 /* --- Premium Watch Card --- */
 .watchCard {
   background: #ffffff;
-  border-radius: 4px; /* Slightly sharper for luxury look */
+  border-radius: 4px;
   padding: 30px;
   position: relative;
   border: 1px solid #f0f0f0;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
+/* Shadow Effect on Hover */
 .watchCard::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 4px;
   opacity: 0;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-  transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.6s ease;
+  z-index: -1;
 }
 
 .watchCard:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   border-color: #d4af37;
 }
 
@@ -715,16 +715,17 @@ cursor: pointer;
 }
 
 .imgWrapper {
-  height: 260px;
+  height: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
-  z-index: 2;
 }
 
 .watchImg {
+  max-width: 90%;
   max-height: 100%;
+  object-fit: contain;
   transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -732,14 +733,9 @@ cursor: pointer;
   transform: scale(1.1) rotate(-3deg);
 }
 
-/* --- Content --- */
-.cardContent {
-  position: relative;
-  z-index: 2;
-}
-
+/* --- Content & Typography --- */
 .watchTitle {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #111;
   margin-bottom: 15px;
@@ -752,38 +748,56 @@ cursor: pointer;
   align-items: center;
   border-top: 1px solid #f5f5f5;
   padding-top: 20px;
+  margin-top: auto; /* Price ko hamesha bottom par rakhega */
 }
 
 .watchPrice {
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: 1.3rem;
+  font-weight: 500;
   color: #1a1a1a;
-  font-family: serif; /* Luxury price vibes */
+  font-family: serif;
 }
 
-/* --- Clean Button --- */
+/* --- Luxury Button --- */
 .cta {
   background: #c6a05a;
-  /* border: 1px solid #1a1a1a; */
   color: #ffffff;
-  padding: 8px 16px;
-  font-size: 0.75rem;
+  padding: 10px 20px;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
   border-radius: 2px;
 }
 
 .cta:hover {
-  background: #8b6822;
-  color: #fff;
+  background: #1a1a1a;
+  transform: scale(1.05);
 }
 
-/* --- Mobile Responsive --- */
+/* --- Mobile Responsive Fixes --- */
+@media (max-width: 1024px) {
+  .sectionWrapper { padding: 80px 5%; }
+  .watchGrid { gap: 25px; }
+}
+
 @media (max-width: 768px) {
-  .mainHeading { font-size: 2rem; letter-spacing: 4px; }
-  .headingContent { gap: 15px; }
-  .line { width: 30px; }
-  .watchGrid { grid-template-columns: 1fr; }
+  .mainHeading { font-size: 1.8rem; letter-spacing: 3px; }
+  .headingWrapper { margin-bottom: 50px; }
+  .line { width: 25px; }
+  
+  .watchGrid { 
+    grid-template-columns: 1fr; /* Force single column */
+    gap: 30px;
+  }
+  
+  .watchCard {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto; /* Center the card */
+  }
+
+  .imgWrapper { height: 220px; }
 }
