@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaRegHeart, FaShoppingCart } from 'react-icons/fa';
 import styles from './Mencollection.module.css';
-// import { motion } from "framer-motion";
-
 
 const ringImages = [
   '/pla.1.png', '/pla.2.png', '/pla.3.png', '/pla.4.png', '/pla.5.png',
@@ -99,10 +97,8 @@ const watches = [
   { id: 5, name: "Ocean Diver Spec", price: "$1,400", img: "/rew-5.jfif" },
   { id: 6, name: "Titanium Sport", price: "$750", img: "/rew-6.png" },
   { id: 7, name: "Leather Heritage", price: "$620", img: "/rew-7.png" },
-   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/rew-8.png" },
-   { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/wth-9.webp" },
-
-
+  { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/rew-8.png" },
+  { id: 9, name: "Royal Skeleton V2", price: "$2,500", img: "/wth-9.webp" },
 ];
 
 const containerVariants = {
@@ -125,7 +121,6 @@ const cardVariants = {
 const WatchSection = () => {
   return (
     <section className={styles.sectionWrapper}>
-      {/* Premium Heading */}
       <div className={styles.headingWrapper}>
         <span className={styles.subTitle}>Exclusive Collection</span>
         <div className={styles.headingContent}>
@@ -135,7 +130,6 @@ const WatchSection = () => {
         </div>
       </div>
 
-      {/* Watch Grid */}
       <motion.div
         className={styles.watchGrid}
         variants={containerVariants}
@@ -210,9 +204,9 @@ const ForeverBondGrid = () => {
 };
 
 /* ============================================================
-   4. MAIN EXPORT COMPONENT
+   4. MAIN EXPORT COMPONENT (Mencollection)
    ============================================================ */
-const GemSection = () => {
+const Mencollection = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -265,4 +259,4 @@ const GemSection = () => {
   );
 };
 
-export default GemSection;
+export default Mencollection;
