@@ -807,6 +807,12 @@ cursor: pointer;
    ========================= */
 @media (max-width: 768px) {
 
+  /* Prevent the main wrapper from clipping child sections on small screens
+     so framer-motion's whileInView can detect elements correctly. */
+  .wrapper {
+    overflow: visible;
+  }
+
   .mainHeading {
     font-size: 1.8rem;
     letter-spacing: 3px;
