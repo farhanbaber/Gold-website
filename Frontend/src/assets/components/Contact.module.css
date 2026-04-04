@@ -1,7 +1,7 @@
 /* Contact.module.css */
 
 .contactHeader {
-  background-image: url('/public/stuck.img.png  '); /* Put your image in public/images/ folder */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/stuck.img.png');
   background-size: cover;
   background-position: center;
   height: 280px;
