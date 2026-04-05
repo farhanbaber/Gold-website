@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Pagination.module.css";
 
 const Pagination = () => {
@@ -22,48 +22,44 @@ const Pagination = () => {
   const currentPageNumber = pages.find((page) => page.path === location.pathname)?.number || 1;
 
   const handleNavigate = (path) => {
+    // 1. Navigation trigger
     navigate(path);
-    // Trigger confetti-like effect - you can enhance this later
+
+    // 2. Scroll to Top (Smooth transition)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    // 3. Haptic feedback
     if (window.navigator.vibrate) {
-      window.navigator.vibrate(20); // Haptic feedback
+      window.navigator.vibrate(20);
     }
   };
 
+  // Variants for the container
   const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2,
+        duration: 0.8,
+        ease: "easeOut",
       },
     },
   };
 
-  const pageButtonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 25,
-      },
+  // Variants for individual buttons
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: { opacity: 1, scale: 1 },
+    hover: { 
+      y: -5,
+      transition: { duration: 0.3, ease: "easeInOut" } 
     },
-    hover: {
-      scale: 1.15,
-      boxShadow: "0 0 25px rgba(198, 160, 90, 0.6)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    tap: {
-      scale: 0.92,
-    },
+    tap: { scale: 0.9 }
   };
 
   return (
@@ -71,7 +67,8 @@ const Pagination = () => {
       className={styles.paginationContainer}
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true }}
     >
       <div className={styles.paginationWrapper}>
         {pages.map((page) => {
@@ -82,29 +79,31 @@ const Pagination = () => {
               key={page.number}
               onClick={() => handleNavigate(page.path)}
               className={`${styles.pageButton} ${isActive ? styles.active : ""}`}
-              variants={pageButtonVariants}
+              variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
             >
-              <motion.div
-                className={styles.buttonContent}
-                animate={isActive ? { scale: 1.1, rotate: 360 } : { scale: 1, rotate: 0 }}
-                transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-              >
+              <div className={styles.buttonContent}>
                 <span className={styles.pageNumber}>{page.number}</span>
-              </motion.div>
+              </div>
 
-              {isActive && (
-                <motion.div
-                  className={styles.activeBackground}
-                  layoutId="activeBackground"
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                />
-              )}
+              {/* Active Golden Background with Motion Layout ID */}
+              <AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    className={styles.activeBackground}
+                    layoutId="activeGoldGlow"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                    }}
+                  />
+                )}
+              </AnimatePresence>
             </motion.button>
           );
         })}
