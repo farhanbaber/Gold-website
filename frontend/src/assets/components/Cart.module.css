@@ -1,0 +1,138 @@
+.cartPage {
+  min-height: 80vh;
+  padding: 120px 20px;
+  background-color: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: #c6a05a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 50px;
+}
+
+.emptyCart {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 60px 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(198, 160, 90, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.iconWrapper {
+  font-size: 5rem;
+  color: #c6a05a;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.emptyCart h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.emptyCart p {
+  color: #999;
+  margin-bottom: 30px;
+}
+
+.cta {
+  background: transparent;
+  padding: 15px 40px;
+  border: 2px solid #c6a05a;
+  color: #c6a05a;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta:hover {
+  background: #c6a05a;
+  color: #000;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(198, 160, 90, 0.2);
+}
+
+.cta span {
+  position: relative;
+  z-index: 1;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cartItem {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.itemInfo h3 {
+  color: #c6a05a;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.itemInfo p {
+  color: #fff;
+  margin: 5px 0 0;
+  font-size: 1rem;
+}
+
+.checkoutBtn {
+  margin-top: 30px;
+  background: #c6a05a;
+  color: #000;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkoutBtn:hover {
+  background: #d4b47a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(198, 160, 90, 0.3);
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.2rem;
+  }
+  .emptyCart {
+    padding: 40px 20px;
+  }
+}

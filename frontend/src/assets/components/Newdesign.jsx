@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Newdesign.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 /* ================= MAIN PAGE ================= */
 export default function JewelleryPage() {
@@ -12,21 +14,35 @@ export default function JewelleryPage() {
       <JewelryTypeSection />
       <GoldCarouselSection />
       <AboutSection />
-        <ArchCards />
-        <DesignerSection />
-        <JewelryGallery />
-
+      <ArchCards />
+      <DesignerSection />
+      <JewelryGallery />
     </div>
   );
 }
 
+const fadeInScroll = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" }
+  }
+};
+
 /* ================= HERO SECTION ================= */
 function JewelleryHero() {
+  const navigate = useNavigate();
   const images = ["/bangles.ones.jfif", "/bangles.two.jpg", "/bangles.three.jpg", "/bangles.four.png"];
   const [activeImg, setActiveImg] = useState(images[0]);
 
   return (
-    <section className={styles.hero}>
+    <motion.section 
+      className={styles.hero}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <div className={styles.container}>
         <div className={styles.thumbs}>
           {images.map((img, index) => (
@@ -39,18 +55,23 @@ function JewelleryHero() {
             />
           ))}
         </div>
-        <div className={styles.mainImage}>
+        <motion.div 
+          className={styles.mainImage}
+          key={activeImg}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
           <img src={activeImg} alt="Main Jewellery" />
-        </div>
+        </motion.div>
         <div className={styles.content}>
           <span className={styles.tag}>New Arrival</span>
           <h1>MINDFUL WAY FOR <br /> <span>ELEGANCY Bangles</span></h1>
           <h3>Gold Bangles with White Diamonds Acasia</h3>
           <p>This industry of fashion jewellery and sophistication. We believe that elegance can be found in pure craftsmanship.</p>
-          <button className={styles.cta}>Discover More →</button>
+          <button className={styles.cta} onClick={() => navigate('/collections')}>Discover More →</button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
@@ -77,11 +98,17 @@ function StatsSection() {
 
   return (
     <section className={styles.stats_section} ref={sectionRef}>
-      <div className={styles.stats_container}>
+      <motion.div 
+        className={styles.stats_container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInScroll}
+      >
         {statsData.map((item, index) => (
           <Counter key={index} {...item} start={start} />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -118,7 +145,13 @@ const JewelryTypeSection = () => {
   ];
 
   return (
-    <section className={styles.hero_wrapper}>
+    <motion.section 
+      className={styles.hero_wrapper}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <div className={styles.visual_frame}>
         <video width="100%" height="100%" autoPlay muted loop playsInline>
           <source src="/renew.ai.mp4" type="video/mp4" />
@@ -129,77 +162,35 @@ const JewelryTypeSection = () => {
         <p className={styles.sub_text}>Premium gold and diamond jewelry crafted with purity.</p>
         <div className={styles.type_selector}>
           {collectionTypes.map((item) => (
-            <div key={item.id} className={styles.category_item}>
+            <motion.div key={item.id} className={styles.category_item} whileHover={{ y: -5 }}>
               <div className={styles.thumb_oval} style={{ backgroundImage: `url(${item.src})` }}></div>
               <span className={styles.item_label}>{item.title}</span>
               <div className={styles.action_trigger}><span>+</span></div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
+const imageList = ["/lx.1.png", "/lx.2.png", "/lxx.3.jpg", "/lx.4.jpg", "/lx.5.jpg", "/lx.6.png", "/lx.8.png", "/lx.9.webp", "/lx.10.png", "/lx.11.png", "/lx.12.png", "/lx.13.png", "/lx.14.png", "/lx.15.png", "/lx.16.png", "/lx.17.png", "/lx.18.png", "/lx.19.png", "/lx.20.png", "/re.21.png", "/lx.22.png", "/lx.23.png", "/lx.24.png", "/lx.25.png", "/lx.26.png", "/lx.27.png", "/lx.28.png", "/lx.29.png", "/lx.30.png", "/lx.31.png"];
+const staticProducts = imageList.map((img, i) => ({ id: i + 1, title: `Luxurious Collection`, price: (Math.random() * 500 + 200).toFixed(2), image: img }));
 
-// 30 static products (replace your images)
-const imageList = [
-  "/lx.1.png",
-  "/lx.2.png",
-  "/lxx.3.jpg",
-  "/lx.4.jpg",
-  "/lx.5.jpg",
-  "/lx.6.png",
-  "/lx.8.png",
-  "/lx.9.webp",
-  "/lx.10.png",
-  "/lx.11.png",
-  "/lx.12.png",
-  "/lx.13.png",
-  "/lx.14.png",
-  "/lx.15.png",
-  "/lx.16.png",
-  "/lx.17.png",
-  "/lx.18.png",
-  "/lx.19.png",
-  "/lx.20.png",
-  "/re.21.png",
-  "/lx.22.png",
-  "/lx.23.png",
-  "/lx.24.png",
-  "/lx.25.png",
-  "/lx.26.png",
-  "/lx.27.png",
-  "/lx.28.png",
-  "/lx.29.png",
-  "/lx.30.png", 
-  "/lx.31.png",
-
-  // ... total 30
-];
-
-const staticProducts = imageList.map((img, i) => ({
-  id: i + 1,
-  title: `Luxurious Collection`,
-  price: (Math.random() * 500 + 200).toFixed(2),
-  image: img
-}));
 const GoldCarouselSection = () => {
   const [index, setIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(4);
   const [cardWidth, setCardWidth] = useState(285);
   const [gap, setGap] = useState(20);
   const [direction, setDirection] = useState(1);
-
   const maxIndex = Math.max(staticProducts.length - cardsPerView, 0);
 
-  // ✅ RESPONSIVE LOGIC (REAL FIX)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setCardsPerView(1);
-        setCardWidth(window.innerWidth); // FULL SCREEN
-        setGap(0);                       // NO GAP
+        setCardWidth(window.innerWidth);
+        setGap(0);
       } else {
         setCardsPerView(4);
         setCardWidth(285);
@@ -207,300 +198,183 @@ const GoldCarouselSection = () => {
       }
       setIndex(0);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ✅ AUTO SLIDE
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prev => {
-        if (prev >= maxIndex) {
-          setDirection(-1);
-          return prev - 1;
-        }
-        if (prev <= 0) {
-          setDirection(1);
-          return prev + 1;
-        }
+        if (prev >= maxIndex) { setDirection(-1); return prev - 1; }
+        if (prev <= 0) { setDirection(1); return prev + 1; }
         return prev + direction;
       });
     }, 2500);
-
     return () => clearInterval(interval);
   }, [direction, maxIndex]);
 
   const slideNext = () => setIndex(prev => Math.min(prev + 1, maxIndex));
   const slidePrev = () => setIndex(prev => Math.max(prev - 1, 0));
-
   const translateX = index * (cardWidth + gap);
 
   return (
-    <section className={styles.goldMainContainer}>
+    <motion.section 
+      className={styles.goldMainContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <div className={styles.headingWrapper}>
         <span className={styles.line}></span>
-        <h2 className={styles.heading}>
-          Golden <i className="fa-solid fa-crown" style={{ color: "#c6a05a" }}></i> Glamour
-        </h2>
+        <h2 className={styles.heading}>Golden <i className="fa-solid fa-crown" style={{ color: "#c6a05a" }}></i> Glamour</h2>
         <span className={styles.line}></span>
       </div>
-
       <div className={styles.sliderViewport}>
-        <div
-          className={styles.horizontalTrack}
-          style={{
-            transform: `translateX(-${translateX}px)`,
-            width: staticProducts.length * (cardWidth + gap)
-          }}
-        >
+        <div className={styles.horizontalTrack} style={{ transform: `translateX(-${translateX}px)`, width: staticProducts.length * (cardWidth + gap), transition: "transform 0.5s ease-out" }}>
           {staticProducts.map(item => (
             <div key={item.id} className={styles.goldCard}>
-              <div className={styles.goldImgBox}>
-                <img src={item.image} alt={item.title} />
-              </div>
+              <div className={styles.goldImgBox}><img src={item.image} alt={item.title} /></div>
               <h4>{item.title}</h4>
               <p className={styles.goldPrice}>${item.price}</p>
             </div>
           ))}
         </div>
-
-        <button className={`${styles.controlButton} ${styles.left}`} onClick={slidePrev}>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-
-        <button className={`${styles.controlButton} ${styles.right}`} onClick={slideNext}>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
+        <button className={`${styles.controlButton} ${styles.left}`} onClick={slidePrev}><FontAwesomeIcon icon={faChevronLeft} /></button>
+        <button className={`${styles.controlButton} ${styles.right}`} onClick={slideNext}><FontAwesomeIcon icon={faChevronRight} /></button>
       </div>
-    </section>
+    </motion.section>
   );
 };
-
-
 
 const AboutSection = () => {
   return (
-    <section className={styles.aboutSection}>
-      {/* Top Row: Image Left, Content Right */}
+    <motion.section 
+      className={styles.aboutSection}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <div className={`${styles.aboutSection__row} ${styles['aboutSection__row--alignCenter']}`}>
         <div className={styles.aboutSection__media}>
-          <img 
-            src="/rings.8.h.png" 
-            alt="Brand Vision" 
-            className={styles.aboutSection__image} 
-          />
+          <img src="/rings.8.h.png" alt="Brand Vision" className={styles.aboutSection__image} />
         </div>
-        
         <div className={styles.aboutSection__content}>
           <span className={styles.aboutSection__label}>Beyond Jewellery</span>
-          <h2 className={styles.aboutSection__title}>
-            — Comfort and Quality <br /> Come First.
-          </h2>
-          <p className={styles.aboutSection__text}>
-            We create timeless gold jewelry that blends comfort, elegance, and purity,
-  designed to be worn beautifully on every occasion.
-          </p>
-          <p className={styles.aboutSection__text}>
-           Our vision has always been to design pure gold jewelry that blends comfort, elegance, and versatility.
-          </p>
+          <h2 className={styles.aboutSection__title}>— Comfort and Quality <br /> Come First.</h2>
+          <p className={styles.aboutSection__text}>We create timeless gold jewelry that blends comfort, elegance, and purity, designed to be worn beautifully on every occasion.</p>
+          <p className={styles.aboutSection__text}>Our vision has always been to design pure gold jewelry that blends comfort, elegance, and versatility.</p>
         </div>
       </div>
-
-      {/* Bottom Row: Quote Left, Image Right */}
       <div className={styles.aboutSection__row}>
         <div className={styles.aboutSection__content}>
           <div className={styles.aboutSection__quoteBox}>
-            <p className={styles.aboutSection__quoteText}>
-               Our search for elegant yet comfortable gold jewelry inspired us to create a brand
-  defined by purity and timeless craftsmanship.
-            </p>
+            <p className={styles.aboutSection__quoteText}>Our search for elegant yet comfortable gold jewelry inspired us to create a brand defined by purity and timeless craftsmanship.</p>
             <footer className={styles.aboutSection__author}>— fayaz baber</footer>
           </div>
         </div>
-        
         <div className={styles.aboutSection__media}>
-          <img 
-            src="abs.1.png" 
-            alt="Design Details" 
-            className={styles.aboutSection__image} 
-          />
+          <img src="abs.1.png" alt="Design Details" className={styles.aboutSection__image} />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
-
-// strar new section
 const ArchCards = () => {
   const archData = [
-    {
-      id: "arch-1",
-      heading: "Craftsmanship",
-      text: "Premium quality materials sourced globally.",
-      defaultImg: "k.1.png", // Public folder wali image
-      hoverImg: "k1.h.png"  // Hover par jo dikhani hai
-    },
-    {
-      id: "arch-2",
-      heading: "Gilded Grace",
-      text: "Discover our latest collection for modern living.",
-      defaultImg: "k.2.png",
-      hoverImg: "k2.h.png"
-    },
-    {
-      id: "arch-3",
-      heading: "Timeless Design",
-      text: "Aesthetic and functional design for you.",
-      defaultImg: "k3.png",
-      hoverImg: "k3.h.png"
-    }
+    { id: "arch-1", heading: "Craftsmanship", text: "Premium quality materials sourced globally.", defaultImg: "k.1.png", hoverImg: "k1.h.png" },
+    { id: "arch-2", heading: "Gilded Grace", text: "Discover our latest collection for modern living.", defaultImg: "k.2.png", hoverImg: "k2.h.png" },
+    { id: "arch-3", heading: "Timeless Design", text: "Aesthetic and functional design for you.", defaultImg: "k3.png", hoverImg: "k3.h.png" }
   ];
   
-
   return (
     <>
-    <div className={styles.headingWrapper}>
+      <div className={styles.headingWrapper}>
         <span className={styles.line}></span>
-        <h2 className={styles.heading}>
-          IMPERIAL <i className="fa-brands fa-pied-piper-hat" style={{ color: "#c6a05a" }}></i> GOLD
-        </h2>
+        <h2 className={styles.heading}>IMPERIAL <i className="fa-brands fa-pied-piper-hat" style={{ color: "#c6a05a" }}></i> GOLD</h2>
         <span className={styles.line}></span>
       </div>
-    <div className={styles.archSectionWrapper}>
-      
-      {archData.map((item) => (
-        <div key={item.id} className={styles.archCardItem}>
-          <div className={styles.archImageFrame}>
-            {/* Pehli Image (Default) */}
-            <img 
-              src={`/${item.defaultImg}`} 
-              alt={item.heading} 
-              className={styles.archImgDefault}
-            />
-            {/* Dusri Image (Hover) */}
-            <img 
-              src={`/${item.hoverImg}`} 
-              alt={`${item.heading} hover`} 
-              className={styles.archImgHover}
-            />
-          </div>
-          <div className={styles.archTextContainer}>
-            <h3 className={styles.archMainTitle}>{item.heading}</h3>
-            <p className={styles.archSubDescription}>{item.text}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+      <motion.div 
+        className={styles.archSectionWrapper}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInScroll}
+      >
+        {archData.map((item) => (
+          <motion.div key={item.id} className={styles.archCardItem} whileHover={{ y: -10 }}>
+            <div className={styles.archImageFrame}>
+              <img src={`/${item.defaultImg}`} alt={item.heading} className={styles.archImgDefault} />
+              <img src={`/${item.hoverImg}`} alt={`${item.heading} hover`} className={styles.archImgHover} />
+            </div>
+            <div className={styles.archTextContainer}>
+              <h3 className={styles.archMainTitle}>{item.heading}</h3>
+              <p className={styles.archSubDescription}>{item.text}</p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </>
   );
 };
 
-
-// end of file
-// Note: Make sure to add the corresponding CSS in Newdesign.module.css for the new classes used in ArchCards component.
 const DesignerSection = () => {
+  const navigate = useNavigate();
   return (
-    <section className={styles.designer_section_root}>
-      {/* Left side: Images Composition */}
+    <motion.section 
+      className={styles.designer_section_root}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <div className={styles.designer_visual_composition}>
-        <img 
-          src="angle.renew.jpg" // Apni bari image yaha lagayein
-          alt="Main Portrait" 
-          className={styles.designer_primary_portrait} 
-        />
-        <img 
-          src="angle.mini.jpg" // Apni choti image yaha lagayein
-          alt="Overlay Detail" 
-          className={styles.designer_secondary_snapshot} 
-        />
+        <img src="angle.renew.jpg" alt="Main Portrait" className={styles.designer_primary_portrait} />
+        <img src="angle.mini.jpg" alt="Overlay Detail" className={styles.designer_secondary_snapshot} />
       </div>
-
-      {/* Right side: Narrative Content */}
       <div className={styles.designer_narrative_wrapper}>
-        <h2 className={styles.designer_narrative_heading}>
-          The Visionary Behind  The Craft
-        </h2>
-        <p className={styles.designer_narrative_description}>
-         Blending timeless elegance with contemporary sophistication, our lead designer transforms abstract concepts into opulent realities. With a meticulous eye for detail and a passion for bespoke excellence, every creation is more than just a product—it is a legacy of luxury
-      
-        </p>
-      <button className={styles.cta}>
-  <span>Explore The Designs</span>
-</button>
+        <h2 className={styles.designer_narrative_heading}>The Visionary Behind The Craft</h2>
+        <p className={styles.designer_narrative_description}>Blending timeless elegance with contemporary sophistication, our lead designer transforms abstract concepts into opulent realities. With a meticulous eye for detail and a passion for bespoke excellence, every creation is more than just a product—it is a legacy of luxury</p>
+        <button className={styles.cta} onClick={() => navigate('/collections')}><span>Explore The Designs</span></button>
       </div>
-    </section>
+    </motion.section>
   );
 };
-// end of file
-// Note: Make sure to add the corresponding CSS in Newdesign.module.css for the new classes used in DesignerSection component.
+
 const JewelryGallery = () => {
   return (
-    <section className={styles.jwl_grid_2026_container}>
+    <motion.section 
+      className={styles.jwl_grid_2026_container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <header className={styles.jwl_header_wrapper}>
         <span className={styles.jwl_subheading_gold}>Pure Gold Artistry</span>
         <h2 className={styles.jwl_main_heading_serif}>Exquisite Masterpieces</h2>
       </header>
-
       <div className={styles.jwl_gallery_bento_box}>
-        {/* Item 1: Large Portrait (Left) */}
-        <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_featured_long}`}>
-          <img src="peo.1.png" alt="Necklace" className={styles.jwl_asset_fluid_img} />
-          <div className={styles.jwl_overlay_content}>
-    <span className={styles.jwl_product_category}>Jewelry</span>
-    <h3 className={styles.jwl_product_name}>Necklace</h3>
-  </div>
-        </div>
-
-        {/* Item 2: Landscape Image (Middle Top) */}
-        <div className={`${styles.jwl_item_card_root} ${styles.jwl_item_landscape_top}`}>
-          <img src="neo.ear.png" alt="Earrings" className={styles.jwl_asset_fluid_img} />
-          <div className={styles.jwl_overlay_content}>
-    <span className={styles.jwl_product_category}>Jewelry</span>
-    <h3 className={styles.jwl_product_name}>Earrings</h3>
-  </div>
-        </div>
-
-        {/* Item 3: Engagement Ring (Top Right) */}
-        <div className={styles.jwl_item_card_root}>
-          <img src="eng.peo.jpg" alt="Engagement Ring" className={styles.jwl_asset_fluid_img} />
-          <div className={styles.jwl_overlay_content}>
-    <span className={styles.jwl_product_category}>Jewelry</span>
-    <h3 className={styles.jwl_product_name}>Engagement Ring</h3>
-  </div>
-        </div>
-
-        {/* Item 4: Naya Card (Engagement Ring ke niche) */}
-        <div className={styles.jwl_item_card_root}>
-          <img src="bra.peo.png" alt="Luxury Bracelet" className={styles.jwl_asset_fluid_img} />
-          <div className={styles.jwl_overlay_content}>
-    <span className={styles.jwl_product_category}>Jewelry</span>
-    <h3 className={styles.jwl_product_name}> Bracelet</h3>
-  </div>
-        </div>
-
-        {/* Item 5: Small Bottom Middle 1 */}
-        <div className={styles.jwl_item_card_root}>
-                    <img src="meeze.peo.png" alt="Gold Ring" className={styles.jwl_asset_fluid_img} />
-                    <div className={styles.jwl_overlay_content}>
-    <span className={styles.jwl_product_category}>Jewelry</span>
-    <h3 className={styles.jwl_product_name}> Ring</h3>
-  </div>
-
-        </div>
-
-        {/* Item 6: Small Bottom Middle 2 */}
-        <div className={styles.jwl_item_card_root}>
-                    <img src="pend.peo.png" alt="Pendant" className={styles.jwl_asset_fluid_img} />
-                    <div className={styles.jwl_overlay_content}>
-    <span className={styles.jwl_product_category}>Jewelry</span>
-    <h3 className={styles.jwl_product_name}>Pendant</h3>
-  </div>
-
-        </div>
+        {[
+          { id: 1, img: "peo.1.png", name: "Necklace", classes: styles.jwl_item_featured_long },
+          { id: 2, img: "neo.ear.png", name: "Earrings", classes: styles.jwl_item_landscape_top },
+          { id: 3, img: "eng.peo.jpg", name: "Engagement Ring" },
+          { id: 4, img: "bra.peo.png", name: "Bracelet" },
+          { id: 5, img: "meeze.peo.png", name: "Ring" },
+          { id: 6, img: "pend.peo.png", name: "Pendant" },
+        ].map(item => (
+          <motion.div key={item.id} className={`${styles.jwl_item_card_root} ${item.classes || ""}`} whileHover={{ scale: 1.02 }}>
+            <img src={item.img} alt={item.name} className={styles.jwl_asset_fluid_img} />
+            <div className={styles.jwl_overlay_content}>
+              <span className={styles.jwl_product_category}>Jewelry</span>
+              <h3 className={styles.jwl_product_name}>{item.name}</h3>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </motion.section>
   );
 };

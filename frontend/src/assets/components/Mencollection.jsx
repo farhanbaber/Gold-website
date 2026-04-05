@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaRegHeart, FaShoppingCart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import styles from './Mencollection.module.css';
 
-const ringImages = [
-  '/pla.1.png', '/pla.2.png', '/pla.3.png', '/pla.4.png', '/pla.5.png',
-  '/pla.6.png', '/pla.7.png', '/pla.8.png', '/pla.9.png', '/pla.10.png',
-  '/pla.11.png', '/pla.12.png', '/pla.13.png', '/pla.14.png', '/pla.15.png',
-  '/pla.16.png', '/pla.17.png', '/pla.18.png', '/pla.19.png', '/pla.20.png'
-];
+const fadeInScroll = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" }
+  }
+};
 
 /* ============================================================
    1. RING SECTION (Infinite Vertical Scroll)
@@ -65,7 +67,13 @@ const RingSection = () => {
   );
 
   return (
-    <div className={styles.Vertical_Scroll_Main_Section}>
+    <motion.div 
+      className={styles.Vertical_Scroll_Main_Section}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <div className={styles.Vertical_Scroll_Inner_Layout}>
         <div className={`${styles.Vertical_Track_Base} ${styles.Anim_Slide_Up_Infinite}`}>
           {buildScrollList(columnLeftData)}
@@ -82,7 +90,7 @@ const RingSection = () => {
           {buildScrollList(columnRightData)}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -119,6 +127,7 @@ const cardVariants = {
 };
 
 const WatchSection = () => {
+  const navigate = useNavigate();
   return (
     <section className={styles.sectionWrapper}>
       <div className={styles.headingWrapper}>
@@ -135,10 +144,10 @@ const WatchSection = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {watches.map((watch) => (
-          <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants}>
+          <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants} whileHover={{ y: -5 }}>
             <div className={styles.imgWrapper}>
               <img src={watch.img} alt={watch.name} className={styles.watchImg} />
             </div>
@@ -146,7 +155,7 @@ const WatchSection = () => {
               <h3 className={styles.watchTitle}>{watch.name}</h3>
               <div className={styles.cardFooter}>
                 <span className={styles.watchPrice}>{watch.price}</span>
-                <button className={styles.cta}>
+                <button className={styles.cta} onClick={() => navigate('/cart')}>
                   <span>Add to Cart</span>
                 </button>
               </div>
@@ -162,6 +171,7 @@ const WatchSection = () => {
    3. FOREVER BOND GRID
    ============================================================ */
 const ForeverBondGrid = () => {
+  const navigate = useNavigate();
   const products = [
     { id: 1, name: "Aurum Elite", price: "$1500", img: "/menc.1.png" },
     { id: 2, name: "Regal Classic", price: "$1800", img: "/mens.2.png" },
@@ -178,13 +188,19 @@ const ForeverBondGrid = () => {
   ];
 
   return (
-    <main className={styles.fb_main_wrapper_v1}>
+    <motion.main 
+      className={styles.fb_main_wrapper_v1}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInScroll}
+    >
       <div className={styles.fb_section_header_divider}>
         <h1 className={styles.fb_header_title_text}>Forever Bond Collection</h1>
       </div>
       <div className={styles.fb_product_grid_system}>
         {products.map((item) => (
-          <article key={item.id} className={styles.fb_card_component_root}>
+          <motion.article key={item.id} className={styles.fb_card_component_root} whileHover={{ scale: 1.02 }}>
             <div className={styles.fb_product_identity_group}>
               <h2 className={styles.fb_item_nomenclature}>{item.name}</h2>
               <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
@@ -194,12 +210,12 @@ const ForeverBondGrid = () => {
             </div>
             <div className={styles.fb_action_utility_bar}>
               <span className={styles.fb_price_display_unit}>{item.price}</span>
-              <button className={styles.cta}><span>Add To Cart</span></button>
+              <button className={styles.cta} onClick={() => navigate('/cart')}><span>Add To Cart</span></button>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
-    </main>
+    </motion.main>
   );
 };
 
@@ -208,17 +224,28 @@ const ForeverBondGrid = () => {
    ============================================================ */
 const Mencollection = () => {
   const [index, setIndex] = useState(0);
+  const ringImages = [
+    '/pla.1.png', '/pla.2.png', '/pla.3.png', '/pla.4.png', '/pla.5.png',
+    '/pla.6.png', '/pla.7.png', '/pla.8.png', '/pla.9.png', '/pla.10.png',
+    '/pla.11.png', '/pla.12.png', '/pla.13.png', '/pla.14.png', '/pla.15.png',
+    '/pla.16.png', '/pla.17.png', '/pla.18.png', '/pla.19.png', '/pla.20.png'
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % ringImages.length);
     }, 2000);
     return () => clearInterval(timer);
-  }, []);
+  }, [ringImages.length]);
 
   return (
     <div className={styles.wrapper}>
-      <section className={styles.heroContainer}>
+      <motion.section 
+        className={styles.heroContainer}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className={styles.mainCard}>
           <div className={styles.leftContent}>
             <div className={styles.imageCircle}>
@@ -250,7 +277,7 @@ const Mencollection = () => {
             />
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <RingSection />
       <ForeverBondGrid />

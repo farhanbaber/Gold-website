@@ -1,18 +1,31 @@
 import React from 'react';
 import styles from './Contact.module.css';
 import { FaPhone, FaEnvelope, FaLocationDot } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Add your form submission logic here (API call etc.)
     alert('Thank you! Your message has been received.');
+  };
+
+  const fadeInScroll = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
   };
 
   return (
     <>
-      {/* Header Section - Same as before */}
-      <div className={styles.contactHeader}>
+      <motion.div 
+        className={styles.contactHeader}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className={styles.container}>
           <div className={styles.breadcrumb}>
             <a href="/">Home</a> / <span>Contact Us</span>
@@ -21,17 +34,20 @@ const Contact = () => {
             Contact Us
           </h1>
         </div>
-      </div>
+      </motion.div>
 
       <div className={styles.container}>
-        <div className={styles.mainContent}>
-
-          {/* Left Side - Contact Info (Same) */}
+        <motion.div 
+          className={styles.mainContent}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInScroll}
+        >
           <div className={styles.leftSection}>
             <h2>Get in touch with us</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Velit eget elit arcu vitae. 
-              Non fermentum condimentum sem sed urna.
+              We're here to help you find the perfect piece of jewelry. Reach out to us through any of these channels.
             </p>
 
             <div className={styles.infoItem}>
@@ -59,7 +75,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
           <div className={styles.formCard}>
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
@@ -91,17 +106,15 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              {/* === YOUR GOLDEN SHINE BUTTON === */}
               <button type="submit" className={styles.cta}>
                 <span>Submit Now</span>
               </button>
             </form>
           </div>
-
-        </div>
+        </motion.div>
       </div>
     </>
   );
 };
 
-export default Contact;
+export default Contact;

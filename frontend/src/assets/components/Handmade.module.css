@@ -644,34 +644,41 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 
 /* ===== SUB HERO ===== */
 .subhero {
-  width: 228%;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;                 /* 2px horizontal + vertical gap */
-  /* padding: 10px 20px; */
+  gap: 30px;
+  padding: 60px 20px;
   box-sizing: border-box;
-  align-content: flex-start;   /* 👈 🔥 THIS FIXES THE BIG GAP */
-  /* border: 2px solid red; */
-    font-family: "Cinzel", serif;
-
+  justify-content: center;
+  font-family: "Cinzel", serif;
 }
 /* ===== CARD ===== */
 .subcard1 {
-  width: calc(25% - 2px);
-  height: 50vh;
-  /* border: 1px solid #e0e0e0; */
-  padding: 20px 16px;
+  width: 280px;
+  height: 380px;
+  padding: 25px;
   box-sizing: border-box;
-  background-color: whitesmoke;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 12px;
-  transition: all 0.4s ease;
-  position: relative;           /* ← very important for absolute positioning */
+  border-radius: 15px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+}
+
+.subcard1:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #c6a05a;
 }
 
 /* Heart icon → top-right corner */
@@ -679,65 +686,47 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   position: absolute;
   top: 16px;
   right: 16px;
-  font-size: 1.0rem;            /* adjustable size */
+  font-size: 1.0rem;
   color: #ddd;
   cursor: pointer;
-  transition: all 0.35s ease;
-  z-index: 2;                   /* stays above other content */
+  transition: color 0.3s ease;
+  z-index: 2;
 }
 
-/* Hover: becomes red + small beat animation */
-/* .subcard1:hover .heartIcon {
-  color: #e74c3c;             
-  transform: scale(1.25);
-  animation: heartbeat 1.3s infinite ease-in-out;
-} */
-
-/* Heartbeat animation */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1.25); }
-  50%      { transform: scale(1.45); }
+.subcard1:hover .heartIcon {
+  color: #c6a05a;
 }
-
-/* Optional: slight background/fill on active/favorited state (if you add logic later) */
-/* .subcard1 .heartIcon.favorited {
-  color: #e74c3c;
-  transform: scale(1.2);
-} */
 
 /* ===== IMAGE ===== */
 .subcard1 img {
-  width: 100%;
-  max-width: 160px;
-  margin-bottom: 16px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
-  transition: transform 0.45s ease;
-}
-
-/* ===== TITLE & PARA (bigger as before) ===== */
-.subcard1 h1 {
-  font-size: 1.5rem;
-  margin: 8px 0 6px;
-  font-weight: 600;
-  color: #222;
-}
-
-.subcard1 p {
-  font-size: 1.1rem;
-  color: #555;
-  font-weight: 400;
-  color: #8b6822;
-}
-
-/* Hover effects on card & image remain the same */
-.subcard1:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: #d4af37;
+  margin-bottom: 20px;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .subcard1:hover img {
-  transform: scale(1.12);
+  transform: scale(1.1);
+}
+
+/* ===== TITLE & PARA ===== */
+.subcard1 h1 {
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.subcard1 p {
+  font-size: 0.9rem;
+  color: #c6a05a;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 /* ── RESPONSIVE MEDIA QUERIES ONLY ── */
 
