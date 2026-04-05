@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .cartPage {
   min-height: 80vh;
   padding: 120px 20px;
@@ -136,3 +137,170 @@
     padding: 40px 20px;
   }
 }
+=======
+.cartPage {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'AdihausDIN', Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr; /* Desktop layout */
+  gap: 40px;
+  background-color: #fff;
+            font-family: "Cinzel", serif;
+
+}
+
+.bagTitle {
+  font-size: clamp(24px, 5vw, 34px); /* Mobile par chota, desktop par bada */
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  grid-column: 1 / -1; /* Header full width rahega */
+}
+
+.itemCard {
+  display: flex;
+  padding: 20px 0;
+  border-top: 1px solid #ebedee;
+  gap: 20px;
+}
+
+.imageContainer {
+  width: 140px;
+  height: 180px;
+  background-color: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemDetails {
+  flex: 1;
+}
+
+.itemDetails h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.actionLinks {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.priceSection {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.summaryBox {
+  border: 1px solid #ebedee;
+  padding: 25px;
+}
+
+.checkoutBtn {
+  background: #c6a05a;
+  color: #fff;
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Cinzel", serif;
+  
+  /* --- SMOTTHNESS KA RAAZ YAHAN HAI --- */
+  /* transition: property duration timing-function */
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checkoutBtn:hover {
+  background: #8b6822;
+  /* Hover par halka sa upar uthna luxury feel deta hai */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 104, 34, 0.3);
+}
+
+.checkoutBtn:active {
+  /* Click karne par smooth dabna */
+  transform: scale(0.95);
+  transition: all 0.1s ease; /* Active state fast honi chahiye */
+}
+
+.checkoutBtn::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: -150%; /* Thoda aur peeche se start karein */
+  width: 60%; 
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  transform: skewX(-25deg);
+  /* Shine transition ko bhi cubic-bezier diya hai */
+  transition: left 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.checkoutBtn:hover::before { 
+  left: 150%; 
+}
+/* Mobile Responsive Breakpoint (768px se niche) */
+@media (max-width: 768px) {
+  .cartPage {
+    grid-template-columns: 1fr; /* Single column layout */
+    margin: 20px auto;
+    gap: 20px;
+  }
+
+  .itemCard {
+    flex-direction: row; /* Image aur details saath rahenge */
+    align-items: flex-start;
+  }
+
+  .imageContainer {
+    width: 100px; /* Mobile par image thodi choti */
+    height: 130px;
+  }
+
+  .priceSection {
+    position: absolute;
+    right: 20px;
+    bottom: 25px;
+  }
+
+  .itemCard {
+    position: relative;
+    padding-bottom: 60px; /* Space for price on mobile */
+  }
+
+  .sidebar {
+    order: -1; /* Checkout button summary se pehle dikhega mobile par */
+  }
+}
+>>>>>>> dfab93ec86318ba27bb5ece6a81bc063a5bb661a
