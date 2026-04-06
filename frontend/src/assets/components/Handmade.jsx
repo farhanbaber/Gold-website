@@ -82,7 +82,7 @@ const Handmade = () => {
         className={styles.subHero}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.02 }}
         variants={fadeInScroll}
       >
         <div className={styles.wrapper}>

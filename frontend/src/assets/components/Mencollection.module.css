@@ -3,7 +3,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #ffffff;
   overflow-x: hidden;
   /* Smoother scrolling */

@@ -144,7 +144,7 @@ const WatchSection = () => {
   variants={containerVariants}
   initial="hidden"
   whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
+  viewport={{ once: true, amount: 0.05 }}
 >
         {watches.map((watch) => (
           <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants}>
