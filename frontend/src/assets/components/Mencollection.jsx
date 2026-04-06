@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Mencollection.module.css';
 
 const fadeInScroll = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: 0.5, ease: "easeOut" }
   }
 };
 
@@ -113,16 +113,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1, 
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 } 
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 } 
   },
 };
 
 const cardVariants = {
-  hidden: { y: 40, opacity: 0 },
+  hidden: { y: 20, opacity: 0 },
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } 
   },
 };
 
@@ -147,7 +147,7 @@ const WatchSection = () => {
   viewport={{ once: true, amount: 0.2 }}
 >
         {watches.map((watch) => (
-          <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants} whileHover={{ y: -5 }}>
+          <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants}>
             <div className={styles.imgWrapper}>
               <img src={watch.img} alt={watch.name} className={styles.watchImg} />
             </div>
@@ -200,7 +200,7 @@ const ForeverBondGrid = () => {
       </div>
       <div className={styles.fb_product_grid_system}>
         {products.map((item) => (
-          <motion.article key={item.id} className={styles.fb_card_component_root} whileHover={{ scale: 1.02 }}>
+          <motion.article key={item.id} className={styles.fb_card_component_root}>
             <div className={styles.fb_product_identity_group}>
               <h2 className={styles.fb_item_nomenclature}>{item.name}</h2>
               <p className={styles.fb_brand_attribution}>Fayaz Jewellers</p>
@@ -244,7 +244,7 @@ const Mencollection = () => {
         className={styles.heroContainer}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.6 }}
       >
         <div className={styles.mainCard}>
           <div className={styles.leftContent}>
@@ -272,8 +272,8 @@ const Mencollection = () => {
               src="/gold.bra.png" 
               alt="Luxury" 
               className={styles.largeStaticGem}
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
         </div>

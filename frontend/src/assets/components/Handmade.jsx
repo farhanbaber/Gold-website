@@ -7,11 +7,11 @@ const Handmade = () => {
   const navigate = useNavigate();
 
   const fadeInScroll = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
@@ -19,13 +19,13 @@ const Handmade = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: { staggerChildren: 0.05 }
     }
   };
 
   const cardVariant = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
   };
 
   return (
@@ -35,13 +35,13 @@ const Handmade = () => {
           className={styles.container}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.6 }}
         >
           <motion.div 
             className={styles.textSide}
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             <h2 className={styles.heading}>Find Jewellery Within Yourself</h2>
             <p className={styles.description}>
@@ -63,19 +63,15 @@ const Handmade = () => {
           <div className={styles.imageSide}>
             <div className={styles.imageWrapper}>
               <video src="/renew.video.ai.mp4" className={styles.mainImage} autoPlay loop muted playsInline />
-              <motion.img 
+              <img 
                 src="/handmade.img1.png" 
                 alt="Jewellery detail top" 
                 className={`${styles.floatingImage} ${styles.topImage}`} 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
               />
-              <motion.img 
+              <img 
                 src="/handmade.img2.png" 
                 alt="Jewellery detail bottom" 
                 className={`${styles.floatingImage} ${styles.bottomImage}`} 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
               />
             </div>
           </div>
@@ -100,37 +96,37 @@ const Handmade = () => {
         </div>
 
         <section className={styles.jewelrySectionWrapper}>
-          <motion.div className={`${styles.displayTile} ${styles.heroTile}`} whileHover={{ scale: 1.02 }}>
+          <div className={`${styles.displayTile} ${styles.heroTile}`}>
             <div className={styles.mediaContainer}><img src="/crown.set2.png" alt="Collection" /></div>
             <div className={styles.hoverOverlay}>
               <h3 className={styles.accentHeading}>ROYAL HERITAGE</h3>
               <span className={styles.subText}>Fayaz Jewellers</span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div className={`${styles.displayTile} ${styles.smallTile}`} whileHover={{ scale: 1.02 }}>
+          <div className={`${styles.displayTile} ${styles.smallTile}`}>
             <div className={styles.mediaContainer}><img src="/crown.set1.png" alt="Rings" /></div>
             <div className={styles.hoverOverlay}>
               <h3 className={styles.accentHeading}>GOLDEN SHINE</h3>
               <span className={styles.subText}>Fayaz Jewellers</span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div className={`${styles.displayTile} ${styles.verticalSpanTile}`} whileHover={{ scale: 1.02 }}>
+          <div className={`${styles.displayTile} ${styles.verticalSpanTile}`}>
             <div className={styles.mediaContainer}><img src="/crwon.ring.png" alt="Watches" /></div>
             <div className={styles.hoverOverlay}>
               <h3 className={styles.accentHeading}>BRIDAL GLOW</h3>
               <span className={styles.subText}>Fayaz Jewellers</span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div className={`${styles.displayTile} ${styles.smallTile}`} whileHover={{ scale: 1.02 }}>
+          <div className={`${styles.displayTile} ${styles.smallTile}`}>
             <div className={styles.mediaContainer}><img src="/crown3.img.png" alt="Pearls" /></div>
             <div className={styles.hoverOverlay}>
               <h3 className={styles.accentHeading}>DAILY LUXE</h3>
               <span className={styles.subText}>Fayaz Jewellers</span>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         <motion.div className={styles.subhero} variants={staggerContainer}>
@@ -148,7 +144,7 @@ const Handmade = () => {
             { id: 11, img: "/har.set11.png", title: "Divine Zar" },
             { id: 12, img: "/har.set12.png", title: "Zar-e-Falak" }
           ].map(item => (
-            <motion.div key={item.id} className={styles.subcard1} variants={cardVariant} whileHover={{ y: -10 }}>
+            <motion.div key={item.id} className={styles.subcard1} variants={cardVariant}>
               <i className="fa-solid fa-heart" style={{ position: "absolute", top: "16px", right: "16px", color: "#ddd" }}></i>
               <img src={item.img} alt={item.title} />
               <h1>{item.title}</h1>

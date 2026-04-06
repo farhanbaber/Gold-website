@@ -1,11 +1,11 @@
 .hero {
   /* background-color: #fffaf4; */
   padding: 100px 20px;
-  min-height: 100vh; /* پورا ویو پورٹ لے گا اگر کنٹنٹ کم ہو */
+  min-height: 100vh;
   box-sizing: border-box;
-    font-family: "Cinzel", serif;
-
-
+  font-family: "Cinzel", serif;
+  /* GPU acceleration for smoother rendering */
+  transform: translateZ(0);
 }
 
 .container {
@@ -163,6 +163,7 @@
   width: 420px;
   height: 620px;
   max-width: 100%;
+  will-change: transform;
 }
 
 /* Images Styling */
@@ -171,7 +172,9 @@
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-  transition: all 0.6s ease;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .mainImage:hover,
@@ -551,6 +554,8 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   width: 100%;
   height: 100%;
   transition: transform 0.8s ease, opacity 0.5s ease;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .mediaContainer img {
@@ -1340,24 +1345,6 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   to { transform: rotate(360deg); }
 }
 
-@media (max-width: 850px) {
-  .fashion_layout_grid { flex-direction: column; gap: 40px; }
-  .fashion_explore_badge { display: none; }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .fashion_layout_grid {
-    flex-direction: column;
-  }
-  .fashion_col_center {
-    order: 2; /* Center content mobile pe beech mein rahe */
-  }
-  .fashion_explore_badge {
-  display: none;
-  }
-}
-/* Mobile Responsiveness */
 @media (max-width: 992px) {
   .fashion_layout_grid {
     flex-direction: column;
@@ -1371,6 +1358,71 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   
   .fashion_col_center {
     margin-top: 0;
+  }
+}
+
+@media (max-width: 850px) {
+  .fashion_layout_grid { flex-direction: column; gap: 30px; }
+  .fashion_explore_badge { display: none; }
+}
+
+@media (max-width: 768px) {
+  .fashion_container {
+    padding: 40px 15px;
+  }
+
+  .fashion_layout_grid {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .fashion_column {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .fashion_col_center {
+    order: 2;
+    margin-top: 0;
+  }
+
+  .fashion_explore_badge {
+    display: none;
+  }
+
+  .fashion_img_box {
+    aspect-ratio: 4 / 4;
+    border-radius: 10px;
+  }
+
+  .fashion_description {
+    font-size: 14px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .fashion_cta_btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fashion_container {
+    padding: 30px 10px;
+  }
+
+  .fashion_layout_grid {
+    gap: 20px;
+  }
+
+  .fashion_img_box {
+    aspect-ratio: 4 / 5;
+    border-radius: 8px;
+  }
+
+  .fashion_description {
+    font-size: 13px;
   }
 }
 
@@ -1468,11 +1520,12 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* 🔥 FIXED IMAGE */
+  background-attachment: fixed;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateZ(0);
 }
 
 /* DARK + SOFT OVERLAY */
@@ -1578,16 +1631,35 @@ min-height: 100vh; /* Kam se kam puri screen, lekin content zyada ho to aur nich
 }
 
 @media (max-width: 480px) {
+  .fixed_section {
+    height: 70vh;
+    min-height: 400px;
+  }
+
   .fixed_heading {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  .fixed_para {
+    font-size: 12px;
+  }
+
+  .fixed_overlay {
+    padding: 15px;
   }
 
   .fixed_buttons {
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn_primary,
   .btn_secondary {
     width: 100%;
+  }
+
+  .fashion_cta_btn {
+    padding: 10px 22px;
+    font-size: 0.9rem;
   }
 }

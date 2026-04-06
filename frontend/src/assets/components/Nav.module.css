@@ -16,16 +16,29 @@
 /* === 1. Top Gold Bar === */
 .nav-one {
   width: 100%;
-  height: 35px;
+  min-height: 35px;
   background-color: #c6a05a;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  padding: 4px 30px;
   color: #fff;
   font-size: 11px;
   font-family: "Cinzel", serif;
   letter-spacing: 1px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.nav-one p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.desktopOnly {
+  display: block;
 }
 
 /* === 2. Main White Navbar === */
@@ -204,6 +217,42 @@
     margin-top: 20px;
     color: #c6a05a;
     font-size: 20px;
+  }
+
+  /* Gold bar mobile fix */
+  .nav-one {
+    padding: 5px 12px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .nav-one p {
+    font-size: 9px;
+    text-align: center;
+  }
+}
+
+/* Extra small phone fix for gold bar */
+@media (max-width: 480px) {
+  .nav-one {
+    padding: 5px 8px;
+    font-size: 8px;
+    letter-spacing: 0;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .nav-one p {
+    font-size: 8px;
+    max-width: 45%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

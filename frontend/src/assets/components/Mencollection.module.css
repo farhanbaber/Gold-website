@@ -2,10 +2,12 @@
   width: 100%;
   padding: 20px;
   display: flex;
-  flex-direction: column; /* Ye line isay side se hata kar neeche le aayegi */
+  flex-direction: column;
   justify-content: center;
   background-color: #ffffff;
-  overflow: hidden;
+  overflow-x: hidden;
+  /* Smoother scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 .heroContainer {
@@ -161,11 +163,17 @@
   flex: 1;
 }
 
-/* Animations */
-.Anim_Slide_Up_Infinite { animation: slideUp 15s linear infinite; }
-.Anim_Slide_Down_Infinite { animation: slideDown 15s linear infinite; }
-
-.Vertical_Track_Base:hover { animation-play-state: paused; }
+/* Animations - optimized for GPU */
+.Anim_Slide_Up_Infinite {
+  animation: slideUp 15s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.Anim_Slide_Down_Infinite {
+  animation: slideDown 15s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
 
 @keyframes slideUp {
   0% { transform: translateY(0); }
@@ -373,12 +381,16 @@
 }
 /* Animation Up (Smooth Loop) */
 .Anim_Slide_Up_Infinite { 
-  animation: slideUp 60s linear infinite; /* Time barha diya taake tez na bhage */
+  animation: slideUp 60s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Animation Down (Smooth Loop) */
 .Anim_Slide_Down_Infinite { 
-  animation: slideDown 60s linear infinite; 
+  animation: slideDown 60s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes slideUp {
@@ -812,10 +824,8 @@ cursor: pointer;
    ========================= */
 @media (max-width: 768px) {
 
-  /* Prevent the main wrapper from clipping child sections on small screens
-     so framer-motion's whileInView can detect elements correctly. */
   .wrapper {
-    overflow: visible;
+    overflow-x: hidden;
   }
 
   .mainHeading {
@@ -831,21 +841,93 @@ cursor: pointer;
     width: 25px;
   }
 
-  /* FIX */
+  .sectionWrapper {
+    padding: 60px 4%;
+  }
+
+  /* FIX: Watch grid properly shows on mobile */
   .watchGrid {
     grid-template-columns: 1fr;
     gap: 25px;
   }
 
-  /* FIX */
+  /* FIX: Watch card centering and sizing */
   .watchCard {
     padding: 20px;
     max-width: 420px;
     margin: 0 auto;
+    width: 100%;
   }
 
-  /* FIX */
+  /* FIX: Image height */
   .imgWrapper {
     height: 200px;
   }
+
+  .watchTitle {
+    font-size: 1rem;
+  }
+
+  .watchPrice {
+    font-size: 1.1rem;
+  }
+
+  .cardFooter {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .subTitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
 }
+
+/* =========================
+   📱 Small Mobile Fix
+   ========================= */
+@media (max-width: 480px) {
+  .sectionWrapper {
+    padding: 40px 3%;
+  }
+
+  .headingWrapper {
+    margin-bottom: 30px;
+  }
+
+  .mainHeading {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+
+  .watchGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .watchCard {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .imgWrapper {
+    height: 180px;
+  }
+
+  .watchImg {
+    max-width: 100%;
+  }
+
+  .cta {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+
+  .headingContent {
+    gap: 15px;
+  }
+
+  .line {
+    width: 20px;
+  }
+}
