@@ -139,17 +139,13 @@ const WatchSection = () => {
         </div>
       </div>
 
-      <motion.div
-        className={styles.watchGrid}
-        variants={containerVariants}
-        initial="hidden"
-<<<<<<< HEAD
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-=======
-        animate="visible"
->>>>>>> dfab93ec86318ba27bb5ece6a81bc063a5bb661a
-      >
+    <motion.div
+  className={styles.watchGrid}
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+>
         {watches.map((watch) => (
           <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants} whileHover={{ y: -5 }}>
             <div className={styles.imgWrapper}>
