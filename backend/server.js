@@ -17,33 +17,43 @@ const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 if (!stripeSecretKey) {
   console.error("Missing STRIPE_SECRET_KEY in backend/.env");
-  process.exit(1);
 }
 
-const stripe = new Stripe(stripeSecretKey);
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 if (!mongoUri) {
   console.error("Missing MONGODB_URI in backend/.env");
-  process.exit(1);
 }
 
-mongoose
-  .connect(mongoUri)
-  .then(async () => {
+let initPromise;
+const ensureDatabaseReady = async () => {
+  if (initPromise) return initPromise;
+
+  initPromise = (async () => {
+    if (!mongoUri) return;
+    if (mongoose.connection.readyState === 1) return;
+
+    await mongoose.connect(mongoUri);
     console.log("MongoDB connected");
+
     for (const seed of productCatalogSeeds) {
-      await Product.findOneAndUpdate(
-        { productId: seed.productId },
-        seed,
-        { upsert: true, new: true, setDefaultsOnInsert: true }
-      );
+      await Product.findOneAndUpdate({ productId: seed.productId }, seed, {
+        upsert: true,
+        returnDocument: "after",
+        setDefaultsOnInsert: true,
+      });
     }
+
     console.log(`Product catalog synced: ${productCatalogSeeds.length} items`);
-  })
-  .catch((error) => {
-    console.error("MongoDB connection failed:", error.message);
-    process.exit(1);
+  })().catch((error) => {
+    console.error("MongoDB init failed:", error.message);
+    initPromise = undefined;
   });
+
+  return initPromise;
+};
+
+ensureDatabaseReady();
 
 app.use(
   cors({
@@ -51,6 +61,12 @@ app.use(
   })
 );
 app.post("/stripe-webhook", express.raw({ type: "application/json" }), async (req, res) => {
+  if (!stripe) {
+    return res.status(500).send("Stripe is not configured");
+  }
+
+  await ensureDatabaseReady();
+
   if (!stripeWebhookSecret) {
     return res.status(500).send("Missing STRIPE_WEBHOOK_SECRET");
   }
@@ -124,6 +140,12 @@ app.get("/health", (_req, res) => {
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
+    if (!stripe) {
+      return res.status(500).json({ error: "Stripe is not configured" });
+    }
+
+    await ensureDatabaseReady();
+
     const { items = [] } = req.body;
 
     if (!Array.isArray(items) || items.length === 0) {
@@ -188,6 +210,7 @@ app.post("/create-checkout-session", async (req, res) => {
 
 app.get("/orders", async (_req, res) => {
   try {
+    await ensureDatabaseReady();
     const orders = await Order.find().sort({ createdAt: -1 }).limit(50).lean();
     return res.json({ orders });
   } catch (error) {
@@ -197,6 +220,7 @@ app.get("/orders", async (_req, res) => {
 
 app.get("/orders/:id", async (req, res) => {
   try {
+    await ensureDatabaseReady();
     const { id } = req.params;
     const conditions = [{ stripeSessionId: id }];
     if (mongoose.Types.ObjectId.isValid(id)) {
@@ -219,6 +243,7 @@ app.get("/orders/:id", async (req, res) => {
 
 app.get("/products/:productId", async (req, res) => {
   try {
+    await ensureDatabaseReady();
     const product = await Product.findOne({
       productId: req.params.productId,
       isActive: true,
@@ -232,6 +257,10 @@ app.get("/products/:productId", async (req, res) => {
 
 app.get("/checkout-session/:id", async (req, res) => {
   try {
+    if (!stripe) {
+      return res.status(500).json({ error: "Stripe is not configured" });
+    }
+
     const session = await stripe.checkout.sessions.retrieve(req.params.id);
     return res.json({
       id: session.id,
@@ -246,6 +275,14 @@ app.get("/checkout-session/:id", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Stripe backend running at http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Stripe backend running at http://localhost:${port}`);
+  });
+}
+
+if (typeof module !== "undefined") {
+  module.exports = app;
+}
+
+export default app;
