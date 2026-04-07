@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./assets/components/Nav.jsx";
 import Footer from "./assets/components/Footer.jsx";
 import Home from "./assets/components/Home.jsx";
@@ -10,30 +10,74 @@ import Mencollection from "./assets/components/Mencollection.jsx";
 import Contact from "./assets/components/Contact.jsx";
 import Cart from "./assets/components/Cart.jsx";
 import Pagination from "./assets/components/Pagination.jsx";
+import AdminOrders from "./assets/components/AdminOrders.jsx";
+import ProtectedRoute from "./assets/components/ProtectedRoute.jsx";
+import AdminLayout from "./assets/components/AdminLayout.jsx";
+import Login from "./assets/components/Login.jsx";
+import Success from "./assets/components/Success.jsx";
+import AdminDashboard from "./assets/components/AdminDashboard.jsx";
+import ManageProducts from "./assets/components/ManageProducts.jsx";
+import PageLoader from "./assets/components/PageLoader.jsx";
 import "./App.css";
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const location = useLocation();
+  const [isRouteLoading, setIsRouteLoading] = React.useState(true);
+  const previousPathRef = React.useRef(location.pathname);
 
-  const handleAddToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
-  };
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsRouteLoading(false), 2300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  React.useEffect(() => {
+    if (previousPathRef.current === location.pathname) return;
+    previousPathRef.current = location.pathname;
+    setIsRouteLoading(true);
+    const timer = setTimeout(() => setIsRouteLoading(false), 2300);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  React.useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.replace("#", "");
+    const timer = setTimeout(() => {
+      const section = document.getElementById(id);
+      if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [location.hash, location.pathname]);
 
   return (
     <div className="appLayout">
+      <PageLoader show={isRouteLoading} />
       {/* 1. Header/Navbar (Top par fixed) */}
       <Navbar />
 
       {/* 2. Main Content (Routes ke mutabiq change hoga) */}
       <main className="contentArea">
         <Routes>
-          <Route path="/" element={<Home handleLike={handleAddToCart} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/handmade" element={<Handmade />} />
           <Route path="/new-designs" element={<Newdesign />} />
           <Route path="/mens-collection" element={<Mencollection />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/success" element={<Success />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="products" element={<ManageProducts />} />
+          </Route>
         </Routes>
       </main>
 

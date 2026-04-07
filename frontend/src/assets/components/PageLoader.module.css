@@ -1,0 +1,54 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, #fffaf2 0%, #f4efe6 100%);
+}
+
+.loaderBox {
+  text-align: center;
+  color: #7c5922;
+  animation: fadeIn 0.35s ease-out;
+}
+
+.logoRing {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b18543 0%, #e7c686 100%);
+  padding: 4px;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.loaderBox h3 {
+  font-family: "Cinzel", serif;
+  font-size: 1.12rem;
+  margin-bottom: 4px;
+}
+
+.loaderBox p {
+  font-size: 0.86rem;
+  color: #8f7246;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(177, 133, 67, 0.4); }
+  70% { transform: scale(1.03); box-shadow: 0 0 0 14px rgba(177, 133, 67, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(177, 133, 67, 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

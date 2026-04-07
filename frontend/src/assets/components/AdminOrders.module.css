@@ -1,0 +1,162 @@
+.page {
+  min-height: 80vh;
+  background: linear-gradient(180deg, #f5f5f5 0%, #f9f6f0 100%);
+  color: #2e261a;
+  padding: 24px 16px 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #8f6325;
+  font-family: "Cinzel", serif;
+}
+
+.subTitle {
+  margin-top: 6px;
+  color: #7c6d55;
+  font-size: 0.9rem;
+}
+
+.header button {
+  background: #fff4df;
+  border: 1px solid #c6a05a;
+  color: #5b4016;
+  font-weight: 700;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.quickStats {
+  margin: 0 0 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.statCard {
+  background: #fff;
+  border: 1px solid #e6dbc8;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.statCard span {
+  display: block;
+  color: #7b6d56;
+  font-size: 0.82rem;
+}
+
+.statCard strong {
+  display: block;
+  margin-top: 6px;
+  color: #8f6325;
+  font-size: 1.2rem;
+}
+
+.info {
+  color: #6b5b44;
+}
+
+.error {
+  color: #ff8c8c;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #e4d9c7;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee3d2;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table th {
+  color: #c6a05a;
+}
+
+.table button {
+  background: #fff9ed;
+  color: #6a4a16;
+  border: 1px solid #d3bf99;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.badgePaid {
+  background: #e8f6e8;
+  color: #1f7a1f;
+  border: 1px solid #b4dfb4;
+}
+
+.badgePending {
+  background: #fff4df;
+  color: #8c601d;
+  border: 1px solid #e8d1a8;
+}
+
+.detailCard {
+  margin-top: 24px;
+  border: 1px solid #e2d7c4;
+  padding: 18px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+.detailCard h2 {
+  margin-bottom: 12px;
+  color: #c6a05a;
+}
+
+.detailCard h3 {
+  margin: 12px 0 8px;
+}
+
+.items {
+  padding-left: 16px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .quickStats {
+    grid-template-columns: 1fr;
+  }
+
+  .table {
+    min-width: 720px;
+  }
+}

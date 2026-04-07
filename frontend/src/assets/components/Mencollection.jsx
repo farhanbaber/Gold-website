@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import styles from './Mencollection.module.css';
+import { useCart } from '../../context/CartContext.jsx';
+import { buildProductId } from '../../utils/productId.js';
 
 const fadeInScroll = {
   hidden: { opacity: 0, y: 20 },
@@ -97,39 +99,41 @@ const RingSection = () => {
 /* ============================================================
    2. WATCH SECTION
    ============================================================ */
-const watches = [
-  { id: 1, name: "Chronograph Gold", price: "$1,250", img: "/re-wth-1.png" },
-  { id: 2, name: "Silver Executive", price: "$890", img: "/re-wth-2.png" },
-  { id: 3, name: "Midnight Stealth", price: "$1,100", img: "/re-wth-3.png" },
-  { id: 4, name: "Rose Gold Classic", price: "$950", img: "/rew-4.webp" },
-  { id: 5, name: "Ocean Diver Spec", price: "$1,400", img: "/rew-5.jfif" },
-  { id: 6, name: "Titanium Sport", price: "$750", img: "/rew-6.png" },
-  { id: 7, name: "Leather Heritage", price: "$620", img: "/rew-7.png" },
-  { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/rew-8.png" },
-  { id: 9, name: "Royal Skeleton V2", price: "$2,500", img: "/wth-9.webp" },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1, 
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 } 
-  },
-};
-
-const cardVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { 
-    y: 0, 
-    opacity: 1, 
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } 
-  },
-};
-
 const WatchSection = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  
+  const watches = [
+    { id: 1, name: "Chronograph Gold", price: "$1,250", img: "/re-wth-1.png" },
+    { id: 2, name: "Silver Executive", price: "$890", img: "/re-wth-2.png" },
+    { id: 3, name: "Midnight Stealth", price: "$1,100", img: "/re-wth-3.png" },
+    { id: 4, name: "Rose Gold Classic", price: "$950", img: "/rew-4.webp" },
+    { id: 5, name: "Ocean Diver Spec", price: "$1,400", img: "/rew-5.jfif" },
+    { id: 6, name: "Titanium Sport", price: "$750", img: "/rew-6.png" },
+    { id: 7, name: "Leather Heritage", price: "$620", img: "/rew-7.png" },
+    { id: 8, name: "Royal Skeleton", price: "$2,500", img: "/rew-8.png" },
+    { id: 9, name: "Royal Skeleton V2", price: "$2,500", img: "/wth-9.webp" },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 } 
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1, 
+      transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } 
+    },
+  };
+
   return (
-    <section className={styles.sectionWrapper}>
+    <section id="mens-watches" className={styles.sectionWrapper}>
       <div className={styles.headingWrapper}>
         <span className={styles.subTitle}>Exclusive Collection</span>
         <div className={styles.headingContent}>
@@ -139,13 +143,13 @@ const WatchSection = () => {
         </div>
       </div>
 
-    <motion.div
-  className={styles.watchGrid}
-  variants={containerVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.05 }}
->
+      <motion.div
+        className={styles.watchGrid}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
         {watches.map((watch) => (
           <motion.div key={watch.id} className={styles.watchCard} variants={cardVariants}>
             <div className={styles.imgWrapper}>
@@ -155,7 +159,19 @@ const WatchSection = () => {
               <h3 className={styles.watchTitle}>{watch.name}</h3>
               <div className={styles.cardFooter}>
                 <span className={styles.watchPrice}>{watch.price}</span>
-                <button className={styles.cta} onClick={() => navigate('/cart')}>
+                <button
+                  className={styles.cta}
+                  onClick={() => {
+                    addToCart({
+                      id: `watch-${watch.id}-${Date.now()}`,
+                      productId: buildProductId(watch.name),
+                      name: watch.name,
+                      price: watch.price,
+                      img: watch.img,
+                    });
+                    navigate('/cart');
+                  }}
+                >
                   <span>Add to Cart</span>
                 </button>
               </div>
@@ -172,6 +188,7 @@ const WatchSection = () => {
    ============================================================ */
 const ForeverBondGrid = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const products = [
     { id: 1, name: "Aurum Elite", price: "$1500", img: "/menc.1.png" },
     { id: 2, name: "Regal Classic", price: "$1800", img: "/mens.2.png" },
@@ -189,6 +206,7 @@ const ForeverBondGrid = () => {
 
   return (
     <motion.main 
+      id="mens-forever-bond"
       className={styles.fb_main_wrapper_v1}
       initial="hidden"
       whileInView="visible"
@@ -210,7 +228,21 @@ const ForeverBondGrid = () => {
             </div>
             <div className={styles.fb_action_utility_bar}>
               <span className={styles.fb_price_display_unit}>{item.price}</span>
-              <button className={styles.cta} onClick={() => navigate('/cart')}><span>Add To Cart</span></button>
+              <button
+                className={styles.cta}
+                onClick={() => {
+                  addToCart({
+                    id: `mens-${item.id}-${Date.now()}`,
+                    productId: buildProductId(item.name),
+                    name: item.name,
+                    price: item.price,
+                    img: item.img,
+                  });
+                  navigate('/cart');
+                }}
+              >
+                <span>Add To Cart</span>
+              </button>
             </div>
           </motion.article>
         ))}

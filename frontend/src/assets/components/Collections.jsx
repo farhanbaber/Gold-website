@@ -2,9 +2,12 @@ import React from 'react'
 import styles from "./Collection.module.css";
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext.jsx';
+import { buildProductId } from '../../utils/productId.js';
 
 const Collections = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const fadeInScroll = {
     hidden: { opacity: 0, y: 50 },
@@ -30,8 +33,24 @@ const Collections = () => {
     visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } }
   };
 
+  const handleAddToCartCapture = (event) => {
+    const addButton = event.target.closest(`.${styles.addBtn}`);
+    if (!addButton) return;
+
+    const card = addButton.closest(`.${styles.goldCard}`);
+    if (!card) return;
+
+    const name = card.querySelector(`.${styles.mainHeading}`)?.textContent?.trim() || "Untitled Item";
+    const price = card.querySelector(`.${styles.priceValue}`)?.textContent?.trim() || "$0";
+    const img = card.querySelector(`.${styles.imgDefault}`)?.getAttribute("src") || "";
+    const id = `${name.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}`;
+    const productId = buildProductId(name);
+
+    addToCart({ id, productId, name, price, img });
+  };
+
   return (
-    <div className={styles.collectionBody}>
+    <div className={styles.collectionBody} onClickCapture={handleAddToCartCapture}>
       <motion.section 
         className={styles.hero}
         initial={{ opacity: 0 }}
@@ -82,7 +101,7 @@ const Collections = () => {
         </div>
       </motion.section>
 
-      <section className={styles.showcase}>
+      <section id="collections-signature" className={styles.showcase}>
         <div className={styles.wrapper}>
           <span className={styles.line}></span>
           <h2 className={styles.titles}>
@@ -248,7 +267,7 @@ const Collections = () => {
         </motion.div>
       </section>
 
-      <section className={styles.newSection}>
+      <section id="collections-bangles" className={styles.newSection}>
         <div className={styles.wrapper}>
           <span className={styles.line}></span>
           <h2 className={styles.titles}>
@@ -403,7 +422,7 @@ const Collections = () => {
         </div>
       </motion.section>
 
-      <section className={styles.ringsSection}>
+      <section id="collections-rings" className={styles.ringsSection} >
         <div className={styles.wrapper}>
           <span className={styles.line}></span>
           <h2 className={styles.titles}>

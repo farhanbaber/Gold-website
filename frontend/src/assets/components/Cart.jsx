@@ -1,103 +1,244 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Cart.module.css';
+import { useCart } from '../../context/CartContext.jsx';
+import { loadStripe } from '@stripe/stripe-js';
+import { buildProductId } from '../../utils/productId.js';
 
-const Cart = ({ cartItems = [] }) => {
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "");
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:4242";
+
+const Cart = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { cartItems, removeFromCart, updateItemQuantity, updateQuantity, updateItemPrice, clearCart } = useCart();
+  const [isCheckingOut, setIsCheckingOut] = React.useState(false);
 
-  // Calculate total price dynamically
+  const parseItemPrice = React.useCallback((item) => {
+    const direct = parseFloat(String(item.price || "").replace(/[^0-9.-]+/g, ""));
+    if (Number.isFinite(direct) && direct > 0) return direct;
+    const fromUnitAmount = Number(item.unitAmount || 0) / 100;
+    return Number.isFinite(fromUnitAmount) && fromUnitAmount > 0 ? fromUnitAmount : 0;
+  }, []);
+
+  React.useEffect(() => {
+    const hydrateMissingPrices = async () => {
+      const missing = cartItems
+        .map((item, index) => ({ item, index }))
+        .filter(({ item }) => parseItemPrice(item) <= 0 && item.productId);
+
+      if (!missing.length) return;
+
+      await Promise.all(
+        missing.map(async ({ item, index }) => {
+          try {
+            const res = await fetch(`${apiBaseUrl}/products/${item.productId}`);
+            const data = await res.json();
+            if (!res.ok || !data?.product?.unitAmount) return;
+            const trusted = `$${(data.product.unitAmount / 100).toFixed(2)}`;
+            updateItemPrice(item.id, trusted, index);
+          } catch {
+            // ignore per-item lookup errors
+          }
+        })
+      );
+    };
+
+    hydrateMissingPrices();
+  }, [cartItems, parseItemPrice, updateItemPrice]);
+
   const subtotal = cartItems.reduce((acc, item) => {
-    const price = parseFloat(item.price.replace(/[^0-9.-]+/g, "")) || 0;
-    return acc + price;
+    const price = parseItemPrice(item);
+    const quantity = item.quantity || 1;
+    return acc + price * quantity;
   }, 0);
+  const totalUnits = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+  React.useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    if (query.get("payment") === "success") {
+      clearCart();
+      alert("Payment successful. Thank you for your purchase.");
+      navigate("/cart", { replace: true });
+      return;
+    }
+
+    if (query.get("payment") === "cancel") {
+      alert("Payment was cancelled.");
+      navigate("/cart", { replace: true });
+    }
+  }, [clearCart, location.search, navigate]);
+
+  const handleCheckout = async () => {
+    if (!cartItems.length || isCheckingOut) return;
+    if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
+      alert("Missing VITE_STRIPE_PUBLISHABLE_KEY in frontend .env");
+      return;
+    }
+
+    setIsCheckingOut(true);
+    try {
+      const response = await fetch(`${apiBaseUrl}/create-checkout-session`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cartItems.map((item) => ({
+            ...item,
+            productId: item.productId || buildProductId(item.name),
+          })),
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to create checkout session");
+      }
+
+      if (data.url) {
+        window.location.href = data.url;
+        return;
+      }
+
+      const stripe = await stripePromise;
+      if (!stripe) {
+        throw new Error("Stripe failed to initialize");
+      }
+
+      const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+      if (error) {
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      alert(error.message || "Checkout failed");
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
 
   return (
     <div className={styles.cartPage}>
       {cartItems.length > 0 ? (
         <>
-          {/* LEFT CONTENT: Item List */}
           <div className={styles.leftContent}>
             <h1 className={styles.bagTitle}>
-              YOUR BAG <span>({cartItems.length} {cartItems.length === 1 ? 'ITEM' : 'ITEMS'})</span>
+              Cart <span>{totalUnits} {totalUnits === 1 ? 'item' : 'items'}</span>
             </h1>
+            <div className={styles.checkoutSteps}>
+              <span className={styles.activeStep}>1. Cart</span>
+              <span>2. Checkout</span>
+              <span>3. Payment</span>
+            </div>
 
-            {cartItems.map((item, index) => (
-              <motion.div 
-                key={index} 
-                className={styles.itemCard}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className={styles.imageContainer}>
-                  {item.img ? (
-                    <img src={item.img} className={styles.productImage} alt={item.name} />
-                  ) : (
-                    <div className={styles.placeholderImg}>IMAGE</div>
-                  )}
-                </div>
+            {cartItems.map((item, index) => {
+              const itemPrice = parseItemPrice(item);
+              const lineTotal = itemPrice * (item.quantity || 1);
 
-                <div className={styles.itemDetails}>
-                  <h2>{item.name || "Untitled Masterpiece"}</h2>
-                  <p>Category: Luxury Collection</p>
-                  <p className={styles.stockStatus}>In Stock ✓</p>
-
-                  <div className={styles.actionLinks}>
-                    <span className={styles.link}>Edit</span>
-                    <span className={styles.link}>Delete</span>
-                    <span className={styles.link}>Move to Wishlist</span>
+              return (
+                <motion.div
+                  key={item.id || index}
+                  className={styles.itemCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                >
+                  <div className={styles.imageContainer}>
+                    {item.img ? (
+                      <img src={item.img} className={styles.productImage} alt={item.name} />
+                    ) : (
+                      <div className={styles.placeholderImg}>IMAGE</div>
+                    )}
                   </div>
-                </div>
 
-                <div className={styles.priceSection}>
-                  <select className={styles.qtySelect}>
-                    {[1, 2, 3, 4, 5].map(n => <option key={n}>{n}</option>)}
-                  </select>
-                  <div className={styles.price}>{item.price}</div>
-                </div>
-              </motion.div>
-            ))}
+                  <div className={styles.itemDetails}>
+                    <h2>{item.name || "Untitled Masterpiece"}</h2>
+                    <p>Fayaz Jewellers Luxury Collection</p>
+                    <p className={styles.stockStatus}>In Stock</p>
+                    <div className={styles.actionLinks}>
+                      <button
+                        type="button"
+                        className={`${styles.linkBtn} ${styles.deleteBtn}`}
+                        onClick={() => removeFromCart(item.id, index)}
+                      >
+                        <i className="fa-regular fa-trash-can"></i> Delete Item
+                      </button>
+                      <span className={styles.link}>Save for later</span>
+                    </div>
+                  </div>
 
-            <div style={{ marginTop: '40px' }}>
-              <button className={styles.checkoutBtn} style={{ maxWidth: '280px' }} onClick={() => navigate('/checkout')}>
-                CHECKOUT <span>→</span>
+                  <div className={styles.priceSection}>
+                    <label className={styles.qtyLabel}>Qty</label>
+                    <div className={styles.qtyStepper}>
+                      <button
+                        type="button"
+                        className={styles.qtyBtn}
+                        onClick={() => updateQuantity(item.id, "decrease", index)}
+                        disabled={(item.quantity || 1) <= 1}
+                      >
+                        -
+                      </button>
+                      <select
+                        className={styles.qtySelect}
+                        value={item.quantity || 1}
+                        onChange={(e) => updateItemQuantity(item.id, Number(e.target.value), index)}
+                      >
+                        {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>{n}</option>)}
+                      </select>
+                      <button
+                        type="button"
+                        className={styles.qtyBtn}
+                        onClick={() => updateQuantity(item.id, "increase", index)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className={styles.price}>${lineTotal.toLocaleString()}</div>
+                  </div>
+                </motion.div>
+              );
+            })}
+
+            <div className={styles.footerAction}>
+              <button className={styles.checkoutBtn} onClick={handleCheckout} disabled={isCheckingOut}>
+                {isCheckingOut ? "PROCESSING..." : <>CHECKOUT <span>→</span></>}
               </button>
-              <p style={{ fontSize: '12px', marginTop: '15px' }}>🚚 <strong>FREE SHIPPING</strong> FOR MEMBERS</p>
+              <p className={styles.shippingText}>Free shipping on all prepaid orders</p>
             </div>
           </div>
 
-          {/* RIGHT SIDEBAR: Order Summary */}
           <div className={styles.sidebar}>
-            <button className={styles.checkoutBtn} onClick={() => navigate('/checkout')}>
-              CHECKOUT <span>→</span>
+            <button className={styles.checkoutBtn} onClick={handleCheckout} disabled={isCheckingOut}>
+              {isCheckingOut ? "PROCESSING..." : <>CHECKOUT <span>→</span></>}
             </button>
 
             <div className={styles.summaryBox}>
               <h3 className={styles.summaryTitle}>ORDER SUMMARY</h3>
-              
               <div className={styles.row}>
-                <span>{cartItems.length} ITEM(S)</span>
+                <span>{totalUnits} ITEM(S)</span>
                 <span>${subtotal.toLocaleString()}</span>
               </div>
-              
               <div className={styles.row}>
                 <span>Delivery</span>
-                <span>FREE</span>
+                <span>$0.00</span>
               </div>
-
               <div className={`${styles.row} ${styles.totalRow}`}>
                 <span>Total</span>
                 <span>${subtotal.toLocaleString()}</span>
               </div>
             </div>
 
-            <div className={styles.promoCollapse}>
-              PROMO CODE <span>+</span>
+            <div className={styles.couponBox}>
+              <p>Have a coupon?</p>
+              <div className={styles.couponRow}>
+                <input className={styles.couponInput} placeholder="Coupon code" />
+                <button className={styles.applyBtn}>Apply</button>
+              </div>
             </div>
 
-            <div style={{ marginTop: '40px' }}>
-              <p style={{ fontSize: '12px', fontWeight: '800', marginBottom: '15px' }}>ACCEPTED PAYMENTS</p>
+            <div className={styles.paymentWrap}>
+              <p className={styles.paymentTitle}>ACCEPTED PAYMENTS</p>
               <div className={styles.paymentMethods}>
                 <div className={styles.paymentBox}>VISA</div>
                 <div className={styles.paymentBox}>MC</div>
@@ -108,7 +249,6 @@ const Cart = ({ cartItems = [] }) => {
           </div>
         </>
       ) : (
-        /* EMPTY CART STATE */
         <motion.div 
           className={styles.emptyCart}
           initial={{ opacity: 0 }}

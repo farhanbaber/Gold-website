@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Contact.module.css';
 import { FaPhone, FaEnvelope, FaLocationDot } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const handleSubmit = (e) => {
@@ -28,7 +29,7 @@ const Contact = () => {
       >
         <div className={styles.container}>
           <div className={styles.breadcrumb}>
-            <a href="/">Home</a> / <span>Contact Us</span>
+            <Link to="/">Home</Link> / <span>Contact Us</span>
           </div>
           <h1 style={{ fontSize: '42px', fontWeight: '700', margin: 0 }}>
             Contact Us
@@ -117,4 +118,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact;

@@ -2,10 +2,14 @@ import React from 'react'
 import styles from './Home.module.css';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useCart } from '../../context/CartContext.jsx';
+import { buildProductId } from '../../utils/productId.js';
+import GoldPriceChart from './GoldPriceChart.jsx';
 
-const Home = ({ handleLike }) => {
+const Home = () => {
   const [liked, setLiked] = React.useState(false);
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const fadeInScroll = {
     hidden: { opacity: 0, y: 50 },
@@ -84,6 +88,7 @@ const Home = ({ handleLike }) => {
               <div className={styles["child-para"]}>
                 <p className={styles["child-paragraph"]}>Discover our exquisite collection of lab-grown diamond jewelry, where ethical craftsmanship meets timeless elegance. Each piece is meticulously designed to celebrate your unique love story while honoring our commitment to sustainability. Embrace the brilliance of lab-grown diamonds and make a statement that reflects your values and style.</p><br />
                 <button className={styles["hero-button"]} onClick={() => navigate('/collections')}>Lets pick a ring </button>
+
               </div>
             </div>
           </div>
@@ -165,6 +170,7 @@ const Home = ({ handleLike }) => {
       </motion.div>
 
       <motion.div 
+        id="home-shop-category"
         className={styles["forth-section"]}
         initial="hidden"
         whileInView="visible"
@@ -195,7 +201,17 @@ const Home = ({ handleLike }) => {
               <motion.div key={prod.id} className={styles["product-card"]} whileHover={{ scale: 1.02 }}>
                 <i
                   className={`${styles["heart-icon"]} fa-heart ${liked ? "fa-solid" : "fa-regular"}`}
-                  onClick={() => { setLiked(!liked); navigate("/Cart"); }}
+                  onClick={() => {
+                    setLiked(!liked);
+                    addToCart({
+                      id: `${prod.id}-${Date.now()}`,
+                      productId: buildProductId(prod.name),
+                      name: prod.name,
+                      price: prod.price,
+                      img: prod.img,
+                    });
+                    navigate("/cart");
+                  }}
                 ></i>
                 <img src={prod.img} alt="" className={styles["product-img"]} />
                 <img src={prod.hover} alt="" className={`${styles["product-img"]} ${styles["hover-img"]}`} />
@@ -208,6 +224,8 @@ const Home = ({ handleLike }) => {
           </div>
         </div>
       </motion.div>
+
+      <GoldPriceChart />
 
       <motion.section 
         className={styles["testimonial-section"]}

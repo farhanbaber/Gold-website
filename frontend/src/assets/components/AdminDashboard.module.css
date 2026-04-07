@@ -1,0 +1,84 @@
+.dashboard {
+  min-height: 70vh;
+  background: linear-gradient(180deg, #f5f5f5 0%, #f9f6f0 100%);
+  color: #2e261a;
+  border: 1px solid #e4d9c7;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.header {
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: "Cinzel", serif;
+  color: #8f6325;
+  margin-bottom: 4px;
+}
+
+.subTitle {
+  color: #796a53;
+  font-size: 0.9rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e7dcc9;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.label {
+  color: #7f6f57;
+  font-size: 0.85rem;
+}
+
+.value {
+  margin-top: 6px;
+  color: #8f6325;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.panel {
+  margin-top: 16px;
+  background: #fff;
+  border: 1px solid #e7dcc9;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.panel h3 {
+  margin-bottom: 8px;
+  color: #8f6325;
+}
+
+.panelRow {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #e7dcc9;
+  padding: 8px 0;
+  color: #78674f;
+}
+
+.panelRow:last-child {
+  border-bottom: none;
+}
+
+.panelRow strong {
+  color: #7e5a23;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
