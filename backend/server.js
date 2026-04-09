@@ -60,6 +60,16 @@ app.use(
     origin: process.env.FRONTEND_URL || "http://localhost:5173",
   })
 );
+
+app.use((req, _res, next) => {
+  if (req.url === "/api") {
+    req.url = "/";
+  } else if (req.url.startsWith("/api/")) {
+    req.url = req.url.slice(4);
+  }
+  next();
+});
+
 app.post("/stripe-webhook", express.raw({ type: "application/json" }), async (req, res) => {
   if (!stripe) {
     return res.status(500).send("Stripe is not configured");
