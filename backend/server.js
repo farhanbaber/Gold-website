@@ -1,298 +1,134 @@
-import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import Stripe from "stripe";
+import express from "express";
 import mongoose from "mongoose";
-import { Order } from "./models/Order.js";
-import { Product } from "./models/Product.js";
-import { productCatalogSeeds } from "./config/productCatalog.js";
+import Stripe from "stripe";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4242;
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const mongoUri = process.env.MONGODB_URI;
-const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+const port = Number(process.env.PORT || 4242);
 
-if (!stripeSecretKey) {
-  console.error("Missing STRIPE_SECRET_KEY in backend/.env");
+class AuricNebulaEnvVault {
+  static require(key) {
+    const value = process.env[key];
+    if (!value) {
+      throw new Error(`Missing required environment variable: ${key}`);
+    }
+    return value;
+  }
 }
 
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
+class ObsidianHelixMongoBootstrapper {
+  #connectionPromise = null;
 
-if (!mongoUri) {
-  console.error("Missing MONGODB_URI in backend/.env");
-}
-
-let initPromise;
-const ensureDatabaseReady = async () => {
-  if (initPromise) return initPromise;
-
-  initPromise = (async () => {
+  async ensureConnected() {
+    const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
     if (!mongoUri) return;
+
     if (mongoose.connection.readyState === 1) return;
-
-    await mongoose.connect(mongoUri);
-    console.log("MongoDB connected");
-
-    for (const seed of productCatalogSeeds) {
-      await Product.findOneAndUpdate({ productId: seed.productId }, seed, {
-        upsert: true,
-        returnDocument: "after",
-        setDefaultsOnInsert: true,
-      });
+    if (this.#connectionPromise) {
+      await this.#connectionPromise;
+      return;
     }
 
-    console.log(`Product catalog synced: ${productCatalogSeeds.length} items`);
-  })().catch((error) => {
-    console.error("MongoDB init failed:", error.message);
-    initPromise = undefined;
-  });
+    this.#connectionPromise = mongoose.connect(mongoUri);
+    await this.#connectionPromise;
+  }
+}
 
-  return initPromise;
-};
+class CrimsonAxiomStripeCheckoutEngine {
+  constructor() {
+    const stripeSecretKey = AuricNebulaEnvVault.require("STRIPE_SECRET_KEY");
+    this.stripe = new Stripe(stripeSecretKey);
+  }
 
-ensureDatabaseReady();
+  buildLineItems(cartItems) {
+    return cartItems.map((item) => {
+      const unitAmount = Number(item.unitAmount || item.price || 0);
+      if (!Number.isFinite(unitAmount) || unitAmount <= 0) {
+        throw new Error(`Invalid price for item: ${item.name || "unknown"}`);
+      }
+
+      return {
+        price_data: {
+          currency: String(item.currency || "usd").toLowerCase(),
+          product_data: {
+            name: String(item.name || "Jewelry Item"),
+            images: item.image ? [String(item.image)] : [],
+          },
+          unit_amount: Math.round(unitAmount),
+        },
+        quantity: Math.max(1, Number(item.quantity || 1)),
+      };
+    });
+  }
+
+  async createSession(cartItems) {
+    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+    const lineItems = this.buildLineItems(cartItems);
+
+    return this.stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: lineItems,
+      success_url: `${clientUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${clientUrl}/cart?payment=cancel`,
+    });
+  }
+}
+
+const mongodbBootstrapper = new ObsidianHelixMongoBootstrapper();
+
+const allowedOrigins = [
+  "https://gold-website-chi.vercel.app",
+  "http://localhost:5173",
+  process.env.CLIENT_URL,
+].filter(Boolean);
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error("CORS policy violation"));
+    },
+    credentials: true,
   })
 );
-
-app.use((req, _res, next) => {
-  if (req.url === "/api") {
-    req.url = "/";
-  } else if (req.url.startsWith("/api/")) {
-    req.url = req.url.slice(4);
-  }
-  next();
-});
-
-app.post("/stripe-webhook", express.raw({ type: "application/json" }), async (req, res) => {
-  if (!stripe) {
-    return res.status(500).send("Stripe is not configured");
-  }
-
-  await ensureDatabaseReady();
-
-  if (!stripeWebhookSecret) {
-    return res.status(500).send("Missing STRIPE_WEBHOOK_SECRET");
-  }
-
-  let event;
-  try {
-    const signature = req.headers["stripe-signature"];
-    event = stripe.webhooks.constructEvent(req.body, signature, stripeWebhookSecret);
-  } catch (error) {
-    return res.status(400).send(`Webhook Error: ${error.message}`);
-  }
-
-  const saveOrderFromSession = async (session) => {
-    const lineItemsResponse = await stripe.checkout.sessions.listLineItems(session.id, {
-      limit: 100,
-      expand: ["data.price.product"],
-    });
-
-    const items = lineItemsResponse.data.map((lineItem) => ({
-      name: lineItem.description || "Jewelry Item",
-      image: lineItem?.price?.product?.images?.[0] || "",
-      quantity: lineItem.quantity || 1,
-      unitAmount: lineItem.price?.unit_amount || 0,
-      currency: lineItem.currency || session.currency || "usd",
-    }));
-
-    await Order.findOneAndUpdate(
-      { stripeSessionId: session.id },
-      {
-        stripeSessionId: session.id,
-        paymentIntentId: session.payment_intent || "",
-        customerEmail: session.customer_details?.email || "",
-        amountTotal: session.amount_total || 0,
-        currency: session.currency || "usd",
-        paymentStatus: session.payment_status || "paid",
-        items,
-      },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    );
-  };
-
-  try {
-    if (event.type === "checkout.session.completed") {
-      await saveOrderFromSession(event.data.object);
-    }
-
-    if (event.type === "checkout.session.async_payment_succeeded") {
-      await saveOrderFromSession(event.data.object);
-    }
-
-    if (event.type === "checkout.session.async_payment_failed") {
-      const session = event.data.object;
-      await Order.findOneAndUpdate(
-        { stripeSessionId: session.id },
-        { paymentStatus: "failed" },
-        { upsert: false }
-      );
-    }
-  } catch (error) {
-    console.error("Failed to handle webhook event:", error.message);
-  }
-
-  return res.json({ received: true });
-});
-
 app.use(express.json());
 
-app.get("/health", (_req, res) => {
-  res.json({ ok: true });
+const apiRouter = express.Router();
+
+apiRouter.get("/health", (_req, res) => {
+  res.json({ status: "ok" });
 });
 
-app.post("/create-checkout-session", async (req, res) => {
+apiRouter.post("/create-checkout-session", async (req, res) => {
   try {
-    if (!stripe) {
-      return res.status(500).json({ error: "Stripe is not configured" });
+    await mongodbBootstrapper.ensureConnected();
+    const items = Array.isArray(req.body?.items) ? req.body.items : [];
+
+    if (!items.length) {
+      return res.status(400).json({ error: "Cart items are required." });
     }
 
-    await ensureDatabaseReady();
-
-    const { items = [] } = req.body;
-
-    if (!Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ error: "Cart is empty." });
-    }
-    if (items.length > 100) {
-      return res.status(400).json({ error: "Too many items in cart." });
-    }
-
-    const line_items = [];
-    for (let index = 0; index < items.length; index += 1) {
-      const item = items[index];
-      const productId = String(item.productId || "").trim();
-      const quantity = Math.max(1, Math.min(20, Number(item.quantity) || 1));
-
-      if (!productId) {
-        throw new Error(`Missing productId at item ${index + 1}`);
-      }
-
-      const trustedProduct = await Product.findOne({ productId, isActive: true }).lean();
-      if (!trustedProduct) {
-        throw new Error(`Unverified productId: ${productId}`);
-      }
-
-      if (
-        !Number.isFinite(trustedProduct.unitAmount) ||
-        trustedProduct.unitAmount < 50 ||
-        trustedProduct.unitAmount > 10_000_000
-      ) {
-        throw new Error(`Invalid trusted price for productId: ${productId}`);
-      }
-
-      line_items.push({
-        price_data: {
-          currency: trustedProduct.currency || "usd",
-          product_data: {
-            name: trustedProduct.name,
-            images: trustedProduct.image ? [trustedProduct.image] : [],
-          },
-          unit_amount: trustedProduct.unitAmount,
-        },
-        quantity,
-      });
-    }
-
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items,
-      billing_address_collection: "required",
-      phone_number_collection: { enabled: true },
-      allow_promotion_codes: true,
-      success_url: `${process.env.FRONTEND_URL || "http://localhost:5173"}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.FRONTEND_URL || "http://localhost:5173"}/cart?payment=cancel`,
-    });
-
-    return res.json({ id: session.id, url: session.url });
+    const checkoutEngine = new CrimsonAxiomStripeCheckoutEngine();
+    const session = await checkoutEngine.createSession(items);
+    return res.json({ url: session.url });
   } catch (error) {
-    console.error("Stripe session error:", error.message);
     return res.status(500).json({ error: error.message || "Unable to create checkout session" });
   }
 });
 
-app.get("/orders", async (_req, res) => {
-  try {
-    await ensureDatabaseReady();
-    const orders = await Order.find().sort({ createdAt: -1 }).limit(50).lean();
-    return res.json({ orders });
-  } catch (error) {
-    return res.status(500).json({ error: "Unable to fetch orders" });
-  }
-});
-
-app.get("/orders/:id", async (req, res) => {
-  try {
-    await ensureDatabaseReady();
-    const { id } = req.params;
-    const conditions = [{ stripeSessionId: id }];
-    if (mongoose.Types.ObjectId.isValid(id)) {
-      conditions.push({ _id: id });
-    }
-
-    const order = await Order.findOne({
-      $or: conditions,
-    }).lean();
-
-    if (!order) {
-      return res.status(404).json({ error: "Order not found" });
-    }
-
-    return res.json({ order });
-  } catch (error) {
-    return res.status(500).json({ error: "Unable to fetch order" });
-  }
-});
-
-app.get("/products/:productId", async (req, res) => {
-  try {
-    await ensureDatabaseReady();
-    const product = await Product.findOne({
-      productId: req.params.productId,
-      isActive: true,
-    }).lean();
-    if (!product) return res.status(404).json({ error: "Product not found" });
-    return res.json({ product });
-  } catch {
-    return res.status(500).json({ error: "Unable to fetch product" });
-  }
-});
-
-app.get("/checkout-session/:id", async (req, res) => {
-  try {
-    if (!stripe) {
-      return res.status(500).json({ error: "Stripe is not configured" });
-    }
-
-    const session = await stripe.checkout.sessions.retrieve(req.params.id);
-    return res.json({
-      id: session.id,
-      amount_total: session.amount_total,
-      currency: session.currency,
-      payment_status: session.payment_status,
-      customer_email: session.customer_details?.email || "",
-      created: session.created,
-    });
-  } catch (error) {
-    return res.status(404).json({ error: "Checkout session not found" });
-  }
-});
+app.use("/api", apiRouter);
+app.use(apiRouter);
 
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {
-    console.log(`Stripe backend running at http://localhost:${port}`);
+    console.log(`Backend running at http://localhost:${port}`);
   });
-}
-
-if (typeof module !== "undefined") {
-  module.exports = app;
 }
 
 export default app;
