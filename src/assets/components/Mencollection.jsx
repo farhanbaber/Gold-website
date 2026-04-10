@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import styles from './Mencollection.module.css';
 import { useCart } from '../../context/CartContext.jsx';
 import { buildProductId } from '../../utils/productId.js';
@@ -100,7 +99,6 @@ const RingSection = () => {
    2. WATCH SECTION
    ============================================================ */
 const WatchSection = () => {
-  const navigate = useNavigate();
   const { addToCart } = useCart();
   
   const watches = [
@@ -169,7 +167,6 @@ const WatchSection = () => {
                       price: watch.price,
                       img: watch.img,
                     });
-                    navigate('/cart');
                   }}
                 >
                   <span>Add to Cart</span>
@@ -187,7 +184,6 @@ const WatchSection = () => {
    3. FOREVER BOND GRID
    ============================================================ */
 const ForeverBondGrid = () => {
-  const navigate = useNavigate();
   const { addToCart } = useCart();
   const products = [
     { id: 1, name: "Aurum Elite", price: "$1500", img: "/menc.1.png" },
@@ -238,7 +234,6 @@ const ForeverBondGrid = () => {
                     price: item.price,
                     img: item.img,
                   });
-                  navigate('/cart');
                 }}
               >
                 <span>Add To Cart</span>

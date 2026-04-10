@@ -210,7 +210,6 @@ const Home = () => {
                       price: prod.price,
                       img: prod.img,
                     });
-                    navigate("/cart");
                   }}
                 ></i>
                 <img src={prod.img} alt="" className={styles["product-img"]} />

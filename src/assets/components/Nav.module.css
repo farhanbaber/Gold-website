@@ -191,12 +191,20 @@
 }
 
 /* === 5. Hamburger & Mobile Menu === */
-.hamburger {
+.mobileTopBar {
   display: none;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.hamburger {
+  display: block;
   font-size: 22px;
   cursor: pointer;
   z-index: 2001;
   color: #1a1a1a;
+  line-height: 1;
 }
 
 .miniContact {
@@ -205,8 +213,12 @@
 
 /* === 6. Responsive (Mobile/Tablet) === */
 @media (max-width: 992px) {
-  .hamburger {
-    display: block;
+  .mobileTopBar {
+    display: flex;
+  }
+
+  .cartDesktopItem {
+    display: none !important;
   }
 
   .search-wrapper {

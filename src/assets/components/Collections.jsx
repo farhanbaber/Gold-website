@@ -130,7 +130,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$20.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -144,7 +144,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$24.2</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -158,7 +158,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$60.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -172,7 +172,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$12.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -186,7 +186,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$79.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -200,7 +200,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$40.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -214,7 +214,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$76.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -228,7 +228,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$34.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
         </motion.div>
@@ -295,7 +295,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$24.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -309,7 +309,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$13.2</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -323,7 +323,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$32.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -337,7 +337,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$92.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -352,7 +352,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$56.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -366,7 +366,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$60.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -380,7 +380,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$54.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -394,7 +394,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$24.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
         </motion.div>
@@ -450,7 +450,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$1.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -464,7 +464,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$9.2</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -479,7 +479,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$7.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -493,7 +493,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$42.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -507,7 +507,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$3.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -521,7 +521,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$9.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -535,7 +535,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$01.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
 
@@ -549,7 +549,7 @@ const Collections = () => {
             </div>
             <div className={styles.price}>
               <span className={styles.priceValue}>$2.4</span>
-              <button className={styles.addBtn} onClick={() => navigate('/cart')}><span>Add to Cart</span></button>
+              <button type="button" className={styles.addBtn}><span>Add to Cart</span></button>
             </div>
           </motion.div>
         </motion.div>

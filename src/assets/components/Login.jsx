@@ -1,11 +1,18 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { loginWithCredentials, loginWithGoogle } = useAuth();
+
+  const safeRedirectPath = () => {
+    const raw = searchParams.get("redirect");
+    if (raw && raw.startsWith("/") && !raw.startsWith("//")) return raw;
+    return "/";
+  };
   const [form, setForm] = React.useState({ email: "", password: "" });
   const hasGoogleClientId = Boolean(import.meta.env.VITE_GOOGLE_CLIENT_ID);
 
@@ -15,7 +22,7 @@ const Login = () => {
       email: form.email,
       name: form.email.split("@")[0],
     });
-    navigate(role === "admin" ? "/admin/dashboard" : "/");
+    navigate(role === "admin" ? "/admin/dashboard" : safeRedirectPath());
   };
 
   return (
@@ -54,7 +61,7 @@ const Login = () => {
                 onSuccess={(credentialResponse) => {
                   try {
                     const role = loginWithGoogle(credentialResponse);
-                    navigate(role === "admin" ? "/admin/dashboard" : "/");
+                    navigate(role === "admin" ? "/admin/dashboard" : safeRedirectPath());
                   } catch (error) {
                     alert(error.message || "Google sign-in failed");
                   }

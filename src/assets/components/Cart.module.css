@@ -52,6 +52,13 @@
   font-weight: 700;
 }
 
+.checkoutHint {
+  font-size: 0.88rem;
+  color: #7a6b52;
+  margin: -8px 0 18px;
+  line-height: 1.45;
+}
+
 .itemCard {
   display: grid;
   grid-template-columns: 90px 1fr auto;

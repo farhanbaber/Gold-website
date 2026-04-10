@@ -47,12 +47,23 @@ function Navbar() {
           <img src="/nav.logo.png" alt="Logo" className={styles["nav-logo"]} />
         </Link>
 
-        {/* Hamburger (Mobile Menu Toggle) */}
-        <div className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
-          <i className={menuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+        {/* Mobile: cart + menu (cart hidden from slide menu; desktop cart stays in nav-ul) */}
+        <div className={styles.mobileTopBar}>
+          <Link
+            to="/cart"
+            onClick={closeMenu}
+            className={styles.cartLink}
+            aria-label="Shopping bag"
+          >
+            <i className="fa-solid fa-bag-shopping"></i>
+            {totalUnits > 0 && <span className={styles.cartCount}>{totalUnits}</span>}
+          </Link>
+          <div className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
+            <i className={menuOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars"}></i>
+          </div>
         </div>
 
-        {/* Navigation Links + Cart */}
+        {/* Navigation Links + Cart (desktop); cart row hidden on small screens */}
         <ul className={`${styles["nav-ul"]} ${menuOpen ? styles["nav-ul-open"] : ""}`}>
           <li><Link to="/" onClick={closeMenu}>HOME</Link></li>
           <li><Link to="/collections" onClick={closeMenu}>COLLECTIONS</Link></li>
@@ -77,7 +88,7 @@ function Navbar() {
               </button>
             </li>
           )}
-          <li>
+          <li className={styles.cartDesktopItem}>
             <Link to="/cart" onClick={closeMenu} className={styles.cartLink}>
               <i className="fa-solid fa-bag-shopping"></i>
               {totalUnits > 0 && <span className={styles.cartCount}>{totalUnits}</span>}

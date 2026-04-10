@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Cart.module.css';
 import { useCart } from '../../context/CartContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { loadStripe } from '@stripe/stripe-js';
 import { buildProductId } from '../../utils/productId.js';
 
@@ -12,6 +13,7 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:4242";
 const Cart = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
   const { cartItems, removeFromCart, updateItemQuantity, updateQuantity, updateItemPrice, clearCart } = useCart();
   const [isCheckingOut, setIsCheckingOut] = React.useState(false);
 
@@ -72,8 +74,12 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     if (!cartItems.length || isCheckingOut) return;
+    if (!user) {
+      navigate(`/login?redirect=${encodeURIComponent("/cart")}`);
+      return;
+    }
     if (!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY) {
-      alert("Missing VITE_STRIPE_PUBLISHABLE_KEY in frontend .env");
+      alert("Checkout is not configured yet (missing payment keys). Please contact us on WhatsApp to place your order.");
       return;
     }
 
@@ -92,7 +98,14 @@ const Cart = () => {
         }),
       });
 
-      const data = await response.json();
+      let data = {};
+      try {
+        const text = await response.text();
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        throw new Error("The checkout server returned an invalid response.");
+      }
+
       if (!response.ok) {
         throw new Error(data.error || "Unable to create checkout session");
       }
@@ -112,7 +125,18 @@ const Cart = () => {
         throw new Error(error.message);
       }
     } catch (error) {
-      alert(error.message || "Checkout failed");
+      const msg = error?.message || String(error);
+      const isNetwork =
+        msg === "Failed to fetch" ||
+        error?.name === "TypeError" ||
+        /network|fetch/i.test(msg);
+      if (isNetwork) {
+        alert(
+          "Online checkout cannot reach the server (backend may not be deployed yet). Please contact Fayaz Jewellers on WhatsApp to complete your order."
+        );
+      } else {
+        alert(msg || "Checkout failed");
+      }
     } finally {
       setIsCheckingOut(false);
     }
@@ -131,6 +155,11 @@ const Cart = () => {
               <span>2. Checkout</span>
               <span>3. Payment</span>
             </div>
+            {!user && (
+              <p className={styles.checkoutHint}>
+                Sign in to proceed to checkout. Guest checkout is not available.
+              </p>
+            )}
 
             {cartItems.map((item, index) => {
               const itemPrice = parseItemPrice(item);

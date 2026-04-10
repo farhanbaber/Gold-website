@@ -25,8 +25,11 @@ function App() {
   const [isRouteLoading, setIsRouteLoading] = React.useState(true);
   const previousPathRef = React.useRef(location.pathname);
 
+  const INITIAL_LOADER_MS = 2400;
+  const ROUTE_LOADER_MS = 1100;
+
   React.useEffect(() => {
-    const timer = setTimeout(() => setIsRouteLoading(false), 2300);
+    const timer = setTimeout(() => setIsRouteLoading(false), INITIAL_LOADER_MS);
     return () => clearTimeout(timer);
   }, []);
 
@@ -34,7 +37,7 @@ function App() {
     if (previousPathRef.current === location.pathname) return;
     previousPathRef.current = location.pathname;
     setIsRouteLoading(true);
-    const timer = setTimeout(() => setIsRouteLoading(false), 2300);
+    const timer = setTimeout(() => setIsRouteLoading(false), ROUTE_LOADER_MS);
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
