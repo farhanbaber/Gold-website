@@ -18,6 +18,7 @@ import Success from "./assets/components/Success.jsx";
 import AdminDashboard from "./assets/components/AdminDashboard.jsx";
 import ManageProducts from "./assets/components/ManageProducts.jsx";
 import PageLoader from "./assets/components/PageLoader.jsx";
+import WhatsAppIcon from "./assets/components/WhatsAppIcon.jsx";
 import "./App.css";
 
 function App() {
@@ -89,6 +90,9 @@ function App() {
 
       {/* 4. Footer */}
       <Footer />
+
+      {/* 5. WhatsApp Floating Icon */}
+      <WhatsAppIcon />
     </div>
   );
 }

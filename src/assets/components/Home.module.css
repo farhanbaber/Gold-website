@@ -1,10 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Carter+One&family=Caveat:wght@400..700&family=Cinzel:wght@400..900&family=Dancing+Script:wght@700&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 .heroDev {
   height: 80vh;
-  width: 100%; 
+  width: 100%;
   border-radius: 20px;
   background-image: url("/hero.img.png");
   background-size: cover;
@@ -40,7 +39,7 @@
   color: #eee;
   margin-bottom: 10px;
   color: #cf8c04;
-    font-family: "Edu AU VIC WA NT Arrows", cursive;
+  font-family: "Edu AU VIC WA NT Arrows", cursive;
 
 }
 
@@ -52,9 +51,10 @@
   width: 200px;
   font-family: "Open Sans", sans-serif;
 }
-span{
-        font-weight: lighter;
-            font-family: "Cinzel", serif;
+
+span {
+  font-weight: lighter;
+  font-family: "Cinzel", serif;
 
 
 
@@ -74,7 +74,7 @@ span{
   cursor: pointer;
   overflow: hidden;
   transition: background-color 0.6s ease, color 0.3s ease;
-    transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all;
   font-family: "Dancing Script", cursive;
 
 }
@@ -87,12 +87,10 @@ span{
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: skewX(-20deg);
   transition: left 0.9s ease;
   z-index: 1;
@@ -105,7 +103,7 @@ span{
 }
 
 .hero-button:hover::before {
-  left: 130%; 
+  left: 130%;
 }
 
 /* Text ko shine se upar dikhane ke liye */
@@ -113,10 +111,12 @@ span{
   position: relative;
   z-index: 2;
 }
+
 .hero-button:active {
   transform: scale(0.95);
   transition: 0.2s ease-in-out all;
 }
+
 /* Responsive for mobile devices */
 @media (max-width: 768px) {
   .heroDev {
@@ -139,7 +139,7 @@ span{
   }
 
   .hero-title {
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 12px;
     width: auto;
@@ -178,16 +178,22 @@ span{
     font-size: 0.85rem;
   }
 }
+
 /* Slider Box adjustments (Small & Lower) */
 .hero-slider-box {
   position: absolute;
-  right: 8%; /* Right se thora andar */
-  top: 40%;  /* Neeche karne ke liye top margin */
-  width: 260px; /* Size chota kiya */
-  height: 360px; /* Height bhi choti ki */
+  right: 8%;
+  /* Right se thora andar */
+  top: 60vh;
+  /* Slightly lower than the previous centered position */
+  transform: translateY(-50%);
+  width: 260px;
+  /* Size chota kiya */
+  height: 360px;
+  /* Height bhi choti ki */
   background: white;
   padding: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -205,7 +211,7 @@ span{
 
 .image-track {
   display: flex;
-  width: 600%; 
+  width: 600%;
   height: 100%;
   animation: scrollSlide 18s infinite ease-in-out;
 }
@@ -226,29 +232,56 @@ span{
 .dot {
   width: 8px;
   height: 8px;
-  background-color: #ddd; /* Default grey color */
+  background-color: #ddd;
+  /* Default grey color */
   border-radius: 50%;
   transition: background-color 0.5s ease;
 }
 
 /* Dots Animation - Image ke saath sync kiya hai */
 @keyframes dotHighlight {
-  0%, 15% { background-color: #cf8c04; } /* Pehla dot yellow */
-  17%, 100% { background-color: #ddd; }
+
+  0%,
+  15% {
+    background-color: #cf8c04;
+  }
+
+  /* Pehla dot yellow */
+  17%,
+  100% {
+    background-color: #ddd;
+  }
 }
 
 /* Har dot ke liye alag delay takay wo bari bari light up hon */
-.dot:nth-child(1) { animation: dotHighlight 18s infinite 0s; }
-.dot:nth-child(2) { animation: dotHighlight 18s infinite 3s; }
-.dot:nth-child(3) { animation: dotHighlight 18s infinite 6s; }
-.dot:nth-child(4) { animation: dotHighlight 18s infinite 9s; }
-.dot:nth-child(5) { animation: dotHighlight 18s infinite 12s; }
-.dot:nth-child(6) { animation: dotHighlight 18s infinite 15s; }
+.dot:nth-child(1) {
+  animation: dotHighlight 18s infinite 0s;
+}
+
+.dot:nth-child(2) {
+  animation: dotHighlight 18s infinite 3s;
+}
+
+.dot:nth-child(3) {
+  animation: dotHighlight 18s infinite 6s;
+}
+
+.dot:nth-child(4) {
+  animation: dotHighlight 18s infinite 9s;
+}
+
+.dot:nth-child(5) {
+  animation: dotHighlight 18s infinite 12s;
+}
+
+.dot:nth-child(6) {
+  animation: dotHighlight 18s infinite 15s;
+}
 
 .slider-info {
   margin-top: 10px;
   text-align: center;
-              font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif;
 
 }
 
@@ -265,36 +298,68 @@ span{
 
 /* Keyframes for Auto Scroll (Same as before) */
 @keyframes scrollSlide {
-  0%, 15% { transform: translateX(0); }
-  17%, 32% { transform: translateX(-16.66%); }
-  34%, 49% { transform: translateX(-33.33%); }
-  51%, 66% { transform: translateX(-50%); }
-  68%, 83% { transform: translateX(-66.66%); }
-  85%, 100% { transform: translateX(-83.33%); }
+
+  0%,
+  15% {
+    transform: translateX(0);
+  }
+
+  17%,
+  32% {
+    transform: translateX(-16.66%);
+  }
+
+  34%,
+  49% {
+    transform: translateX(-33.33%);
+  }
+
+  51%,
+  66% {
+    transform: translateX(-50%);
+  }
+
+  68%,
+  83% {
+    transform: translateX(-66.66%);
+  }
+
+  85%,
+  100% {
+    transform: translateX(-83.33%);
+  }
 }
 
 @media (max-width: 992px) {
-  .hero-slider-box { display: none; }
+  .hero-slider-box {
+    display: none;
+  }
 }
+
 .hero-slider-box {
   transition: all 0.4s ease;
 }
 
 .hero-slider-box:hover {
-  transform: translateY(-12px); /* upar move */
-  box-shadow: 0 20px 35px rgba(0,0,0,0.25);
+  transform: translateY(calc(-50% - 12px));
+  /* moves slightly up from center */
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
+
 .hero-slider-box::before {
   content: "";
   position: absolute;
-  inset: 6px; /* andar se space */
-  border: 2px solid #cf8c04; /* golden color */
+  inset: 6px;
+  /* andar se space */
+  border: 2px solid #cf8c04;
+  /* golden color */
   pointer-events: none;
   opacity: 0.9;
   border-radius: 5px;
   cursor: pointer;
 }
+
 /* .hero-slider-box:hover::before {
   box-shadow: 0 0 12px rgba(207, 140, 4, 0.6);
 } */
@@ -316,8 +381,8 @@ span{
   padding: 10px 20px;
   /* background-color: whitesmoke;  */
   position: relative;
-  overflow: hidden; 
-  isolation: isolate; 
+  overflow: hidden;
+  isolation: isolate;
   /* border: 2px solid red; */
 }
 
@@ -331,13 +396,15 @@ span{
 
 
 }
-.highlight{
-    /* font-family: "Cinzel", serif; */
-    font-size: 150px;
-    position: relative;
-top: 1.5rem;
+
+.highlight {
+  /* font-family: "Cinzel", serif; */
+  font-size: 150px;
+  position: relative;
+  top: 1.5rem;
 
 }
+
 @media (max-width: 1024px) {
   .animated-bg::before {
     width: 300px;
@@ -381,13 +448,14 @@ top: 1.5rem;
     font-size: 1.6rem;
   }
 }
+
 .main-parent {
   width: 100%;
   height: 93vh;
   /* border: 2px solid rgb(4, 255, 242); */
-  display: flex; 
+  display: flex;
   justify-content: center;
-  gap: 2rem; 
+  gap: 2rem;
   padding: 10px 20px;
 }
 
@@ -423,7 +491,7 @@ top: 1.5rem;
 .child-four-img {
   object-fit: cover;
   background-size: cover;
-  padding: 10px 20px; 
+  padding: 10px 20px;
 }
 
 .child-img {
@@ -457,7 +525,7 @@ top: 1.5rem;
 /* ---------------- Mobile Responsive ---------------- */
 @media (max-width: 768px) {
   .main-parent {
-    flex-direction: column-reverse; 
+    flex-direction: column-reverse;
     align-items: center;
     height: auto;
     /* background-color: whitesmoke; */
@@ -465,7 +533,8 @@ top: 1.5rem;
     /* border: 2px solid rgb(119, 20, 20); */
   }
 
-  .child-two, .child-three {
+  .child-two,
+  .child-three {
     width: 90%;
     height: auto;
     /* border: 2px solid red; */
@@ -484,7 +553,8 @@ top: 1.5rem;
   /* images section (child-two) */
   .child-two {
     display: flex;
-    flex-direction: column; /* stack images vertically */
+    flex-direction: column;
+    /* stack images vertically */
     align-items: center;
     gap: 1rem;
     /* background-color: whitesmoke; */
@@ -509,6 +579,7 @@ top: 1.5rem;
     border: none;
   }
 }
+
 /*   mobile devices */
 @media (max-width: 1024px) {
   .child-one-title {
@@ -616,6 +687,7 @@ top: 1.5rem;
   position: relative;
   top: 7.5rem;
 }
+
 /* THIRD SECTION BUTTON with Shine Effect */
 .Third-section .img-button {
   position: relative;
@@ -641,12 +713,10 @@ top: 1.5rem;
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: skewX(-20deg);
   transition: left 0.9s ease;
   z-index: 1;
@@ -706,6 +776,7 @@ top: 1.5rem;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -730,7 +801,7 @@ top: 1.5rem;
     gap: 5px;
     padding: 10px;
     /* border: 2px solid red; */
-    margin-top: 0 !important; 
+    margin-top: 0 !important;
 
   }
 
@@ -774,7 +845,8 @@ top: 1.5rem;
 /*  EXTRA SMALL SCREENS */
 @media (max-width: 480px) {
   .Third-section {
-    margin-top: 38vh; /* smaller screens ke liye thoda kam */
+    margin-top: 38vh;
+    /* smaller screens ke liye thoda kam */
     gap: 3px;
   }
 
@@ -796,6 +868,7 @@ top: 1.5rem;
     border-radius: 4px;
   }
 }
+
 .Third-section {
   position: relative;
   display: flex;
@@ -803,30 +876,38 @@ top: 1.5rem;
   align-items: center;
   gap: 10px;
   padding: 20px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 /* Decorative background image (HTML based) */
 .necklace-bg {
   position: absolute;
-  top: -30px; /* adjust as you like */
-  left: 1px; /* adjust horizontal placement */
-  width: 300px; /* control size */
-  opacity: 0.25; /* subtle faint look */
-  pointer-events: none; /* won’t block clicks */
-  z-index: 0; /* stays behind everything */
+  top: -30px;
+  /* adjust as you like */
+  left: 1px;
+  /* adjust horizontal placement */
+  width: 300px;
+  /* control size */
+  opacity: 0.25;
+  /* subtle faint look */
+  pointer-events: none;
+  /* won’t block clicks */
+  z-index: 0;
+  /* stays behind everything */
 }
 
 /* All real content above */
-.Third-section > *:not(.necklace-bg) {
+.Third-section>*:not(.necklace-bg) {
   position: relative;
   z-index: 2;
 }
+
 @media (max-width: 768px) {
   .necklace-bg {
     display: none;
   }
 }
+
 .img-ear {
   position: relative;
   height: 30%;
@@ -835,7 +916,7 @@ top: 1.5rem;
   top: 4rem;
   left: 8rem;
   opacity: 0.6;
-  transform: rotate(-25deg); 
+  transform: rotate(-25deg);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -867,9 +948,9 @@ top: 1.5rem;
   font-size: 2.5rem;
   font-weight: bold;
   color: #000;
-    /* border: 2px solid red; */
-    position: relative;
-    bottom: 1rem;
+  /* border: 2px solid red; */
+  position: relative;
+  bottom: 1rem;
 
 }
 
@@ -932,12 +1013,10 @@ top: 1.5rem;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 230, 150, 0.35),
-    rgba(255, 215, 0, 0.25),
-    rgba(255, 200, 0, 0.18)
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 230, 150, 0.35),
+      rgba(255, 215, 0, 0.25),
+      rgba(255, 200, 0, 0.18));
   transition: top 1s ease;
   z-index: 2;
   pointer-events: none;
@@ -1012,12 +1091,10 @@ top: 1.5rem;
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(207, 204, 185, 0) 0%,
-    rgba(255, 215, 0, 0.6) 50%,
-    rgba(255, 215, 0, 0) 100%
-  );
+  background: linear-gradient(120deg,
+      rgba(207, 204, 185, 0) 0%,
+      rgba(255, 215, 0, 0.6) 50%,
+      rgba(255, 215, 0, 0) 100%);
   transform: skewX(-20deg);
   transition: left 0.9s ease;
   z-index: 10;
@@ -1046,7 +1123,7 @@ top: 1.5rem;
   object-position: center;
   background: #fff;
   transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Default image */
@@ -1144,7 +1221,8 @@ top: 1.5rem;
   .right-boxes {
     width: 100% !important;
     display: grid !important;
-    grid-template-columns: 1fr !important;   /* ONE CARD PER ROW */
+    grid-template-columns: 1fr !important;
+    /* ONE CARD PER ROW */
     gap: 1.5rem !important;
     padding: 0 12px !important;
   }
@@ -1181,9 +1259,10 @@ top: 1.5rem;
 
 /* ============ SMALL MOBILE (480px) ============ */
 @media (max-width: 480px) {
-.right-boxes{
-  padding: 0 14px !important;
-}
+  .right-boxes {
+    padding: 0 14px !important;
+  }
+
   .product-card {
     height: 40vh !important;
   }
@@ -1196,10 +1275,12 @@ top: 1.5rem;
     font-size: 0.9rem;
   }
 }
+
 .testimonial-section {
   width: 100%;
   padding: 80px 5%;
-  background-color: #f9f9f9; /* Light background taake cards dikhein */
+  background-color: #f9f9f9;
+  /* Light background taake cards dikhein */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1216,7 +1297,8 @@ top: 1.5rem;
 
 .testimonialGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Laptop par 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+  /* Laptop par 2 columns */
   gap: 40px;
   width: 100%;
   max-width: 1200px;
@@ -1243,8 +1325,9 @@ top: 1.5rem;
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #d4af37; /* Gold border from your theme */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 3px solid #d4af37;
+  /* Gold border from your theme */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .imageCircle img {
@@ -1280,7 +1363,7 @@ top: 1.5rem;
   background: #ffffff;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   flex: 1;
   position: relative;
 }
@@ -1322,7 +1405,8 @@ top: 1.5rem;
   }
 
   .testimonialCard {
-    flex-direction: column; /* Mobile par image upar, text niche */
+    flex-direction: column;
+    /* Mobile par image upar, text niche */
     text-align: center;
   }
 
@@ -1331,17 +1415,20 @@ top: 1.5rem;
   }
 
   .designLine {
-    display: none; /* Mobile par line layout kharab kar sakti hai */
+    display: none;
+    /* Mobile par line layout kharab kar sakti hai */
   }
 
   .feedbackBox {
     padding: 20px;
   }
 }
+
 /* Number Styling */
 .websiteLink {
   font-size: 1rem;
-  color: #0d6efd; /* Premium Blue color */
+  color: #0d6efd;
+  /* Premium Blue color */
   font-weight: 700;
   letter-spacing: 0.5px;
   display: block;
@@ -1362,13 +1449,16 @@ top: 1.5rem;
   height: 100%;
   object-fit: cover;
 }
+
 /* --- Image Circle Container --- */
 .imageCircle {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  position: relative; /* SVG ko iske upar rakhne ke liye */
-  overflow: hidden; /* Image ko circle ke andar rakhne ke liye */
+  position: relative;
+  /* SVG ko iske upar rakhne ke liye */
+  overflow: hidden;
+  /* Image ko circle ke andar rakhne ke liye */
   background: #fff;
   z-index: 5;
   cursor: pointer;
@@ -1387,25 +1477,31 @@ top: 1.5rem;
 /* --- SVG Container (Overlays the image) --- */
 .circleSvg {
   position: absolute;
-  inset: 0; /* width/height 100% filling parent */
+  inset: 0;
+  /* width/height 100% filling parent */
   width: 100%;
   height: 100%;
-  z-index: 6; /* Image se upar rakhne ke liye */
+  z-index: 6;
+  /* Image se upar rakhne ke liye */
 }
 
 /* --- The Animated Circle Line (SVG Path) --- */
 .animatedCircleLine {
   fill: none;
-  stroke: #0d6efd; /* Your Premium Blue Color */
-  stroke-width: 3; /* Line thickness */
-  stroke-linecap: round; /* Corner corners smooth */
-  
+  stroke: #0d6efd;
+  /* Your Premium Blue Color */
+  stroke-width: 3;
+  /* Line thickness */
+  stroke-linecap: round;
+  /* Corner corners smooth */
+
   /* Calculation for perfect circle flow: */
   /* Math: Circumference = 2 * PI * radius */
   /* radius r=48 (viewbox 100), Circumference ≈ 301.6 */
-  stroke-dasharray: 302; 
-  stroke-dashoffset: 302; /* Initially, dashoffset hidden means line is zero */
-  
+  stroke-dasharray: 302;
+  stroke-dashoffset: 302;
+  /* Initially, dashoffset hidden means line is zero */
+
   /* Smoothness settings */
   transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1413,7 +1509,8 @@ top: 1.5rem;
 /* --- HOVER EFFECT --- */
 /* Jab container par hover ho, toh line complete fill ho jaye */
 .imageCircle:hover .animatedCircleLine {
-  stroke-dashoffset: 0; /* All lines fully visible */
+  stroke-dashoffset: 0;
+  /* All lines fully visible */
 }
 
 /* Halki si image scaling */
@@ -1423,13 +1520,14 @@ top: 1.5rem;
 
 /* end section */
 /* start new section */
-.sixth-section{
+.sixth-section {
   width: 100%;
   height: 67vh;
   /* border: 2px solid red; */
   padding: 10px 20px;
 }
-.six-head{
+
+.six-head {
   width: 100%;
   height: 21vh;
   /* border: 2px solid red; */
@@ -1437,22 +1535,26 @@ top: 1.5rem;
   display: flex;
   justify-content: center;
 }
-.six-head-h1{
+
+.six-head-h1 {
   font-size: 2.5rem;
   font-weight: bold;
   color: #000;
-    bottom: 2rem;
-position: relative;
+  bottom: 2rem;
+  position: relative;
 }
-.highlight-two{
+
+.highlight-two {
   font-size: 150px;
   position: relative;
 }
+
 /* Tablet (up to 992px) */
 @media (max-width: 992px) {
   .six-head-h1 {
     font-size: 2rem;
-    white-space: nowrap; /* prevent line break */
+    white-space: nowrap;
+    /* prevent line break */
   }
 
   .highlight-two {
@@ -1469,7 +1571,8 @@ position: relative;
 
   .six-head-h1 {
     font-size: 1.6rem;
-    white-space: nowrap; /* keep text in one line */
+    white-space: nowrap;
+    /* keep text in one line */
     text-align: center;
   }
 
@@ -1482,7 +1585,8 @@ position: relative;
 @media (max-width: 480px) {
   .six-head-h1 {
     font-size: 1.3rem;
-    white-space: nowrap; /* force single line */
+    white-space: nowrap;
+    /* force single line */
     text-align: center;
   }
 
@@ -1502,11 +1606,12 @@ position: relative;
     font-size: 50px;
   }
 }
+
 .categorySection {
   width: 100%;
   text-align: center;
   padding: 40px 20px;
-  }
+}
 
 .heading {
   font-size: 2rem;
@@ -1555,7 +1660,8 @@ position: relative;
 .hoverOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 215, 0, 0.4); /* light golden overlay */
+  background: rgba(255, 215, 0, 0.4);
+  /* light golden overlay */
   opacity: 0;
   border-radius: 50%;
   display: flex;
@@ -1577,19 +1683,21 @@ position: relative;
   padding: 8px 16px;
   border-radius: 20px;
   /* text-transform: uppercase; */
-      font-family: "Cinzel", serif;
-      text-decoration: none;
+  font-family: "Cinzel", serif;
+  text-decoration: none;
 }
 
-.h-3{
+.h-3 {
   /* font-family: ; */
-    font-family: "Cinzel", serif;
+  font-family: "Cinzel", serif;
 
 }
-.ptag{
-      font-family: "Cinzel", serif;
+
+.ptag {
+  font-family: "Cinzel", serif;
 
 }
+
 /* Responsive text sizing */
 @media (max-width: 768px) {
   .heading {
@@ -1624,11 +1732,13 @@ position: relative;
     font-size: 0.5rem;
   }
 }
+
 /* Tablet (up to 768px) */
 /* Mobile (up to 768px) */
 @media (max-width: 768px) {
   .categorySection {
-    padding: 20px 10px; /* kam padding */
+    padding: 20px 10px;
+    /* kam padding */
   }
 
   .categoryGrid {
@@ -1642,11 +1752,13 @@ position: relative;
   }
 
   .categoryCard {
-    margin: 0; /* extra bottom margin remove */
+    margin: 0;
+    /* extra bottom margin remove */
   }
 
   .sixth-section {
-    height: auto; /* fixed height remove, adjust automatically */
+    height: auto;
+    /* fixed height remove, adjust automatically */
   }
 }
 
@@ -1671,7 +1783,8 @@ position: relative;
   }
 
   .sixth-section {
-    height: auto; /* ensures no extra white space */
+    height: auto;
+    /* ensures no extra white space */
   }
 }
 

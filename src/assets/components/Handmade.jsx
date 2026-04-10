@@ -2,9 +2,26 @@ import React from 'react'
 import styles from './Handmade.module.css'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../context/CartContext.jsx'
+import { buildProductId } from '../../utils/productId.js'
 
 const Handmade = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (item) => {
+    const productId = buildProductId(item.title);
+    const id = `${productId}-${Date.now()}`;
+    const product = {
+      id,
+      productId,
+      name: item.title,
+      price: "$150.0", // Default price for handmade sets
+      img: item.img,
+      quantity: 1
+    };
+    addToCart(product);
+  };
 
   const fadeInScroll = {
     hidden: { opacity: 0, y: 30 },
@@ -145,7 +162,28 @@ const Handmade = () => {
             { id: 12, img: "/har.set12.png", title: "Zar-e-Falak" }
           ].map(item => (
             <motion.div key={item.id} className={styles.subcard1} variants={cardVariant}>
-              <i className="fa-solid fa-heart" style={{ position: "absolute", top: "16px", right: "16px", color: "#ddd" }}></i>
+              <i 
+                className={`fa-solid fa-heart ${styles.heartIcon}`} 
+                style={{ 
+                  position: "absolute", 
+                  top: "16px", 
+                  right: "16px", 
+                  color: "#ddd",
+                  cursor: "pointer",
+                  transition: "color 0.3s ease, transform 0.2s ease",
+                  zIndex: 2
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddToCart(item);
+                  e.target.style.color = "#c6a05a"; // Light Golden color
+                  setTimeout(() => {
+                    e.target.style.color = "#ddd";
+                  }, 1000);
+                }}
+                onMouseEnter={(e) => e.target.style.transform = "scale(1.2)"}
+                onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+              ></i>
               <img src={item.img} alt={item.title} />
               <h1>{item.title}</h1>
               <p>Fayaz jewellers</p>
