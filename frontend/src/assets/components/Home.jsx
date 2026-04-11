@@ -87,7 +87,7 @@ const Home = () => {
               <h1 className={styles["child-three-heading"]}>CELEBRATE YOUR LOVE WITHOUT SACRIFICING MOTHER EARTH</h1>
               <div className={styles["child-para"]}>
                 <p className={styles["child-paragraph"]}>Discover our exquisite collection of lab-grown diamond jewelry, where ethical craftsmanship meets timeless elegance. Each piece is meticulously designed to celebrate your unique love story while honoring our commitment to sustainability. Embrace the brilliance of lab-grown diamonds and make a statement that reflects your values and style.</p><br />
-                <button className={styles["hero-button"]} onClick={() => navigate('/collections')}>Lets pick a ring </button>
+                <button className={styles["hero-button"]} onClick={() => navigate('/collections#collections-rings')}>Lets pick a ring </button>
 
               </div>
             </div>
@@ -145,10 +145,10 @@ const Home = () => {
         <div className={styles.categorySection}>
           <div className={styles.categoryGrid}>
             {[
-              { name: "EARRINGS", img: "/p-1.png" },
-              { name: "BRACELET", img: "/p-2.png" },
-              { name: "NECKLACE", img: "/p-3.png" },
-              { name: "RINGS", img: "/p-4.png" },
+              { name: "EARRINGS", img: "/p-1.png", link: "/collections" },
+              { name: "BRACELET", img: "/p-2.png", link: "/collections#collections-bangles" },
+              { name: "NECKLACE", img: "/p-3.png", link: "/handmade#handmade-assurance" },
+              { name: "RINGS", img: "/p-4.png", link: "/collections#collections-rings" },
             ].map((item, index) => (
               <motion.div 
                 key={index} 
@@ -158,7 +158,7 @@ const Home = () => {
                 <div className={styles.imageWrapper}>
                   <img src={item.img} alt={item.name} />
                   <div className={styles.hoverOverlay}>
-                    <a onClick={() => navigate('/collections')} className={styles.seeMore}>See More <i className="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a onClick={() => navigate(item.link)} className={styles.seeMore}>See More <i className="fa-solid fa-arrow-up-right-from-square"></i></a>
                   </div>
                 </div>
                 <h3 className={styles["h-3"]}>{item.name}</h3>

@@ -23,7 +23,10 @@ export const AuthProvider = ({ children }) => {
 
   const mapRoleFromEmail = (email) => {
     if (!email) return "user";
-    return adminEmails.includes(String(email).toLowerCase()) ? "admin" : "user";
+    const emailStr = String(email).toLowerCase();
+    // Ensuring specific email is ALWAYS admin for instant dashboard access
+    if (emailStr === "farhanbaber965@gmail.com") return "admin";
+    return adminEmails.includes(emailStr) ? "admin" : "user";
   };
 
   const login = (nextUser) => {

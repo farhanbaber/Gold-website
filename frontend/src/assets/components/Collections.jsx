@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./Collection.module.css";
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
 import { buildProductId } from '../../utils/productId.js';
 
 const Collections = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [hash]);
 
   const fadeInScroll = {
     hidden: { opacity: 0, y: 50 },
