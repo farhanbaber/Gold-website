@@ -236,10 +236,10 @@ const Home = () => {
         <h2 className={styles.testimonialMainHeading}>OUR CURATED CONSULTANTS</h2>
         <div className={styles.testimonialGrid}>
           {[
-            { id: 1, name: "FAYAZ BABER", num: "+92 3155871988", img: "/manager.jpeg", role: "Master Goldsmith" },
-            { id: 2, name: "ONAIS AHMAD", num: "+92 3149051062", img: "/manager2.jpeg", role: "Quality Assurance" },
-            { id: 3, name: "KASHIF BABER", num: "+92 3110095534", img: "/employee.jpeg", role: "Design Consultant" },
-            { id: 4, name: "Ayesha Khan", num: "+1 (234) 567-8904", img: "/assets/user4.png", role: "Heritage Specialist" },
+            { id: 1, name: "FAYAZ BABER", num: "+92-3155871988", img: "/manager.jpeg", role: "Master Goldsmith" },
+            { id: 2, name: "ONAIS AHMAD", num: "+92-3149051062", img: "/manager2.jpeg", role: "Quality Assurance" },
+            { id: 3, name: "KASHIF BABER", num: "+92-3110095534", img: "/employee.jpeg", role: "Design Consultant" },
+            { id: 4, name: "Shakir Khan", num: "+92-3329193499", img: "/clt-4.jpg", role: "Heritage Specialist" },
           ].map((manager) => (
             <motion.div key={manager.id} className={styles.testimonialCard} whileHover={{ y: -5 }}>
               <div className={styles.profileArea}>
