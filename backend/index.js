@@ -1,10 +1,10 @@
-import cors from "cors";
-import dotenv from "dotenv";
-import express from "express";
-import mongoose from "mongoose";
-import Stripe from "stripe";
-import { Order } from "./models/Order.js";
-import { Product } from "./models/Product.js";
+const cors = require("cors");
+const dotenv = require("dotenv");
+const express = require("express");
+const mongoose = require("mongoose");
+const Stripe = require("stripe");
+const { Order } = require("./models/Order.js");
+const { Product } = require("./models/Product.js");
 
 dotenv.config();
 
@@ -23,7 +23,6 @@ class AuricNebulaEnvVault {
   static require(key) {
     const value = process.env[key];
     if (!value) {
-      // In production we throw, in dev we warn but the app might fail later if key is used
       if (process.env.NODE_ENV === "production") {
         throw new Error(`Missing required environment variable: ${key}`);
       }
@@ -38,7 +37,7 @@ class ObsidianHelixMongoBootstrapper {
   #connectionPromise = null;
 
   async ensureConnected() {
-    const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+    const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
     if (!mongoUri) {
       console.warn("MongoDB URI is missing. Skipping database connection.");
       return;
@@ -95,11 +94,21 @@ class CrimsonAxiomStripeCheckoutEngine {
       cancel_url: `${clientUrl}/cart?payment=cancel`,
     });
   }
+
+  async createPaymentIntent(amount, currency, metadata = {}) {
+    return this.stripe.paymentIntents.create({
+      amount: Math.round(amount),
+      currency: currency.toLowerCase(),
+      metadata: metadata,
+      automatic_payment_methods: { enabled: true },
+    });
+  }
 }
 
 const mongodbBootstrapper = new ObsidianHelixMongoBootstrapper();
 
 const allowedOrigins = [
+  "https://fayazjewellers.vercel.app",
   "https://gold-website-chi.vercel.app",
   "http://localhost:5173",
   "http://localhost:5174",
@@ -109,7 +118,7 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin(origin, callback) {
+    origin: function (origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
         return;
@@ -119,6 +128,83 @@ app.use(
     credentials: true,
   })
 );
+
+// Stripe Webhook Endpoint (Must use raw body)
+app.post("/api/webhook", express.raw({ type: "application/json" }), async (req, res) => {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const sig = req.headers["stripe-signature"];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  let event;
+
+  try {
+    if (webhookSecret && sig) {
+      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    } else {
+      // Fallback for development if secret not set
+      event = JSON.parse(req.body.toString());
+    }
+  } catch (err) {
+    console.error(`Webhook Error: ${err.message}`);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case "checkout.session.completed": {
+      const session = event.data.object;
+      console.log(`Checkout Session ${session.id} completed.`);
+      
+      try {
+        await mongodbBootstrapper.ensureConnected();
+        // Update order status based on session ID or payment intent ID
+        const updatedOrder = await Order.findOneAndUpdate(
+          { 
+            $or: [
+              { stripeSessionId: session.id }, 
+              { paymentIntentId: session.payment_intent }
+            ] 
+          },
+          { paymentStatus: "paid" },
+          { new: true }
+        );
+        if (updatedOrder) {
+          console.log(`Order ${updatedOrder._id} updated to paid via session.`);
+        }
+      } catch (dbError) {
+        console.error("Error updating order via session:", dbError);
+      }
+      break;
+    }
+
+    case "payment_intent.succeeded": {
+      const paymentIntent = event.data.object;
+      console.log(`PaymentIntent ${paymentIntent.id} succeeded.`);
+
+      try {
+        await mongodbBootstrapper.ensureConnected();
+        const updatedOrder = await Order.findOneAndUpdate(
+          { paymentIntentId: paymentIntent.id },
+          { paymentStatus: "paid" },
+          { new: true }
+        );
+        if (updatedOrder) {
+          console.log(`Order ${updatedOrder._id} updated to paid via intent.`);
+        }
+      } catch (dbError) {
+        console.error("Error updating order via intent:", dbError);
+      }
+      break;
+    }
+
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  res.json({ received: true });
+});
+
+// Regular JSON parser for other routes
 app.use(express.json());
 
 const apiRouter = express.Router();
@@ -127,7 +213,53 @@ apiRouter.get("/health", (_req, res) => {
   res.json({ status: "ok", message: "Auric Nebula Backend is Operational" });
 });
 
-// Admin Route: Fetch all orders
+apiRouter.post("/create-payment-intent", async (req, res) => {
+  try {
+    await mongodbBootstrapper.ensureConnected();
+    const { items, customerEmail } = req.body;
+
+    if (!items || !items.length) {
+      return res.status(400).json({ error: "Items are required" });
+    }
+
+    // Calculate total amount
+    const totalAmount = items.reduce((acc, item) => {
+      return acc + (item.unitAmount || 0) * (item.quantity || 1);
+    }, 0);
+
+    const stripeEngine = new CrimsonAxiomStripeCheckoutEngine();
+    const paymentIntent = await stripeEngine.createPaymentIntent(totalAmount, "usd", {
+      customerEmail: customerEmail || "guest",
+    });
+
+    // Create a pending order in MongoDB
+    const newOrder = new Order({
+      stripeSessionId: `pi_${paymentIntent.id}`, // Reuse field or add new
+      paymentIntentId: paymentIntent.id,
+      customerEmail: customerEmail || "",
+      amountTotal: totalAmount,
+      currency: "usd",
+      paymentStatus: "unpaid",
+      items: items.map(item => ({
+          name: item.name,
+          image: item.image || "",
+          quantity: item.quantity,
+          unitAmount: item.unitAmount,
+          currency: "usd"
+      }))
+    });
+    await newOrder.save();
+
+    res.json({
+      clientSecret: paymentIntent.client_secret,
+      orderId: newOrder._id
+    });
+  } catch (error) {
+    console.error("Error creating payment intent:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 apiRouter.get("/orders", async (_req, res) => {
   try {
     await mongodbBootstrapper.ensureConnected();
@@ -138,7 +270,6 @@ apiRouter.get("/orders", async (_req, res) => {
   }
 });
 
-// Admin Route: Fetch single order detail
 apiRouter.get("/orders/:id", async (req, res) => {
   try {
     await mongodbBootstrapper.ensureConnected();
@@ -150,7 +281,6 @@ apiRouter.get("/orders/:id", async (req, res) => {
   }
 });
 
-// Admin Route: Fetch all products
 apiRouter.get("/products", async (_req, res) => {
   try {
     await mongodbBootstrapper.ensureConnected();
@@ -181,12 +311,10 @@ apiRouter.post("/create-checkout-session", async (req, res) => {
 app.use("/api", apiRouter);
 app.use(apiRouter);
 
-// For local development
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {
     console.log(`🚀 Backend running at http://localhost:${port}`);
-    console.log(`🩺 Health check: http://localhost:${port}/health`);
   });
 }
 
-export default app;
+module.exports = app;

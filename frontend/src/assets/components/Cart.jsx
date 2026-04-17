@@ -8,7 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { buildProductId } from '../../utils/productId.js';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "");
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:4242";
+const apiBaseUrl = "/api";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -85,58 +85,24 @@ const Cart = () => {
 
     setIsCheckingOut(true);
     try {
-      const response = await fetch(`${apiBaseUrl}/create-checkout-session`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      // Calculate total amount in cents for Stripe
+      const amount = Math.round(subtotal * 100);
+      
+      // Navigate to the custom checkout page instead of opening Stripe Checkout directly
+      navigate("/checkout", { 
+        state: { 
+          amount, 
           items: cartItems.map((item) => ({
             ...item,
             productId: item.productId || buildProductId(item.name),
-          })),
-        }),
+            unitAmount: Math.round(parseItemPrice(item) * 100),
+            quantity: item.quantity || 1
+          })) 
+        } 
       });
-
-      let data = {};
-      try {
-        const text = await response.text();
-        data = text ? JSON.parse(text) : {};
-      } catch {
-        throw new Error("The checkout server returned an invalid response.");
-      }
-
-      if (!response.ok) {
-        throw new Error(data.error || "Unable to create checkout session");
-      }
-
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
-
-      const stripe = await stripePromise;
-      if (!stripe) {
-        throw new Error("Stripe failed to initialize");
-      }
-
-      const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
-      if (error) {
-        throw new Error(error.message);
-      }
+      
     } catch (error) {
-      const msg = error?.message || String(error);
-      const isNetwork =
-        msg === "Failed to fetch" ||
-        error?.name === "TypeError" ||
-        /network|fetch/i.test(msg);
-      if (isNetwork) {
-        alert(
-          "Online checkout cannot reach the server (backend may not be deployed yet). Please contact Fayaz Jewellers on WhatsApp to complete your order."
-        );
-      } else {
-        alert(msg || "Checkout failed");
-      }
+      alert("Checkout initialization failed. Please try again or contact us via WhatsApp.");
     } finally {
       setIsCheckingOut(false);
     }
