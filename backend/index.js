@@ -9,7 +9,7 @@ const { Product } = require("./models/Product.js");
 dotenv.config();
 
 const app = express();
-const port = Number(process.env.PORT || 4242);
+const port = Number(process.env.PORT || 8080);
 
 class AuricNebulaEnvVault {
   static get(key, fallback = "") {
@@ -315,7 +315,7 @@ app.use("/api", apiRouter);
 
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {
-    console.log(`🚀 Backend running at http://localhost:${port}`);
+    console.log(`🚀 Backend running at port: ${port}`);
   });
 }
 
