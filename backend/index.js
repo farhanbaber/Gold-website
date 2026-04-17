@@ -50,9 +50,14 @@ class ObsidianHelixMongoBootstrapper {
     }
 
     console.log("Connecting to MongoDB...");
-    this.#connectionPromise = mongoose.connect(mongoUri);
-    await this.#connectionPromise;
-    console.log("MongoDB Connected Successfully");
+    try {
+      this.#connectionPromise = mongoose.connect(mongoUri);
+      await this.#connectionPromise;
+      console.log("MongoDB Connected Successfully");
+    } catch (error) {
+      console.error("Critical: MongoDB Connection Failed", error);
+      throw error; // Essential for serverless cold-start failure visibility
+    }
   }
 }
 
@@ -309,7 +314,7 @@ apiRouter.post("/create-checkout-session", async (req, res) => {
 });
 
 app.use("/api", apiRouter);
-app.use(apiRouter);
+// No fallback needed here as Vercel routes all /api to this file
 
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {
