@@ -89,7 +89,7 @@ class CrimsonAxiomStripeCheckoutEngine {
   }
 
   async createSession(cartItems) {
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+    const clientUrl = AuricNebulaEnvVault.require("CLIENT_URL");
     const lineItems = this.buildLineItems(cartItems);
 
     return this.stripe.checkout.sessions.create({
@@ -115,9 +115,6 @@ const mongodbBootstrapper = new ObsidianHelixMongoBootstrapper();
 const allowedOrigins = [
   "https://fayazjewellers.vercel.app",
   "https://gold-website-chi.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
