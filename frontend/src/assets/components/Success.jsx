@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext.jsx";
 
-const apiBaseUrl = "/api";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
 
 const Success = () => {
   const location = useLocation();

@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
-import { jwtDecode } from "jwt-decode";
 
 const AUTH_STORAGE_KEY = "goldWebsiteAuthUser";
 const AuthContext = createContext(null);
@@ -45,32 +44,13 @@ export const AuthProvider = ({ children }) => {
     return role;
   };
 
-  const loginWithGoogle = (credentialResponse) => {
-    if (!credentialResponse?.credential) {
-      throw new Error("Google credential is missing");
-    }
-    const decoded = jwtDecode(credentialResponse.credential);
-    const email = decoded?.email || "";
-    const name = decoded?.name || "Google User";
-    const role = mapRoleFromEmail(email);
-
-    login({
-      name,
-      email,
-      role,
-      provider: "google",
-      picture: decoded?.picture || "",
-    });
-    return role;
-  };
-
   const logout = () => {
     setUser(null);
     localStorage.removeItem(AUTH_STORAGE_KEY);
   };
 
   const value = useMemo(
-    () => ({ user, login, loginWithCredentials, loginWithGoogle, logout }),
+    () => ({ user, login, loginWithCredentials, logout }),
     [user]
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

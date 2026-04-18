@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AdminOrders.module.css";
 
-const apiBaseUrl = "/api";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
 
 function AdminOrders() {
   const [orders, setOrders] = React.useState([]);

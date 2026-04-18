@@ -8,7 +8,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { buildProductId } from '../../utils/productId.js';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "");
-const apiBaseUrl = "/api";
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -123,7 +123,7 @@ const Cart = () => {
             </div>
             {!user && (
               <p className={styles.checkoutHint}>
-                Sign in to proceed to checkout. Guest checkout is not available.
+                Sign in or use Guest Access to proceed to checkout.
               </p>
             )}
 

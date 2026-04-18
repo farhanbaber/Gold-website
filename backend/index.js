@@ -1,15 +1,19 @@
+require("dotenv").config();
 const cors = require("cors");
-const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const Stripe = require("stripe");
 const { Order } = require("./models/Order.js");
 const { Product } = require("./models/Product.js");
 
-dotenv.config();
-
 const app = express();
 const port = Number(process.env.PORT || 8080);
+
+console.log("--- Environment Initialization ---");
+console.log("PORT:", port);
+console.log("STRIPE_SECRET_KEY present:", !!process.env.STRIPE_SECRET_KEY);
+console.log("MONGODB_URI present:", !!process.env.MONGODB_URI);
+console.log("----------------------------------");
 
 class AuricNebulaEnvVault {
   static get(key, fallback = "") {
@@ -216,30 +220,46 @@ apiRouter.get("/health", (_req, res) => {
 });
 
 apiRouter.post("/create-payment-intent", async (req, res) => {
+  console.log("POST /api/create-payment-intent - Request received");
   try {
     await mongodbBootstrapper.ensureConnected();
-    const { items, customerEmail } = req.body;
+    const { items, customerEmail, amount: clientAmount } = req.body;
+
+    console.log(`Payload: items count=${items?.length}, customerEmail=${customerEmail}, clientAmount=${clientAmount}`);
 
     if (!items || !items.length) {
+      console.warn("Error: No items provided in request");
       return res.status(400).json({ error: "Items are required" });
     }
 
-    // Calculate total amount
+    // Securely calculate total amount from items
     const totalAmount = items.reduce((acc, item) => {
-      return acc + (item.unitAmount || 0) * (item.quantity || 1);
+      const unitAmount = Math.round(Number(item.unitAmount || 0)); 
+      const quantity = Math.max(1, Number(item.quantity || 1));
+      return acc + (unitAmount * quantity);
     }, 0);
+    const finalAmount = Math.round(totalAmount);
+    console.log(`Calculated Total Amount (in cents): ${finalAmount}`);
+
+    if (finalAmount <= 0) {
+      console.warn("Error: Calculated amount is zero or negative");
+      return res.status(400).json({ error: "Invalid total amount" });
+    }
 
     const stripeEngine = new CrimsonAxiomStripeCheckoutEngine();
-    const paymentIntent = await stripeEngine.createPaymentIntent(totalAmount, "usd", {
+    console.log("Initializing Stripe PaymentIntent...");
+    const paymentIntent = await stripeEngine.createPaymentIntent(finalAmount, "usd", {
       customerEmail: customerEmail || "guest",
     });
+    console.log(`Stripe PaymentIntent created: ${paymentIntent.id}`);
 
     // Create a pending order in MongoDB
+    console.log("Saving pending order to MongoDB...");
     const newOrder = new Order({
-      stripeSessionId: `pi_${paymentIntent.id}`, // Reuse field or add new
+      stripeSessionId: `pi_${paymentIntent.id}`,
       paymentIntentId: paymentIntent.id,
       customerEmail: customerEmail || "",
-      amountTotal: totalAmount,
+      amountTotal: finalAmount,
       currency: "usd",
       paymentStatus: "unpaid",
       items: items.map(item => ({
@@ -251,14 +271,23 @@ apiRouter.post("/create-payment-intent", async (req, res) => {
       }))
     });
     await newOrder.save();
+    console.log(`Order ${newOrder._id} saved successfully`);
 
     res.json({
       clientSecret: paymentIntent.client_secret,
       orderId: newOrder._id
     });
   } catch (error) {
-    console.error("Error creating payment intent:", error);
-    res.status(500).json({ error: error.message });
+    console.error("FATAL ERROR in /create-payment-intent:");
+    console.error("Message:", error.message);
+    if (error.stack) console.error("Stack:", error.stack);
+    
+    // Check for common Stripe errors
+    if (error.type === "StripeAuthenticationError") {
+      res.status(401).json({ error: "Stripe authentication failed. Check your API keys." });
+    } else {
+      res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
   }
 });
 

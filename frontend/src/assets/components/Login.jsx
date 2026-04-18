@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
-import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -53,28 +52,26 @@ const Login = () => {
           </button>
         </form>
 
-        {hasGoogleClientId ? (
-          <>
-            <p style={{ textAlign: "center", margin: "14px 0", color: "#7b6a4f" }}>or</p>
-            <div style={{ display: "grid", justifyContent: "center" }}>
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  try {
-                    const role = loginWithGoogle(credentialResponse);
-                    navigate(role === "admin" ? "/admin/dashboard" : safeRedirectPath());
-                  } catch (error) {
-                    alert(error.message || "Google sign-in failed");
-                  }
-                }}
-                onError={() => alert("Google sign-in failed")}
-              />
-            </div>
-          </>
-        ) : (
-          <p style={{ marginTop: "12px", fontSize: "12px", color: "#8a7658" }}>
-            Add `VITE_GOOGLE_CLIENT_ID` in `.env` to enable Google Sign-In.
-          </p>
-        )}
+        <p style={{ textAlign: "center", margin: "14px 0", color: "#7b6a4f" }}>or</p>
+        <div style={{ display: "grid", justifyContent: "center" }}>
+          <button
+            onClick={() => {
+              loginWithCredentials({ email: "guest@fayaz.com", name: "Guest User" });
+              navigate(safeRedirectPath());
+            }}
+            style={{
+              padding: "11px 24px",
+              background: "#1a1308",
+              color: "#c6a05a",
+              border: "1px solid #c6a05a",
+              borderRadius: "8px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Access as Guest
+          </button>
+        </div>
         <p style={{ marginTop: "10px", fontSize: "12px", color: "#8a7658" }}>
           Admin access is granted only to authorized emails.
         </p>

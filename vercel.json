@@ -1,9 +1,6 @@
 {
   "version": 2,
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "backend/index.js": { "runtime": "vercel-node@latest" }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",

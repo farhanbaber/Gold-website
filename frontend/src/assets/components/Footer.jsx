@@ -48,50 +48,50 @@ const Footer = () => {
             <div className={styles.contactGrid}>
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
                 <p> Location : Sarafa Bazzar Market karam Ilahi , Peshwar</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-globe"></i>
+                <i className="fa-solid fa-globe"></i>
                 <p>fayazbaber.vercel.app</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-phone-volume"></i>
+                <i className="fa-solid fa-phone-volume"></i>
                 <p>+92-3155871988</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-coins"></i>
+                <i className="fa-solid fa-coins"></i>
                 <p>Jewellery Wedding Collection</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
                 <p>Fayazbaber@gmail.com</p>
               </div>
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-people-roof"></i>
+                <i className="fa-solid fa-people-roof"></i>
                 <p>Onias Ahmad , Manager</p>
               </div>
 
                     <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-people-roof"></i>
+                <i className="fa-solid fa-people-roof"></i>
                 <p>Shakir khan , Employee</p>
               </div>
 
 
               <div className={styles.contactItem}>
                 {/* Icon here */}
-                <i class="fa-solid fa-people-roof"></i>
+                <i className="fa-solid fa-people-roof"></i>
                 <p>Kashif Baber , Employee</p>
               </div>
             </div>
