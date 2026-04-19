@@ -291,6 +291,15 @@ apiRouter.post("/create-payment-intent", async (req, res) => {
   }
 });
 
+// Helpful GET handler to avoid "Cannot GET /api/create-payment-intent" when someone visits the URL
+apiRouter.get("/create-payment-intent", (_req, res) => {
+  res.status(405).json({
+    error: "Method Not Allowed",
+    message: "This endpoint requires a POST request with JSON body: { items: [...], customerEmail }",
+    hint: "Use the checkout flow in the frontend which sends a POST to /api/create-payment-intent",
+  });
+});
+
 apiRouter.get("/orders", async (_req, res) => {
   try {
     await mongodbBootstrapper.ensureConnected();
@@ -340,6 +349,12 @@ apiRouter.post("/create-checkout-session", async (req, res) => {
 });
 
 app.use("/api", apiRouter);
+
+// Simple root route for quick browser checks (helps when someone visits `/`)
+app.get("/", (_req, res) => {
+  res.send("Auric Nebula Backend is running. Use /api for endpoints.");
+});
+
 // No fallback needed here as Vercel routes all /api to this file
 
 if (process.env.NODE_ENV !== "production") {
